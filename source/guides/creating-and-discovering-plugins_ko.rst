@@ -58,9 +58,10 @@ Using namespace packages
 
 :doc:`Namespace packages <packaging-namespace-packages>` 는 plugin을 어디에 둘
 것인지를 결정하는 규약을 제공하거나 검색을 하는 방법을 제공하는데 사용 될 수 있다. 예를 들어,
-sub-package ``myapp.plugins`` 를 namespace package로 만들면 다른 :term:`distribution <Distribution Package>` 은 그 namespace에 module과 package를 제공 할 수 있다.
-설치가 끝나면, :func:`pkgutil.iter_modules` 를 사용하여 해당 namespace에 설치된 모든
-module과 package를 검색 할 수 있다.
+sub-package ``myapp.plugins`` 를 namespace package로 만들면 다른
+:term:`distribution <Distribution Package>` 은 그 namespace에 module과 package를
+제공 할 수 있다. 설치가 끝나면, :func:`pkgutil.iter_modules` 를 사용하여 해당 namespace에
+설치된 모든 module과 package를 검색 할 수 있다.
 
 .. code-block:: python
 
