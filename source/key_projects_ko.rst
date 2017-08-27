@@ -244,11 +244,10 @@ flit
 `Issues <https://github.com/takluyver/flit/issues>`__ |
 `PyPI <https://pypi.python.org/pypi/flit>`__
 
-Flit is a simple way to put Python packages and modules on PyPI. Flit packages
-a single importable module or package at a time, using the import name as the
-name on PyPI. All subpackages and data files within a package are included
-automatically. Flit requires Python 3, but you can use it to distribute modules
-for Python 2, so long as they can be imported on Python 3.
+Flit은 Python 패키지와 모듈을 PyPI에 올리는 간단한 방법이다. Flit은 import 이름을 PyPI의 이름으로
+사용하여 한 번에 하나의 import 가능한 모듈 또는 package를 package화한다. Package 내의 모든
+subpackage 및 데이터 파일이 자동으로 포함된다. Flit에는 Python 3가 필요하지만
+Python 3에서 import이 가능하다면 Python 2의 module을 배포하는 데 사용할 수도 있다.
 
 enscons
 =======
@@ -257,13 +256,11 @@ enscons
 `Issues <https://bitbucket.org/dholth/enscons/issues>`__ |
 `PyPI <https://pypi.python.org/pypi/enscons>`__
 
-Enscons is a Python packaging tool based on `SCons`_. It builds pip-compatible
-source distributions and wheels without using distutils or setuptools,
-including distributions with C extensions. Enscons has a different architecture
-and philosophy than distutils. Rather than adding build features to a Python
-packaging system, enscons adds Python packaging to a general purpose build
-system. Enscons helps you to build sdists that can be automatically built by
-pip, and wheels that are independent of enscons.
+Enscons는 `SCons`_ 에 기반한 Python packaging 도구이다. distutils 나 setuptools를 사용하지 않고
+pip와 호환되는 (C extension을 가지는 distribution을 포함한) 소스 distribution과 wheel을 빌드한다.
+Enscons는 distutils와는 다른 아키텍처와 철학을 가지고 있다. Python packaging system에 빌드 기능을
+추가하는 대신, enscons는 Python packaging을 범용 빌드 시스템에 추가한다. Enscons는 자동으로 pip로
+빌드 될 수 있는 sdists와 enscons와는 독립적인 wheel을 만드는 데 도움을 준다.
 
 .. _SCons: http://scons.org/
 
@@ -275,10 +272,9 @@ Hashdist
 `Docs <https://hashdist.readthedocs.io/en/latest/>`__ |
 `Github <https://github.com/hashdist/hashdist/>`__
 
-Hashdist is a library for building non-root software distributions. Hashdist is
-trying to be “the Debian of choice for cases where Debian technology doesn’t
-work”. The best way for Pythonistas to think about Hashdist may be a more
-powerful hybrid of virtualenv and buildout.
+Hashdist는 non-root 소프트웨어 distribution을 빌드하기 위한 라이브러리이다.
+Pythonistas가 Hashdist에 대해 생각하는 가장 좋은 방법은 virtualenv와 buildout의 더 강력한
+하이브리드라고 생각하면 된다.
 
 .. _pex:
 
@@ -289,11 +285,10 @@ pex
 `Github <https://github.com/pantsbuild/pex/>`__ |
 `PyPI <https://pypi.python.org/pypi/pex>`__
 
-pex is both a library and tool for generating ``.pex`` (Python EXecutable)
-files, standalone Python environments in the spirit of :ref:`virtualenv`.
-``.pex`` files are just carefully constructed zip files with a
-``#!/usr/bin/env python`` and special ``__main__.py``, and are designed to make
-deployment of Python applications as simple as ``cp``.
+pex는 :ref:`virtualenv` 의 정신을 따라서 독립 Python environment인 ``.pex`` (Python EXecutable)
+파일을 생성하는 라이브러리이자 도구이다. ``.pex`` 파일은 그저 ``#!/usr/bin/env python`` 과 특별한
+``__main __. py`` 를 가진 신중하게 만들어진 zip 파일일 뿐이며, Python 응용 프로그램 배포를
+``cp`` 정도로 단순하게 만들도록 설계되었다.
 
 .. _spack:
 
@@ -305,16 +300,13 @@ Spack
 `Paper <http://www.computer.org/csdl/proceedings/sc/2015/3723/00/2807623.pdf>`__ |
 `Slides <https://tgamblin.github.io/files/Gamblin-Spack-SC15-Talk.pdf>`__
 
-A flexible package manager designed to support multiple versions,
-configurations, platforms, and compilers.  Spack is like homebrew, but
-packages are written in Python and parameterized to allow easy
-swapping of compilers, library versions, build options,
-etc. Arbitrarily many versions of packages can coexist on the same
-system. Spack was designed for rapidly building high performance
-scientific applications on clusters and supercomputers.
+여러 버전, 설정, 플랫폼 및 컴파일러를 지원하도록 설계된 유연한 패키지 관리자.
+Spack은 homebrew와 비슷하지만, package는 Python으로 작성되고 parameter화 되어
+컴파일러, 라이브러리 버전, 빌드 옵션 등을 쉽게 교체하는 것을 허용한다. 임의로 많은 패키지
+버전이 같은 시스템에 공존 할 수 있다. Spack은 클러스터와 슈퍼 컴퓨터에서 고성능 과학 응용 프로그램을
+신속하게 구축 할 수 있도록 설계되었다.
 
-Spack is not in PyPI (yet), but it requires no installation and can be
-used immediately after cloning from github.
+Spack은 아직 PyPI에 없지만, 설치가 필요하지 않으며, github에서 cloning 직후에 사용할 수 있다.
 
 
 Standard Library Projects
@@ -328,10 +320,9 @@ ensurepip
 `Docs <https://docs.python.org/3/library/ensurepip.html>`__ |
 `Issues <http://bugs.python.org>`__
 
-A package in the Python Standard Library that provides support for bootstrapping
-:ref:`pip` into an existing Python installation or virtual environment.  In most
-cases, end users won't use this module, but rather it will be used during the
-build of the Python distribution.
+기존의 Python 설치 또는 가상 환경에 :ref:`pip` 의 bootstrapping을 지원하는
+Python Standard Library의 패키지. 대부분의 경우 최종 사용자는이 module을 사용하지 않고
+Python distribution을 빌드하는 동안만 사용된다.
 
 
 .. _distutils:
@@ -345,10 +336,9 @@ distutils
 User irc:#pypa  |
 Dev irc:#pypa-dev
 
-A package in the Python Standard Library that has support for creating and
-installing :term:`distributions <Distribution Package>`. :ref:`Setuptools`
-provides enhancements to distutils, and is much more commonly used than just
-using distutils by itself.
+:term:`distributions <Distribution Package>` 을 생성하고 설치하는 것을 지원하는
+Python Standard Library 내의 package. :ref:`Setuptools` 가 distutils에 향상된 기능을
+지원하며 distutils를 단독으로 사용하는 것 보다 훨씬 더 일반적으로 사용된다.
 
 
 .. _venv:
@@ -359,17 +349,17 @@ venv
 `Docs <https://docs.python.org/3/library/venv.html>`__ |
 `Issues <http://bugs.python.org>`__
 
-A package in the Python Standard Library (starting with Python 3.3) for
-creating :term:`Virtual Environments <Virtual Environment>`.  For more
-information, see the section on :ref:`Creating and using Virtual Environments`.
+Python 3.3부터 :term:`Virtual Environments <Virtual Environment>` 를 생성하기 위한
+Python Standard Library에 포함된 package. 더 자세한 정보는
+:ref:`Creating and using Virtual Environments` 섹션을 참조.
 
 
 ----
 
-.. [1] pip was created by the same developer as virtualenv, and early on adopted
-       the virtualenv mailing list, and it's stuck ever since.
+.. [1] pip는 virtualenv와 같은 개발자에 의해 만들어졌고, 초기에 virtualenv 메일링 리스트를 포함해
+버렸으며 그 이후로 계속 유지되어버렸다.
 
-.. [2] Multiple projects reuse the distutils-sig mailing list as their user list.
+.. [2] 여러 프로젝트가 distutils-sig 메일링 리스트를 사용자 목록으로 재사용한다.
 
 
 .. _distribute: https://pypi.python.org/pypi/distribute
