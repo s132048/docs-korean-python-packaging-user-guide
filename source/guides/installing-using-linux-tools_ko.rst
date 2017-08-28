@@ -9,7 +9,7 @@ Installing pip/setuptools/wheel with Linux Package Managers
 
 
 이 section에서는 Linux package manager를 사용하여 :ref:`pip`, :ref:`setuptools`,
-:ref:`wheel` 를 설치하는 법을 다룬다.
+:ref:`wheel` 을 설치하는 법을 다룬다.
 
 `Python.org <https://www.python.org>`_ 에서 다운로드 한 Python을 사용하고 있다면
 이 section은 적용되지 않는다. 대신 :ref:`installing_requirements` section을 참조한다.
@@ -19,7 +19,7 @@ Installing pip/setuptools/wheel with Linux Package Managers
 특정 배포판의 경우 최신 버전을 지원하도록 repository가 있는 경우도 있다. 우리가 알고 있는
 repository는 아래에 설명한다.
 
-또한 배포판 자체 표준에 대한 보안 및 정상화를 위해 패치를 적용하는 것은 다소 일반적이다.
+또한 배포판 자체 표준에 대한 보안 및 정규화를 위해 패치를 적용하는 것은 다소 일반적이다.
 경우에 따라 패치되지 않은 원래 버전과 다른 버그 또는 예기치 않은 동작이 발생할 수 있다.
 이것이 만약에 알려지면 아래에 기록 할 것이다.
 
@@ -48,7 +48,7 @@ Fedora
 
 최신 버전의 Python 2 전용 pip, setuptools, wheel을 얻으려면,
 `Copr Repo instructions <https://fedorahosted.org/copr/wiki/HowToEnableRepo>`__ 를
-사용하여 `PyPA Copr Repo <https://copr.fedoraproject.org/coprs/pypa/pypa/>` 를 활성화
+사용하여 `PyPA Copr Repo <https://copr.fedoraproject.org/coprs/pypa/pypa/>`__ 를 활성화
 시킨후 다음을 실행한다::
 
   sudo yum|dnf upgrade python-setuptools
@@ -94,7 +94,7 @@ pip, wheel, setuptools를 non-system environment에 yum을 이용해서 병렬�
 
 
 1. "Sofware Collections" 기능을 사용하여 pip, setuptools, wheel이 포함 된
-parallel collection을 활성화한다.
+   parallel collection을 활성화한다.
 
    * Redhat의 경우 다음을 참조:
      http://developers.redhat.com/products/softwarecollections/overview/
@@ -138,7 +138,7 @@ Python 3에서는 "python"을 "python3"로 대체한다.
 
    최근 Debian/Ubuntu 버전은 `"User Scheme"
    <https://pip.pypa.io/en/stable/user_guide/#user-installs>`_ 을 사용하기 위해 변형된
-   pip을 default로 가지고 있다. 이는 작동이 상당히 다르므로 놀랄 수도 있다.
+   pip을 default로 가지고 있다. 이는 작동이 상당히 다르므로 주의해야 한다.
 
 
 Arch Linux
