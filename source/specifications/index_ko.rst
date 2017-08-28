@@ -31,8 +31,8 @@ Optional feature가 요청되었는지 여부에 따라 dependency를 조건부�
     Requires-Dist: reportlab; extra == 'pdf'
 
 아래의 두 번째 distribution에서는 대괄호 안에 선택적 dependency가 필요하며, 쉼표 (,)로 구분하여
-여러 기능을 요청할 수 있다. Requirement는 요청 된 각 기능에 대해 평가되고 distribution의
-requirement 모음에 추가된다.
+여러 feature를 요청할 수 있다. Requirement는 요청 된 각 feature에 대해 평가되고
+distribution의 requirement 모음에 추가된다.
 
 예::
 
@@ -60,8 +60,8 @@ format의 description을 지원했었고, reST를 HTML로 렌더링 할 수 있�
 distribution 저자가 그들의 description format을 지정함으로써 PyPI와 다른 도구들이 Markdown과
 기타 다른 format들을 렌더링 할 수 있게 해준다.
 
-이 필드의 형식은 HTTP의 ``Content-Type`` 헤더와 동일하다. (즉,
-`RFC 1341 <https://www.w3.org/Protocols/rfc1341/4_Content-Type.html>`_)
+이 필드의 형식은 HTTP의 ``Content-Type`` 헤더와 동일(즉,
+`RFC 1341 <https://www.w3.org/Protocols/rfc1341/4_Content-Type.html>`_)하다.
 간단히 말해서, 이것은 ``type/subtype`` 부분을 가지고 있으며, 선택적으로 여러 개의 parameter를
 가질 수 있다:
 
