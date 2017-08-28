@@ -15,7 +15,7 @@ Installing Scientific Packages
 활용하거나 다른 외부 소프트웨어와 상호 운용하기 위해 여러 빌드 옵션을 제공하는 경우가 많다.
 
 특히, `과학 관련 Python 스택 <http://www.scipy.org/stackspec.html#stackspec>`__
-내의 대부분의 소프트웨어에 대한 기초를 제공하는 'NumPy <http://www.numpy.org/>`__
+내의 대부분의 소프트웨어에 대한 기초를 제공하는 `NumPy <http://www.numpy.org/>`__
 는 다른 FORTRAN 라이브러리들과 상호 운용되도록 설정 될 수 있으며, 현대 CPU에서 제공되는 다양한 레벨의
 벡터화 instruction을 이용할 수 있다.
 
@@ -82,14 +82,15 @@ Windows와 마찬가지로 NumPy를 포함한 많은 프로젝트는 python.org�
 macOS CPython 바이너리와 호환되는 macOS installer을 publish한다.
 
 macOS 사용자는 "MacPorts"와 같은 Linux 배포 스타일 패키지 관리자에 액세스 할 수도 있다.
-SciPy 사이트에는 MacPorts를 사용하여 `과학 관련 Python 스택 <http://www.scipy.org/install.html#mac-packages>`__ 설치하는 것에 대해 더 자세한 정보가 있다.
+SciPy 사이트에는 MacPorts를 사용하여 `과학 관련 Python 스택 <http://www.scipy.org/install.html#mac-packages>`__ 을 설치하는 것에 대해 더 자세한
+정보가 있다.
 
 
 SciPy distributions
 -------------------
 
 SciPy 사이트에는 `여러 배포판 <http://www.scipy.org/install.html>`__ 을 통해
-end user가 사용하기 쉽고 업데이트 하기 쉬운 형식으로 full SciPy stack을 제공한다.
+최종 사용자가 사용하기 쉽고 업데이트 하기 쉬운 형식으로 full SciPy stack을 제공한다.
 
 이러한 배포판 중 일부는 표준 ``pip`` 이나 ``virtualenv`` 기반 toolchain과 호환되지 않을 수도
 있다.
@@ -99,7 +100,7 @@ Spack
 `Spack <https://github.com/LLNL/spack/>`_ 은 여러 버전, 설정, 플랫폼, 컴파일러를
 지원 할 수 있도록 만들어진 유연한 패키지 관리자이다. 이는 소프트웨어를 여러가지
 방법으로 빌드를 해야하는 대규모 슈퍼컴퓨팅 센터나 과학 어플리케이션 팀을 지원하기 만들어졌다.
-Spack은 Python만에 한정되는 것은 아니다. ``C``, ``C++``, ``Fortran``, ``R``과 같은
+Spack은 Python만에 한정되는 것은 아니다. ``C``, ``C++``, ``Fortran``, ``R`` 과 같은
 언어들도 지원한다. Spack에서는 한 패키지의 새로운 버전을 설치하더라도
 기존의 설치가 손상되지 않으므로, 한 시스템 내에 여러 구성으로 공존이 가능하다.
 
@@ -120,7 +121,7 @@ publish한 Python 배포판이다. 빅데이터와 과학적 사용을 위한 �
 
 Anaconda에 포함 된 오픈 소스 패키지 관리 시스템 및 환경 관리 시스템인 "conda"는
 사용자가 여러 버전의 바이너리 소프트웨어 패키지 및 dependency를 설치하고 이들 사이를
-쉽게 전환 할 수있게 해준다. 이는 Windows, macOS 및 Linux에서 작동하는 cross-platform 도구이다.
+쉽게 전환 할 수 있게 해준다. 이는 Windows, macOS 및 Linux에서 작동하는 cross-platform 도구이다.
 Conda는 모든 종류의 패키지를 패키지화하고 배포하는 데 사용할 수 있으며, 이는 Python 패키지에만
 국한되지 않는다. 또한 네이티브 가상 환경을 완벽하게 지원한다. Conda는 환경을
 first-class citizen으로 만들어 독립적인 환경을 쉽게 만들 수 있다. 이것은 Python으로 작성되었지만
