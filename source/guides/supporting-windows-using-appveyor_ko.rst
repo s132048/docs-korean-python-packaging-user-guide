@@ -1,69 +1,45 @@
 =================================
-Supporting Windows using Appveyor
+Appveyor를 사용한 윈도우 지원
 =================================
 
 :Page Status: Incomplete
 :Last Reviewed: 2015-12-03
 
-This section covers how to use the free `Appveyor`_ continuous integration
-service to provide Windows support for your project. This includes testing
-the code on Windows, and building Windows-targeted binaries for projects
-that use C extensions.
+이 섹션은 프로젝트를 위한 윈도우 지원을 제공하기 위해 `Appveyor`_ 연속적인 통합 서비스를 무료로 사용하는 법을 포함한다.
+이는 윈도우에서의 테스트 코드를 포함하고 C 확장을 사용한 프로젝트를 위해 윈도우 목적의 바이너리를 빌드한다.
 
 .. contents:: Contents
    :local:
 
 
-Background
+배경
 ==========
 
-Many projects are developed on Unix by default, and providing Windows support
-can be a challenge, because setting up a suitable Windows test environment is
-non-trivial, and may require buying software licenses.
+많은 프로젝트들은 기본적으로 유닉스에서 개발된다. 그리고 적합한 윈도우 환경을 세팅하는 것이 일반적이지 않기 때문에 윈도우를 지원을 제공하는 것은 일종의 도전일 수 있다. 그리고 소프트웨어 라이센스를 구입하는 것을 요구할 수도 있다.
 
-The Appveyor service is a continuous integration service, much like the
-better-known `Travis`_ service that is commonly used for testing by projects
-hosted on `Github`_. However, unlike Travis, the build workers on Appveyor are
-Windows hosts and have the necessary compilers installed to build Python
-extensions.
+Appveyor 서비스는 연속적인 통합 서비스이다. 일반적으로 `Github`_ 에 호스팅된 프로젝트를 테스트하는데 사용되는 `Travis`_  보다 더 잘 알려져 있다. 그러나 Travis와는 달리 Appveyor의 빌드 작업자들은 윈도우 호스트이다. 그리고 파이썬 확장을 빌드하기 위해 설치되어진 컴파일러를 가지고 있다.
 
-Windows users typically do not have access to a C compiler, and therefore are
-reliant on projects that use C extensions distributing binary wheels on PyPI in
-order for the distribution to be installable via ``pip install <dist>``. By
-using Appveyor as a build service (even if not using it for testing) it is
-possible for projects without a dedicated Windows environment to provide
-Windows-targeted binaries.
+윈도우 유저는 일반적으로 C 컴파일러에 접근하지 않는다. 그러므로 배포판이 ``pip install <dist>`` 을 통해서 설치 될 수 있게 하기 위해서 PyPI에서 C 확장 배포 바이너리 wheel 를 사용하는 프로젝트에 의존한다. Appveyor을 빌드 서비스( 테스팅을 위해 사용하지 않더라도)로 사용함으로 윈도우 환경에 알맞는 프로젝트가 윈도우를 목표로 하는 바이너리를 제공하는 것이 가능하다.
 
-Setting Up
+세팅
 ==========
 
-In order to use Appveyor to build Windows wheels for your project, you must
-have an account on the service. Instructions on setting up an account are given
-in `the Appveyor documentation <http://www.appveyor.com/docs>`__. The free tier
-of account is perfectly adequate for open source projects.
+프로젝트에 윈도우 wheel을 빌드하는 Appveyor을 사용하기 위해, 서비스에 대한 계정을 가지고 있어야 한다.
+계정을 세팅하는 것에 대한 지시는 `the Appveyor documentation <http://www.appveyor.com/docs>`__ 에서 알 수 있다. 무료 계좌는 오픈 소스 프로젝트에 적합하다.
 
-Appveyor provides integration with `Github`_ and `Bitbucket`_, so as long as
-your project is hosted on one of those two services, setting up Appveyor
-integration is straightforward.
+Appveyor은 `Github`_ 과 `Bitbucket`_ 의 통합을 제공한다. 그래서 프로젝트가 두 개의 서비스 중 하나에 호스팅 되어 있는 한, Appveyor 통합을 세팅하는 것은 간단하다.
 
-Once you have set up your Appveyor account and added your project, Appveyor will
-automatically build your project each time a commit occurs. This behaviour will
-be familiar to users of Travis.
+당신의 Appveyor 계좌를 설정하고 프로젝트를 추가하기만 하면, Appveyor은 자동으로 커밋이 일어날때마다 프로젝트를 빌드할 것이다. 이러한 행동은 Travis의 사용자들에게 친숙할 것이다.
 
-Adding Appveyor support to your project
+
+프로젝트에 Appveyor 지원을 추가하기 
 =======================================
 
-In order to define how Appveyor should build your project, you need to add an
-``appveyor.yml`` file to your project. The full details of what can be included
-in the file are covered in the Appveyor documentation. This guide will provide
-the details necessary to set up wheel builds.
+어떻게 Appveyor이 프로젝트를 빌드하는지 정의하기 위해, ``appveyor.yml`` 을 프로젝트에 추가할 필요가 있다.
+파일에 포함될 수 있는 모든 상세 사항은 Appveyor 문서에도 포함되어진다. 이 가이드는 wheel을 빌드하는데 필요한 상세 사항을 제공할 것이다. 
 
-Appveyor includes by default all of the compiler toolchains needed to build
-extensions for Python. For Python 2.7, 3.5+ and 32-bit versions of 3.3 and 3.4,
-the tools work out of the box. But for 64-bit versions of Python 3.3 and 3.4,
-there is a small amount of additional configuration needed to let distutils
-know where to find the 64-bit compilers. (From 3.5 onwards, the version of
-Visual Studio used includes 64-bit compilers with no additional setup).
+Appveyor은 기본적으로 파이썬에 대한 확장을 빌드시키는데 필요한 모든 컴파일러 도구체인을 포함한다. 파이썬2.7, 3.5+ 그리고 3.3 과 3.4의 32비트 버전에 대해 도구는 작동한다. 그러나 파이썬 3.3과 3.4의 64비트 버전에서는 distutils가 64비트 컴파일러가 어디에 있는지 찾게하기 위해서 약간의 추가적인 조작이 필요하다. (3.5 이후 버전의 비쥬얼 스튜디오에는 추가 설정이 필요없는 64비트 컴파일러가 포함되어 있다.)
+
 
 appveyor.yml
 ------------
@@ -72,161 +48,101 @@ appveyor.yml
    :language: yaml
    :linenos:
 
-This file can be downloaded from `here <https://raw.githubusercontent.com/pypa/python-packaging-user-guide/master/source/guides/appveyor-sample/appveyor.yml>`__.
+이 파일은 `여기 <https://raw.githubusercontent.com/pypa/python-packaging-user-guide/master/source/guides/appveyor-sample/appveyor.yml>`__ 서 다운로드가 가능하다.
 
-The ``appveyor.yml`` file must be located in the root directory of your
-project. It is in ``YAML`` format, and consists of a number of sections.
+``appveyor.yml`` 파일은 프로젝트의 루트 디렉토리에 위치해야한다. 
+그것은 ``YAML`` format 안에 있고, 많은 섹션들로 이루어져 있다.
 
-The ``environment`` section is the key to defining the Python versions for
-which your wheels will be created. Appveyor comes with Python 2.6, 2.7, 3.3,
-3.4 and 3.5 installed, in both 32-bit and 64-bit builds. The example file
-builds for all of these environments except Python 2.6. Installing for Python
-2.6 is more complex, as it does not come with pip included. We don't support
-2.6 in this document (as Windows users still using Python 2 are generally able
-to move to Python 2.7 without too much difficulty).
+``environment`` 섹션은 만들어질 wheel을 위한 파이썬 버젼을 정의하는 열쇠이다. 
+Appveyor는 Python 2.6, 2.7, 3.3, 3.4 및 3.5가 32비트 및 64비트 빌드 모두에 설치된다.
+예제 파일은 파이썬 2.6을 제외한 이러한 모든 환경을 위해 빌드된다. 파이썬 2.6은 포함된 pip가 없기 때문에 설치가 더 복잡하다. 이 문서에서는 파이썬 2.6을 지원하지 않는다 ( 여전히 파이썬 2를 사용하는 윈도우 유저는 일반적으로 큰 어려움 없이 파이썬 2.7로 바꿀 수 있다.)
 
-The ``install`` section uses pip to install any additional software that the
-project may require. The only requirement for building wheels is the ``wheel``
-project, but projects may wish to customise this code in certain circumstances
-(for example, to install additional build packages such as ``Cython``, or test
-tools such as ``tox``).
+``install`` 섹션은 프로젝트에서 요구할 수도 있는 추가적인 소프트웨어를 설치하기 위해 pip를 사용한다. 
+wheel을 빌딩하기 위한 요구조건은 ``wheel`` 프로젝트이다. 그러나 프로젝트는 어떤 상황에서 이 코드를 커스텀마이즈 하는 것을 원할 수도 있다. ( 예를 들면 ``Cython``, 테스트 툴인 ``tox`` 같은 추가적인 빌드 패키지를 설치할 때)
 
-The ``build`` section simply switches off builds - there is no build step needed
-for Python, unlike languages like ``C#``.
+``build`` 섹션은 단순히 빌드를 끄기만 한다. - ``C#`` 과는 달리 파이썬에서 더 이상의 빌드 스텝은 필요하지 않다.
 
-The main sections that will need to be tailored to your project are ``test_script``
-and ``after_test``.
+프로젝트에 맞춰질 필요가 있는 주요 섹션은 ``test_script`` 와 ``after_test`` 이다.
 
-The ``test_script`` section is where you will run your project's tests. The
-supplied file runs your test suite using ``setup.py test``. If you are only
-interested in building wheels, and not in running your tests on Windows, you
-can replace this section with a dummy command such as ``echo Skipped Tests``.
-You may wish to use another test tool, such as ``nose`` or ``py.test``. Or you
-may wish to use a test driver like ``tox`` - however if you are using ``tox``
-there are some additional configuration changes you will need to consider,
-which are described below.
+``test_script`` 섹션은 프로젝트 테스트를 실행할 곳이다. ``setup.py test`` 를 사용하여 공급된 파일은 테스트 스위트를 실행한다. 윈도우에서 테스트를 실행하는 것이 아니고, wheel을 빌드하는 것에만 관심이 있다면 이 섹션을 ``echo Skipped Tests`` 같은 더미 커맨드로 바꿀 수 있다. ``nose`` 또는 ``py.test`` 같은 다른 테스트 툴을 사용할 수도 있다. ``tox`` 같은 테스트 드라이버를 사용하기를 원할 수도 있다. 그러나 ``tox`` 를 사용한다면, 고려해야할 추가적인  변경 사항이 있다. 이는 아래에 설명되어 있다.
 
-The ``after_test`` runs once your tests have completed, and so is where the
-wheels should be built. Assuming your project uses the recommended tools
-(specifically, ``setuptools``) then the ``setup.py bdist_wheel`` command
-will build your wheels.
+테스트가 완료되면 ``after_test`` 는 실행하고 wheel이 빌드 되어져야 한다. 프로젝트가 추천되는 도구( 특히 ``setuptools`` )를 사용하는 것이 가정된다. 그 후,  ``setup.py bdist_wheel`` 커맨드가 wheel에 빌드된다.
 
-Note that wheels will only be built if your tests succeed. If you expect your
-tests to fail on Windows, you can skip them as described above.
+테스트가 성공해야만 wheel이 빌드되어 질 것이다. 윈도우에서 테스트가 실패한다면 아래에 설명된 것처럼 건너뛸 수도 있다.
 
 
-Support script
+지원 스크립트
 --------------
 
-The ``appveyor.yml`` file relies on a single support script, which sets up the
-environment to use the SDK compiler for 64-bit builds on Python 3.3 and 3.4.
-For projects which do not need a compiler, or which don't support 3.3 or 3.4 on
-64-bit Windows, only the ``appveyor.yml`` file is needed.
-
-`build.cmd <https://raw.githubusercontent.com/pypa/python-packaging-user-guide/master/source/guides/appveyor-sample/build.cmd>`__
-is a Windows batch script that runs a single command in an environment with the
-appropriate compiler for the selected Python version. All you need to do is to
-set the single environment variable ``DISTUTILS_USE_SDK`` to a value of ``1``
-and the script does the rest. It sets up the SDK needed for 64-bit builds of
-Python 3.3 or 3.4, so don't set the environment variable for any other builds.
-
-You can simply download the batch file and include it in your project unchanged.
+``appveyor.yml`` 파일은 단일 지원 스크립트에 의존한다. 이는 파이썬 3.3과 3.4에서 빌드되는 64비트를 위한 SDK 컴파일러를 사용하기 위해 환경을 설정할 것이다. 컴파일러가 필요하지 않는 프로젝트 또는 64비트 윈도우에서 3.3 또는 3.4 를 지원하지 않는 경우, ``appveyor.yml`` 파일이 필요하다.
 
 
-Access to the built wheels
+`build.cmd <https://raw.githubusercontent.com/pypa/python-packaging-user-guide/master/source/guides/appveyor-sample/build.cmd>`__ 는 선택된 파이썬 버전에 대해 적절한 컴파일러를 가지고 있는 환경에서 단일 커맨드를 실행하는 윈도우 배치 스크립트이다. 필요한 모든 것은 단일 환경 변수 ``DISTUTILS_USE_SDK`` 를 1로 설정하는 것이다. 그리고 스크립트는 나머지 작업을 수행한다. 파이썬 3.3 또는 3.4인 64 비트의 빌드를 위해 필요한 SDK를 설정한다. 그래서 다른 빌드에 대한 환경 변수는 설정하지 않아도 된다.
+
+배치 파일을 다운로드 할 수 있고 변경 사항 없이 프로젝트에 포함시킬 수 있다.
+
+
+빌드된 wheels에 대한 접근
 --------------------------
 
-When your build completes, the built wheels will be available from the Appveyor
-control panel for your project. They can be found by going to the build status
-page for each build in turn. At the top of the build output there is a series
-of links, one of which is "Artifacts". That page will include a list of links
-to the wheels for that Python version / architecture. You can download those
-wheels and upload them to PyPI as part of your release process.
+빌드를 완성하면, 빌드된 wheel은 프로젝트를 위해 Appveyor 컨트롤 판넬로부터 이용이 가능할 것이다.
+차례대로 각각의 빌드에 대한 빌드 상태 페이지로 이동하면 wheel을 찾을 수 있을 것이다.
+빌드 출력의 제일 위에는 일련의 링크가 있으며, 그 중 하나는 "Artifacts"이다. 이 페이지는 파이썬 버전/아키텍쳐를 위한 wheel에 연결되는 링크의 리스트를 포함할 것이다. 릴리즈 프로세스의 일부로 이러한 wheel을 다운로드 할 수 있고 PyPI에 업로드 할 수 있다.
 
-Additional Notes
+
+추가 노트
 ================
 
-Testing with tox
-----------------
+Tox를 사용한 테스트
+---------------------
 
-Many projects use the `Tox`_ tool to run their tests. It ensures that tests
-are run in an isolated environment using the exact files that will be distributed
-by the project.
+많은 프로젝트는 `Tox`_ 도구를 사용해 테스트를 진행한다. 그것은 테스트가 독립적인 환경에서 프로젝트에 인해 분배된 추출파일만을 사용하는 것을 보장해준다.
 
-In order to use ``tox`` on Appveyor there are a couple of additional considerations
-(in actual fact, these issues are not specific to Appveyor, and may well affect
-other CI systems).
+``tox`` 를 Appveyor에 사용하기 위해서는 추가적으로 몇 가지의 고려사항이 있다(실제로 이런 상황은 특별히 Appveyor에 한정된 것이 아닌, 다른 CI 시스템에 영향을 줄 수 있다)
 
-1. By default, ``tox`` only passes a chosen subset of environment variables to the
-   test processes. Because ``distutils`` uses environment variables to control the
-   compiler, this "test isolation" feature will cause the tests to use the wrong
-   compiler by default.
+1. 기본값으로, ``tox`` 는 테스트 과정에서 환경 변수 중 일정 부분집합만을 통과시킨다. ``distutils`` 이 환경 변수를  
+   컴파일러를 통제하기 위해 사용하기 때문에 이 “테스트 독립” 현상은 테스트가 기본값으로 잘못된 컴파일러를 사용하게 만들 것이다.
 
-   To force ``tox`` to pass the necessary environment variables to the subprocess,
-   you need to set the ``tox`` configuration option ``passenv`` to list the additional
-   environment variables to be passed to the subprocess. For the SDK compilers, you
-   need
-
-        - ``DISTUTILS_USE_SDK``
+   ``tox`` 를 강제적으로 필요한 환경 변수들을 하위과정으로 통과시키기 위해 당신은 ``tox`` 조작 옵션을 ``passenv`` 으로 해 추가적인 환경 변수들이 하위과정에서 통과될 수 있도록 설정해야 한다. SDK 컴파일러의 경우, 다음이 필요하다.
+  
+   - ``DISTUTILS_USE_SDK``
         - ``MSSdk``
         - ``INCLUDE``
         - ``LIB``
 
-    The ``passenv`` option can be set in your ``tox.ini``, or if you prefer to avoid
-    adding Windows-specific settings to your general project files, it can be set by
-    setting the ``TOX_TESTENV_PASSENV`` environment variable. The supplied ``build.cmd``
-    script does this by default whenever ``DISTUTILS_USE_SDK`` is set.
+   ``passenv`` 옵션은 당신의 ``tox.ini``에서 설정할 수 있고, 당신이 일반 프로젝트 파일들에 윈도우-특정 세팅을 추가시키는 것을 원하지 않는다면, ``TOX_TESTENV_PASSENV`` 를 환경 변수로 설정해 조작할 수 있다. 제공된 ``build.cmd`` 스크립트는 ``DISTUTILS_USE_SDK`` 이 설정 됐을 때마다 기본값으로 작동된다.
 
-2. When used interactively, ``tox`` allows you to run your tests against multiple
-   environments (often, this means multiple Python versions). This feature is not as
-   useful in a CI environment like Travis or Appveyor, where all tests are run in
-   isolated environments for each configuration. As a result, projects often supply
-   an argument ``-e ENVNAME`` to ``tox`` to specify which environment to use (there
-   are default environments for most versions of Python).
+2. 쌍방으로 사용됐을 때, ``tox`` 는 다수의 환경에서 당신이 테스트를 진행할 수 있도록 한다(자주, 이것은 다수의 파이썬  
+   버전을 의미한다.) 이 특성은 Travis나 Appveyor과 같이 모든 테스트가 각각의 조작 별로 독립적인 환경에서 진행되는 CI환경에서는 유용하지 않을 수 있다. 결과적으로, 프로젝트들은 대부분 어떤 환경을 사용해야 할지 특정 짓기 위해 ``tox`` 에 ``-e ENVNAME`` 라는 인수를 제공한다(대부분의 버전의 파이썬에서는 기본값 환경이 있다.)
 
-    However, this does *not* work well with a Windows CI system like Appveyor, where
-    there are (for example) two installations of Python 3.4 (32-bit and 64-bit)
-    available, but only one ``py34`` environment in ``tox``.
+   하지만 이것은 결코 Appveyor과 같이 (예를 들어) 두 가지의 설치된 파이썬 3.4(32비트와 64비트)에서 오직 하나의 ``py34`` 환경이 ``tox`` 에 있는 윈도우 CI 시스템과 같은 경우 잘 작동되지 않는다.
 
-    In order to run tests using ``tox``, therefore, projects should probably use the
-    default ``py`` environment in ``tox``, which uses the Python interpreter that
-    was used to run ``tox``. This will ensure that when Appveyor runs the tests, they
-    will be run with the configured interpreter.
+   ``tox`` 를 사용해 테스트를 진행하기 위해서 프로젝트들은 ``tox`` 에서 ``py`` 환경을 사용해야 할 텐데, 이 경우 ``tox`` 를 실행하기 위한 파이썬 번역기가 사용된다. 이 것은 Appveyor가 테스트를 진행할 때, 그것들이 조작된 번역기와 함께 진행되는 것을 보장한다.
 
-    In order to support running under the ``py`` environment, it is possible that
-    projects with complex ``tox`` configurations might need to modify their ``tox.ini``
-    file. Doing so is, however, outside the scope of this document.
+   ``py`` 환경에서 진행되는 것을 돕기 위해서는 복잡한 ``tox`` 조작을 가진 프로젝트는 ``tox.ini`` 파일을 변경해야 할 수도 있다. 하지만 그렇게 하는 것은 이 문서가 다룰 범위 밖이다.
 
-Automatically uploading wheels
+
+
+자동 wheel 업로딩
 ------------------------------
 
-It is possible to request Appveyor to automatically upload wheels. There is a
-``deployment`` step available in ``appveyor.yml`` that can be used to (for
-example) copy the built artifacts to a FTP site, or an Amazon S3 instance.
-Documentation on how to do this is included in the Appveyor guides.
+Appveyor가 자동으로 휠을 업로드 하도록 요청할 수 있다. ``appveyor.yml`` 에 있는 ``deployment`` 과정을 사용하면 (예를 들어) FTP 사이트나 아마존 S3와 같은 곳에 제작된 가공물을 복사할 수 있다. 이것을 하는 법이 있는 문서는 Appveyor 가이드에 포함되어 있다.
 
-Alternatively, it would be possible to add a ``twine upload`` step to the
-build.  The supplied ``appveyor.yml`` does not do this, as it is not clear that
-uploading new wheels after every commit is desirable (although some projects
-may wish to do this).
+대신 제작된 것에 ``twine upload`` 과정을 추가하는 것이 가능하다. 제공된 ``appveyor.yml`` 같은 경우 모든 조작 후 새로운 휠을 업로딩 하는 것이 올바른지 확실하지 않기 때문에 이것을 하지 않는다(비록 몇몇 프로젝트는 이것을 하기를 바랄지라도.)
 
-External dependencies
+
+외부 종속성
 ---------------------
 
-The supplied scripts will successfully build any distribution that does not
-rely on 3rd party external libraries for the build.
+공급된 스크립트는 빌드를 위한 제 3의 다른 외부 라이브러리에 의존하지 않는 배포판을 성공적으로 빌드할 것이다. 
 
-It is possible to add steps to the ``appveyor.yml`` configuration (typically
-in the "install" section) to download and/or build external libraries needed by
-the distribution. And if needed, it is possible to add extra configuration for
-the build to supply the location of these libraries to the compiler. However,
-this level of configuration is beyond the scope of this document.
+배포판에 의해 필요해지는 외부 라이브러리를 다운로드 또는 빌드하기 위해 ``appveyor.yml`` 조작( 일반적으로 "install" 섹션)에 추가적인 단계를 더하는 것이 가능하다. 필요하다면 컴파일러에 이러한 라이브러리들의 위치를 제공하는 빌드를 위해 추가적인 조작을 더하는 것이 가능하다. 그러나 조작의 레벨은 이 문서가 다룰 범위를 넘어선다. 
 
 
-Support scripts
+추가 문헌
 ---------------
 
-For reference, the SDK setup support script is listed here:
+추가적인 SDK 셋업 보조 문서는 아래에 확인할 수 있다:
 
 ``appveyor-sample/build.cmd``
 
