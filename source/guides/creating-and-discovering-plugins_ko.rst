@@ -2,12 +2,12 @@
 Creating and discovering plugins
 ================================
 
-종종 Python application이나 library를 만들 때 **플러그인** 을 통해 사용자에게
+종종 Python application이나 library를 만들 때 **plugin** 을 통해 사용자에게
 customization이나 추가 기능을 제공하기를 바랄 것이다. Python package는 개별적으로
 배포 할 수 있으므로 application 또는 library에서 사용 가능한 모든 플러그인을 자동으로 **검색**
 할수 있기를 바랄 것이다.
 
-자동 플러그인 검색을 수행하는 데에는 세 가지 주요 접근법이 있다:
+자동 plugin 검색을 수행하는 데에는 세 가지 주요 접근법이 있다:
 
 #. `Using naming convention`_.
 #. `Using namespace packages`_.
@@ -34,7 +34,7 @@ Application의 모든 plugin이 동일한 naming 규약을 따르는 경우, :fu
         if name.startswith('flask_')
     }
 
-`Flask-SQLAlchemy`_ 와 `Flask-Talisman`_ plugin이 모두 설치되어 있다면
+`Flask-SQLAlchemy`_ 와 `Flask-Talisman`_ plugin이 모두 설치되어 있다면,
 ``flask_plugins`` 는 다음과 같다:
 
 .. code-block:: python
@@ -85,8 +85,8 @@ sub-package ``myapp.plugins`` 를 namespace package로 만들면 다른
 
 ``myapp.plugins.__ path__`` 를 :func:`~ pkgutil.iter_modules` 에 지정하면,
 이 namespace 아래에있는 module만 찾는다. 예를 들어, ``myapp.plugin.a`` 와
-``myapp.plugin.b`` module을 제공하는 distribution을 설치했다면이 경우
-``myapp_plugins`` 는 다음과 같다 :
+``myapp.plugin.b`` module을 제공하는 distribution을 설치했다면, 이 경우
+``myapp_plugins`` 는 다음과 같다:
 
 .. code-block:: python
 
@@ -95,23 +95,20 @@ sub-package ``myapp.plugins`` 를 namespace package로 만들면 다른
         'b': <module: 'myapp.plugins.b'>,
     }
 
-This sample uses a sub-package as the namespace package (``myapp.plugin``), but
-it's also possible to use a top-level package for this purpose (such as
-``myapp_plugins``). How to pick the namespace to use is a matter of preference,
-but it's not recommended to make your project's main top-level package (
-``myapp`` in this case) a namespace package for the purpose of plugins, as one
-bad plugin could cause the entire namespace to break which would in turn make
-your project unimportable. For the "namespace sub-package" approach to work,
-the plugin packages must omit the ``__init__.py`` for your top-level package
-directory (``myapp`` in this case) and include the namespace-package style
-``__init__.py`` in the namespace sub-package directory (``myapp/plugins``).
-This also means that plugins will need to explicitly pass a list of packages
-to :func:`setup`'s ``packages`` argument instead of using
-:func:`setuptools.find_packages`.
+이 예제는 sub-package를 namespace package(``myapp.plugin``)로 사용하지만, top-level
+package를 이 용도로 사용하는 것도 가능하다. 어떻게 namespace를 사용할지는 기호에 따를 뿐이지만,
+project의 메인 top-level package(이 경우에는 ``myapp``)를 namespace package로
+사용하는 것은 권장되지 않는다. 이는 plugin 하나를 잘못 사용할 경우 namespace 전체가 작동하지
+않을 위험이 크기 때문이다. 이렇게 되면 project를 import하는게 불가능해진다. 만약 "namespace
+sub-package" 방법으로 접근하려면, plugin package의 ``__init__.py`` 가 top-level
+package의 디렉토리(이 경우에는 ``myapp``)에서 누락되어야 하며, namespace-package 형식의
+``__init__.py`` 는 namespace sub-package 디렉토리(이 경우에는 ``myapp/plugins``)에
+포함되어야 한다. 이러면 plugin들은 package의 목록을 :func:`setuptools.find_packages` 를
+사용 하는 대신에 명시적으로 :func:`setup` 의 ``packages`` argument로 쓰여야 한다.
 
 .. warning:: Namespace package는 복잡한 기능이며 여러 가지 방법으로 만들 수 있다.
-:doc:`packaging-namespace-packages` documentation을 읽고 프로젝트에 대한 plugin에
-어떤 접근 방식이 선호되는지 명확하게 기록하는 것이 좋다.
+    :doc:`packaging-namespace-packages` documentation을 읽고 프로젝트에 대한 plugin에
+    어떤 접근 방식이 선호되는지 명확하게 기록하는 것이 좋다.
 
 Using package metadata
 ======================
@@ -152,7 +149,7 @@ Using package metadata
     }
 
 .. note:: ``setup.py`` 의 ``entry_point`` specification은 상당히 유연하고 많은 옵션이 있다.
-`entry points`_ 에 대한 전체 섹션을 읽어두는 것이 좋다.
+    `entry points`_ 에 대한 전체 섹션을 읽어두는 것이 좋다.
 
 .. _Setuptools: http://setuptools.readthedocs.io
 .. _special support:
