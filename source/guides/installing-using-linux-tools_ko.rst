@@ -47,9 +47,9 @@ Fedora
 
 
 최신 버전의 Python 2 전용 pip, setuptools, wheel을 얻으려면,
-`Copr Repo instructions <https://fedorahosted.org/copr/wiki/HowToEnableRepo>`__ 를 사용하여
-`PyPA Copr Repo <https://copr.fedoraproject.org/coprs/pypa/pypa/>` 를 활성화 시킨후
-다음을 실행한다::
+`Copr Repo instructions <https://fedorahosted.org/copr/wiki/HowToEnableRepo>`__ 를
+사용하여 `PyPA Copr Repo <https://copr.fedoraproject.org/coprs/pypa/pypa/>` 를 활성화
+시킨후 다음을 실행한다::
 
   sudo yum|dnf upgrade python-setuptools
   sudo yum|dnf install python-pip python-wheel
@@ -58,8 +58,8 @@ Fedora
 CentOS/RHEL
 ~~~~~~~~~~~
 
-CentOS와 RHEL는 :ref:`setuptools` 가 기본적으로 설치되나,
-:ref:`pip`, :ref:`wheel` 을 코어 repository에서 제공하지 않는다.
+CentOS와 RHEL는 :ref:`setuptools` 가 기본적으로 설치되나, :ref:`pip`, :ref:`wheel` 을
+코어 repository에서 제공하지 않는다.
 
 시스템 Python에 pip과 wheel을 설치하려면, 다음과 같은 두가지 옵션이 있다:
 

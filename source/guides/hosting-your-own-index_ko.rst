@@ -5,7 +5,7 @@ Hosting your own simple repository
 ==================================
 
 
-자신만의 simple repository [1]_ 를 호스트하려는 경우, `devpi`_ 와 같은 소프트웨어 패키지를
+자신만의 simple repository [1]_ 를 호스팅 하려는 경우, `devpi`_ 와 같은 소프트웨어 패키지를
 사용하거나 적절한 디렉토리 구조를 만들고 static file을 제공 할 수있는 웹 서버를 사용하여 autoindex를
 생성하면 된다.
 

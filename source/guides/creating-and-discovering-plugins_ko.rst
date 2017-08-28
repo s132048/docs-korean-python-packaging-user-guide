@@ -116,12 +116,11 @@ to :func:`setup`'s ``packages`` argument instead of using
 Using package metadata
 ======================
 
-`Setuptools`_ 는 plugin을 위한 `special support`_ 를 제공한다. ``setup.py`` 안의 :func:`setup`
-에 대한 ``entry_points`` argument를 제공함으로써, plugin은 검색을 위해 스스로를
-등록 할 수 있다.
+`Setuptools`_ 는 plugin을 위한 `special support`_ 를 제공한다. ``setup.py`` 안의
+:func:`setup` 에 대한 ``entry_points`` argument를 제공함으로써, plugin은 검색을 위해
+스스로를 등록 할 수 있다.
 
-예를 들어, ``myapp-plugin-a`` 라는 패키지가 있고 그것의 ``setup.py`` 에
-다음이 포함되어 있다면:
+예를 들어, ``myapp-plugin-a`` 라는 패키지가 있고 그것의 ``setup.py`` 에 다음이 포함되어 있다면:
 
 .. code-block:: python
 

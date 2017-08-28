@@ -357,7 +357,7 @@ Python Standard Library에 포함된 package. 더 자세한 정보는
 ----
 
 .. [1] pip는 virtualenv와 같은 개발자에 의해 만들어졌고, 초기에 virtualenv 메일링 리스트를 포함해
-버렸으며 그 이후로 계속 유지되어버렸다.
+       버렸으며 그 이후로 계속 유지되어버렸다.
 
 .. [2] 여러 프로젝트가 distutils-sig 메일링 리스트를 사용자 목록으로 재사용한다.
 

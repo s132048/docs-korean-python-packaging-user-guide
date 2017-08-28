@@ -43,7 +43,6 @@ Provides-Extra (multiple use)
 dependency를 표시하기 위해 예약되어 있다.
 
 ``Requires-Dist:`` 에서 참조하지 않더라도 ``Provides-Extra:`` 에서 지정하는 것도 허용된다.
-.
 
 Description-Content-Type
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -167,8 +166,8 @@ Recording Installed Distributions
 
 설치된 package와 내용을 기록하는데 사용되는 형식은 :pep:`376` 에 정의되어 있다.
 
-해당 PEP의 ``dist-info`` 디렉토리와 ``RECORD`` 파일 형식 만이 현재 default packaging toolchain에
-구현되어 있다.
+해당 PEP의 ``dist-info`` 디렉토리와 ``RECORD`` 파일 형식 만이 현재 default packaging
+toolchain에 구현되어 있다.
 
 
 Package index interfaces

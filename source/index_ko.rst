@@ -30,21 +30,26 @@ Python package를 배포하고 설치하는데 도움이 되는 튜토리얼과 
 Get started
 ===========
 
-Python packaging ecosystem과 작업에 필요한 필수 도구와 개념은 :doc:`tutorials/index` 섹션에서
-커버한다:
+Python packaging ecosystem과 작업에 필요한 필수 도구와 개념은 :doc:`tutorials/index`
+섹션에서 커버한다:
 
-* package를 설치하는 법을 배우려면 :doc:`tutorial on installing packages <tutorials/installing-packages>` 참조.
-* project의 package를 만들고 배포하는 법을 배우려면 :doc:`tutorial on packaging and distributing <tutorials/distributing-packages>` 참조
+* package를 설치하는 법을 배우려면 :doc:`tutorial on installing packages
+  <tutorials/installing-packages>` 참조.
+* project의 package를 만들고 배포하는 법을 배우려면 :doc:`tutorial on packaging and
+  distributing <tutorials/distributing-packages>` 참조
 
 Learn more
 ==========
 
 :doc:`tutorials/index` 외에, 이 가이드는 몇가지를 더 포함한다:
 
-* :doc:`guides/installing-using-linux-tools` 또는 :doc:`guides/packaging-binary-extensions` 과
-같은 :doc:`guides/index` 섹션의 따라하기 도움말
-* :doc:`discussions/deploying-python-applications` 또는 :doc:`discussions/pip-vs-easy-install` 과
-같은 :doc:`discussions/index` 섹션의 주제에 대한 심층적 reference
+* :doc:`guides/installing-using-linux-tools` 또는
+  :doc:`guides/packaging-binary-extensions` 과 같은 :doc:`guides/index` 섹션의
+  따라하기 도움말
+* :doc:`discussions/deploying-python-applications` 또는
+  :doc:`discussions/pip-vs-easy-install` 과 같은 :doc:`discussions/index` 섹션의
+  주제에 대한 심층적 reference
 * packaging interoperability specification을 위한 :doc:`specifications/index` 섹션
 
-추가적으로 Python Packaging Authority에 의해 관리되는 :doc:`other projects <key_projects>` 목록이 있다.
+추가적으로 Python Packaging Authority에 의해 관리되는 :doc:`other projects
+<key_projects>` 목록이 있다.
