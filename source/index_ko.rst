@@ -15,8 +15,8 @@ Python Packaging User Guide
    support
    contribute
 
-*Python Packaging User Guide* 에 온것을 환영한다. 이는 모던한 도구를 이용하여
-Python package를 배포하고 설치하는데 도움이 되는 튜토리얼과 reference의 모음이다.
+*Python Packaging User Guide* 에 온것을 환영한다. 이는 최신 도구를 이용하여
+Python package를 배포하고 설치하는데 도움이 되는 튜토리얼과 참고문헌의 모음이다.
 
 이 가이드는 `GitHub`_ 상에서 `Python Packaging Authority`_ 에 의해 관리되고 있다.
 
@@ -31,12 +31,12 @@ Get started
 ===========
 
 Python packaging ecosystem과 작업에 필요한 필수 도구와 개념은 :doc:`tutorials/index`
-섹션에서 커버한다:
+부분에서 커버한다:
 
 * package를 설치하는 법을 배우려면 :doc:`tutorial on installing packages
-  <tutorials/installing-packages>` 참조.
+  <tutorials/installing-packages>` 를 참조.
 * project의 package를 만들고 배포하는 법을 배우려면 :doc:`tutorial on packaging and
-  distributing <tutorials/distributing-packages>` 참조
+  distributing <tutorials/distributing-packages>` 을 참조
 
 Learn more
 ==========
@@ -48,7 +48,7 @@ Learn more
   따라하기 도움말
 * :doc:`discussions/deploying-python-applications` 또는
   :doc:`discussions/pip-vs-easy-install` 과 같은 :doc:`discussions/index` 섹션의
-  주제에 대한 심층적 reference
+  주제에 대한 심층적 참고문헌
 * packaging interoperability specification을 위한 :doc:`specifications/index` 섹션
 
 추가적으로 Python Packaging Authority에 의해 관리되는 :doc:`other projects

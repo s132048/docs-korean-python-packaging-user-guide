@@ -25,7 +25,8 @@ Glossary
 
         Python :term:`package <Import Package>`, :term:`module <module>`,
         그리고 다른 :term:`Release` 를 배포하기 위한 리소스 파일들을 포함하는 버전관리
-        되는 아카이브. 아카이브 파일은 최종 사용자가 인터넷에서 다운로드 하고 설치하는데 쓰인다.
+        되는 아카이브. 아카이브 파일은 최종 사용자가 인터넷에서 다운로드 하고 설치하는데
+        쓰인다.
 
         Distribution package라는 용어 대신에 단순하게 주로 "package" 또는
         "distribution"으로 불린다. 다만 여기에서는 마찬가지로 자주 "package"로 쓰이는
