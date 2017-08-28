@@ -36,7 +36,7 @@ distlib
 `Bitbucket <https://bitbucket.org/pypa/distlib>`__ |
 `PyPI <https://pypi.python.org/pypi/distlib>`__
 
-Distlib는 Python 소프트웨어의 packaging과 배포와 관련된 low-level function을 구현하는
+Distlib는 Python 소프트웨어의 packaging과 배포에 관련된 low-level function을 구현하는
 라이브러리이다.
 
 
@@ -101,8 +101,8 @@ User irc:#pypa  |
 Dev irc:#pypa-dev
 
 
-setuptools(``easy_install`` 을 포함)는 Python distribution을 더 쉽게 빌드하고 배포하기
-위해 Python distutils의 향상된 기능 모음이다.
+setuptools(``easy_install`` 을 포함)는 Python distribution을 더 쉽게 빌드하고
+배포하기 위해 Python distutils의 향상된 기능 모음이다.
 
 `distribute`_ 는 setuptools의 fork였으나 setultools의 v0.7에서 다시 merge되었다.
 따라서 setuptools는 Python packaging에 가장 우선시되는 선택이다.
@@ -168,8 +168,9 @@ User irc:#pypa  |
 Dev irc:#pypa-dev
 
 
-주로 wheel 프로젝트는 :term:`wheel distributions <Wheel>` 을 만들기 위한 ``bdist_wheel`` :ref:`setuptools`
-확장을 제공한다. 또한 wheel 생성 및 설치를 위한 자체 command line 유틸리티를 제공한다.
+주로 wheel 프로젝트는 :term:`wheel distributions <Wheel>` 을 생성하기 위한
+``bdist_wheel`` :ref:`setuptools` extension을 제공한다. 또한 wheel 생성 및 설치를
+위한 자체 command line 유틸리티를 제공한다.
 
 
 Non-PyPA Projects
@@ -200,9 +201,9 @@ buildout
 `PyPI <https://pypi.python.org/pypi/zc.buildout>`__ |
 irc:#buildout
 
-Buildout is a Python-based build system for creating, assembling and deploying
-applications from multiple parts, some of which may be non-Python-based.  It
-lets you create a buildout configuration and reproduce the same software later.
+Buildout은 여러 구성요소(non-Python 기반 포함)로 부터 응용 프로그램을 생성, 조합, 배포하기 위한
+Python 기반 빌드 시스템이다. 빌드 설정을 만드는 것을 통해 나중에 같은 소프트웨어를 재생성 하는 것을
+하게 해준다.
 
 .. _conda:
 
@@ -216,7 +217,7 @@ conda는 `Anaconda <http://docs.continuum.io/anaconda/index.html>`__ Python
 extension 설치가 어려운 Windows)를 대상으로 `Continuum Analytics
 <http://continuum.io/downloads>`__ 에서 내놓는 distribution이다.
 
-Conda는 pip, virtualenv, wheel과는 완전해 별개의 도구이며, package관리, 가상환경 관리,
+Conda는 pip, virtualenv, wheel과는 완전해 별개의 도구이며, package 관리, 가상환경 관리,
 바이너리 extension의 배포 기능을 모아서 제공한다.
 
 Conda는 PyPI에서 package를 설치하지 않으며, Continuum의 공식 repository,
@@ -233,7 +234,7 @@ devpi
 `Issues <https://bitbucket.org/hpk42/devpi/issues>`__ |
 `PyPI <https://pypi.python.org/pypi/devpi>`__
 
-devpi는 강력한 PyPI 호환 서버 및 Python 프록시 캐시를 제공한다. 이와 함께 Python을 위한 
+devpi는 강력한 PyPI 호환 서버 및 Python 프록시 캐시 기능을 제공한다. 이와 함께 Python을 위한 
 packaging, 테스트 및 릴리스 작업을 돕는 command line 도구를 제공한다.
 
 
@@ -244,10 +245,10 @@ flit
 `Issues <https://github.com/takluyver/flit/issues>`__ |
 `PyPI <https://pypi.python.org/pypi/flit>`__
 
-Flit은 Python 패키지와 모듈을 PyPI에 올리는 간단한 방법이다. Flit은 import 이름을 PyPI의 이름으로
-사용하여 한 번에 하나의 import 가능한 모듈 또는 package를 package화한다. Package 내의 모든
-subpackage 및 데이터 파일이 자동으로 포함된다. Flit에는 Python 3가 필요하지만
-Python 3에서 import이 가능하다면 Python 2의 module을 배포하는 데 사용할 수도 있다.
+Flit은 Python의 package와 module을 PyPI에 올리는 간단한 방법이다. Flit은 import 이름을
+PyPI의 이름으로 사용하여 한 번에 하나의 import 가능한 module 또는 package를 package화한다.
+Package 내의 모든 subpackage 및 데이터 파일은 자동으로 포함된다. Flit에는 Python 3가 필요하지만
+Python 3에서 import가 가능하다면 Python 2의 module을 배포하는 데 사용될 수도 있다.
 
 enscons
 =======
@@ -256,11 +257,12 @@ enscons
 `Issues <https://bitbucket.org/dholth/enscons/issues>`__ |
 `PyPI <https://pypi.python.org/pypi/enscons>`__
 
-Enscons는 `SCons`_ 에 기반한 Python packaging 도구이다. distutils 나 setuptools를 사용하지 않고
-pip와 호환되는 (C extension을 가지는 distribution을 포함한) 소스 distribution과 wheel을 빌드한다.
-Enscons는 distutils와는 다른 아키텍처와 철학을 가지고 있다. Python packaging system에 빌드 기능을
-추가하는 대신, enscons는 Python packaging을 범용 빌드 시스템에 추가한다. Enscons는 자동으로 pip로
-빌드 될 수 있는 sdists와 enscons와는 독립적인 wheel을 만드는 데 도움을 준다.
+Enscons는 `SCons`_ 에 기반한 Python packaging 도구이다. distutils 나 setuptools를
+사용하지 않고 pip와 호환되는 (C extension을 가지는 distribution을 포함) source
+distribution과 wheel을 빌드한다. Enscons는 distutils와는 다른 아키텍처와 철학을 가지고 있다.
+Python packaging system에 빌드 기능을 추가하는 대신, enscons는 Python packaging을 범용
+빌드 시스템에 추가한다. Enscons는 자동으로 pip로 빌드 될 수 있는 sdists와 enscons와는 독립적인
+wheel을 만드는 데 도움을 준다.
 
 .. _SCons: http://scons.org/
 
@@ -273,7 +275,7 @@ Hashdist
 `Github <https://github.com/hashdist/hashdist/>`__
 
 Hashdist는 non-root 소프트웨어 distribution을 빌드하기 위한 라이브러리이다.
-Pythonistas가 Hashdist에 대해 생각하는 가장 좋은 방법은 virtualenv와 buildout의 더 강력한
+Python 사용자가 Hashdist에 대해 생각하는 가장 좋은 방법은 virtualenv와 buildout의 더 강력한
 하이브리드라고 생각하면 된다.
 
 .. _pex:
@@ -285,10 +287,10 @@ pex
 `Github <https://github.com/pantsbuild/pex/>`__ |
 `PyPI <https://pypi.python.org/pypi/pex>`__
 
-pex는 :ref:`virtualenv` 의 정신을 따라서 독립 Python environment인 ``.pex`` (Python EXecutable)
-파일을 생성하는 라이브러리이자 도구이다. ``.pex`` 파일은 그저 ``#!/usr/bin/env python`` 과 특별한
-``__main __. py`` 를 가진 신중하게 만들어진 zip 파일일 뿐이며, Python 응용 프로그램 배포를
-``cp`` 정도로 단순하게 만들도록 설계되었다.
+pex는 :ref:`virtualenv` 의 정신을 따라서 독립 Python environment인 ``.pex`` (Python
+EXecutable) 파일을 생성하는 라이브러리이자 도구이다. ``.pex`` 파일은 그저
+``#!/usr/bin/env python`` 과 특별한 ``__main __. py`` 를 가진 신중하게 만들어진 zip
+파일일 뿐이며, Python 응용 프로그램 배포를 ``cp`` 정도로 단순하게 만들도록 설계되었다.
 
 .. _spack:
 
@@ -300,13 +302,13 @@ Spack
 `Paper <http://www.computer.org/csdl/proceedings/sc/2015/3723/00/2807623.pdf>`__ |
 `Slides <https://tgamblin.github.io/files/Gamblin-Spack-SC15-Talk.pdf>`__
 
-여러 버전, 설정, 플랫폼 및 컴파일러를 지원하도록 설계된 유연한 패키지 관리자.
+여러 버전, 설정, 플랫폼 및 컴파일러를 지원하도록 설계된 유연한 package 관리자.
 Spack은 homebrew와 비슷하지만, package는 Python으로 작성되고 parameter화 되어
-컴파일러, 라이브러리 버전, 빌드 옵션 등을 쉽게 교체하는 것을 허용한다. 임의로 많은 패키지
-버전이 같은 시스템에 공존 할 수 있다. Spack은 클러스터와 슈퍼 컴퓨터에서 고성능 과학 응용 프로그램을
+컴파일러, 라이브러리 버전, 빌드 옵션 등을 쉽게 교체하는 것을 허용한다. 임의로 많은 package version이
+같은 시스템에 공존 할 수 있다. Spack은 클러스터와 슈퍼 컴퓨터에서 고성능 과학 응용 프로그램을
 신속하게 구축 할 수 있도록 설계되었다.
 
-Spack은 아직 PyPI에 없지만, 설치가 필요하지 않으며, github에서 cloning 직후에 사용할 수 있다.
+Spack은 아직 PyPI에 없지만, 설치가 필요하지 않으며, github에서 cloning만으로 사용 할 수 있다.
 
 
 Standard Library Projects
@@ -321,7 +323,7 @@ ensurepip
 `Issues <http://bugs.python.org>`__
 
 기존의 Python 설치 또는 가상 환경에 :ref:`pip` 의 bootstrapping을 지원하는
-Python Standard Library의 패키지. 대부분의 경우 최종 사용자는이 module을 사용하지 않고
+Python Standard Library의 package. 대부분의 경우 최종 사용자는 이 module을 사용하지 않고,
 Python distribution을 빌드하는 동안만 사용된다.
 
 
@@ -338,7 +340,7 @@ Dev irc:#pypa-dev
 
 :term:`distributions <Distribution Package>` 을 생성하고 설치하는 것을 지원하는
 Python Standard Library 내의 package. :ref:`Setuptools` 가 distutils에 향상된 기능을
-지원하며 distutils를 단독으로 사용하는 것 보다 훨씬 더 일반적으로 사용된다.
+지원하며, distutils를 단독으로 사용하는 것 보다 훨씬 더 일반적으로 사용된다.
 
 
 .. _venv:
@@ -351,7 +353,7 @@ venv
 
 Python 3.3부터 :term:`Virtual Environments <Virtual Environment>` 를 생성하기 위한
 Python Standard Library에 포함된 package. 더 자세한 정보는
-:ref:`Creating and using Virtual Environments` 섹션을 참조.
+:ref:`Creating and using Virtual Environments` 부분을 참조.
 
 
 ----
