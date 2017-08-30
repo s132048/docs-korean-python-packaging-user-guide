@@ -1,5 +1,5 @@
 ===================
-Installing Packages
+패키지 설치하기
 ===================
 
 이 섹션은 파이썬 :term:`packages <Distribution Package>` 설치 방법의 기본을 다룬다.
@@ -14,18 +14,18 @@ Installing Packages
 일으킬 수 있기 때문이다.
 
 
-.. contents:: Contents
+.. contents:: 목차
    :local:
 
 
-.. _installing_requirements:
+.. _설치_요구조건:
 
-Requirements for Installing Packages
+패키치 설치를 위한 요구조건
 ====================================
 
 이 섹션은 다른 파이썬 패키지를 설치하기 전에 따라야 할 단계에 대해 설명하고 있다.
 
-Install pip, setuptools, and wheel
+pip, setuptools, wheel 설치하기
 ----------------------------------
 
 * 만약 `python.org <https://www.python.org>`_\ 에서 파이썬 3 >=3.4 또는 파이썬
@@ -68,7 +68,7 @@ Install pip, setuptools, and wheel
       고안된 ``/usr/local``\ 에 설치하라.
 
 
-Optionally, Create a virtual environment
+선택적으로, 가상 환경을 생성하기
 ----------------------------------------
 
 자세한 사항은 :ref:`아래에 있는 섹션 <Creating and using Virtual Environments>`\ 을
@@ -92,7 +92,7 @@ Optionally, Create a virtual environment
 
 .. _`Creating and using Virtual Environments`:
 
-Creating Virtual Environments
+가상 환경 생성하기
 =============================
 
 파이썬 "가상 환경"은 파이썬 :term:`packages <Distribution Package>`\ 가 글로벌하게
@@ -144,7 +144,7 @@ Creating Virtual Environments
 참고하라.
 
 
-Use pip for Installing
+설치를 위해 pip 사용하기
 ======================
 
 :ref:`pip`\ 는 권장되는 인스톨러(installer). 아래에, 우리는 가장 일반적인 사용
@@ -157,7 +157,7 @@ pip 대신에 `easy_install https://pip.pypa.io/en/latest/reference/index.html>`
 참고하라.
 
 
-Installing from PyPI
+PyPI에서 설치하기
 ====================
 
 가장 일반적인 :ref:`pip`\ 사용법은 :term:`requirement specifier
@@ -199,11 +199,11 @@ Index <Python Package Index (PyPI)>`\ 로부터 설치하는 것이다. 일반�
 .
 
 
-Source Distributions vs Wheels
+소스 배포판 vs wheels
 ==============================
 
 :ref:`pip`\ 는 :term:`Source Distributions (sdist) <Source
-Distribution (or "sdist")>` 또는 :term:`Wheels <Wheel>`\로부터 설치할 수 있지만,
+Distribution (or "sdist")>` 또는 :term:`Wheels <Wheel>`\ 로부터 설치할 수 있지만,
 둘 다 PyPI에 있다면 pip는 호환 되는 :term:`wheel <Wheel>`\ 을 선호한다.
 
 :term:`Wheels <Wheel>`\ 는 :term:`Source Distributions (sdist) <Source
@@ -216,7 +216,7 @@ Distribution (or "sdist")>`과 비교했을 때 (특히 컴파일된 확장자�
 in the future.
 
 
-Upgrading packages
+패키지 업그레이드 하기
 ==================
 
 PyPI로부터 설치된 `SomeProject`\ 를 최신 버전으로 업그레이드하기.
@@ -227,7 +227,7 @@ PyPI로부터 설치된 `SomeProject`\ 를 최신 버전으로 업그레이드�
 
 
 
-Installing to the User Site
+사용자 사이트에 설치하기
 ===========================
 
 현재 사용자와 분리된 :term:`packages <Distribution Package>`\ 설치하려면
@@ -243,7 +243,7 @@ Installing to the User Site
 참고하라.
 
 
-Requirements files
+요구조건 파일
 ==================
 
 :ref:`Requirements File <pip:Requirements Files>`에서 지정된 요구 사항 목록
@@ -254,7 +254,7 @@ Requirements files
  pip install -r requirements.txt
 
 
-Installing from VCS
+VCS에서 설치하기
 ===================
 
 "편집" 모드에서 VCS에 있는 프로젝트 설치. 신택스에 대한 전제 내용은
@@ -268,7 +268,7 @@ Installing from VCS
  pip install -e git+https://git.repo/some_pkg.git@feature#egg=SomeProject  # from a branch
 
 
-Installing from other Indexes
+다른 색인에서 설치하기
 =============================
 
 대체 색인으로부터 설치
@@ -287,7 +287,7 @@ Installing from other Indexes
 
 
 
-Installing from a local src tree
+로컬 소스 트리에서 설치하기
 ================================
 
 
@@ -308,7 +308,7 @@ Installing from a local src tree
  pip install <path>
 
 
-Installing from local archives
+로컬 아카이브에서 설치하기
 ==============================
 
 특정한 소스 아카이브 파일 설치.
@@ -328,7 +328,7 @@ Installing from local archives
  pip install --no-index --find-links=relative/dir/ SomeProject
 
 
-Installing from other sources
+다른 소스에서 설치하기
 =============================
 
 다른 데이터 소스로부터 설치하기 위해서(예, 마아마존 S3 저장소) 당신은 색인 포맷을
@@ -341,10 +341,10 @@ Installing from other sources
  pip install --extra-index-url http://localhost:7777 SomeProject
 
 
-Installing Prereleases
+프리 릴리즈
 ======================
 
-안정된 버전을 포함해 사전 공개, 개발자 버전을 찾아라. 기본적으로 pip는 안정된
+안정된 버전을 포함해 프리 릴리즈, 개발자 버전을 찾아라. 기본적으로 pip는 안정된
 버전만 찾는다.
 
 ::
@@ -352,7 +352,7 @@ Installing Prereleases
  pip install --pre SomeProject
 
 
-Installing Setuptools "Extras"
+Setuptools "Extras" 설치하기
 ==============================
 
 `setuptools extras`_\  설치.
@@ -380,7 +380,7 @@ Installing Setuptools "Extras"
        :ref:`virtualenv`\ 와 동일한 대체재가 될 것이다. .
 
 .. [4] 호환되는 릴리즈 지정자는 :pep:`440`\ 에서 승인되었고, 지원은
-       :ref:`setuptools` v8.0, :ref:`pip` v6.0\ 에서 공개 되었다. 
+       :ref:`setuptools` v8.0, :ref:`pip` v6.0\ 에서 공개 되었다.
 
 .. _venv: https://docs.python.org/3/library/venv.html
 .. _setuptools extras: https://setuptools.readthedocs.io/en/latest/setuptools.html#declaring-extras-optional-features-with-their-own-dependencies
