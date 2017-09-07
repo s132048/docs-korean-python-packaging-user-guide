@@ -1,15 +1,20 @@
 ===========================
 <<<<<<< HEAD
+<<<<<<< HEAD
 파이썬 패키징 사용자 가이드
 =======
 Python Packaging User Guide
 >>>>>>> origin/docs-korean
+=======
+Python Packaging User Guide
+>>>>>>> a80e776fe332d50750a4ece01e78087f469764e8
 ===========================
 
 .. toctree::
    :maxdepth: 2
    :hidden:
 
+<<<<<<< HEAD
 <<<<<<< HEAD
    tutorials/index_ko
    guides/index
@@ -19,6 +24,11 @@ Python Packaging User Guide
    guides/index
    discussions/index
 >>>>>>> origin/docs-korean
+=======
+   tutorials/index
+   guides/index
+   discussions/index
+>>>>>>> a80e776fe332d50750a4ece01e78087f469764e8
    specifications/index
    key_projects
    glossary
@@ -26,22 +36,29 @@ Python Packaging User Guide
    contribute
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 이 *파이썬 패키징 사용자 가이드*\ 는 현대적인 툴로 파이썬 패키지를 배포하고
 설치할 수 있게 도움을 주는 튜토리얼과 레퍼런스 모음집이다. 
 
 이 가이드는 `Python Packaging Authority`_\ 에 의해 `Github`_ 에서 관리되고 있다. 
 우리는 어떤 식의 :doc:`기여와 피드백 <contribute>`\ 도 환영한다. 😊
 =======
+=======
+>>>>>>> a80e776fe332d50750a4ece01e78087f469764e8
 *Python Packaging User Guide* 에 온것을 환영한다. 이는 최신 도구를 이용하여
 Python package를 배포하고 설치하는데 도움이 되는 튜토리얼과 참고문헌의 모음이다.
 
 이 가이드는 `GitHub`_ 상에서 `Python Packaging Authority`_ 에 의해 관리되고 있다.
 
+<<<<<<< HEAD
 >>>>>>> origin/docs-korean
+=======
+>>>>>>> a80e776fe332d50750a4ece01e78087f469764e8
 
 .. _GitHub: https://github.com/pypa/python-packaging-user-guide
 .. _Python Packaging Authority: https://pypa.io
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 .. note:: legacy PyPI에서 pypi.org로 옮기는 것에 대한 가이드를 찾고 있다면 :doc:`guides/migrating-to-pypi-org`\ 를 참고하라.
 
@@ -67,6 +84,8 @@ Python package를 배포하고 설치하는데 도움이 되는 튜토리얼과 
 
 그리고 Python Packaging Authority 멤버에 의해 관리되는 :doc:`다른 프로젝트 <key_projects>` 리스트가 존재한다.
 =======
+=======
+>>>>>>> a80e776fe332d50750a4ece01e78087f469764e8
 .. note:: 만약 legacy PyPI에서 pypi.org로의 migration하는데 도움이 필요하다면
 :doc:`guides/migrating-to-pypi-org` 를 참조한다.
 
@@ -96,4 +115,7 @@ Learn more
 
 추가적으로 Python Packaging Authority에 의해 관리되는 :doc:`other projects
 <key_projects>` 목록이 있다.
+<<<<<<< HEAD
 >>>>>>> origin/docs-korean
+=======
+>>>>>>> a80e776fe332d50750a4ece01e78087f469764e8
