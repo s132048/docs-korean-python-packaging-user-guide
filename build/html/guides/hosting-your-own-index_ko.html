@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Hosting your own simple repository &#8212; Python Packaging User Guide</title>
+    
+    <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
+    
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    
+     
+
+  </head>
+  <body role="document">  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="hosting-your-own-simple-repository">
+<span id="id1"></span><h1>Hosting your own simple repository<a class="headerlink" href="#hosting-your-own-simple-repository" title="Permalink to this headline">¶</a></h1>
+<p>자신만의 simple repository <a class="footnote-reference" href="#id3" id="id2">[1]</a> 를 호스팅 하려는 경우, <a class="reference external" href="http://doc.devpi.net/latest/">devpi</a> 와 같은 소프트웨어 패키지를
+사용하거나 적절한 디렉토리 구조를 만들고 static file을 제공 할 수있는 웹 서버를 사용하여 autoindex를
+생성하면 된다.</p>
+<p>두 경우 모두 사용자의 default repository에 없는 repository를 호스팅 할 것이므로, 프로젝트의
+설명서를 통해 사용자가 설치 프로그램을 적절히 설정하도록 해야한다. 다음은 pip을 사용하는 예이다:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="n">index</span><span class="o">-</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">python</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span> <span class="n">foobar</span>
+</pre></div>
+</div>
+<p>또한 유효한 HTTPS를 사용하여 repository를 제공하는 것이 <strong>매우 권장된다</strong>. 현재, 사용자 설치시
+보안은 모든 repository가 유효한 HTTPS 설정을 사용하는 것에 의존한다.</p>
+<div class="section" id="manual-repository">
+<h2>&#8220;Manual&#8221; Repository<a class="headerlink" href="#manual-repository" title="Permalink to this headline">¶</a></h2>
+<p>디렉토리 레이아웃은 상당히 간단하다. 루트 디렉토리 내에서 각 프로젝트에 대한 디렉토리를 만들어야 한다. 이
+디렉토리는 PEP 503에 정의된 대로 프로젝트의 정규화 된 이름이어야 한다. 이 디렉토리들 각각에 다운로드
+가능한 파일을 하나씩 배치한다. 예를 들어, 프로젝트 &#8220;Foo&#8221; version 1.0과 2.0, &#8220;bar&#8221; version
+0.1이 있다면 다음과 같은 구조를 가져야 한다:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>.
+├── bar
+│   └── bar-0.1.tar.gz
+└── foo
+    ├── Foo-1.0.tar.gz
+    └── Foo-2.0.tar.gz
+</pre></div>
+</div>
+<p>이 레이아웃을 설정한 후, autoindex가 활성화 된 상태로 루트 디렉토리를 제공하도록 웹 서버를 설정하기만
+하면 된다. 예를 들어, <a class="reference external" href="https://twistedmatrix.com/">Twisted</a> 에 내장 된 웹 서버를 사용하는 경우,
+<code class="docutils literal"><span class="pre">twistd</span> <span class="pre">-n</span> <span class="pre">web</span> <span class="pre">--path</span> <span class="pre">.</span></code> 를 실행 한 다음 사용자에게 설치 프로그램의 설정에 URL을 추가하도록
+지시한다.</p>
+<hr class="docutils" />
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Simple repository의 protocol의 documentation은 PEP 503을 참조.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table Of Contents</a></h3>
+
+
+  
+
+
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index.html">Discussions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Copyright</a> 2013–2017, PyPA.
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Last updated on Sep 25, 2017.
+    <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
+    <br />
+
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    </div>
+
+  </body>
+</html>

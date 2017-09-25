@@ -1,0 +1,338 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installing pip/setuptools/wheel with Linux Package Managers &#8212; Python Packaging User Guide</title>
+    
+    <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Installing Scientific Packages" href="installing-scientific-packages.html" />
+    <link rel="prev" title="Tool recommendations" href="tool-recommendations.html" />
+    <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
+    
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    
+     
+
+  </head>
+  <body role="document">  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="installing-scientific-packages.html" title="Installing Scientific Packages"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tool-recommendations.html" title="Tool recommendations"
+             accesskey="P">previous</a> |</li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Guides</a> &#187;</li>
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="installing-pip-setuptools-wheel-with-linux-package-managers">
+<span id="id1"></span><h1>Installing pip/setuptools/wheel with Linux Package Managers<a class="headerlink" href="#installing-pip-setuptools-wheel-with-linux-package-managers" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Page Status:</th><td class="field-body">Incomplete</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Last Reviewed:</th><td class="field-body">2015-09-17</td>
+</tr>
+</tbody>
+</table>
+<p>This section covers how to install <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>, <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a>, and
+<a class="reference internal" href="../key_projects_ko.html#wheel"><span class="std std-ref">wheel</span></a> using Linux package managers.</p>
+<p>If you&#8217;re using a Python that was downloaded from <a class="reference external" href="https://www.python.org">python.org</a>, then this section does not apply.  See the
+<a class="reference internal" href="../tutorials/installing-packages.html#installing-requirements"><span class="std std-ref">Requirements for Installing Packages</span></a> section instead.</p>
+<p>Note that it&#8217;s common for the versions of <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>, <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a>, and
+<a class="reference internal" href="../key_projects_ko.html#wheel"><span class="std std-ref">wheel</span></a> supported by a specific Linux Distribution to be outdated by the
+time it&#8217;s released to the public, and updates generally only occur for security
+reasons, not for feature updates.  For certain Distributions, there are
+additional repositories that can be enabled to provide newer versions.  The
+repositories we know about are explained below.</p>
+<p>Also note that it&#8217;s somewhat common for Distributions to apply patches for the
+sake of security and normalization to their own standards.  In some cases, this
+can lead to bugs or unexpected behaviors that vary from the original unpatched
+versions.  When this is known, we will make note of it below.</p>
+<div class="section" id="fedora">
+<h2>Fedora<a class="headerlink" href="#fedora" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Fedora 21:</p>
+<ul>
+<li><p class="first">Python 2:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">upgrade</span> <span class="n">python</span><span class="o">-</span><span class="n">setuptools</span>
+<span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span> <span class="n">python</span><span class="o">-</span><span class="n">wheel</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Python 3: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">python3</span> <span class="pre">python3-wheel</span></code></p>
+</li>
+</ul>
+</li>
+<li><p class="first">Fedora 22:</p>
+<ul>
+<li><p class="first">Python 2:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dnf</span> <span class="n">upgrade</span> <span class="n">python</span><span class="o">-</span><span class="n">setuptools</span>
+<span class="n">sudo</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span> <span class="n">python</span><span class="o">-</span><span class="n">wheel</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Python 3: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">dnf</span> <span class="pre">install</span> <span class="pre">python3</span> <span class="pre">python3-wheel</span></code></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>To get newer versions of pip, setuptools, and wheel for Python 2, you can enable
+the <a class="reference external" href="https://copr.fedoraproject.org/coprs/pypa/pypa/">PyPA Copr Repo</a> using
+the <a class="reference external" href="https://fedorahosted.org/copr/wiki/HowToEnableRepo">Copr Repo instructions</a>, and then run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span><span class="o">|</span><span class="n">dnf</span> <span class="n">upgrade</span> <span class="n">python</span><span class="o">-</span><span class="n">setuptools</span>
+<span class="n">sudo</span> <span class="n">yum</span><span class="o">|</span><span class="n">dnf</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span> <span class="n">python</span><span class="o">-</span><span class="n">wheel</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="centos-rhel">
+<h2>CentOS/RHEL<a class="headerlink" href="#centos-rhel" title="Permalink to this headline">¶</a></h2>
+<p>CentOS and RHEL don&#8217;t offer <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a> or <a class="reference internal" href="../key_projects_ko.html#wheel"><span class="std std-ref">wheel</span></a> in their core repositories,
+although <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> is installed by default.</p>
+<p>To install pip and wheel for the system Python, there are two options:</p>
+<ol class="arabic">
+<li><p class="first">Enable the <a class="reference external" href="https://fedoraproject.org/wiki/EPEL">EPEL repository</a> using
+<a class="reference external" href="https://fedoraproject.org/wiki/EPEL#How_can_I_use_these_extra_packages.3F">these instructions</a>. On
+EPEL 6 and EPEL7, you can install pip like so:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span>
+</pre></div>
+</div>
+<p>On EPEL 7 (but not EPEL 6), you can install wheel like so:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">wheel</span>
+</pre></div>
+</div>
+<p>Since EPEL only offers extra, non-conflicting packages, EPEL does not offer
+setuptools, since it&#8217;s in the core repository.</p>
+</li>
+<li><p class="first">Enable the <a class="reference external" href="https://copr.fedoraproject.org/coprs/pypa/pypa/">PyPA Copr Repo</a> using <a class="reference external" href="https://fedorahosted.org/copr/wiki/HowToEnableRepo">these instructions</a> <a class="footnote-reference" href="#id4" id="id3">[1]</a>. You can install
+pip and wheel like so:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span> <span class="n">python</span><span class="o">-</span><span class="n">wheel</span>
+</pre></div>
+</div>
+<p>To additionally upgrade setuptools, run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">upgrade</span> <span class="n">python</span><span class="o">-</span><span class="n">setuptools</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>To install pip, wheel, and setuptools, in a parallel, non-system environment
+(using yum) then there are two options:</p>
+<ol class="arabic">
+<li><p class="first">Use the &#8220;Sofware Collections&#8221; feature to enable a parallel collection that
+includes pip, setuptools, and wheel.</p>
+<ul class="simple">
+<li>For Redhat, see here:
+<a class="reference external" href="http://developers.redhat.com/products/softwarecollections/overview/">http://developers.redhat.com/products/softwarecollections/overview/</a></li>
+<li>For CentOS, see here: <a class="reference external" href="https://www.softwarecollections.org/en/">https://www.softwarecollections.org/en/</a></li>
+</ul>
+<p>Be aware that collections may not contain the most recent versions.</p>
+</li>
+<li><p class="first">Enable the <a class="reference external" href="https://ius.io/GettingStarted/">IUS repository</a> and
+install one of the <a class="reference external" href="https://ius.io/SafeRepo/#parallel-installable-package">parallel-installable</a>
+Pythons, along with pip, setuptools, and wheel, which are kept fairly up to
+date.</p>
+<p>For example, for Python 3.4 on CentOS7/RHEL7:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">python34u</span> <span class="n">python34u</span><span class="o">-</span><span class="n">wheel</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="opensuse">
+<h2>openSUSE<a class="headerlink" href="#opensuse" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Python 2:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">zypper</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span> <span class="n">python</span><span class="o">-</span><span class="n">setuptools</span> <span class="n">python</span><span class="o">-</span><span class="n">wheel</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Python 3:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">zypper</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span> <span class="n">python3</span><span class="o">-</span><span class="n">setuptools</span> <span class="n">python3</span><span class="o">-</span><span class="n">wheel</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="debian-ubuntu">
+<h2>Debian/Ubuntu<a class="headerlink" href="#debian-ubuntu" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span>
+</pre></div>
+</div>
+<p>Replace &#8220;python&#8221; with &#8220;python3&#8221; for Python 3.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Recent Debian/Ubuntu versions have modified pip to use the <a class="reference external" href="https://pip.pypa.io/en/stable/user_guide/#user-installs">&#8220;User Scheme&#8221;</a> by default, which
+is a significant behavior change that can be surprising to some users.</p>
+</div>
+</div>
+<div class="section" id="arch-linux">
+<h2>Arch Linux<a class="headerlink" href="#arch-linux" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Python 2:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">python2</span><span class="o">-</span><span class="n">pip</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Python 3:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<hr class="docutils" />
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[1]</a></td><td>Currently, there is no &#8220;copr&#8221; yum plugin available for CentOS/RHEL, so
+the only option is to manually place the repo files as described.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table Of Contents</a></h3>
+
+
+  
+
+
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index.html">Discussions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tool-recommendations.html"
+                        title="previous chapter">Tool recommendations</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="installing-scientific-packages.html"
+                        title="next chapter">Installing Scientific Packages</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="installing-scientific-packages.html" title="Installing Scientific Packages"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tool-recommendations.html" title="Tool recommendations"
+             >previous</a> |</li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Guides</a> &#187;</li>
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Copyright</a> 2013–2017, PyPA.
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Last updated on Sep 25, 2017.
+    <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
+    <br />
+
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    </div>
+
+  </body>
+</html>

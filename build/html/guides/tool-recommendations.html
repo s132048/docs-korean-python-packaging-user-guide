@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tool recommendations &#8212; Python Packaging User Guide</title>
+    
+    <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Installing pip/setuptools/wheel with Linux Package Managers" href="installing-using-linux-tools.html" />
+    <link rel="prev" title="Guides" href="index.html" />
+    <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
+    
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    
+     
+
+  </head>
+  <body role="document">  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="installing-using-linux-tools.html" title="Installing pip/setuptools/wheel with Linux Package Managers"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Guides"
+             accesskey="P">previous</a> |</li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Guides</a> &#187;</li>
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tool-recommendations">
+<span id="id1"></span><h1>Tool recommendations<a class="headerlink" href="#tool-recommendations" title="Permalink to this headline">¶</a></h1>
+<p>If you&#8217;re familiar with Python packaging and installation, and just want to know
+what tools are currently recommended, then here it is.</p>
+<div class="section" id="installation-tool-recommendations">
+<h2>Installation Tool Recommendations<a class="headerlink" href="#installation-tool-recommendations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Use <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a> to install Python <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">packages</span></a> from
+<a class="reference internal" href="../glossary_ko.html#term-python-package-index-pypi"><span class="xref std std-term">PyPI</span></a>. <a class="footnote-reference" href="#id9" id="id2">[1]</a> <a class="footnote-reference" href="#id10" id="id3">[2]</a> Depending on how <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>
+is installed, you may need to also install <a class="reference internal" href="../key_projects_ko.html#wheel"><span class="std std-ref">wheel</span></a> to get the benefit
+of wheel caching. <a class="footnote-reference" href="#id11" id="id4">[3]</a></li>
+<li>Use <a class="reference internal" href="../key_projects_ko.html#virtualenv"><span class="std std-ref">virtualenv</span></a>, or <a class="reference external" href="https://docs.python.org/3/library/venv.html">venv</a> to isolate application specific
+dependencies from a shared Python installation. <a class="footnote-reference" href="#id12" id="id5">[4]</a></li>
+<li>If you&#8217;re looking for management of fully integrated cross-platform software
+stacks, consider:<ul>
+<li><a class="reference internal" href="../key_projects_ko.html#buildout"><span class="std std-ref">buildout</span></a>: primarily focused on the web development community</li>
+<li><a class="reference internal" href="../key_projects_ko.html#spack"><span class="std std-ref">Spack</span></a>, <a class="reference internal" href="../key_projects_ko.html#hashdist"><span class="std std-ref">Hashdist</span></a>, or <a class="reference internal" href="../key_projects_ko.html#conda"><span class="std std-ref">conda</span></a>: primarily focused
+on the scientific community.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="packaging-tool-recommendations">
+<h2>Packaging Tool Recommendations<a class="headerlink" href="#packaging-tool-recommendations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Use <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> to define projects and create <a class="reference internal" href="../glossary_ko.html#term-source-distribution-or-sdist"><span class="xref std std-term">Source Distributions</span></a>. <a class="footnote-reference" href="#id13" id="id6">[5]</a> <a class="footnote-reference" href="#id14" id="id7">[6]</a></li>
+<li>Use the <code class="docutils literal"><span class="pre">bdist_wheel</span></code> <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> extension available from the
+<a class="reference internal" href="../key_projects_ko.html#wheel"><span class="std std-ref">wheel project</span></a> to create <a class="reference internal" href="../glossary_ko.html#term-wheel"><span class="xref std std-term">wheels</span></a>.  This is
+especially beneficial, if your project contains binary extensions. <a class="footnote-reference" href="#id15" id="id8">[7]</a></li>
+<li>Use <a class="reference external" href="https://pypi.python.org/pypi/twine">twine</a> for uploading distributions
+to <a class="reference internal" href="../glossary_ko.html#term-python-package-index-pypi"><span class="xref std std-term">PyPI</span></a>.</li>
+</ul>
+</div>
+<div class="section" id="publishing-platform-migration">
+<h2>Publishing Platform Migration<a class="headerlink" href="#publishing-platform-migration" title="Permalink to this headline">¶</a></h2>
+<p>The original Python Package Index implementation (hosted at
+<a class="reference external" href="https://pypi.python.org">pypi.python.org</a>) is being phased out in favour
+of an updated implementation hosted at <a class="reference external" href="https://pypi.org">pypi.org</a>. Both
+interfaces share a common database backend and file store, allowing the latter
+to assume more default responsibilities as it becomes more capable.</p>
+<p>Users consistently using the latest versions of the recommended tools above
+with their default settings don&#8217;t need to worry about this migration, but
+users running older versions, or not using the default settings, will need
+to update their configurations in line with the recommendations below.</p>
+<div class="section" id="publishing-releases">
+<h3>Publishing releases<a class="headerlink" href="#publishing-releases" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">pypi.org</span></code> became the default upload platform in September 2016.</p>
+<p>Uploads through <code class="docutils literal"><span class="pre">pypi.python.org</span></code> will be <em>switched off</em> on <strong>July 3, 2017</strong>.</p>
+<p>The default upload settings switched to <code class="docutils literal"><span class="pre">pypi.org</span></code> in the following versions:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">twine</span></code> 1.8.0</li>
+<li><code class="docutils literal"><span class="pre">setuptools</span></code> 27.0.0</li>
+<li>Python 2.7.13 (<code class="docutils literal"><span class="pre">distutils</span></code> update)</li>
+<li>Python 3.4.6 (<code class="docutils literal"><span class="pre">distutils</span></code> update)</li>
+<li>Python 3.5.3 (<code class="docutils literal"><span class="pre">distutils</span></code> update)</li>
+<li>Python 3.6.0 (<code class="docutils literal"><span class="pre">distutils</span></code> update)</li>
+</ul>
+</div>
+<div class="section" id="browsing-packages">
+<h3>Browsing packages<a class="headerlink" href="#browsing-packages" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">pypi.python.org</span></code> is currently still the default interface for browsing packages
+(used in links from other PyPA documentation, etc).</p>
+<p><code class="docutils literal"><span class="pre">pypi.org</span></code> is fully functional for purposes of browsing available packages, and
+some users may choose to opt in to using it.</p>
+<p><code class="docutils literal"><span class="pre">pypi.org</span></code> is expected to become the default recommended interface for browsing
+once the limitations in the next two sections are addressed (at which point
+attempts to access <code class="docutils literal"><span class="pre">pypi.python.org</span></code> will automatically be redirected to
+<code class="docutils literal"><span class="pre">pypi.org</span></code>).</p>
+</div>
+<div class="section" id="downloading-packages">
+<h3>Downloading packages<a class="headerlink" href="#downloading-packages" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">pypi.python.org</span></code> is currently still the default host for downloading packages.</p>
+<p><code class="docutils literal"><span class="pre">pypi.org</span></code> is fully functional for purposes of downloading packages, and some users
+may choose to opt in to using it, but its current hosting setup isn&#8217;t capable of
+handling the full bandwidth requirements of being the default download source (even
+after accounting for the Fastly CDN).</p>
+<p><code class="docutils literal"><span class="pre">pypi.org</span></code> is expected to become the default host for downloading packages once
+it has been redeployed into an environment capable of handling the associated
+network load.</p>
+</div>
+<div class="section" id="managing-published-packages-and-releases">
+<h3>Managing published packages and releases<a class="headerlink" href="#managing-published-packages-and-releases" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">pypi.python.org</span></code> provides an interface for logged in users to manage their
+published packages and releases.</p>
+<p><code class="docutils literal"><span class="pre">pypi.org</span></code> does not currently provide such an interface.</p>
+<p>The missing capabilities are being tracked as part of the
+<a class="reference external" href="https://github.com/pypa/warehouse/milestone/7">Shut Down Legacy PyPI</a>
+milestone.</p>
+<hr class="docutils" />
+<table class="docutils footnote" frame="void" id="id9" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>There are some cases where you might choose to use <code class="docutils literal"><span class="pre">easy_install</span></code> (from
+<a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a>), e.g. if you need to install from <a class="reference internal" href="../glossary_ko.html#term-egg"><span class="xref std std-term">Eggs</span></a>
+(which pip doesn&#8217;t support).  For a detailed breakdown, see <a class="reference internal" href="../discussions/pip-vs-easy-install_ko.html#pip-vs-easy-install"><span class="std std-ref">pip vs easy_install</span></a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>The acceptance of <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0453"><strong>PEP 453</strong></a> means that <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>
+will be available by default in most installations of Python 3.4 or
+later.  See the <span class="target" id="index-1"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0453#rationale"><strong>rationale section</strong></a> from <span class="target" id="index-2"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0453"><strong>PEP 453</strong></a>
+as for why pip was chosen.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id11" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[3]</a></td><td><a class="reference external" href="https://pip.pypa.io/en/latest/installing/#get-pip" title="(in pip v10.0)"><span class="xref std std-ref">get-pip.py</span></a> and <a class="reference internal" href="../key_projects_ko.html#virtualenv"><span class="std std-ref">virtualenv</span></a> install
+<a class="reference internal" href="../key_projects_ko.html#wheel"><span class="std std-ref">wheel</span></a>, whereas <a class="reference internal" href="../key_projects_ko.html#ensurepip"><span class="std std-ref">ensurepip</span></a> and <a class="reference internal" href="../key_projects_ko.html#venv"><span class="std std-ref">venv</span></a> do not
+currently.  Also, the common &#8220;python-pip&#8221; package that&#8217;s found in various
+linux distros, does not depend on &#8220;python-wheel&#8221; currently.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id12" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[4]</a></td><td>Beginning with Python 3.4, <code class="docutils literal"><span class="pre">venv</span></code> will create virtualenv environments
+with <code class="docutils literal"><span class="pre">pip</span></code> installed, thereby making it an equal alternative to
+<a class="reference internal" href="../key_projects_ko.html#virtualenv"><span class="std std-ref">virtualenv</span></a>. However, using <a class="reference internal" href="../key_projects_ko.html#virtualenv"><span class="std std-ref">virtualenv</span></a> will still be
+recommended for users that need cross-version consistency.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id13" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[5]</a></td><td><p class="first">Although you can use pure <code class="docutils literal"><span class="pre">distutils</span></code> for many projects, it does not
+support defining dependencies on other projects and is missing several
+convenience utilities for automatically populating distribution metadata
+correctly that are provided by <code class="docutils literal"><span class="pre">setuptools</span></code>. Being outside the
+standard library, <code class="docutils literal"><span class="pre">setuptools</span></code> also offers a more consistent feature
+set across different versions of Python, and (unlike <code class="docutils literal"><span class="pre">distutils</span></code>),
+<code class="docutils literal"><span class="pre">setuptools</span></code> will be updated to produce the upcoming &#8220;Metadata 2.0&#8221;
+standard formats on all supported versions.</p>
+<p class="last">Even for projects that do choose to use <code class="docutils literal"><span class="pre">distutils</span></code>, when <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>
+installs such projects directly from source (rather than installing
+from a prebuilt <a class="reference internal" href="../glossary_ko.html#term-wheel"><span class="xref std std-term">wheel</span></a> file), it will actually build
+your project using <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> instead.</p>
+</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id14" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[6]</a></td><td><a class="reference external" href="https://pypi.python.org/pypi/distribute">distribute</a> (a fork of setuptools) was merged back into
+<a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> in June 2013, thereby making setuptools the default
+choice for packaging.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id15" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id8">[7]</a></td><td><a class="reference internal" href="../glossary_ko.html#term-python-package-index-pypi"><span class="xref std std-term">PyPI</span></a> currently only allows
+uploading Windows and macOS wheels, and they should be compatible with
+the binary installers provided for download from python.org. Enhancements
+will have to be made to the <span class="target" id="index-3"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0425"><strong>wheel compatibility tagging scheme</strong></a> before linux wheels will be allowed.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table Of Contents</a></h3>
+
+
+  
+
+
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index.html">Discussions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Guides</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="installing-using-linux-tools.html"
+                        title="next chapter">Installing pip/setuptools/wheel with Linux Package Managers</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="installing-using-linux-tools.html" title="Installing pip/setuptools/wheel with Linux Package Managers"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Guides"
+             >previous</a> |</li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Guides</a> &#187;</li>
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Copyright</a> 2013–2017, PyPA.
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Last updated on Sep 25, 2017.
+    <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
+    <br />
+
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    </div>
+
+  </body>
+</html>

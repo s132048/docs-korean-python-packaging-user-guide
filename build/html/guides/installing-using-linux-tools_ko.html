@@ -1,0 +1,314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installing pip/setuptools/wheel with Linux Package Managers &#8212; Python Packaging User Guide</title>
+    
+    <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
+    
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    
+     
+
+  </head>
+  <body role="document">  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="installing-pip-setuptools-wheel-with-linux-package-managers">
+<span id="id1"></span><h1>Installing pip/setuptools/wheel with Linux Package Managers<a class="headerlink" href="#installing-pip-setuptools-wheel-with-linux-package-managers" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Page Status:</th><td class="field-body">Incomplete</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Last Reviewed:</th><td class="field-body">2015-09-17</td>
+</tr>
+</tbody>
+</table>
+<p>이 section에서는 Linux package manager를 사용하여 <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>, <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a>,
+<a class="reference internal" href="../key_projects_ko.html#wheel"><span class="std std-ref">wheel</span></a> 을 설치하는 법을 다룬다.</p>
+<p><a class="reference external" href="https://www.python.org">Python.org</a> 에서 다운로드 한 Python을 사용하고 있다면
+이 section은 적용되지 않는다. 대신 <a class="reference internal" href="../tutorials/installing-packages.html#installing-requirements"><span class="std std-ref">Requirements for Installing Packages</span></a> section을 참조한다.</p>
+<p>특정 Linux 배포판에서 지원되는 <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>, <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a>, <a class="reference internal" href="../key_projects_ko.html#wheel"><span class="std std-ref">wheel</span></a>
+의 version은 일반적으로 구식이며 업데이트는 기능 업데이트 보다는 보안상의 이유로만 이루어 진다. 다만,
+특정 배포판의 경우 최신 버전을 지원하도록 repository가 있는 경우도 있다. 우리가 알고 있는
+repository는 아래에 설명한다.</p>
+<p>또한 배포판 자체 표준에 대한 보안 및 정규화를 위해 패치를 적용하는 것은 다소 일반적이다.
+경우에 따라 패치되지 않은 원래 버전과 다른 버그 또는 예기치 않은 동작이 발생할 수 있다.
+이것이 만약에 알려지면 아래에 기록 할 것이다.</p>
+<div class="section" id="fedora">
+<h2>Fedora<a class="headerlink" href="#fedora" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Fedora 21:</p>
+<ul>
+<li><p class="first">Python 2:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">upgrade</span> <span class="n">python</span><span class="o">-</span><span class="n">setuptools</span>
+<span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span> <span class="n">python</span><span class="o">-</span><span class="n">wheel</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Python 3: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">python3</span> <span class="pre">python3-wheel</span></code></p>
+</li>
+</ul>
+</li>
+<li><p class="first">Fedora 22:</p>
+<ul>
+<li><p class="first">Python 2:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dnf</span> <span class="n">upgrade</span> <span class="n">python</span><span class="o">-</span><span class="n">setuptools</span>
+<span class="n">sudo</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span> <span class="n">python</span><span class="o">-</span><span class="n">wheel</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Python 3: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">dnf</span> <span class="pre">install</span> <span class="pre">python3</span> <span class="pre">python3-wheel</span></code></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>최신 버전의 Python 2 전용 pip, setuptools, wheel을 얻으려면,
+<a class="reference external" href="https://fedorahosted.org/copr/wiki/HowToEnableRepo">Copr Repo instructions</a> 를
+사용하여 <a class="reference external" href="https://copr.fedoraproject.org/coprs/pypa/pypa/">PyPA Copr Repo</a> 를 활성화
+시킨후 다음을 실행한다:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span><span class="o">|</span><span class="n">dnf</span> <span class="n">upgrade</span> <span class="n">python</span><span class="o">-</span><span class="n">setuptools</span>
+<span class="n">sudo</span> <span class="n">yum</span><span class="o">|</span><span class="n">dnf</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span> <span class="n">python</span><span class="o">-</span><span class="n">wheel</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="centos-rhel">
+<h2>CentOS/RHEL<a class="headerlink" href="#centos-rhel" title="Permalink to this headline">¶</a></h2>
+<p>CentOS와 RHEL는 <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> 가 기본적으로 설치되나, <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>, <a class="reference internal" href="../key_projects_ko.html#wheel"><span class="std std-ref">wheel</span></a> 을
+코어 repository에서 제공하지 않는다.</p>
+<p>시스템 Python에 pip과 wheel을 설치하려면, 다음과 같은 두가지 옵션이 있다:</p>
+<ol class="arabic">
+<li><p class="first"><a class="reference external" href="https://fedoraproject.org/wiki/EPEL#How_can_I_use_these_extra_packages.3F">여기의 설명</a>
+을 따라서 <a class="reference external" href="https://fedoraproject.org/wiki/EPEL">EPEL repository</a> 를 활성화 시킨다.
+EPEL 6과 EPEL7에서는 다음과 같이 pip을 설치할 수 있다:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span>
+</pre></div>
+</div>
+<p>EPEL 7 <strong>(EPEL 6은 아님)</strong> 에서 다음과 같이 wheel을 설치 할 수 있다.</p>
+<blockquote>
+<div><p>sudo yum install python-wheel</p>
+</div></blockquote>
+<p>EPEL은 충돌하지 않는 추가 패키지만을 제공하기 때문에, EPEL은 코어 repository에 있는
+setuptools를 제공하지 않는다.</p>
+</li>
+<li><p class="first"><a class="reference external" href="https://fedorahosted.org/copr/wiki/HowToEnableRepo">여기의 설명</a> <a class="footnote-reference" href="#id3" id="id2">[1]</a> 을 따라서
+<a class="reference external" href="https://copr.fedoraproject.org/coprs/pypa/pypa/">PyPA Copr Repo</a> 를 활성화
+시킨다. 다음과 같이 pip과 wheel을 설치 할 수 있다:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span> <span class="n">python</span><span class="o">-</span><span class="n">wheel</span>
+</pre></div>
+</div>
+<p>setuptools를 추가로 업그레이드하려면 다음을 실행한다:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">upgrade</span> <span class="n">python</span><span class="o">-</span><span class="n">setuptools</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>pip, wheel, setuptools를 non-system environment에 yum을 이용해서 병렬로 설치하려면 다음과
+같은 두가지 옵션이 있다:</p>
+<ol class="arabic">
+<li><p class="first">&#8220;Sofware Collections&#8221; 기능을 사용하여 pip, setuptools, wheel이 포함 된
+parallel collection을 활성화한다.</p>
+<ul class="simple">
+<li>Redhat의 경우 다음을 참조:
+<a class="reference external" href="http://developers.redhat.com/products/softwarecollections/overview/">http://developers.redhat.com/products/softwarecollections/overview/</a></li>
+<li>CentOS의 경우 다음을 참조: <a class="reference external" href="https://www.softwarecollections.org/en/">https://www.softwarecollections.org/en/</a></li>
+</ul>
+<p>Collection에는 최신 버전이 포함되어 있지 않을 수도 있다는 점에 주의해야 한다.</p>
+</li>
+<li><p class="first"><a class="reference external" href="https://ius.io/GettingStarted/">IUS repository</a> 를 활성화하고
+<a class="reference external" href="https://ius.io/SafeRepo/#parallel-installable-package">parallel-installable</a>
+Python 중 하나를 pip, setuptools, wheel과 함께 설치 한다.</p>
+<p>예를 들어, CentOS7 또는 RHEL7의 Python 3.4에서는 다음과 같이 한다:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">python34u</span> <span class="n">python34u</span><span class="o">-</span><span class="n">wheel</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="opensuse">
+<h2>openSUSE<a class="headerlink" href="#opensuse" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Python 2:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">zypper</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span> <span class="n">python</span><span class="o">-</span><span class="n">setuptools</span> <span class="n">python</span><span class="o">-</span><span class="n">wheel</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Python 3:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">zypper</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span> <span class="n">python3</span><span class="o">-</span><span class="n">setuptools</span> <span class="n">python3</span><span class="o">-</span><span class="n">wheel</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="debian-ubuntu">
+<h2>Debian/Ubuntu<a class="headerlink" href="#debian-ubuntu" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span>
+</pre></div>
+</div>
+<p>Python 3에서는 &#8220;python&#8221;을 &#8220;python3&#8221;로 대체한다.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">최근 Debian/Ubuntu 버전은 <a class="reference external" href="https://pip.pypa.io/en/stable/user_guide/#user-installs">&#8220;User Scheme&#8221;</a> 을 사용하기 위해 변형된
+pip을 default로 가지고 있다. 이는 작동이 상당히 다르므로 주의해야 한다.</p>
+</div>
+</div>
+<div class="section" id="arch-linux">
+<h2>Arch Linux<a class="headerlink" href="#arch-linux" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Python 2:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">python2</span><span class="o">-</span><span class="n">pip</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Python 3:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<hr class="docutils" />
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>현재 CentOS/RHEL에서 사용할 수 있는 &#8220;copr&#8221; yum plugin이 없으므로,
+설명 된 대로 repo 파일을 수동으로 배치하는 것이 유일한 옵션이다.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table Of Contents</a></h3>
+
+
+  
+
+
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index.html">Discussions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Copyright</a> 2013–2017, PyPA.
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Last updated on Sep 25, 2017.
+    <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
+    <br />
+
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    </div>
+
+  </body>
+</html>

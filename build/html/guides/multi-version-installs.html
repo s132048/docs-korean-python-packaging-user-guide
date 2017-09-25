@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Multi-version Installs &#8212; Python Packaging User Guide</title>
+    
+    <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Single-sourcing the package version" href="single-sourcing-package-version.html" />
+    <link rel="prev" title="Installing Scientific Packages" href="installing-scientific-packages.html" />
+    <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
+    
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    
+     
+
+  </head>
+  <body role="document">  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="single-sourcing-package-version.html" title="Single-sourcing the package version"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="installing-scientific-packages.html" title="Installing Scientific Packages"
+             accesskey="P">previous</a> |</li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Guides</a> &#187;</li>
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="multi-version-installs">
+<span id="id1"></span><h1>Multi-version Installs<a class="headerlink" href="#multi-version-installs" title="Permalink to this headline">¶</a></h1>
+<p>easy_install allows simultaneous installation of different versions of the same
+project into a single environment shared by multiple programs which must
+<code class="docutils literal"><span class="pre">require</span></code> the appropriate version of the project at run time (using
+<code class="docutils literal"><span class="pre">pkg_resources</span></code>).</p>
+<p>For many use cases, virtual environments address this need without the
+complication of the <code class="docutils literal"><span class="pre">require</span></code> directive. However, the advantage of
+parallel installations within the same environment is that it works for an
+environment shared by multiple applications, such as the system Python in a
+Linux distribution.</p>
+<p>The major limitation of <code class="docutils literal"><span class="pre">pkg_resources</span></code> based parallel installation is
+that as soon as you import <code class="docutils literal"><span class="pre">pkg_resources</span></code> it locks in the <em>default</em>
+version of everything which is already available on sys.path. This can
+cause problems, since <code class="docutils literal"><span class="pre">setuptools</span></code> created command line scripts
+use <code class="docutils literal"><span class="pre">pkg_resources</span></code> to find the entry point to execute. This means that,
+for example, you can&#8217;t use <code class="docutils literal"><span class="pre">require</span></code> tests invoked through <code class="docutils literal"><span class="pre">nose</span></code> or a
+WSGI application invoked through <code class="docutils literal"><span class="pre">gunicorn</span></code> if your application needs a
+non-default version of anything that is available on the standard
+<code class="docutils literal"><span class="pre">sys.path</span></code> - the script wrapper for the main application will lock in the
+version that is available by default, so the subsequent <code class="docutils literal"><span class="pre">require</span></code> call
+in your own code fails with a spurious version conflict.</p>
+<p>This can be worked around by setting all dependencies in
+<code class="docutils literal"><span class="pre">__main__.__requires__</span></code> before importing <code class="docutils literal"><span class="pre">pkg_resources</span></code> for the first
+time, but that approach does mean that standard command line invocations of
+the affected tools can&#8217;t be used - it&#8217;s necessary to write a custom
+wrapper script or use <code class="docutils literal"><span class="pre">python</span> <span class="pre">-c</span> <span class="pre">'&lt;commmand&gt;'</span></code> to invoke the application&#8217;s
+main entry point directly.</p>
+<p>Refer to the <a class="reference external" href="https://setuptools.readthedocs.io/en/latest/pkg_resources.html#workingset-objects">pkg_resources documentation</a>
+for more details.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table Of Contents</a></h3>
+
+
+  
+
+
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index.html">Discussions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="installing-scientific-packages.html"
+                        title="previous chapter">Installing Scientific Packages</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="single-sourcing-package-version.html"
+                        title="next chapter">Single-sourcing the package version</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="single-sourcing-package-version.html" title="Single-sourcing the package version"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="installing-scientific-packages.html" title="Installing Scientific Packages"
+             >previous</a> |</li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Guides</a> &#187;</li>
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Copyright</a> 2013–2017, PyPA.
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Last updated on Sep 25, 2017.
+    <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
+    <br />
+
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    </div>
+
+  </body>
+</html>
