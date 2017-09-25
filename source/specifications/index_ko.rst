@@ -2,13 +2,13 @@
 .. _specifications:
 
 ===================
-PyPA Specifications
+PyPA 설명서
 ===================
 
 이 문서는 현재 Python Packaging Authority에 의해 관리돠고 있는
 interoperability specification 목록이다.
 
-Package distribution metadata
+패키지 배포 메타데이터
 #############################
 
 Core metadata
@@ -39,13 +39,13 @@ distribution의 requirement 모음에 추가된다.
     Requires-Dist: beaglevote[pdf]
     Requires-Dist: libexample[test, doc]
 
-`test`와 `doc`이라는 두 가지 feature name은 자동 테스트를 실행하고 문서를 생성하는 데 필요한
+`test` 와 `doc` 이라는 두 가지 feature name은 자동 테스트를 실행하고 문서를 생성하는 데 필요한
 dependency를 표시하기 위해 예약되어 있다.
 
 ``Requires-Dist:`` 에서 참조하지 않더라도 ``Provides-Extra:`` 에서 지정하는 것도 허용된다.
 
 Description-Content-Type
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~ㅓ
 
 Distribution description에 사용 된 markup syntax가 있는 경우, 도구가 description을
 렌더링 할 수 있도록 이를 나타내는 string이다.
@@ -103,7 +103,7 @@ distribution 저자가 그들의 description format을 지정함으로써 PyPI�
 
 만약 ``Description-Content-Type`` 이 지정되지 않으면, 응용 프로그램은 그것을
 ``text/x-rst; charset=UTF-8`` 로 렌더링 하는 것을 시도하고, 만약 유효한 rst가 아니라면
-``text/plain``로 되돌려야 한다.
+``text/plain`` 로 되돌려야 한다.
 
 만약 ``Description-Content-Type`` 이 인식되지 않는 value인 경우, 가정되는 type은
 ``text/plain`` 이다. 하지만 PyPI는 아마도 인식 할 수 없는 value가 있다면 reject할 것이다.
@@ -168,7 +168,7 @@ Recording Installed Distributions
 toolchain에 구현되어 있다.
 
 
-Package index interfaces
+패키지 색인 인터페이스
 ########################
 
 Simple repository API

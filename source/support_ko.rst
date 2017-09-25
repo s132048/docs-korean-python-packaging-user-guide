@@ -1,5 +1,5 @@
 ==================
-How to Get Support
+지원 받는 방법
 ==================
 
 특정 프로젝트와 관련된 지원은 :doc:`Projects <key_projects>` 페이지를 참조.

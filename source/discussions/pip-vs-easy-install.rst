@@ -1,5 +1,5 @@
 
-.. _`pip vs easy_install`:
+#.. _`pip vs easy_install`:
 
 ===================
 pip vs easy_install

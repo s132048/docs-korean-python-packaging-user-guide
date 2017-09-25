@@ -1,4 +1,4 @@
-.. _`Single sourcing the version`:
+#.. _`Single sourcing the version`:
 
 ===================================
 Single-sourcing the package version

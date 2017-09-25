@@ -1,8 +1,8 @@
-.. _`Hosting your Own Simple Repository`:
+#.. _`Hosting your Own Simple Repository`:
 
-==================================
-Hosting your own simple repository
-==================================
+=====================================
+자신의 simple repository 호스팅하기
+=====================================
 
 
 자신만의 simple repository [1]_ 를 호스팅 하려는 경우, `devpi`_ 와 같은 소프트웨어 패키지를

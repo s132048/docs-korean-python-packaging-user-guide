@@ -1,4 +1,4 @@
-.. _`Binary Extensions`:
+#.. _`Binary Extensions`:
 
 ===========================
 Packaging binary extensions

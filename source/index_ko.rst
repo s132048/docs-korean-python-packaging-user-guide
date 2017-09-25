@@ -7,12 +7,12 @@
    :hidden:
 
    tutorials/index_ko
-   guides/index
+   guides/index_ko
    discussions/index_ko
-   specifications/index
-   key_projects
-   glossary
-   support
+   specifications/index_ko
+   key_projects_ko
+   glossary_ko
+   support_ko
    contribute
 
 이 *파이썬 패키징 사용자 가이드*\ 는 현대적인 툴로 파이썬 패키지를 배포하고
@@ -36,7 +36,7 @@
 * 프로젝트를 패키징하고 배포하는 방법은 :doc:`프로젝트 패키징과 배포 <tutorials/distributing-packages>`\ 를 참고하라.
 
 더 알아보기
-==========
+============
 
 이 가이드는 :doc:`tutorials/index` 이외에 여러가지 다른 자료들을 담고 있다:
 

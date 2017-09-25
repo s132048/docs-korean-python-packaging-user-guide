@@ -1,4 +1,4 @@
-.. _`PyPI mirrors and caches`:
+#.. _`PyPI mirrors and caches`:
 
 ================================
 Package index mirrors and caches
