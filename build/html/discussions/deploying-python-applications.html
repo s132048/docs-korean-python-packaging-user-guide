@@ -1,0 +1,257 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Deploying Python applications &#8212; Python Packaging User Guide</title>
+    <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
+    
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    
+     
+
+  </head>
+  <body>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="deploying-python-applications">
+<h1>Deploying Python applications<a class="headerlink" href="#deploying-python-applications" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Page Status:</th><td class="field-body">Incomplete</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Last Reviewed:</th><td class="field-body">2014-11-11</td>
+</tr>
+</tbody>
+</table>
+<div class="contents local topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#overview" id="id1">Overview</a><ul>
+<li><a class="reference internal" href="#supporting-multiple-hardware-platforms" id="id2">Supporting multiple hardware platforms</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#os-packaging-installers" id="id3">OS Packaging &amp; Installers</a><ul>
+<li><a class="reference internal" href="#windows" id="id4">Windows</a><ul>
+<li><a class="reference internal" href="#pynsist" id="id5">Pynsist</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#application-bundles" id="id6">Application Bundles</a></li>
+<li><a class="reference internal" href="#configuration-management" id="id7">Configuration Management</a></li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id1">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="supporting-multiple-hardware-platforms">
+<h3><a class="toc-backref" href="#id2">Supporting multiple hardware platforms</a><a class="headerlink" href="#supporting-multiple-hardware-platforms" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>FIXME
+
+Meaning: x86, x64, ARM, others?
+
+For Python-only distributions, it *should* be straightforward to deploy on all
+platforms where Python can run.
+
+For distributions with binary extensions, deployment is major headache.  Not only
+must the extensions be built on all the combinations of operating system and
+hardware platform, but they must also be tested, preferably on continuous
+integration platforms.  The issues are similar to the &quot;multiple python
+versions&quot; section above, not sure whether this should be a separate section.
+Even on Windows x64, both the 32 bit and 64 bit versions of Python enjoy
+significant usage.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="os-packaging-installers">
+<h2><a class="toc-backref" href="#id3">OS Packaging &amp; Installers</a><a class="headerlink" href="#os-packaging-installers" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FIXME</span>
+
+<span class="o">-</span> <span class="n">Building</span> <span class="n">rpm</span><span class="o">/</span><span class="n">debs</span> <span class="k">for</span> <span class="n">projects</span>
+<span class="o">-</span> <span class="n">Building</span> <span class="n">rpms</span><span class="o">/</span><span class="n">debs</span> <span class="k">for</span> <span class="n">whole</span> <span class="n">virtualenvs</span>
+<span class="o">-</span> <span class="n">Building</span> <span class="n">macOS</span> <span class="n">installers</span> <span class="k">for</span> <span class="n">Python</span> <span class="n">projects</span>
+<span class="o">-</span> <span class="n">Building</span> <span class="n">Android</span> <span class="n">APKs</span> <span class="k">with</span> <span class="n">Kivy</span><span class="o">+</span><span class="n">P4A</span> <span class="ow">or</span> <span class="n">P4A</span> <span class="o">&amp;</span> <span class="n">Buildozer</span>
+</pre></div>
+</div>
+<div class="section" id="windows">
+<h3><a class="toc-backref" href="#id4">Windows</a><a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FIXME</span>
+
+<span class="o">-</span> <span class="n">Building</span> <span class="n">Windows</span> <span class="n">installers</span> <span class="k">for</span> <span class="n">Python</span> <span class="n">projects</span>
+</pre></div>
+</div>
+<div class="section" id="pynsist">
+<h4><a class="toc-backref" href="#id5">Pynsist</a><a class="headerlink" href="#pynsist" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="https://pypi.python.org/pypi/pynsist">Pynsist</a> is a tool that bundles Python
+programs together with the Python-interpreter into a single installer based on
+NSIS. In most cases, packaging only requires the user to choose a version of
+the Python-interpreter and declare the dependencies of the program. The tool
+downloads the specified Python-interpreter for Windows and packages it with all
+the dependencies in a single Windows-executable installer.</p>
+<p>The installer installs or updates the Python-interpreter on the users system,
+which can be used independently of the packaged program. The program itself,
+can be started from a shortcut, that the installer places in the start-menu.
+Uninstalling the program leaves the Python installation of the user intact.</p>
+<p>A big advantage of pynsist is that the Windows packages can be built on Linux.
+There are several examples for different kinds of programs (console, GUI) in
+the <a class="reference external" href="https://pynsist.readthedocs.io">documentation</a>. The tool is released
+under the MIT-licence.</p>
+</div>
+</div>
+</div>
+<div class="section" id="application-bundles">
+<h2><a class="toc-backref" href="#id6">Application Bundles</a><a class="headerlink" href="#application-bundles" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FIXME</span>
+
+<span class="o">-</span> <span class="n">py2exe</span><span class="o">/</span><span class="n">py2app</span><span class="o">/</span><span class="n">PEX</span>
+<span class="o">-</span> <span class="n">wheels</span> <span class="n">kinda</span><span class="o">/</span><span class="n">sorta</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuration-management">
+<h2><a class="toc-backref" href="#id7">Configuration Management</a><a class="headerlink" href="#configuration-management" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FIXME</span>
+
+<span class="n">puppet</span>
+<span class="n">salt</span>
+<span class="n">chef</span>
+<span class="n">ansible</span>
+<span class="n">fabric</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index_ko.html">Table Of Contents</a></h3>
+
+
+  
+
+
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/index.html">Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_ko.html">토론</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Copyright</a> 2013–2017, PyPA.
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Last updated on Sep 25, 2017.
+    <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
+    <br />
+
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
+    </div>
+
+  </body>
+</html>

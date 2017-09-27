@@ -1,0 +1,281 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>다중 파이썬 버전 지원 &#8212; Python Packaging User Guide</title>
+    <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="바이너리 확장 패키징" href="packaging-binary-extensions_ko.html" />
+    <link rel="prev" title="패키지 버전 단일 소싱" href="single-sourcing-package-version_ko.html" />
+    <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
+    
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    
+     
+
+  </head>
+  <body>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="packaging-binary-extensions_ko.html" title="바이너리 확장 패키징"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="single-sourcing-package-version_ko.html" title="패키지 버전 단일 소싱"
+             accesskey="P">previous</a> |</li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+          <li class="nav-item nav-item-1"><a href="index_ko.html" accesskey="U">Guides</a> &#187;</li>
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="supporting-multiple-python-versions">
+<span id="id1"></span><h1>다중 파이썬 버전 지원<a class="headerlink" href="#supporting-multiple-python-versions" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Page Status:</th><td class="field-body">Incomplete</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Last Reviewed:</th><td class="field-body">2014-12-24</td>
+</tr>
+</tbody>
+</table>
+<div class="contents local topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id2" id="id6">자동화 테스트 및 지속적인 통합</a></li>
+<li><a class="reference internal" href="#id4" id="id7">단일 소스 파이썬 패키지를 위한 도구</a></li>
+<li><a class="reference internal" href="#id5" id="id8">파이썬에는 어떤 것들이 있나?</a></li>
+</ul>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FIXME</span>
+
+<span class="n">Useful</span> <span class="n">projects</span><span class="o">/</span><span class="n">resources</span> <span class="n">to</span> <span class="n">reference</span><span class="p">:</span>
+
+<span class="o">-</span> <span class="n">DONE</span> <span class="n">six</span>
+<span class="o">-</span> <span class="n">DONE</span> <span class="n">python</span><span class="o">-</span><span class="n">future</span> <span class="p">(</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">python</span><span class="o">-</span><span class="n">future</span><span class="o">.</span><span class="n">org</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">tox</span>
+<span class="o">-</span> <span class="n">DONE</span> <span class="n">Travis</span> <span class="ow">and</span> <span class="n">Shining</span> <span class="n">Panda</span> <span class="n">CI</span> <span class="p">(</span><span class="n">Shining</span> <span class="n">Panda</span> <span class="n">no</span> <span class="n">longer</span> <span class="n">available</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">DONE</span> <span class="n">Appveyor</span>
+<span class="o">-</span> <span class="n">DONE</span> <span class="n">Ned</span> <span class="n">Batchelder</span><span class="s1">&#39;s &quot;What&#39;</span><span class="n">s</span> <span class="ow">in</span> <span class="n">Which</span> <span class="n">Python</span><span class="s2">&quot;</span>
+  <span class="o">-</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">nedbatchelder</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">blog</span><span class="o">/</span><span class="mi">201310</span><span class="o">/</span><span class="n">whats_in_which_python_3</span><span class="o">.</span><span class="n">html</span>
+    <span class="o">-</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">nedbatchelder</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">blog</span><span class="o">/</span><span class="mi">201109</span><span class="o">/</span><span class="n">whats_in_which_python</span><span class="o">.</span><span class="n">html</span>
+<span class="o">-</span> <span class="n">Lennart</span> <span class="n">Regebro</span><span class="s1">&#39;s &quot;Porting to Python 3&quot;</span>
+<span class="o">-</span> <span class="n">Greg</span> <span class="n">Hewgill</span><span class="s1">&#39;s script to identify the minimum version of Python</span>
+  <span class="n">required</span> <span class="n">to</span> <span class="n">run</span> <span class="n">a</span> <span class="n">particular</span> <span class="n">script</span><span class="p">:</span>
+  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ghewgill</span><span class="o">/</span><span class="n">pyqver</span>
+<span class="o">-</span> <span class="n">the</span> <span class="n">Python</span> <span class="mi">3</span> <span class="n">porting</span> <span class="n">how</span> <span class="n">to</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">main</span> <span class="n">docs</span>
+<span class="o">-</span> <span class="n">cross</span> <span class="n">reference</span> <span class="n">to</span> <span class="n">the</span> <span class="n">stable</span> <span class="n">ABI</span> <span class="n">discussion</span>
+  <span class="ow">in</span> <span class="n">the</span> <span class="n">binary</span> <span class="n">extensions</span> <span class="n">topic</span> <span class="p">(</span><span class="n">once</span> <span class="n">that</span> <span class="n">exists</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">mention</span> <span class="n">version</span> <span class="n">classifiers</span> <span class="k">for</span> <span class="n">distribution</span> <span class="n">metadata</span>
+</pre></div>
+</div>
+<p>파이썬 패키지를 만드는데 요구되는 작업에 더해서, 패키지는 파이썬의 다른 버전에서도 이용 가능하게 만들어져야한다. 다른 파이썬 버젼은 다른 표준 라이브러리 패키지를 포함할 수 도 있고 파이썬 2.x 와 3.x 사이의 변화가 언어 syntax에 포함 되었을 수도 있다.</p>
+<p>모든 테스트는 수동으로 수행되기 때문에, 패키지가 시간이 많이 걸릴 수 있는 모든 파이썬 버전에서 정확하게 작동하는지를 확인해야한다.  운이 좋게도, 이를 처리하는 몇몇의 도구가 있고 여기서 이러한 도구들을 간단하게 알아볼 것이다.</p>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id6">자동화 테스트 및 지속적인 통합</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>자동 테스트를 위해 여러 호스트 서비스가 이용 가능하다. 이러한 서비스는 일반적으로 소스 코드 저장소(예 <a class="reference external" href="https://github.com">Github</a> 또는 <a class="reference external" href="https://bitbucket.org">Bitbucket</a> )를 모니터링하고 커밋이 될 때마다 프로젝트의 테스트 스위트를 실행한다.</p>
+<p>이러한 서비스들은 또한 <em>Python의 여러 버전</em> 에 있는 프로젝트의 테스트 스위트를 실행할 수 있는 기능을 제공하여 개발자가 직접 테스트를 할 필요없이 코드가 잘 작동하는지에 대한 빠른 피드백을 준다.</p>
+<p>위키피디아는 지속적인 통합 시스템에서 광범위한 <a class="reference external" href="http://en.wikipedia.org/wiki/Comparison_of_continuous_integration_software">비교</a>
+를 가진다.  결합해서 사용되는 두 개의 호스트 서비스는 리눅스, 맥, 윈도우에서 자동화 테스트 기능을 제공한다.:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://travis-ci.org">Travis CI</a> 는 리눅스와 맥OS 환경을 제공한다. 이 글을 작성하고 있는 시점에서 리눅스 환경은 Ubuntu 12.04 LTS Server Edition 64 bit 이고 맥 OS는 10.9.2 이다.</li>
+<li><a class="reference external" href="http://www.appveyor.com">Appveyor</a>  윈도우 환경
+(Windows Server 2012)을 제공한다.</li>
+</ul>
+</div></blockquote>
+<div class="highlight-default"><div class="highlight"><pre><span></span>TODO Either link to or provide example .yml files for these two
+services.
+
+TODO How do we keep the Travis Linux and macOS versions up-to-date in this
+document?
+</pre></div>
+</div>
+<p><a class="reference external" href="https://travis-ci.org">Travis CI</a> 와 <a class="reference external" href="http://www.appveyor.com">Appveyor</a> 모두 테스트를 위한 명령에 대한 상세 기술서로써 <a class="reference external" href="http://www.yaml.org">YAML</a> 포맷의 파일을 요구한다.
+테스트가 실패하면, 구체적인 상황에 대한 출력 로그가 검사 되어질 수 있다.</p>
+<p>단일 소스 전략을 사용하여 파이썬2와 파이썬3 모두에 사용할 수 있는 프로젝트의 경우 많은 옵션을 가지고 있다.</p>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id7">단일 소스 파이썬 패키지를 위한 도구</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://pythonhosted.org/six/">six</a> 는 파이썬2와 3 사이의 차이를 래핑하기 위해 벤자민 피터슨에 의해 개발되어졌다. <a class="reference external" href="http://pythonhosted.org/six/">six</a> 패키지는 널리 사용되어지고 파이썬2와 3 모두에서 사용될 수 있는 단일 소스 파이썬 모듈을 작성할 수 있는 신뢰성 있는 방법으로 여겨진다.
+<a class="reference external" href="http://pythonhosted.org/six/">six</a> 모듈은 파이썬 2.5 버전부터 사용 가능하다.
+<a class="reference external" href="https://pypi.python.org/pypi/modernize">modernize</a> 라고 불리는 툴은 아르민 로나쳐에의해 개발되어졌고 <a class="reference external" href="http://pythonhosted.org/six/">six</a> 에 의해 제공되어진 코드 변형을 자동으로 적용하는데 사용될 수 있다.
+<a class="reference external" href="http://pythonhosted.org/six/">six</a> 와 유사하게 <a class="reference external" href="http://python-future.org/overview.html">python-future</a> 는 파이썬2와 3의 소스 코드 사이에 호환성 레이어를 제공하는 패키지이다.
+그러나 <a class="reference external" href="http://pythonhosted.org/six/">six</a> 와는 달리, 이 패키지는 파이썬2와 3 사이의 상호 운용성에 두 파이썬 버전 중 하나와 일치하는 언어의 sysntax를 제공하는 것이 목적이다. :</p>
+<blockquote>
+<div><ul class="simple">
+<li>a Python 2 (by syntax) module in a Python 3 project.</li>
+<li>a Python 3 (by syntax) module in a <em>Python 2</em> project.</li>
+</ul>
+</div></blockquote>
+<p>양방향성 때문에, <a class="reference external" href="http://python-future.org/overview.html">python-future</a> 는 파이썬2 패키지를 파이썬3 syntax로 모듈 단위로 변환시키는 통로를 제공한다. 그러나 <a class="reference external" href="http://pythonhosted.org/six/">six</a> 와는 반대로 <a class="reference external" href="http://python-future.org/overview.html">python-future</a> 는 파이썬 2.6으로만 지원된다. <a class="reference external" href="http://pythonhosted.org/six/">six</a> 에 대해 <a class="reference external" href="https://pypi.python.org/pypi/modernize">modernize</a> 하는 것과 유사하게, <a class="reference external" href="http://python-future.org/overview.html">python-future</a> 는 <code class="docutils literal"><span class="pre">futurize``와</span> <span class="pre">``pasteurize</span></code> 라는 두 개의 스크립트가 있다. 이는 파이썬2 모듈 또는 파이썬 3 모듈에 각각 적용되어 질 수 있다.</p>
+<p><a class="reference external" href="http://pythonhosted.org/six/">six</a> 또는 <a class="reference external" href="http://python-future.org/overview.html">python-future</a> 의 사용은 추가적인 런타임 종속성을 패키지에 추가시킨다. <a class="reference external" href="http://python-future.org/overview.html">python-future</a> 에서는 <code class="docutils literal"><span class="pre">futurize</span></code> 스크립트가 호출되는데 이는 파이썬2.6+가 파이썬3으로 순방향 호환성을 제공한 변경에 대해서만 적용하기 위해서 <code class="docutils literal"><span class="pre">--stage1</span></code> 옵션을 사용하여 호출된다.
+남아있는 다른 호환성 문제는 수동 변경이 요구된다.</p>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id8">파이썬에는 어떤 것들이 있나?</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>Ned Batchelder는
+<a class="reference external" href="http://nedbatchelder.com/blog/201109/whats_in_which_python.html">파이썬 2</a> 용과
+<a class="reference external" href="http://nedbatchelder.com/blog/201310/whats_in_which_python_3.html">파이썬 3</a> 용 각각의 파이썬 릴리즈의 변경 사항에 대한 목록을 제공한다. 이 목록은 파이썬 버전 간의 변경 사항이 패키지에 영향을 줄지 여부를 확인하는데 사용할 수 있다.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TODO</span> <span class="n">These</span> <span class="n">lists</span> <span class="n">should</span> <span class="n">be</span> <span class="n">reproduced</span> <span class="n">here</span> <span class="p">(</span><span class="k">with</span> <span class="n">permission</span><span class="p">)</span><span class="o">.</span>
+
+<span class="n">TODO</span> <span class="n">The</span> <span class="n">py3</span> <span class="nb">list</span> <span class="n">should</span> <span class="n">be</span> <span class="n">updated</span> <span class="n">to</span> <span class="n">include</span> <span class="mf">3.4</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index_ko.html">Table Of Contents</a></h3>
+
+
+  
+
+
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index_ko.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tool-recommendations_ko.html">도구 추천</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-using-linux-tools_ko.html">Installing pip/setuptools/wheel with Linux Package Managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-scientific-packages_ko.html">Installing Scientific Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-version-installs_ko.html">멀티 버전 설치</a></li>
+<li class="toctree-l2"><a class="reference internal" href="single-sourcing-package-version_ko.html">패키지 버전 단일 소싱</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">다중 파이썬 버전 지원</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packaging-binary-extensions_ko.html">바이너리 확장 패키징</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supporting-windows-using-appveyor_ko.html">Appveyor를 사용한 윈도우 지원</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packaging-namespace-packages_ko.html">네임스페이스 패키지 패키징</a></li>
+<li class="toctree-l2"><a class="reference internal" href="creating-and-discovering-plugins_ko.html">Creating and discovering plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index-mirrors-and-caches_ko.html">Package index mirrors and caches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hosting-your-own-index_ko.html">Hosting your own simple repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating-to-pypi-org_ko.html">PyPI.org로 마이그레이션하기</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">How to Get Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="single-sourcing-package-version_ko.html"
+                        title="previous chapter">패키지 버전 단일 소싱</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="packaging-binary-extensions_ko.html"
+                        title="next chapter">바이너리 확장 패키징</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="packaging-binary-extensions_ko.html" title="바이너리 확장 패키징"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="single-sourcing-package-version_ko.html" title="패키지 버전 단일 소싱"
+             >previous</a> |</li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+          <li class="nav-item nav-item-1"><a href="index_ko.html" >Guides</a> &#187;</li>
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Copyright</a> 2013–2017, PyPA.
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Last updated on Sep 25, 2017.
+    <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
+    <br />
+
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
+    </div>
+
+  </body>
+</html>

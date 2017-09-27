@@ -1,0 +1,280 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Deploying Python applications &#8212; Python Packaging User Guide</title>
+    <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="pip vs easy_install" href="pip-vs-easy-install_ko.html" />
+    <link rel="prev" title="토론" href="index_ko.html" />
+    <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
+    
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    
+     
+
+  </head>
+  <body>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="pip-vs-easy-install_ko.html" title="pip vs easy_install"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index_ko.html" title="토론"
+             accesskey="P">previous</a> |</li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+          <li class="nav-item nav-item-1"><a href="index_ko.html" accesskey="U">토론</a> &#187;</li>
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="deploying-python-applications">
+<h1>Deploying Python applications<a class="headerlink" href="#deploying-python-applications" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Page Status:</th><td class="field-body">Incomplete</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Last Reviewed:</th><td class="field-body">2014-11-11</td>
+</tr>
+</tbody>
+</table>
+<div class="contents local topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#overview" id="id1">Overview</a><ul>
+<li><a class="reference internal" href="#supporting-multiple-hardware-platforms" id="id2">Supporting multiple hardware platforms</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#os-packaging-installers" id="id3">OS Packaging &amp; Installers</a><ul>
+<li><a class="reference internal" href="#windows" id="id4">Windows</a><ul>
+<li><a class="reference internal" href="#pynsist" id="id5">Pynsist</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#application-bundles" id="id6">Application Bundles</a></li>
+<li><a class="reference internal" href="#configuration-management" id="id7">Configuration Management</a></li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id1">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="supporting-multiple-hardware-platforms">
+<h3><a class="toc-backref" href="#id2">Supporting multiple hardware platforms</a><a class="headerlink" href="#supporting-multiple-hardware-platforms" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>FIXME
+
+의미: x86, x64, ARM, 기타?
+
+파이썬 전용 배포판의 경우, 파이선이 가동될 수 있는 모든 플랫폼에 배치(deploy)하는 것은
+간단해야 한다.
+
+바이너리 확장판로 이루어진 배포판의 경우 배치(deployment)가 가장 큰 문제다.
+확장판은 운영체제와 하드웨어 플랫폼의 모든 조합에 대해서 빌드되어 있어야 할 뿐 아니라,
+가급적 지속적인 통합 플랫폼에서 테스트도 이루어져야 한다. 이슈들은 위에 있는
+&quot;multiple python versions&quot; 섹션과 유사하며, 이것이 분리된 섹션이 되어야 하는지는
+확실하지 않다. 윈도우즈 x64에서도 32 bit와 64 bit 버전의 파이썬을 사용할 수 있다.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="os-packaging-installers">
+<h2><a class="toc-backref" href="#id3">OS Packaging &amp; Installers</a><a class="headerlink" href="#os-packaging-installers" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FIXME</span>
+
+<span class="o">-</span> <span class="n">프로젝트를</span> <span class="n">위한</span> <span class="n">rpm</span><span class="o">/</span><span class="n">debs</span> <span class="n">빌드하기</span>
+<span class="o">-</span> <span class="n">모든</span> <span class="n">가상환경을</span> <span class="n">위한</span> <span class="n">rpms</span><span class="o">/</span><span class="n">debs</span> <span class="n">빌드하기</span>
+<span class="o">-</span> <span class="n">파이썬</span> <span class="n">프로젝트를</span> <span class="n">위한</span> <span class="n">macOS</span> <span class="n">installers</span> <span class="n">빌드하기</span>
+<span class="o">-</span> <span class="n">Kivy</span><span class="o">+</span><span class="n">P4A</span> <span class="ow">or</span> <span class="n">P4A</span> <span class="o">&amp;</span> <span class="n">Buildozer로</span> <span class="n">Android</span> <span class="n">APKs</span> <span class="n">빌드하기</span>
+</pre></div>
+</div>
+<div class="section" id="windows">
+<h3><a class="toc-backref" href="#id4">Windows</a><a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FIXME</span>
+
+<span class="o">-</span> <span class="n">파이썬</span> <span class="n">프로젝트를</span> <span class="n">위한</span> <span class="n">Windows</span> <span class="n">installers</span> <span class="n">빌드하기</span>
+</pre></div>
+</div>
+<div class="section" id="pynsist">
+<h4><a class="toc-backref" href="#id5">Pynsist</a><a class="headerlink" href="#pynsist" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="https://pypi.python.org/pypi/pynsist">Pynsist</a> 는 파이썬 프로그램을 파이썬
+인터프리터와 함께 NSIS를 기반으로 하는 단일 인스톨러(installer)에 집어 넣는(bundle)
+툴(tool)이다. 대부분의 경우에 패키징은 사용자에게 파이선 인터프리터의 버전을 선택하고
+프로그램의 의존성을 지정하는 것만을 요구한다. 이 윈도우즈 용 특정 파이썬 인터프리터를
+다운로드 하고 단일 윈도우즈 실행가능 인스톨러에 모든 의존성을 패키징한다.</p>
+<p>인스톨러는 사용자 시스템에 파이썬 인터프리터를 설치하고 업그레이드 하며 패키지된
+프로그램과 관계없이 사용될 수 있다. 프로그램은 시작메뉴에 있는 숏컷(shortcut)으로
+시작할 수 있다. 프로그램 제거는 사용자의 파이썬 설치를 손상시키지 않는다.</p>
+<p>Pynsist의 장점은 윈도우즈 패키지가 리눅스에서 빌드될 수 있다는 것이다.
+<a class="reference external" href="https://pynsist.readthedocs.io">documentation</a>에 여려 종류의
+프로그램(console, GUI)에 대한 다양한 예시가 있다. 툴은 MIT-licence 하에서 공개되었다.</p>
+</div>
+</div>
+</div>
+<div class="section" id="application-bundles">
+<h2><a class="toc-backref" href="#id6">Application Bundles</a><a class="headerlink" href="#application-bundles" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FIXME</span>
+
+<span class="o">-</span> <span class="n">py2exe</span><span class="o">/</span><span class="n">py2app</span><span class="o">/</span><span class="n">PEX</span>
+<span class="o">-</span> <span class="n">wheels</span> <span class="n">kinda</span><span class="o">/</span><span class="n">sorta</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuration-management">
+<h2><a class="toc-backref" href="#id7">Configuration Management</a><a class="headerlink" href="#configuration-management" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FIXME</span>
+
+<span class="n">puppet</span>
+<span class="n">salt</span>
+<span class="n">chef</span>
+<span class="n">ansible</span>
+<span class="n">fabric</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index_ko.html">Table Of Contents</a></h3>
+
+
+  
+
+
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/index.html">Guides</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index_ko.html">토론</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Deploying Python applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pip-vs-easy-install_ko.html">pip vs easy_install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-requires-vs-requirements_ko.html">install_requires vs Requirements files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wheel-vs-egg_ko.html">Wheel vs Egg</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index_ko.html"
+                        title="previous chapter">토론</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pip-vs-easy-install_ko.html"
+                        title="next chapter">pip vs easy_install</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="pip-vs-easy-install_ko.html" title="pip vs easy_install"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index_ko.html" title="토론"
+             >previous</a> |</li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+          <li class="nav-item nav-item-1"><a href="index_ko.html" >토론</a> &#187;</li>
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Copyright</a> 2013–2017, PyPA.
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Last updated on Sep 25, 2017.
+    <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
+    <br />
+
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
+    </div>
+
+  </body>
+</html>

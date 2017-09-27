@@ -1,0 +1,195 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>멀티 버전 설치 &#8212; Python Packaging User Guide</title>
+    <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="패키지 버전 단일 소싱" href="single-sourcing-package-version_ko.html" />
+    <link rel="prev" title="Installing Scientific Packages" href="installing-scientific-packages_ko.html" />
+    <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
+    
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    
+     
+
+  </head>
+  <body>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="single-sourcing-package-version_ko.html" title="패키지 버전 단일 소싱"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="installing-scientific-packages_ko.html" title="Installing Scientific Packages"
+             accesskey="P">previous</a> |</li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+          <li class="nav-item nav-item-1"><a href="index_ko.html" accesskey="U">Guides</a> &#187;</li>
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="multi-version-installs">
+<span id="id1"></span><h1>멀티 버전 설치<a class="headerlink" href="#multi-version-installs" title="Permalink to this headline">¶</a></h1>
+<p>easy_install을 사용하면 단일 환경에 동일한 프로젝트의 다른 버전들의 동시 설치를 할 수 있다. 이러한 단일 환경은 런타임( <code class="docutils literal"><span class="pre">pkg_resources</span></code> 를 사용함)에 적절한 버전의 프로젝트를 <code class="docutils literal"><span class="pre">require</span></code>  해야하는 여러 프로그램에 의해 공유되어진다.</p>
+<p>다양한 사용 케이스에 대해, 가상 환경 주소는 <code class="docutils literal"><span class="pre">require</span></code> directive의 복잡성 없이 이러한 요구를 해결한다. 그러나 같은 환경에서의 동시 설치의 이점은 리눅스 배포판의 파이썬 같은 멀티플 애플리케이션에 의해 공유되는 환경에서  작동한다는 것이다.</p>
+<p>동시 설치에 기초한 <code class="docutils literal"><span class="pre">pkg_resources</span></code> 의 주된 한계는 <code class="docutils literal"><span class="pre">pkg_resources</span></code> 를 임포트 하자마자, 이미 sys.path에서 사용 가능했던 모든 <em>default</em> 버전을 잠근다는 것이다. <code class="docutils literal"><span class="pre">setuptools</span></code> 가 작성한 커맨드 라인 스크립트는 실행할 엔트로 포인트를 찾기 위해 <code class="docutils literal"><span class="pre">pkg_resources</span></code> 를 사용하기 때문에, 문제의 원인이 될 수 있다.
+예를 들면 만약 애플리케이션이 표준 <code class="docutils literal"><span class="pre">sys.path</span></code> 에서 사용 가능한 것의 non-default 버전을 필요로 한다면, 이는 <code class="docutils literal"><span class="pre">nose</span></code> 를 통해 호출된 test 또는 <code class="docutils literal"><span class="pre">gunicorn</span></code> 에 의해 호출된 WSGI 애플리케이션을 <code class="docutils literal"><span class="pre">require</span></code> 를 할 수 없다는 것을 의미한다.
+sys.path - 기본 애플리케이션을 위한 스크랩트 래퍼는 기본적으로 이용 가능한 버전에서 잠길 것이므로, 뒤에 따라 오는 코드에서 <code class="docutils literal"><span class="pre">require</span></code> 호출은 잘못된 버전과의 충돌에 의해 실패한다.</p>
+<p>이것은 처음에 <code class="docutils literal"><span class="pre">pkg_resources</span></code> 를 임포트 하기 전에, <code class="docutils literal"><span class="pre">__main__.__require__</span></code> 에서 모든 종속성을 설정함으로서 작동할 수 있다. 그러나 그 접근이 영향을 받은 툴들의 표준 커맨드 라인의 호출을 사용할 수 없음을 의미한다. 애플리케이션의 메인 엔트리 포인트를 직접적으로 호출하기 위해서는 커스텀 래퍼 스크립트를 작성하거나 <code class="docutils literal"><span class="pre">python</span> <span class="pre">-c</span> <span class="pre">'&lt;command&gt;'</span></code> 를 사용하는 것이 필요하다.</p>
+<p>더 자세히 알고 싶다면  <a class="reference external" href="https://setuptools.readthedocs.io/en/latest/pkg_resources.html#workingset-objects">pkg_resources documentation</a>
+를 참고하면 된다.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index_ko.html">Table Of Contents</a></h3>
+
+
+  
+
+
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index_ko.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tool-recommendations_ko.html">도구 추천</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-using-linux-tools_ko.html">Installing pip/setuptools/wheel with Linux Package Managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-scientific-packages_ko.html">Installing Scientific Packages</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">멀티 버전 설치</a></li>
+<li class="toctree-l2"><a class="reference internal" href="single-sourcing-package-version_ko.html">패키지 버전 단일 소싱</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supporting-multiple-python-versions_ko.html">다중 파이썬 버전 지원</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packaging-binary-extensions_ko.html">바이너리 확장 패키징</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supporting-windows-using-appveyor_ko.html">Appveyor를 사용한 윈도우 지원</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packaging-namespace-packages_ko.html">네임스페이스 패키지 패키징</a></li>
+<li class="toctree-l2"><a class="reference internal" href="creating-and-discovering-plugins_ko.html">Creating and discovering plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index-mirrors-and-caches_ko.html">Package index mirrors and caches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hosting-your-own-index_ko.html">Hosting your own simple repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating-to-pypi-org_ko.html">PyPI.org로 마이그레이션하기</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">How to Get Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="installing-scientific-packages_ko.html"
+                        title="previous chapter">Installing Scientific Packages</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="single-sourcing-package-version_ko.html"
+                        title="next chapter">패키지 버전 단일 소싱</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="single-sourcing-package-version_ko.html" title="패키지 버전 단일 소싱"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="installing-scientific-packages_ko.html" title="Installing Scientific Packages"
+             >previous</a> |</li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+          <li class="nav-item nav-item-1"><a href="index_ko.html" >Guides</a> &#187;</li>
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Copyright</a> 2013–2017, PyPA.
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Last updated on Sep 25, 2017.
+    <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
+    <br />
+
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
+    </div>
+
+  </body>
+</html>

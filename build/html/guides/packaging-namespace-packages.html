@@ -1,0 +1,371 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Packaging namespace packages &#8212; Python Packaging User Guide</title>
+    <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Creating and discovering plugins" href="creating-and-discovering-plugins.html" />
+    <link rel="prev" title="Supporting Windows using Appveyor" href="supporting-windows-using-appveyor.html" />
+    <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
+    
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    
+     
+
+  </head>
+  <body>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="creating-and-discovering-plugins.html" title="Creating and discovering plugins"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="supporting-windows-using-appveyor.html" title="Supporting Windows using Appveyor"
+             accesskey="P">previous</a> |</li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Guides</a> &#187;</li>
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="packaging-namespace-packages">
+<h1>Packaging namespace packages<a class="headerlink" href="#packaging-namespace-packages" title="Permalink to this headline">¶</a></h1>
+<p>Namespace packages allow you to split the sub-packages and modules within a
+single <a class="reference internal" href="../glossary_ko.html#term-import-package"><span class="xref std std-term">package</span></a> across multiple, separate
+<a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">distribution packages</span></a> (referred to as
+<strong>distributions</strong> in this document to avoid ambiguity). For example, if you
+have the following package structure:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>mynamespace/
+    __init__.py
+    subpackage_a/
+        __init__.py
+        ...
+    subpackage_b/
+        __init__.py
+        ...
+    module_b.py
+setup.py
+</pre></div>
+</div>
+<p>And you use this package in your code like so:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mynamespace</span> <span class="k">import</span> <span class="n">subpackage_a</span>
+<span class="kn">from</span> <span class="nn">mynamespace</span> <span class="k">import</span> <span class="n">subpackage_b</span>
+</pre></div>
+</div>
+<p>Then you can break these sub-packages into two separate distributions:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>mynamespace-subpackage-a/
+    setup.py
+    mynamespace/
+        subpackage_a/
+            __init__.py
+
+mynamespace-subpackage-b/
+    setup.py
+    mynamespace/
+        subpackage_b/
+            __init__.py
+        module_b.py
+</pre></div>
+</div>
+<p>Each sub-package can now be separately installed, used, and versioned.</p>
+<p>Namespace packages can be useful for a large collection of loosely-related
+packages (such as a large corpus of client libraries for multiple products from
+a single company). However, namespace packages come with several caveats and
+are not appropriate in all cases. A simple alternative is to use a prefix on
+all of your distributions such as <code class="docutils literal"><span class="pre">import</span> <span class="pre">mynamespace_subpackage_a</span></code> (you
+could even use <code class="docutils literal"><span class="pre">import</span> <span class="pre">mynamespace_subpackage_a</span> <span class="pre">as</span> <span class="pre">subpackage_a</span></code> to keep the
+import object short).</p>
+<div class="section" id="creating-a-namespace-package">
+<h2>Creating a namespace package<a class="headerlink" href="#creating-a-namespace-package" title="Permalink to this headline">¶</a></h2>
+<p>There are currently three different approaches to creating namespace packages:</p>
+<ol class="arabic simple">
+<li>Use <a class="reference internal" href="#native-namespace-packages">native namespace packages</a>. This type of namespace package is defined
+in <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0420"><strong>PEP 420</strong></a> and is available in Python 3.3 and later. This is recommended if
+packages in your namespace only ever need to support Python 3 and
+installation via <code class="docutils literal"><span class="pre">pip</span></code>.</li>
+<li>Use <a class="reference internal" href="#pkgutil-style-namespace-packages">pkgutil-style namespace packages</a>. This is recommended for new
+packages that need to support Python 2 and 3 and installation via both
+<code class="docutils literal"><span class="pre">pip</span></code> and <code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code>.</li>
+<li>Use <a class="reference internal" href="#pkg-resources-style-namespace-packages">pkg_resources-style namespace packages</a>. This method is recommended if
+you need compatibility with packages already using this method or if your
+package needs to be zip-safe.</li>
+</ol>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">While native namespace packages and pkgutil-style namespace
+packages are largely compatible, pkg_resources-style namespace packages
+are not compatible with the other methods. It’s inadvisable to use
+different methods in different distributions that provide packages to the
+same namespace.</p>
+</div>
+<div class="section" id="native-namespace-packages">
+<h3>Native namespace packages<a class="headerlink" href="#native-namespace-packages" title="Permalink to this headline">¶</a></h3>
+<p>Python 3.3 added <strong>implicit</strong> namespace packages from <span class="target" id="index-1"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0420"><strong>PEP 420</strong></a>. All that is
+required to create a native namespace package is that you just omit
+<code class="docutils literal"><span class="pre">__init__.py</span></code> from the namespace package directory. An example file
+structure:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>setup.py
+mynamespace/
+    # No __init__.py here.
+    subpackage_a/
+        # Sub-packages have __init__.py.
+        __init__.py
+        module.py
+</pre></div>
+</div>
+<p>It is extremely important that every distribution that uses the namespace
+package omits the <code class="docutils literal"><span class="pre">__init__.py</span></code> or uses a pkgutil-style <code class="docutils literal"><span class="pre">__init__.py</span></code>. If
+any distribution does not, it will cause the namespace logic to fail and the
+other sub-packages will not be importable.</p>
+<p>Because <code class="docutils literal"><span class="pre">mynamespace</span></code> doesn’t contain an <code class="docutils literal"><span class="pre">__init__.py</span></code>,
+<code class="xref py py-func docutils literal"><span class="pre">setuptools.find_packages()</span></code> won’t find the sub-package. You must
+explicitly list all packages in your <code class="docutils literal"><span class="pre">setup.py</span></code>. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;mynamespace-subpackage-a&#39;</span><span class="p">,</span>
+    <span class="o">...</span>
+    <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mynamespace.subpackage_a&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>A complete working example of two native namespace packages can be found in
+the <a class="reference external" href="https://github.com/pypa/sample-namespace-packages/tree/master/native">native namespace package example project</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Because native and pkgutil-style namespace packages are largely
+compatible, you can use native namespace packages in the distributions that
+only support Python 3 and pkgutil-style namespace packages in the
+distributions that need to support Python 2 and 3.</p>
+</div>
+</div>
+<div class="section" id="pkgutil-style-namespace-packages">
+<h3>pkgutil-style namespace packages<a class="headerlink" href="#pkgutil-style-namespace-packages" title="Permalink to this headline">¶</a></h3>
+<p>Python 2.3 introduced the <a class="reference external" href="https://docs.python.org/3/library/pkgutil.html">pkgutil</a> module and the
+<a class="reference external" href="https://docs.python.org/3/library/pkgutil.html#pkgutil.extend_path">extend_path</a> function. This can be used to declare namespace
+packages that need to be compatible with both Python 2.3+ and Python 3. This
+is the recommended approach for the highest level of compatibility.</p>
+<p>To create a pkgutil-style namespace package, you need to provide an
+<code class="docutils literal"><span class="pre">__init__.py</span></code> file for the namespace package:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>setup.py
+mynamespace/
+    __init__.py  # Namespace package __init__.py
+    subpackage_a/
+        __init__.py  # Sub-package __init__.py
+        module.py
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">__init__.py</span></code> file for the namespace package needs to contain <strong>only</strong>
+the following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">__path__</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;pkgutil&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extend_path</span><span class="p">(</span><span class="n">__path__</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Every</strong> distribution that uses the namespace package must include an
+identical <code class="docutils literal"><span class="pre">__init__.py</span></code>. If any distribution does not, it will cause the
+namespace logic to fail and the other sub-packages will not be importable. Any
+additional code in <code class="docutils literal"><span class="pre">__init__.py</span></code> will be inaccessible.</p>
+<p>A complete working example of two pkgutil-style namespace packages can be found
+in the <a class="reference external" href="https://github.com/pypa/sample-namespace-packages/tree/master/pkgutil">pkgutil namespace example project</a>.</p>
+</div>
+<div class="section" id="pkg-resources-style-namespace-packages">
+<h3>pkg_resources-style namespace packages<a class="headerlink" href="#pkg-resources-style-namespace-packages" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://setuptools.readthedocs.io">Setuptools</a> provides the <a class="reference external" href="https://setuptools.readthedocs.io/en/latest/setuptools.html#namespace-packages">pkg_resources.declare_namespace</a> function and
+the <code class="docutils literal"><span class="pre">namespace_packages</span></code> argument to <code class="xref py py-func docutils literal"><span class="pre">setup()</span></code>. Together
+these can be used to declare namespace packages. While this approach is no
+longer recommended, it is widely present in most existing namespace packages.
+If you are creating a new distribution within an existing namespace package that
+uses this method then it’s recommended to continue using this as the different
+methods are not cross-compatible and it’s not advisable to try to migrate an
+existing package.</p>
+<p>To create a pkg_resources-style namespace package, you need to provide an
+<code class="docutils literal"><span class="pre">__init__.py</span></code> file for the namespace package:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>setup.py
+mynamespace/
+    __init__.py  # Namespace package __init__.py
+    subpackage_a/
+        __init__.py  # Sub-package __init__.py
+        module.py
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">__init__.py</span></code> file for the namespace package needs to contain <strong>only</strong>
+the following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;pkg_resources&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">declare_namespace</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Every</strong> distribution that uses the namespace package must include an
+identical <code class="docutils literal"><span class="pre">__init__.py</span></code>. If any distribution does not, it will cause the
+namespace logic to fail and the other sub-packages will not be importable. Any
+additional code in <code class="docutils literal"><span class="pre">__init__.py</span></code> will be inaccessible.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Some older recommendations advise the following in the namespace
+package <code class="docutils literal"><span class="pre">__init__.py</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;pkg_resources&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">declare_namespace</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">__path__</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;pkgutil&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extend_path</span><span class="p">(</span><span class="n">__path__</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="last">The idea behind this was that in the rare case that setuptools isn’t
+available packages would fall-back to the pkgutil-style packages. This
+isn’t advisable because pkgutil and pkg_resources-style namespace packages
+are not cross-compatible. If the presence of setuptools is a concern
+then the package should just explicitly depend on setuptools via
+<code class="docutils literal"><span class="pre">install_requires</span></code>.</p>
+</div>
+<p>Finally, every distribution must provide the <code class="docutils literal"><span class="pre">namespace_packages</span></code> argument
+to <code class="xref py py-func docutils literal"><span class="pre">setup()</span></code> in <code class="docutils literal"><span class="pre">setup.py</span></code>. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">find_packages</span><span class="p">,</span> <span class="n">setup</span>
+
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;mynamespace-subpackage-a&#39;</span><span class="p">,</span>
+    <span class="o">...</span>
+    <span class="n">packages</span><span class="o">=</span><span class="n">find_packages</span><span class="p">()</span>
+    <span class="n">namespace_packages</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mynamespace&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>A complete working example of two pkg_resources-style namespace packages can be found
+in the <a class="reference external" href="https://github.com/pypa/sample-namespace-packages/tree/master/pkg_resources">pkg_resources namespace example project</a>.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index_ko.html">Table Of Contents</a></h3>
+
+
+  
+
+
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="supporting-windows-using-appveyor.html"
+                        title="previous chapter">Supporting Windows using Appveyor</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="creating-and-discovering-plugins.html"
+                        title="next chapter">Creating and discovering plugins</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="creating-and-discovering-plugins.html" title="Creating and discovering plugins"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="supporting-windows-using-appveyor.html" title="Supporting Windows using Appveyor"
+             >previous</a> |</li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Guides</a> &#187;</li>
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Copyright</a> 2013–2017, PyPA.
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Last updated on Sep 25, 2017.
+    <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
+    <br />
+
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
+    </div>
+
+  </body>
+</html>

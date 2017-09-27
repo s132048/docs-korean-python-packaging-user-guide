@@ -1,0 +1,211 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Package index mirrors and caches &#8212; Python Packaging User Guide</title>
+    <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
+    
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    
+     
+
+  </head>
+  <body>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>#.. <span class="target" id="pypi-mirrors-and-caches">PyPI mirrors and caches</span>:</p>
+<div class="section" id="package-index-mirrors-and-caches">
+<h1>Package index mirrors and caches<a class="headerlink" href="#package-index-mirrors-and-caches" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Page Status:</th><td class="field-body">Incomplete</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Last Reviewed:</th><td class="field-body">2014-12-24</td>
+</tr>
+</tbody>
+</table>
+<div class="contents local topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#caching-with-pip" id="id3">Caching with pip</a></li>
+<li><a class="reference internal" href="#caching-with-devpi" id="id4">Caching with devpi</a></li>
+<li><a class="reference internal" href="#complete-mirror-with-bandersnatch" id="id5">Complete mirror with bandersnatch</a></li>
+</ul>
+</div>
+<p>Mirroring or caching of PyPI can be used to speed up local package installation,
+allow offline work, handle corporate firewalls or just plain Internet flakiness.</p>
+<p>Three options are available in this area:</p>
+<ol class="arabic simple">
+<li>pip provides local caching options,</li>
+<li>devpi provides higher-level caching option, potentially shared amongst
+many users or machines, and</li>
+<li>bandersnatch provides a local complete mirror of all PyPI <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">packages</span></a>.</li>
+</ol>
+<div class="section" id="caching-with-pip">
+<h2><a class="toc-backref" href="#id3">Caching with pip</a><a class="headerlink" href="#caching-with-pip" title="Permalink to this headline">¶</a></h2>
+<p>pip provides a number of facilities for speeding up installation by using local
+cached copies of <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">packages</span></a>:</p>
+<ol class="arabic">
+<li><p class="first"><a class="reference external" href="https://pip.pypa.io/en/latest/user_guide.html#fast-local-installs">Fast &amp; local installs</a> by
+downloading all the requirements for a project and then pointing pip at
+those downloaded files instead of going to PyPI.</p>
+</li>
+<li><p class="first">A variation on the above which pre-builds the installation files for
+the requirements using <a class="reference external" href="https://pip.readthedocs.io/en/latest/reference/pip_wheel.html">pip wheel</a>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ pip wheel --wheel-dir=/tmp/wheelhouse SomeProject
+$ pip install --no-index --find-links=/tmp/wheelhouse SomeProject
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="caching-with-devpi">
+<h2><a class="toc-backref" href="#id4">Caching with devpi</a><a class="headerlink" href="#caching-with-devpi" title="Permalink to this headline">¶</a></h2>
+<p>devpi is a caching proxy server which you run on your laptop, or some other
+machine you know will always be available to you. See the <a class="reference external" href="http://doc.devpi.net/latest/quickstart-pypimirror.html">devpi
+documentation for getting started</a>.</p>
+</div>
+<div class="section" id="complete-mirror-with-bandersnatch">
+<h2><a class="toc-backref" href="#id5">Complete mirror with bandersnatch</a><a class="headerlink" href="#complete-mirror-with-bandersnatch" title="Permalink to this headline">¶</a></h2>
+<p>bandersnatch will set up a complete local mirror of all PyPI <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">packages</span></a> (externally-hosted packages are not mirrored). See
+the <a class="reference external" href="https://bitbucket.org/pypa/bandersnatch/overview">bandersnatch documentation for getting that going</a>.</p>
+<p>A benefit of devpi is that it will create a mirror which includes
+<a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">packages</span></a> that are external to PyPI, unlike
+bandersnatch which will only cache <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">packages</span></a>
+hosted on PyPI.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index_ko.html">Table Of Contents</a></h3>
+
+
+  
+
+
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_ko.html">가이드</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA 설명서</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">프로젝트 요약</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">지원 받는 방법</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Copyright</a> 2013–2017, PyPA.
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Last updated on Sep 25, 2017.
+    <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
+    <br />
+
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
+    </div>
+
+  </body>
+</html>
