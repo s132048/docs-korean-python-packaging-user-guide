@@ -38,7 +38,7 @@
 더 알아보기
 ============
 
-이 가이드는 :doc:`tutorials/index` 이외에 여러가지 다른 자료들을 담고 있다:
+이 가이드는 :doc:`tutorials/index_ko` 이외에 여러가지 다른 자료들을 담고 있다:
 
 * :doc:`guides/installing-using-linux-tools_ko`, :doc:`guides/packaging-binary-extensions_ko` 등에 대한 설명이 담긴 :doc:`guides/index_ko` 섹션
 
