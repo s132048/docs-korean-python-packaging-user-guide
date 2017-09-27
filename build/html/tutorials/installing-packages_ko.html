@@ -95,7 +95,7 @@
 <li><a class="reference internal" href="#id6" id="id27">선택적으로, 가상 환경을 생성하기</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id8" id="id28">가상 환경 생성하기</a></li>
+<li><a class="reference internal" href="#creating-and-using-virtual-environments" id="id28">가상 환경 생성하기</a></li>
 <li><a class="reference internal" href="#pip" id="id29">설치를 위해 pip 사용하기</a></li>
 <li><a class="reference internal" href="#pypi" id="id30">PyPI에서 설치하기</a></li>
 <li><a class="reference internal" href="#vs-wheels" id="id31">소스 배포판 vs wheels</a></li>
@@ -131,7 +131,7 @@
 </li>
 <li><p class="first">만약 시스템 패키지 매니저(예, “yum”, “apt-get” 등)에 의해 관리되는 리눅스에 설치된
 파이썬을 사용하고 있고 시스템 패키지 매니저를 이용해 pip를 설치하고 업그레이드하고
-싶다면 <a class="reference internal" href="../guides/installing-using-linux-tools_ko.html#installing-pip-setuptools-wheel-with-linux-package-managers"><span class="std std-ref">Installing pip/setuptools/wheel with Linux Package Managers</span></a>를
+싶다면 <a class="reference internal" href="../guides/installing-using-linux-tools_ko.html#installing-pip-setuptools-wheel-with-linux-package-managers"><span class="std std-ref">리눅스 패키지 매니저로 pip/setuptools/wheel 설치하기</span></a>를
 참고하라.</p>
 </li>
 <li><p class="first">다른 경우:</p>
@@ -162,7 +162,7 @@
 <p>자세한 사항은 <a class="reference internal" href="#creating-and-using-virtual-environments"><span class="std std-ref">아래에 있는 섹션</span></a>을
 참고해야 하지만 기본적인 커맨드는 여기에 있다:</p>
 <blockquote>
-<div><p><a class="reference internal" href="../key_projects_ko.html#virtualenv"><span class="std std-ref">virtualenv</span></a> 사용하기:</p>
+<div><p><span class="xref std std-ref">virtualenv</span> 사용하기:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">virtualenv</span>
 <span class="n">virtualenv</span> <span class="o">&lt;</span><span class="n">DIR</span><span class="o">&gt;</span>
 <span class="n">source</span> <span class="o">&lt;</span><span class="n">DIR</span><span class="o">&gt;/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
@@ -174,11 +174,10 @@
 </pre></div>
 </div>
 </div></blockquote>
-<p>#.. <span class="target" id="creating-and-using-virtual-environments">Creating and using Virtual Environments</span>:</p>
 </div>
 </div>
-<div class="section" id="id8">
-<h2><a class="toc-backref" href="#id28">가상 환경 생성하기</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="creating-and-using-virtual-environments">
+<span id="id8"></span><h2><a class="toc-backref" href="#id28">가상 환경 생성하기</a><a class="headerlink" href="#creating-and-using-virtual-environments" title="Permalink to this headline">¶</a></h2>
 <p>파이썬 “가상 환경”은 파이썬 <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">packages</span></a>가 글로벌하게
 (globally) 설치되지 않고 특정한 어플리케이션을 위한 독립된 위치에 설치되게 할 수 있다.</p>
 <p>당신이 LibFoo 버전 1을 필요로 하는 어플리케이션을 가지고 있다고 상상해보자, 그런데
@@ -197,12 +196,12 @@
 <ul class="simple">
 <li><a class="reference external" href="https://docs.python.org/3/library/venv.html">venv</a>는 파이썬 3.3 이후의 버전에서 기본으로 이용 가능하며, 3.4 이후의 버전에서는
 <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>와 <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> 를 생성된 가상환경에 설치한다.</li>
-<li><a class="reference internal" href="../key_projects_ko.html#virtualenv"><span class="std std-ref">virtualenv</span></a>는 따로 설치되어야 하지만 파이썬 2.6 이상, 3.3 이상을 지원하며,
+<li><span class="xref std std-ref">virtualenv</span>는 따로 설치되어야 하지만 파이썬 2.6 이상, 3.3 이상을 지원하며,
 <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>, <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a>, <a class="reference internal" href="../key_projects_ko.html#wheel"><span class="std std-ref">wheel</span></a>는 기본으로 (파이썬 버전과
 관계없이) 생성된 가상 환경에 설치된다.</li>
 </ul>
 <p>기본적인 사용방법은 아래와 같다:</p>
-<p><a class="reference internal" href="../key_projects_ko.html#virtualenv"><span class="std std-ref">virtualenv</span></a> 사용하기:</p>
+<p><span class="xref std std-ref">virtualenv</span> 사용하기:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">virtualenv</span> <span class="o">&lt;</span><span class="n">DIR</span><span class="o">&gt;</span>
 <span class="n">source</span> <span class="o">&lt;</span><span class="n">DIR</span><span class="o">&gt;/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
 </pre></div>
@@ -221,7 +220,7 @@
 시나리오를 다룰 것이다. 더 자세한 정보는 완전한 <a class="reference external" href="https://pip.pypa.io/en/latest/reference/index.html">레퍼런스 가이드</a>를 포함하는
 <a class="reference external" href="https://pip.pypa.io">pip 문서</a>를 참고하라.</p>
 <p>pip 대신에 <a class="reference external" href="https://pip.pypa.io/en/latest/reference/index.html">easy_install</a>
-을 사용하기를 원하는 경우가 있다. 자세한 정보는 <span class="xref std std-ref">pip vs easy_install</span>를
+을 사용하기를 원하는 경우가 있다. 자세한 정보는 <a class="reference internal" href="../discussions/pip-vs-easy-install_ko.html#pip-vs-easy-install"><span class="std std-ref">pip vs easy_install</span></a>를
 참고하라.</p>
 </div>
 <div class="section" id="pypi">
@@ -379,9 +378,9 @@ SSL 인정스럴 확인하는 <cite>curl</cite>같은 툴을 사용하는 것을
 <table class="docutils footnote" frame="void" id="id22" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id7">[3]</a></td><td>Python 3.4로 시작하면, <code class="docutils literal"><span class="pre">venv</span></code> (<a class="reference internal" href="../key_projects_ko.html#virtualenv"><span class="std std-ref">virtualenv</span></a>의 대체 표준 라이브러리)
+<tr><td class="label"><a class="fn-backref" href="#id7">[3]</a></td><td>Python 3.4로 시작하면, <code class="docutils literal"><span class="pre">venv</span></code> (<span class="xref std std-ref">virtualenv</span>의 대체 표준 라이브러리)
 가 설치된 <code class="docutils literal"><span class="pre">pip</span></code>로 가상 환경을 생성하고, 그렇게 함으로써
-<a class="reference internal" href="../key_projects_ko.html#virtualenv"><span class="std std-ref">virtualenv</span></a>와 동일한 대체재가 될 것이다. .</td></tr>
+<span class="xref std std-ref">virtualenv</span>와 동일한 대체재가 될 것이다. .</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="id23" rules="none">
@@ -412,12 +411,12 @@ SSL 인정스럴 확인하는 <cite>curl</cite>같은 툴을 사용하는 것을
 <li class="toctree-l2"><a class="reference internal" href="distributing-packages_ko.html">프로젝트 패키징과 배포</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/index_ko.html">Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/index_ko.html">가이드</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA 설명서</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">프로젝트 요약</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">How to Get Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">지원 받는 방법</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
 </ul>
 
@@ -478,7 +477,7 @@ SSL 인정스럴 확인하는 <cite>curl</cite>같은 툴을 사용하는 것을
 <br />
     <br />
 
-    Last updated on Sep 25, 2017.
+    Last updated on Sep 27, 2017.
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 

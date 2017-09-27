@@ -90,7 +90,7 @@ pip, setuptools, wheel 설치하기
     source <DIR>/bin/activate
 
 
-#.. _`Creating and using Virtual Environments`:
+.. _`Creating and using Virtual Environments`:
 
 가상 환경 생성하기
 =============================

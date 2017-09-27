@@ -1,4 +1,4 @@
-#.. _`Hosting your Own Simple Repository`:
+.. _`Hosting your Own Simple Repository`:
 
 =====================================
 자신의 simple repository 호스팅하기

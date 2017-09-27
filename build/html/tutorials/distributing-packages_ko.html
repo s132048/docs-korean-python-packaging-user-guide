@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Guides" href="../guides/index.html" />
+    <link rel="next" title="가이드" href="../guides/index_ko.html" />
     <link rel="prev" title="패키지 설치하기" href="installing-packages_ko.html" />
     <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
     
@@ -41,7 +41,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../guides/index.html" title="Guides"
+          <a href="../guides/index_ko.html" title="가이드"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="installing-packages_ko.html" title="패키지 설치하기"
@@ -85,85 +85,84 @@
 <p>이 섹션은 파이썬 프로젝트 전반에 대한 모범 사례들을 다루는 것이 목적이 아니다.
 예를 들면, 이 문서는 테스트, 도큐먼테이션, 버전 관리를 위한 툴이나 가이드를 추천하지
 않는다.</p>
-<p><a href="#id2"><span class="problematic" id="id3">:ref:`setuptools`에 있는 `Building and Distributing Packages
-&lt;https://setuptools.readthedocs.io/en/latest/setuptools.html&gt;`_</span></a>를 참고하면
+<p><a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a>에 있는 <a class="reference external" href="https://setuptools.readthedocs.io/en/latest/setuptools.html">Building and Distributing Packages</a>를 참고하면
 더 많은 레퍼런스 자료들을 볼 수있다. 하지만 자료에 있는 내용은 최신화 되지 않은
 경우가 있다. 내용이 상충하는 경우 Python Packaging User Guide를 따라라.</p>
-<div class="contents local topic" id="id4">
+<div class="contents local topic" id="id2">
 <p class="topic-title first">목차</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id5" id="id52">패키징과 배포를 위한 요구 조건</a></li>
-<li><a class="reference internal" href="#id7" id="id53">프로젝트 구성하기</a><ul>
-<li><a class="reference internal" href="#id8" id="id54">초기 파일</a><ul>
-<li><a class="reference internal" href="#setup-py" id="id55">setup.py</a></li>
-<li><a class="reference internal" href="#setup-cfg" id="id56">setup.cfg</a></li>
-<li><a class="reference internal" href="#readme-rst" id="id57">README.rst</a></li>
-<li><a class="reference internal" href="#manifest-in" id="id58">MANIFEST.in</a></li>
-<li><a class="reference internal" href="#license-txt" id="id59">LICENSE.txt</a></li>
-<li><a class="reference internal" href="#your-package" id="id60">&lt;your package&gt;</a></li>
+<li><a class="reference internal" href="#id3" id="id50">패키징과 배포를 위한 요구 조건</a></li>
+<li><a class="reference internal" href="#id5" id="id51">프로젝트 구성하기</a><ul>
+<li><a class="reference internal" href="#id6" id="id52">초기 파일</a><ul>
+<li><a class="reference internal" href="#setup-py" id="id53">setup.py</a></li>
+<li><a class="reference internal" href="#setup-cfg" id="id54">setup.cfg</a></li>
+<li><a class="reference internal" href="#readme-rst" id="id55">README.rst</a></li>
+<li><a class="reference internal" href="#manifest-in" id="id56">MANIFEST.in</a></li>
+<li><a class="reference internal" href="#license-txt" id="id57">LICENSE.txt</a></li>
+<li><a class="reference internal" href="#your-package" id="id58">&lt;your package&gt;</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#setup-args" id="id61">setup() args</a><ul>
-<li><a class="reference internal" href="#name" id="id62">name</a></li>
-<li><a class="reference internal" href="#version" id="id63">version</a></li>
-<li><a class="reference internal" href="#description" id="id64">description</a></li>
-<li><a class="reference internal" href="#url" id="id65">url</a></li>
-<li><a class="reference internal" href="#author" id="id66">author</a></li>
-<li><a class="reference internal" href="#license" id="id67">license</a></li>
-<li><a class="reference internal" href="#classifiers" id="id68">classifiers</a></li>
-<li><a class="reference internal" href="#keywords" id="id69">keywords</a></li>
-<li><a class="reference internal" href="#packages" id="id70">packages</a></li>
-<li><a class="reference internal" href="#install-requires" id="id71">install_requires</a></li>
-<li><a class="reference internal" href="#python-requires" id="id72">python_requires</a></li>
-<li><a class="reference internal" href="#package-data" id="id73">package_data</a></li>
-<li><a class="reference internal" href="#data-files" id="id74">data_files</a></li>
-<li><a class="reference internal" href="#scripts" id="id75">scripts</a></li>
-<li><a class="reference internal" href="#entry-points" id="id76">entry_points</a><ul>
-<li><a class="reference internal" href="#console-scripts" id="id77">console_scripts</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#choosing-a-versioning-scheme" id="id78">Choosing a versioning scheme</a><ul>
-<li><a class="reference internal" href="#standards-compliance-for-interoperability" id="id79">Standards compliance for interoperability</a></li>
-<li><a class="reference internal" href="#id32" id="id80">스킴 선택</a><ul>
-<li><a class="reference internal" href="#id33" id="id81">시맨틱 버저닝 (선호됨)</a></li>
-<li><a class="reference internal" href="#date-based-versioning" id="id82">Date based versioning</a></li>
-<li><a class="reference internal" href="#serial-versioning" id="id83">Serial versioning</a></li>
-<li><a class="reference internal" href="#hybrid-schemes" id="id84">Hybrid schemes</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#pre-release-versioning" id="id85">Pre-release versioning</a></li>
-<li><a class="reference internal" href="#local-version-identifiers" id="id86">Local version identifiers</a></li>
+<li><a class="reference internal" href="#setup-args" id="id59">setup() args</a><ul>
+<li><a class="reference internal" href="#name" id="id60">name</a></li>
+<li><a class="reference internal" href="#version" id="id61">version</a></li>
+<li><a class="reference internal" href="#description" id="id62">description</a></li>
+<li><a class="reference internal" href="#url" id="id63">url</a></li>
+<li><a class="reference internal" href="#author" id="id64">author</a></li>
+<li><a class="reference internal" href="#license" id="id65">license</a></li>
+<li><a class="reference internal" href="#classifiers" id="id66">classifiers</a></li>
+<li><a class="reference internal" href="#keywords" id="id67">keywords</a></li>
+<li><a class="reference internal" href="#packages" id="id68">packages</a></li>
+<li><a class="reference internal" href="#install-requires" id="id69">install_requires</a></li>
+<li><a class="reference internal" href="#python-requires" id="id70">python_requires</a></li>
+<li><a class="reference internal" href="#package-data" id="id71">package_data</a></li>
+<li><a class="reference internal" href="#data-files" id="id72">data_files</a></li>
+<li><a class="reference internal" href="#scripts" id="id73">scripts</a></li>
+<li><a class="reference internal" href="#entry-points" id="id74">entry_points</a><ul>
+<li><a class="reference internal" href="#console-scripts" id="id75">console_scripts</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#working-in-development-mode" id="id87">Working in “Development Mode”</a></li>
-<li><a class="reference internal" href="#id35" id="id88">프로젝트 패키징하기</a><ul>
-<li><a class="reference internal" href="#id37" id="id89">소스 배포판</a></li>
-<li><a class="reference internal" href="#wheels" id="id90">Wheels</a><ul>
-<li><a class="reference internal" href="#id38" id="id91">유니버셜 Wheels</a></li>
-<li><a class="reference internal" href="#id40" id="id92">순수 파이썬 wheels</a></li>
-<li><a class="reference internal" href="#id42" id="id93">플랫폼 wheels</a></li>
+<li><a class="reference internal" href="#choosing-a-versioning-scheme" id="id76">Choosing a versioning scheme</a><ul>
+<li><a class="reference internal" href="#standards-compliance-for-interoperability" id="id77">Standards compliance for interoperability</a></li>
+<li><a class="reference internal" href="#id30" id="id78">스킴 선택</a><ul>
+<li><a class="reference internal" href="#id31" id="id79">시맨틱 버저닝 (선호됨)</a></li>
+<li><a class="reference internal" href="#date-based-versioning" id="id80">Date based versioning</a></li>
+<li><a class="reference internal" href="#serial-versioning" id="id81">Serial versioning</a></li>
+<li><a class="reference internal" href="#hybrid-schemes" id="id82">Hybrid schemes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pre-release-versioning" id="id83">Pre-release versioning</a></li>
+<li><a class="reference internal" href="#local-version-identifiers" id="id84">Local version identifiers</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#pypi" id="id94">PyPI에 프로젝트 업로드하기</a><ul>
-<li><a class="reference internal" href="#id46" id="id95">계정 생성하기</a></li>
-<li><a class="reference internal" href="#register-your-project" id="id96">배포판 업로드하기</a></li>
+<li><a class="reference internal" href="#working-in-development-mode" id="id85">Working in “Development Mode”</a></li>
+<li><a class="reference internal" href="#id33" id="id86">프로젝트 패키징하기</a><ul>
+<li><a class="reference internal" href="#id35" id="id87">소스 배포판</a></li>
+<li><a class="reference internal" href="#wheels" id="id88">Wheels</a><ul>
+<li><a class="reference internal" href="#id36" id="id89">유니버셜 Wheels</a></li>
+<li><a class="reference internal" href="#id38" id="id90">순수 파이썬 wheels</a></li>
+<li><a class="reference internal" href="#id40" id="id91">플랫폼 wheels</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pypi" id="id92">PyPI에 프로젝트 업로드하기</a><ul>
+<li><a class="reference internal" href="#id44" id="id93">계정 생성하기</a></li>
+<li><a class="reference internal" href="#register-your-project" id="id94">배포판 업로드하기</a></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="section" id="id5">
-<h2><a class="toc-backref" href="#id52">패키징과 배포를 위한 요구 조건</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id50">패키징과 배포를 위한 요구 조건</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">첫째, <a class="reference internal" href="installing-packages_ko.html#id3"><span class="std std-ref">패키지 설치를 위한 요구 조건</span></a>을
+<li><p class="first">첫째, <a class="reference internal" href="installing-packages_ko.html#installing-requirements"><span class="std std-ref">requirements for installing packages</span></a>을
 축종하는지 확인하라.</p>
 </li>
-<li><p class="first">“twine” <a class="footnote-reference" href="#id49" id="id6">[1]</a>을 설치하라:</p>
+<li><p class="first">“twine” <a class="footnote-reference" href="#id47" id="id4">[1]</a>을 설치하라:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">twine</span>
 </pre></div>
 </div>
@@ -173,12 +172,12 @@
 </li>
 </ol>
 </div>
-<div class="section" id="id7">
-<h2><a class="toc-backref" href="#id53">프로젝트 구성하기</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id8">
-<h3><a class="toc-backref" href="#id54">초기 파일</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id51">프로젝트 구성하기</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id52">초기 파일</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="setup-py">
-<h4><a class="toc-backref" href="#id55">setup.py</a><a class="headerlink" href="#setup-py" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id53">setup.py</a><a class="headerlink" href="#setup-py" title="Permalink to this headline">¶</a></h4>
 <p>가장 중요한 파일은 “setup.py”이며 프로젝트 디렉토리의 루트에 존재한다. 예시는,
 <a class="reference external" href="https://github.com/pypa/sampleproject">PyPA 샘플 프로젝트</a>에 있는
 <a class="reference external" href="https://github.com/pypa/sampleproject/blob/master/setup.py">setup.py</a>를
@@ -194,14 +193,14 @@
 </ol>
 </div>
 <div class="section" id="setup-cfg">
-<h4><a class="toc-backref" href="#id56">setup.cfg</a><a class="headerlink" href="#setup-cfg" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id54">setup.cfg</a><a class="headerlink" href="#setup-cfg" title="Permalink to this headline">¶</a></h4>
 <p>“setup.cfg”은 ini 파일로 <code class="docutils literal"><span class="pre">setup.py</span></code> 커맨드를 위한 기본 옵션을 포함하고 있다.
 예시는 <a class="reference external" href="https://github.com/pypa/sampleproject">PyPA 샘플 프로젝트</a>에 있는
 <a class="reference external" href="https://github.com/pypa/sampleproject/blob/master/setup.cfg">setup.cfg</a>를
 참고하라.</p>
 </div>
 <div class="section" id="readme-rst">
-<h4><a class="toc-backref" href="#id57">README.rst</a><a class="headerlink" href="#readme-rst" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id55">README.rst</a><a class="headerlink" href="#readme-rst" title="Permalink to this headline">¶</a></h4>
 <p>모든 프로젝트는 프로젝트의 목표를 설명하는 readme 파일을 포함하고 있어야 한다.
 일반적인 포맷은 “rst” 확장자를 가진 <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a>이며 요구 조건은 아니다.</p>
 <p>예시는, <a class="reference external" href="https://github.com/pypa/sampleproject">PyPA 샘플 프로젝트</a>에 있는
@@ -209,7 +208,7 @@
 확인하라.</p>
 </div>
 <div class="section" id="manifest-in">
-<h4><a class="toc-backref" href="#id58">MANIFEST.in</a><a class="headerlink" href="#manifest-in" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id56">MANIFEST.in</a><a class="headerlink" href="#manifest-in" title="Permalink to this headline">¶</a></h4>
 <p><code class="file docutils literal"><span class="pre">MANIFEST.in</span></code>는 소스 배포판에 자동적으로 포함되지 않는 추가적인 파일을
 패키징 할 필요가 있는 특별한 경우에 필요하다. 기본적으로 포함되는 항목의 리스트는
 <a class="reference internal" href="../key_projects_ko.html#distutils"><span class="std std-ref">distutils</span></a> 도큐먼테이션의 <a class="reference external" href="https://docs.python.org/3.4/distutils/sourcedist.html#specifying-the-files-to-distribute">배포할 파일 지정하기</a>를
@@ -226,7 +225,7 @@
 </div>
 </div>
 <div class="section" id="license-txt">
-<h4><a class="toc-backref" href="#id59">LICENSE.txt</a><a class="headerlink" href="#license-txt" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id57">LICENSE.txt</a><a class="headerlink" href="#license-txt" title="Permalink to this headline">¶</a></h4>
 <p>모든 패키지는 배포 규정에 대해 자세하게 설명한 라이센스 파일을 포함해야 한다.
 많은 국가에서 명시적인 라이센스가 없는 패키지는 저작권 소유자를 제외한 다른
 사람에 의해 법적으로 배포되거나 사용될 수 없다. 어떤 라이센스를 선택해야 될지
@@ -237,7 +236,7 @@
 참고하라.</p>
 </div>
 <div class="section" id="your-package">
-<h4><a class="toc-backref" href="#id60">&lt;your package&gt;</a><a class="headerlink" href="#your-package" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id58">&lt;your package&gt;</a><a class="headerlink" href="#your-package" title="Permalink to this headline">¶</a></h4>
 <p>필수는 아니지만, 가장 일반적인 방법은 파이썬 모듈과 패키지를 당신의 프로젝트와 동일한
 <a class="reference internal" href="#setup-name"><span class="std std-ref">name</span></a>를 가진 하나의 최상위 패키지 아레에 파이썬 모듈과
 패키지를 포함시키는 것이다.</p>
@@ -247,7 +246,7 @@
 </div>
 </div>
 <div class="section" id="setup-args">
-<span id="id20"></span><h3><a class="toc-backref" href="#id61">setup() args</a><a class="headerlink" href="#setup-args" title="Permalink to this headline">¶</a></h3>
+<span id="id18"></span><h3><a class="toc-backref" href="#id59">setup() args</a><a class="headerlink" href="#setup-args" title="Permalink to this headline">¶</a></h3>
 <p>위에서 언급했다시피 <code class="docutils literal"><span class="pre">setup.py`\</span> <span class="pre">의</span> <span class="pre">주요</span> <span class="pre">특징은</span> <span class="pre">``setup()</span></code> 전역 함수를 포함하고
 있다는 사실이다. 이 함수에 대한 키워드 인수는 프로젝트의 구체적인 디테일을 결정한다.</p>
 <p>가장 관련이 높은 인수는 아래에 설명되어 있다. 제공되는 스니핏(snippet)은
@@ -255,7 +254,7 @@
 <a class="reference external" href="https://github.com/pypa/sampleproject/blob/master/setup.py">setup.py</a>에서
 가져온 것이다.</p>
 <div class="section" id="name">
-<span id="setup-name"></span><h4><a class="toc-backref" href="#id62">name</a><a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h4>
+<span id="setup-name"></span><h4><a class="toc-backref" href="#id60">name</a><a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;sample&#39;</span><span class="p">,</span>
 </pre></div>
 </div>
@@ -278,7 +277,7 @@
 </div>
 </div>
 <div class="section" id="version">
-<h4><a class="toc-backref" href="#id63">version</a><a class="headerlink" href="#version" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id61">version</a><a class="headerlink" href="#version" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.2.0&#39;</span><span class="p">,</span>
 </pre></div>
 </div>
@@ -294,7 +293,7 @@
 “<a class="reference internal" href="../guides/single-sourcing-package-version_ko.html#single-sourcing-the-version"><span class="std std-ref">패키지 버전 단일 소싱</span></a>” Advanced Topics 섹션을 참고하라.</p>
 </div>
 <div class="section" id="description">
-<h4><a class="toc-backref" href="#id64">description</a><a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id62">description</a><a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;A sample Python project&#39;</span><span class="p">,</span>
 <span class="n">long_description</span><span class="o">=</span><span class="n">long_description</span><span class="p">,</span>
 </pre></div>
@@ -303,14 +302,14 @@
 <a class="reference internal" href="../glossary_ko.html#term-python-package-index-pypi"><span class="xref std std-term">PyPI</span></a>에 나타날 것이다.</p>
 </div>
 <div class="section" id="url">
-<h4><a class="toc-backref" href="#id65">url</a><a class="headerlink" href="#url" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id63">url</a><a class="headerlink" href="#url" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://github.com/pypa/sampleproject&#39;</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>프로젝트에 대한 홈페이지 url을 제공하라.</p>
 </div>
 <div class="section" id="author">
-<h4><a class="toc-backref" href="#id66">author</a><a class="headerlink" href="#author" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id64">author</a><a class="headerlink" href="#author" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">author</span><span class="o">=</span><span class="s1">&#39;The Python Packaging Authority&#39;</span><span class="p">,</span>
 <span class="n">author_email</span><span class="o">=</span><span class="s1">&#39;pypa-dev@googlegroups.com&#39;</span><span class="p">,</span>
 </pre></div>
@@ -318,14 +317,14 @@
 <p>제작자에 대한 정보를 제공하라.</p>
 </div>
 <div class="section" id="license">
-<h4><a class="toc-backref" href="#id67">license</a><a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id65">license</a><a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">license</span><span class="o">=</span><span class="s1">&#39;MIT&#39;</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>사용하고 있는 라이센스 타입을 제공하라.</p>
 </div>
 <div class="section" id="classifiers">
-<h4><a class="toc-backref" href="#id68">classifiers</a><a class="headerlink" href="#classifiers" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id66">classifiers</a><a class="headerlink" href="#classifiers" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">classifiers</span><span class="o">=</span><span class="p">[</span>
     <span class="c1"># 프로젝트가 어느 단계에 있는가? 일반적인 값은</span>
     <span class="c1">#   3 - Alpha</span>
@@ -360,14 +359,14 @@
 <a class="reference internal" href="#python-requires"><span class="std std-ref">python_requires</span></a> 인수를 사용하라.</p>
 </div>
 <div class="section" id="keywords">
-<h4><a class="toc-backref" href="#id69">keywords</a><a class="headerlink" href="#keywords" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id67">keywords</a><a class="headerlink" href="#keywords" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">keywords</span><span class="o">=</span><span class="s1">&#39;sample setuptools development&#39;</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>프로젝트를 설명하는 키워드를 나열하라.</p>
 </div>
 <div class="section" id="packages">
-<h4><a class="toc-backref" href="#id70">packages</a><a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id68">packages</a><a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">packages</span><span class="o">=</span><span class="n">find_packages</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;contrib&#39;</span><span class="p">,</span> <span class="s1">&#39;docs&#39;</span><span class="p">,</span> <span class="s1">&#39;tests*&#39;</span><span class="p">]),</span>
 </pre></div>
 </div>
@@ -377,7 +376,7 @@
 제외할 수 있다.</p>
 </div>
 <div class="section" id="install-requires">
-<h4><a class="toc-backref" href="#id71">install_requires</a><a class="headerlink" href="#install-requires" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id69">install_requires</a><a class="headerlink" href="#install-requires" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">install_requires</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;peppercorn&#39;</span><span class="p">],</span>
 </pre></div>
 </div>
@@ -388,7 +387,7 @@
 참고하라.</p>
 </div>
 <div class="section" id="python-requires">
-<span id="id23"></span><h4><a class="toc-backref" href="#id72">python_requires</a><a class="headerlink" href="#python-requires" title="Permalink to this headline">¶</a></h4>
+<span id="id21"></span><h4><a class="toc-backref" href="#id70">python_requires</a><a class="headerlink" href="#python-requires" title="Permalink to this headline">¶</a></h4>
 <p>만약 프로젝트가 특정한 파이썬 버전에서만 실행된다면 <span class="target" id="index-1"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440"><strong>PEP 440</strong></a>를 따르는
 버전 지정자 스트링에 맞게 <code class="docutils literal"><span class="pre">python_requires</span></code> 인수를 세팅해서 다른 파이썬
 버전에 프로젝트가 설치되는 것을 막을 수 있다. 예를 들어 패키지가 파이썬 3+에서만
@@ -410,7 +409,7 @@
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>이 기능에 대한 지원은 비교적 최근에 시작되었다. 프로젝트 소스 배포판과
-wheel은 (<a class="reference internal" href="#id35"><span class="std std-ref">프로젝트 패키징하기</span></a> 참고) <code class="docutils literal"><span class="pre">python_requires</span></code> 인수를
+wheel은 (<a class="reference internal" href="#id33"><span class="std std-ref">프로젝트 패키징하기</span></a> 참고) <code class="docutils literal"><span class="pre">python_requires</span></code> 인수를
 인식하고 적합한 메타데이터를 생성하기 위해 최소 24.2.0 버전 <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a>을
 사용해서 빌드되어야 한다.</p>
 <p class="last">또한, 9.0.0 버전 이상의 <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>만이 <code class="docutils literal"><span class="pre">python_requires</span></code> 메타데이터를
@@ -419,7 +418,7 @@ wheel은 (<a class="reference internal" href="#id35"><span class="std std-ref">�
 </div>
 </div>
 <div class="section" id="package-data">
-<span id="id24"></span><h4><a class="toc-backref" href="#id73">package_data</a><a class="headerlink" href="#package-data" title="Permalink to this headline">¶</a></h4>
+<span id="id22"></span><h4><a class="toc-backref" href="#id71">package_data</a><a class="headerlink" href="#package-data" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package_data</span><span class="o">=</span><span class="p">{</span>
     <span class="s1">&#39;sample&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;package_data.dat&#39;</span><span class="p">],</span>
 <span class="p">},</span>
@@ -436,7 +435,7 @@ wheel은 (<a class="reference internal" href="#id35"><span class="std std-ref">�
 을 참고하라.</p>
 </div>
 <div class="section" id="data-files">
-<span id="id25"></span><h4><a class="toc-backref" href="#id74">data_files</a><a class="headerlink" href="#data-files" title="Permalink to this headline">¶</a></h4>
+<span id="id23"></span><h4><a class="toc-backref" href="#id72">data_files</a><a class="headerlink" href="#data-files" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">data_files</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;my_data&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;data/data_file&#39;</span><span class="p">])],</span>
 </pre></div>
 </div>
@@ -462,13 +461,13 @@ wheel은 (<a class="reference internal" href="#id35"><span class="std std-ref">�
 </div>
 </div>
 <div class="section" id="scripts">
-<h4><a class="toc-backref" href="#id75">scripts</a><a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id73">scripts</a><a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h4>
 <p><code class="docutils literal"><span class="pre">setup()</span></code>이 설치된 사전 제작된 스크립트를 가리키는 <a class="reference external" href="http://docs.python.org/3.4/distutils/setupscript.html#installing-scripts">scripts</a>
 키워드를 지원하지만, 교차 플랫폼의 호환성을 달성하기 위해 추천하는 방법은
 <a class="reference internal" href="#console-scripts"><span class="std std-ref">console_scripts</span></a> 엔트리 포인트를 사용하는 것이다 (아래를 참고하라).</p>
 </div>
 <div class="section" id="entry-points">
-<h4><a class="toc-backref" href="#id76">entry_points</a><a class="headerlink" href="#entry-points" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id74">entry_points</a><a class="headerlink" href="#entry-points" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
   <span class="o">...</span>
 <span class="p">},</span>
@@ -482,7 +481,7 @@ Plugins</a>
 섹션을 참고하라.</p>
 <p>가장 흔하게 사용되는 엔트리 포인트는 “console_scripts”다 (아래를 참고하라).</p>
 <div class="section" id="console-scripts">
-<span id="id27"></span><h5><a class="toc-backref" href="#id77">console_scripts</a><a class="headerlink" href="#console-scripts" title="Permalink to this headline">¶</a></h5>
+<span id="id25"></span><h5><a class="toc-backref" href="#id75">console_scripts</a><a class="headerlink" href="#console-scripts" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
     <span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="p">[</span>
         <span class="s1">&#39;sample=sample:main&#39;</span><span class="p">,</span>
@@ -492,7 +491,7 @@ Plugins</a>
 </div>
 <p>당신의 스크립트 인터페이스를 등록하려면 “console_script” <a class="reference external" href="https://setuptools.readthedocs.io/en/latest/setuptools.html#dynamic-discovery-of-services-and-plugins">entry points</a>를
 사용하라. 그러면 툴체인(toolchain)으로 인터페이스를 실제 스크립트로 바꾸는 작업을
-처리하게 할 수 있다 <a class="footnote-reference" href="#id51" id="id29">[2]</a>.  이 스크립트는 <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">distribution</span></a>를 설치하는 동안에 생성될 것이다.</p>
+처리하게 할 수 있다 <a class="footnote-reference" href="#id49" id="id27">[2]</a>.  이 스크립트는 <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">distribution</span></a>를 설치하는 동안에 생성될 것이다.</p>
 <p>더 자세한 정보는 <a class="reference external" href="https://setuptools.readthedocs.io">setuptools docs</a> 에 있는
 <a class="reference external" href="https://setuptools.readthedocs.io/en/latest/setuptools.html#automatic-script-creation">Automatic Script Creation</a>를
 참고하라.</p>
@@ -500,9 +499,9 @@ Plugins</a>
 </div>
 </div>
 <div class="section" id="choosing-a-versioning-scheme">
-<span id="id31"></span><h3><a class="toc-backref" href="#id78">Choosing a versioning scheme</a><a class="headerlink" href="#choosing-a-versioning-scheme" title="Permalink to this headline">¶</a></h3>
+<span id="id29"></span><h3><a class="toc-backref" href="#id76">Choosing a versioning scheme</a><a class="headerlink" href="#choosing-a-versioning-scheme" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="standards-compliance-for-interoperability">
-<h4><a class="toc-backref" href="#id79">Standards compliance for interoperability</a><a class="headerlink" href="#standards-compliance-for-interoperability" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id77">Standards compliance for interoperability</a><a class="headerlink" href="#standards-compliance-for-interoperability" title="Permalink to this headline">¶</a></h4>
 <p>다른 파이썬 프로젝트는 특정한 프로젝트에서 필요로 하는 다른 버전 관리 스킴(scheme)을
 사용하지만, <code class="docutils literal"><span class="pre">pip</span></code>와 <code class="docutils literal"><span class="pre">setuptools</span></code>같은 라이브러리나 툴에서 지원받기 위해서는
 모든 프로젝트는 <span class="target" id="index-2"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440"><strong>PEP 440</strong></a>에서 명시된 유연한 <span class="target" id="index-3"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440#public-version-identifiers"><strong>public version scheme</strong></a>을 따를 필요가 있다.</p>
@@ -521,10 +520,10 @@ Plugins</a>
 변형된 구문을 표준화된 형태로 대응시켜 놓은 <span class="target" id="index-5"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440#normalization"><strong>version
 normalisation</strong></a>에 대한 포좔적인 기술을 정의해 놓았다 .</p>
 </div>
-<div class="section" id="id32">
-<h4><a class="toc-backref" href="#id80">스킴 선택</a><a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h4>
-<div class="section" id="id33">
-<h5><a class="toc-backref" href="#id81">시맨틱 버저닝 (선호됨)</a><a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id30">
+<h4><a class="toc-backref" href="#id78">스킴 선택</a><a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id31">
+<h5><a class="toc-backref" href="#id79">시맨틱 버저닝 (선호됨)</a><a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h5>
 <p>새로운 프로젝트의 경우 권장되는 버전 관리 스킴은 <a class="reference external" href="http://semver.org">Semantic Versioning</a>을 바탕으로 한다. 하지만 사전 릴리즈 처리와 메타데이터 빌드에
 대해서는 다른 접근방식을 채택했다.</p>
 <p>시멘틱 버저닝의 본질은 제작자가 증가시켜가는 3단계 MAJOR.MINOR.MAINTENANCE 숫자 스킴이다:</p>
@@ -541,7 +540,7 @@ normalisation</strong></a>에 대한 포좔적인 기술을 정의해 놓았다 
 따라 유지되어야 한다.</p>
 </div>
 <div class="section" id="date-based-versioning">
-<h5><a class="toc-backref" href="#id82">Date based versioning</a><a class="headerlink" href="#date-based-versioning" title="Permalink to this headline">¶</a></h5>
+<h5><a class="toc-backref" href="#id80">Date based versioning</a><a class="headerlink" href="#date-based-versioning" title="Permalink to this headline">¶</a></h5>
 <p>시멘틱 버전 관리는 정기 날짜 기반 케이던스(cadence)와 기능 제거 이전의 많은 릴리즈에
 경고를 제공하는 디프리케이션(deprecation) 처리 같은 프로젝트에는 적합하지 않은 선택이
 될 수 있다.</p>
@@ -551,21 +550,21 @@ normalisation</strong></a>에 대한 포좔적인 기술을 정의해 놓았다 
 <code class="docutils literal"><span class="pre">12.04</span></code>, <code class="docutils literal"><span class="pre">15.10</span></code>).</p>
 </div>
 <div class="section" id="serial-versioning">
-<h5><a class="toc-backref" href="#id83">Serial versioning</a><a class="headerlink" href="#serial-versioning" title="Permalink to this headline">¶</a></h5>
+<h5><a class="toc-backref" href="#id81">Serial versioning</a><a class="headerlink" href="#serial-versioning" title="Permalink to this headline">¶</a></h5>
 <p>이것은 가장 간단한 버저닝 스킴이며 매 릴리즈마다 증가하는 숫자 하나로 구성되어 있다.</p>
 <p>순차 버전 관리는 개발자로서 관리하기가 매우 쉽지만 사용자로서는 쫓아가기가 매우 어렵다.
 왜냐하면 순차 버전 숫자는 API 하위 호환성에 관해 정보를 제공하지 않거나 아주 적은
 정보만 전달하기 때문이다.</p>
 </div>
 <div class="section" id="hybrid-schemes">
-<h5><a class="toc-backref" href="#id84">Hybrid schemes</a><a class="headerlink" href="#hybrid-schemes" title="Permalink to this headline">¶</a></h5>
+<h5><a class="toc-backref" href="#id82">Hybrid schemes</a><a class="headerlink" href="#hybrid-schemes" title="Permalink to this headline">¶</a></h5>
 <p>위 스킴들을 조합해서 사용하는 것도 가능하다. 예를 들어, 프로젝트는 날짜 기반 버저닝과
 순차 버저닝을 결합시켜 릴리즈의 대략적인 세대는 전달하지만 해당 년도 내에 있는 릴리즈
 케이던스 명시하지 않는 YEAR.SERIAL 숫자 스킴 만들 수도 있다.</p>
 </div>
 </div>
 <div class="section" id="pre-release-versioning">
-<h4><a class="toc-backref" href="#id85">Pre-release versioning</a><a class="headerlink" href="#pre-release-versioning" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id83">Pre-release versioning</a><a class="headerlink" href="#pre-release-versioning" title="Permalink to this headline">¶</a></h4>
 <p>기본 버전 관리 스킴과 상관없이 최종 릴리즈를 위한 사전 릴리즈는 아래와 같이 퍼블리시 될
 수 있다:</p>
 <ul class="simple">
@@ -578,7 +577,7 @@ normalisation</strong></a>에 대한 포좔적인 기술을 정의해 놓았다 
 기본적으로 사전 릴리즈는 무시한다.</p>
 </div>
 <div class="section" id="local-version-identifiers">
-<h4><a class="toc-backref" href="#id86">Local version identifiers</a><a class="headerlink" href="#local-version-identifiers" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id84">Local version identifiers</a><a class="headerlink" href="#local-version-identifiers" title="Permalink to this headline">¶</a></h4>
 <p>공공 버전 식별자는 <a class="reference internal" href="../glossary_ko.html#term-python-package-index-pypi"><span class="xref std std-term">PyPI</span></a>를 통해서 배포판을
 지원하도록 디자인 되어 있다. 파이썬의 소프트웨어 배포 툴은
 <span class="target" id="index-7"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440#local-version-identifiers"><strong>로컬 버전 식별자</strong></a>의 견해를 지지한다.
@@ -595,7 +594,7 @@ normalisation</strong></a>에 대한 포좔적인 기술을 정의해 놓았다 
 </div>
 </div>
 <div class="section" id="working-in-development-mode">
-<h2><a class="toc-backref" href="#id87">Working in “Development Mode”</a><a class="headerlink" href="#working-in-development-mode" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id85">Working in “Development Mode”</a><a class="headerlink" href="#working-in-development-mode" title="Permalink to this headline">¶</a></h2>
 <p>필수는 아니지만, 작업을 할 때 프로젝트를 “editable” 모드나 “develop” 모드에서
 로컬에 설치하는 것이 일반적이다. 이것은 프로젝트를 프로젝트 형태에서 편집하고
 설치할 수 있게 해준다.</p>
@@ -633,13 +632,13 @@ pip 문서의 <a class="reference external" href="https://pip.pypa.io/en/latest/
 <a class="reference external" href="https://setuptools.readthedocs.io/en/latest/setuptools.html#development-mode">Development Mode</a>
 섹션을 참고하라.</p>
 </div>
-<div class="section" id="id35">
-<span id="id36"></span><h2><a class="toc-backref" href="#id88">프로젝트 패키징하기</a><a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id33">
+<span id="id34"></span><h2><a class="toc-backref" href="#id86">프로젝트 패키징하기</a><a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="../glossary_ko.html#term-python-package-index-pypi"><span class="xref std std-term">PyPI</span></a> 같은 <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">Package Index`로부터
 당신의 패키지가 설치 가능하게 하려면 :term:`Distribution</span></a> (“<a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">Package</span></a>”)를
 생성해야 할 필요가 있을 것이다.</p>
-<div class="section" id="id37">
-<h3><a class="toc-backref" href="#id89">소스 배포판</a><a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id35">
+<h3><a class="toc-backref" href="#id87">소스 배포판</a><a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
 <p>최소한, <a class="reference internal" href="../glossary_ko.html#term-source-distribution-or-sdist"><span class="xref std std-term">Source Distribution</span></a>을
 생성해야 한다:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">sdist</span>
@@ -651,25 +650,25 @@ pip에 의해 설치될 때 빌드 단계를 요구한다. 배포판이 순수 �
 단계를 포함하고 있다.</p>
 </div>
 <div class="section" id="wheels">
-<h3><a class="toc-backref" href="#id90">Wheels</a><a class="headerlink" href="#wheels" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id88">Wheels</a><a class="headerlink" href="#wheels" title="Permalink to this headline">¶</a></h3>
 <p>또한 당신은 프로젝트를 위해서 wheel을 생성해야 한다.
 Wheel은 “빌드” 과정을 없이 설치될 수 있는 <a class="reference internal" href="../glossary_ko.html#term-built-distribution"><span class="xref std std-term">built package</span></a>다. Wheel 설치는 소스 배포판에서 설치하는 것 보다
 최종 사용자로 설치하는 것이 훨씬 빠르다.</p>
 <p>프로젝트가 순수 파이썬이고 기본적으로 파이썬 2와 3을 지원한다면, 당신은
-<a class="reference internal" href="#id38"><span class="std std-ref">*유니버셜 Wheel* (아래 섹션 참고)</span></a>을 생성하게 될
+<a class="reference internal" href="#id36"><span class="std std-ref">*유니버셜 Wheel* (아래 섹션 참고)</span></a>을 생성하게 될
 것이다.</p>
 <p>만약 프로젝트가 순수 파이썬이 아니고 파이썬 2와 3 둘 중 하나만 지원한다면,
-당신은 <a class="reference internal" href="#id40"><span class="std std-ref">“순수 파이썬 Wheel” (아래 섹션 참고)</span></a>을
+당신은 <a class="reference internal" href="#id38"><span class="std std-ref">“순수 파이썬 Wheel” (아래 섹션 참고)</span></a>을
 생성하게 될 것이다.</p>
 <p>만약 패키지가 컴파일된 확장 라이브러리를 포함하고 있다면 당신은
-<a class="reference internal" href="#id42"><span class="std std-ref">*플랫폼 wheel* (see section below)</span></a>라고 불리는 것을
+<a class="reference internal" href="#id40"><span class="std std-ref">*플랫폼 wheel* (see section below)</span></a>라고 불리는 것을
 생성하게 될 것이다.</p>
 <p>프로젝트를 위해 wheel을 빌드하기 전에 <code class="docutils literal"><span class="pre">`wheel</span></code> 패키지를 설치해야 한다:</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>pip install wheel
 </pre></div>
 </div>
-<div class="section" id="id38">
-<span id="id39"></span><h4><a class="toc-backref" href="#id91">유니버셜 Wheels</a><a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id36">
+<span id="id37"></span><h4><a class="toc-backref" href="#id89">유니버셜 Wheels</a><a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h4>
 <p><em>유니버셜 Wheels</em>은 (컴파일된 확장 라이브러리를 포함하지 않은) 순수 파이썬 wheel이고
 파이썬 2와 3을 지원한다. <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>로 아무 위치에나 설치할 수 있다.</p>
 <p>Wheel 빌드하기:</p>
@@ -694,8 +693,8 @@ universal=1
 퍼블리시하지 않을 것을 권장한다. 왜냐하면 pip는 소스 설치보다 wheel을 선호하고
 확장 파일을 빌드할 가능성을 없애버리기 때문이다.</p>
 </div>
-<div class="section" id="id40">
-<span id="id41"></span><h4><a class="toc-backref" href="#id92">순수 파이썬 wheels</a><a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id38">
+<span id="id39"></span><h4><a class="toc-backref" href="#id90">순수 파이썬 wheels</a><a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h4>
 <p>“universal” 하지 않는 <em>순수 파이썬 wheel</em>은 (컴파일된 확장 파일을 포함하지 않는
 ) 순수 파이썬 wheel이지만, 기본적으로 파이썬 2와 3 모두를 지원하지는 않는다.</p>
 <p>wheel 빌드하기 :</p>
@@ -711,8 +710,8 @@ universal=1
 같이 지원한다면, <code class="docutils literal"><span class="pre">setup.py</span> <span class="pre">bdist_wheel</span></code>를 한 번은 파이썬 2로 한 번은 파이썬 3으로
 두 번 실행시킬 수 있다. 이 작업은 각 버전에 맞는 wheel을 생성할 것이다.</p>
 </div>
-<div class="section" id="id42">
-<span id="id43"></span><h4><a class="toc-backref" href="#id93">플랫폼 wheels</a><a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id40">
+<span id="id41"></span><h4><a class="toc-backref" href="#id91">플랫폼 wheels</a><a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h4>
 <p><em>플랫폼 wheels</em> 는 일반적으로 컴파일된 확장 파일을 포함하는 것 때문에 리눅스나
 맥OS, 윈도우 같은 특정 플랫폼에 한정된 wheel이다.</p>
 <p>wheel 빌드하기:</p>
@@ -732,7 +731,7 @@ ABI에 대한 세부사항은 <span class="target" id="index-10"></span><a class
 </div>
 </div>
 <div class="section" id="pypi">
-<span id="id44"></span><h2><a class="toc-backref" href="#id94">PyPI에 프로젝트 업로드하기</a><a class="headerlink" href="#pypi" title="Permalink to this headline">¶</a></h2>
+<span id="id42"></span><h2><a class="toc-backref" href="#id92">PyPI에 프로젝트 업로드하기</a><a class="headerlink" href="#pypi" title="Permalink to this headline">¶</a></h2>
 <p>배포판을 생성하기 위해 커맨드를 실행할 때 새로운 디렉토리 <code class="docutils literal"><span class="pre">dist/</span></code>가
 프로젝트의 루트 디렉토리 안에 생성된다. 그곳에서 업로드할 배포 파일을 찾을 수 있다.</p>
 <div class="admonition note">
@@ -750,8 +749,8 @@ ABI에 대한 세부사항은 <span class="target" id="index-10"></span><a class
 않은 HTTPS 연결을 사용해서 당신의 사용자 이름과 비밀번호가 전송중에 가로채질 수 있기
 때문이다.</p>
 </div>
-<div class="section" id="id46">
-<h3><a class="toc-backref" href="#id95">계정 생성하기</a><a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id44">
+<h3><a class="toc-backref" href="#id93">계정 생성하기</a><a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
 <p>첫 번째로, 당신은 <a class="reference internal" href="../glossary_ko.html#term-python-package-index-pypi"><span class="xref std std-term">PyPI</span></a> 사용자 계정이 필요하다.
 당신은 <a class="reference external" href="https://pypi.python.org/pypi?%3Aaction=register_form">PyPI 웹사이트의 서식을 사용해</a>
 계정을 생성할 수 있다.</p>
@@ -768,7 +767,7 @@ password = &lt;password&gt;
 </div>
 </div>
 <div class="section" id="register-your-project">
-<span id="id48"></span><h3><a class="toc-backref" href="#id96">배포판 업로드하기</a><a class="headerlink" href="#register-your-project" title="Permalink to this headline">¶</a></h3>
+<span id="id46"></span><h3><a class="toc-backref" href="#id94">배포판 업로드하기</a><a class="headerlink" href="#register-your-project" title="Permalink to this headline">¶</a></h3>
 <p>일단 계정이 있으면 <a class="reference internal" href="../key_projects_ko.html#twine"><span class="std std-ref">twine</span></a>을 이용해 배포판을 <a class="reference internal" href="../glossary_ko.html#term-python-package-index-pypi"><span class="xref std std-term">PyPI</span></a>에
 업로드 할 수 있다. 만약 새로운 프로젝트에 대해 처음 업로드 하는 경우라면, twine이
 프로젝트를 등록하는 것을 처리해 줄 것이다.</p>
@@ -789,18 +788,18 @@ password = &lt;password&gt;
 gps 패스프레이즈를 gpg에 입력하는 것만으로 안전을 보장 받게 해준다.</p>
 </div>
 <hr class="docutils" />
-<table class="docutils footnote" frame="void" id="id49" rules="none">
+<table class="docutils footnote" frame="void" id="id47" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id6">[1]</a></td><td>당신의 플랫폼에 따라서, 이것은 루트나 관리자 권한을 요구할 수도 있다.
+<tr><td class="label"><a class="fn-backref" href="#id4">[1]</a></td><td>당신의 플랫폼에 따라서, 이것은 루트나 관리자 권한을 요구할 수도 있다.
 <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>는 현재 <a class="reference external" href="https://github.com/pypa/pip/issues/1668">사용자 인스톨을 기본 작동으로 만듦으로써</a> 이것을 바꾸는 것을 고려하고
 있다.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id51" rules="none">
+<table class="docutils footnote" frame="void" id="id49" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id29">[2]</a></td><td>특히, “console_script” 처리 방법은 <code class="docutils literal"><span class="pre">.exe</span></code> 파일을 윈도우즈에 생성하며,
+<tr><td class="label"><a class="fn-backref" href="#id27">[2]</a></td><td>특히, “console_script” 처리 방법은 <code class="docutils literal"><span class="pre">.exe</span></code> 파일을 윈도우즈에 생성하며,
 이는 OS special-case <code class="docutils literal"><span class="pre">.exe</span></code> 파일 때문에 필요하다. <code class="docutils literal"><span class="pre">PATHEXT</span></code>과
 <span class="target" id="index-11"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0397"><strong>Python Launcher for Windows</strong></a> 같은 스크립트 실행 기능은
 스크립트를 전부는 아니지만 많은 케이스에서 쓰일 수 있게 해준다.</td></tr>
@@ -828,12 +827,12 @@ gps 패스프레이즈를 gpg에 입력하는 것만으로 안전을 보장 받�
 <li class="toctree-l2 current"><a class="current reference internal" href="#">프로젝트 패키징과 배포</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/index.html">Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/index_ko.html">가이드</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA 설명서</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">프로젝트 요약</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">지원 받는 방법</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
 </ul>
 
@@ -842,8 +841,8 @@ gps 패스프레이즈를 gpg에 입력하는 것만으로 안전을 보장 받�
   <p class="topless"><a href="installing-packages_ko.html"
                         title="previous chapter">패키지 설치하기</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../guides/index.html"
-                        title="next chapter">Guides</a></p>
+  <p class="topless"><a href="../guides/index_ko.html"
+                        title="next chapter">가이드</a></p>
         </div>
       </div>
       <div class="clearer"></div>
@@ -855,7 +854,7 @@ gps 패스프레이즈를 gpg에 입력하는 것만으로 안전을 보장 받�
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../guides/index.html" title="Guides"
+          <a href="../guides/index_ko.html" title="가이드"
              >next</a> |</li>
         <li class="right" >
           <a href="installing-packages_ko.html" title="패키지 설치하기"
@@ -894,7 +893,7 @@ gps 패스프레이즈를 gpg에 입력하는 것만으로 안전을 보장 받�
 <br />
     <br />
 
-    Last updated on Sep 25, 2017.
+    Last updated on Sep 27, 2017.
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 
