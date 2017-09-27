@@ -1,4 +1,4 @@
-.. _`Tool Recommendations`:
+#.. _`Tool Recommendations`:
 
 ====================
 Tool recommendations

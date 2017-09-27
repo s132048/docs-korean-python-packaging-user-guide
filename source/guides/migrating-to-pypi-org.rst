@@ -1,4 +1,4 @@
-.. _`Migrating to PyPI.org`:
+#.. _`Migrating to PyPI.org`:
 
 Migrating to PyPI.org
 =====================

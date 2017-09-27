@@ -19,7 +19,7 @@ distribution, or another larger software distribution like Python itself.
    :local:
 
 
-.. _installing_requirements:
+#.. _installing_requirements:
 
 Requirements for Installing Packages
 ====================================
@@ -93,7 +93,7 @@ but here's the basic commands:
     source <DIR>/bin/activate
 
 
-.. _`Creating and using Virtual Environments`:
+#.. _`Creating and using Virtual Environments`:
 
 Creating Virtual Environments
 =============================
