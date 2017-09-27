@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Packaging namespace packages &#8212; Python Packaging User Guide</title>
-    
     <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -36,7 +33,7 @@
      
 
   </head>
-  <body role="document">  
+  <body>  
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -146,7 +143,7 @@ package needs to be zip-safe.</li>
 <p class="first admonition-title">Warning</p>
 <p class="last">While native namespace packages and pkgutil-style namespace
 packages are largely compatible, pkg_resources-style namespace packages
-are not compatible with the other methods. It&#8217;s inadvisable to use
+are not compatible with the other methods. It’s inadvisable to use
 different methods in different distributions that provide packages to the
 same namespace.</p>
 </div>
@@ -169,8 +166,8 @@ mynamespace/
 package omits the <code class="docutils literal"><span class="pre">__init__.py</span></code> or uses a pkgutil-style <code class="docutils literal"><span class="pre">__init__.py</span></code>. If
 any distribution does not, it will cause the namespace logic to fail and the
 other sub-packages will not be importable.</p>
-<p>Because <code class="docutils literal"><span class="pre">mynamespace</span></code> doesn&#8217;t contain an <code class="docutils literal"><span class="pre">__init__.py</span></code>,
-<code class="xref py py-func docutils literal"><span class="pre">setuptools.find_packages()</span></code> won&#8217;t find the sub-package. You must
+<p>Because <code class="docutils literal"><span class="pre">mynamespace</span></code> doesn’t contain an <code class="docutils literal"><span class="pre">__init__.py</span></code>,
+<code class="xref py py-func docutils literal"><span class="pre">setuptools.find_packages()</span></code> won’t find the sub-package. You must
 explicitly list all packages in your <code class="docutils literal"><span class="pre">setup.py</span></code>. For example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
 
@@ -226,8 +223,8 @@ the <code class="docutils literal"><span class="pre">namespace_packages</span></
 these can be used to declare namespace packages. While this approach is no
 longer recommended, it is widely present in most existing namespace packages.
 If you are creating a new distribution within an existing namespace package that
-uses this method then it&#8217;s recommended to continue using this as the different
-methods are not cross-compatible and it&#8217;s not advisable to try to migrate an
+uses this method then it’s recommended to continue using this as the different
+methods are not cross-compatible and it’s not advisable to try to migrate an
 existing package.</p>
 <p>To create a pkg_resources-style namespace package, you need to provide an
 <code class="docutils literal"><span class="pre">__init__.py</span></code> file for the namespace package:</p>
@@ -258,9 +255,9 @@ package <code class="docutils literal"><span class="pre">__init__.py</span></cod
     <span class="n">__path__</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;pkgutil&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extend_path</span><span class="p">(</span><span class="n">__path__</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="last">The idea behind this was that in the rare case that setuptools isn&#8217;t
+<p class="last">The idea behind this was that in the rare case that setuptools isn’t
 available packages would fall-back to the pkgutil-style packages. This
-isn&#8217;t advisable because pkgutil and pkg_resources-style namespace packages
+isn’t advisable because pkgutil and pkg_resources-style namespace packages
 are not cross-compatible. If the presence of setuptools is a concern
 then the package should just explicitly depend on setuptools via
 <code class="docutils literal"><span class="pre">install_requires</span></code>.</p>
@@ -296,9 +293,9 @@ in the <a class="reference external" href="https://github.com/pypa/sample-namesp
 
 
   <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index.html">Guides</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../discussions/index.html">Discussions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -367,7 +364,7 @@ in the <a class="reference external" href="https://github.com/pypa/sample-namesp
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
     </div>
 
   </body>

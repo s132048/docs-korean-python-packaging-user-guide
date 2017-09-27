@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Migrating to PyPI.org &#8212; Python Packaging User Guide</title>
-    
     <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -27,8 +24,6 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Discussions" href="../discussions/index.html" />
-    <link rel="prev" title="Hosting your own simple repository" href="hosting-your-own-index.html" />
     <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
     
     <script type="text/javascript" src="../_static/copybutton.js"></script>
@@ -36,19 +31,13 @@
      
 
   </head>
-  <body role="document">  
+  <body>  
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../discussions/index.html" title="Discussions"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="hosting-your-own-index.html" title="Hosting your own simple repository"
-             accesskey="P">previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -56,7 +45,6 @@
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Guides</a> &#187;</li>
     <li class="right">
         
 
@@ -80,8 +68,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="migrating-to-pypi-org">
-<span id="id1"></span><h1>Migrating to PyPI.org<a class="headerlink" href="#migrating-to-pypi-org" title="Permalink to this headline">¶</a></h1>
+  <p>#.. <span class="target" id="migrating-to-pypi-org">Migrating to PyPI.org</span>:</p>
+<div class="section" id="id1">
+<h1>Migrating to PyPI.org<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>PyPI.org is a new, rewritten version of PyPI that is replacing the legacy code
 base located at pypi.python.org. As it becomes the default, and eventually only,
 version of PyPI people are expected to interact with, there will be a transition
@@ -94,8 +83,8 @@ the new location.</p>
 are using a new enough version of your upload tool. Tools that support PyPI.org
 by default are twine v1.8.0+ (recommended tool), setuptools 27+, or the distutils
 included with Python 3.4.6+, Python 3.5.3+, Python 3.6+, and 2.7.13+.</p>
-<p>In addition to ensuring you&#8217;re on a new enough version of the tool for the
-tool&#8217;s default to have switched, you must also make sure that you have not
+<p>In addition to ensuring you’re on a new enough version of the tool for the
+tool’s default to have switched, you must also make sure that you have not
 configured the tool to override its default upload URL. Typically this is
 configured in a file located at <code class="docutils literal"><span class="pre">~/.pypirc</span></code>. If you see a file like:</p>
 <div class="code highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">distutils</span><span class="p">]</span>
@@ -109,8 +98,8 @@ configured in a file located at <code class="docutils literal"><span class="pre"
 </pre></div>
 </div>
 <p>Then simply delete the line starting with <code class="docutils literal"><span class="pre">repository</span></code> and you will use
-your upload tool&#8217;s default URL.</p>
-<p>If for some reason you&#8217;re unable to upgrade the version of your tool to a
+your upload tool’s default URL.</p>
+<p>If for some reason you’re unable to upgrade the version of your tool to a
 version that defaults to using PyPI.org, then you may edit <code class="docutils literal"><span class="pre">~/.pypirc</span></code> and
 include the <code class="docutils literal"><span class="pre">repository:</span></code> line, but use the value
 <code class="docutils literal"><span class="pre">https://upload.pypi.org/legacy/</span></code> instead:</p>
@@ -141,7 +130,7 @@ uploading artifacts.</p>
 <div class="section" id="using-testpypi">
 <h2>Using TestPyPI<a class="headerlink" href="#using-testpypi" title="Permalink to this headline">¶</a></h2>
 <p>If you use TestPyPI, you must update your <code class="docutils literal"><span class="pre">~/.pypirc</span></code> to handle
-TestPyPI&#8217;s new location, by replacing <code class="docutils literal"><span class="pre">https://testpypi.python.org/pypi</span></code>
+TestPyPI’s new location, by replacing <code class="docutils literal"><span class="pre">https://testpypi.python.org/pypi</span></code>
 with <code class="docutils literal"><span class="pre">https://test.pypi.org/legacy/</span></code>, for example:</p>
 <div class="code highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">distutils</span><span class="p">]</span>
 <span class="n">index</span><span class="o">-</span><span class="n">servers</span><span class="o">=</span>
@@ -170,23 +159,17 @@ with <code class="docutils literal"><span class="pre">https://test.pypi.org/lega
 
 
   <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Guides</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../discussions/index.html">Discussions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_ko.html">Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">How to Get Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
 </ul>
 
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="hosting-your-own-index.html"
-                        title="previous chapter">Hosting your own simple repository</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="../discussions/index.html"
-                        title="next chapter">Discussions</a></p>
         </div>
       </div>
       <div class="clearer"></div>
@@ -197,12 +180,6 @@ with <code class="docutils literal"><span class="pre">https://test.pypi.org/lega
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="right" >
-          <a href="../discussions/index.html" title="Discussions"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="hosting-your-own-index.html" title="Hosting your own simple repository"
-             >previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -210,7 +187,6 @@ with <code class="docutils literal"><span class="pre">https://test.pypi.org/lega
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" >Guides</a> &#187;</li>
     <li class="right">
         
 
@@ -241,7 +217,7 @@ with <code class="docutils literal"><span class="pre">https://test.pypi.org/lega
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
     </div>
 
   </body>

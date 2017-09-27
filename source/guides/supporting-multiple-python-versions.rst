@@ -1,4 +1,4 @@
-.. _`Supporting multiple Python versions`:
+#.. _`Supporting multiple Python versions`:
 
 ===================================
 Supporting multiple Python versions

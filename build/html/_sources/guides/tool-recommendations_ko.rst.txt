@@ -41,7 +41,10 @@
 플랫폼 마이그레이션 발행
 =============================
 
-기본 파이썬 패키지 지수 구현( `pypi.python.org <https://pypi.python.org>`_ 를 통해 소개되는)은  `pypi.org <https://pypi.org>`_ 에서 소개되는 상향된 구현버전으로 인해 단계적으로 폐기되고 있다. 두 인터페이스 모두 공통 데이터베이스 백엔드와 파일 보관함을 쓰지만, 후자 사용이 더 용이해질수록 기본값 책임도가 더 높아질 것이다.위에서 추천된 도구의 최선버전을 기본값 세팅으로 사용하는 유저들은 이 마이그레이션에 대해 걱정할 필요가 없지만, 구형 버전이나, 기본값 세팅을 사용하지 않는 유저라면 조작법을 업데이트하고 아래의 추천을 따라야 한다.
+기본 파이썬 패키지 지수 구현( `pypi.python.org <https://pypi.python.org>`_ 를 통해 소개되는)은  `pypi.org <https://pypi.org>`_ 에서 소개되는 상향된 구현버전으로 인해 단계적으로 폐기되고 있다. 두 인터페이스 모두 공통 데이터베이스 백엔드와 파일 보관함을 쓰지만, 후자 사용이 더 용이해질수록 기본값 책임도가 더 높아질 것이다.
+
+위에서 추천된 도구의 최선버전을 기본값 세팅으로 사용하는 유저들은 이 마이그레이션에 대해 걱정할 필요가 없지만, 구형 버전이나, 기본값 세팅을 사용하지 않는 유저라면 조작법을 업데이트하고 아래의 추천을 따라야 한다.
+
 퍼블리싱 출시 
 -------------------
 
@@ -62,7 +65,8 @@
 브라우징 패키지
 -----------------
 
-``pypi.python.org`` 는 여전히 브라우징 패키지에 있어 기본 인터페이스로 사용된다.(다른 PyPA documentation, 등의 링크에서 사용됨).
+``pypi.python.org`` 는 여전히 브라우징 패키지에 있어 기본 인터페이스로 사용된다.
+(다른 PyPA documentation, 등의 링크에서 사용됨).
 
 ``pypi.org`` 는 가능한 패키지를 브라우징 하는 목적으로 충분히 실용적이고, 몇몇의 유저들은 그것을 사용하기를 선택할 수도 있다.
 
@@ -85,14 +89,16 @@
 
 ``pypi.org`` 는 현재 그런 인터페이스가 제공되지 않는다.
 
-잃어버린 기능들은 `Shut Down Legacy PyPI <https://github.com/pypa/warehouse/milestone/7>`_ 마일스톤의 일부분으로 추적되고 있다.
+잃어버린 기능들은 `Shut Down Legacy PyPI <https://github.com/pypa/warehouse/milestone/7>`_ 
+마일스톤의 일부분으로 추적되고 있다.
 
 
 ----
 
 .. [1] :term:`Eggs <Egg>` (pip가 지원하지 않는)를 통해 설치해야 한다면 ``easy_install``  (from :ref:`setuptools` ), e.g. 를 사용해야 하는 경우가 생길 수도 있다. 자세한 내용은 :ref:`pip vs easy_install` 을 보세요.
 
-.. [2] :pep:`453` 이 받아들여지는 것은 :ref:`pip` 이 파이썬 3.4나 그 이후 버전에서 기본값으로 사용가능 하다는 것을 뜻한다. :pep:`453` 의 :pep:`rationale section <453#rationale>` 를 통해 왜 pip가 선택됐는지 확인해라.
+.. [2] :pep:`453` 이 받아들여지는 것은 :ref:`pip` 이 파이썬 3.4나 그 이후 버전에서 기본값으로 사용가능 하다는 것을 뜻한다. :pep:`453` 의 :pep:`rationale section <453#rationale>` 를 통해 왜 pip가 선택됐는지 확인해라.
+
 .. [3] :ref:`get-pip.py <pip:get-pip>` 와 :ref:`virtualenv` 는 :ref:`wheel` 를 설치하지만, :ref:`ensurepip` 와 :ref:`venv <venv>` 는 현재는 그렇지 않다. 또한, 리눅스 디스트로스에서 찾을 수 있는 기본 "python-pip" 패키지는 현재 "python-wheel"에 의존하지 않는다.
 
 .. [4] Python 3.4, ``venv`` 로 시작하면 ``pip`` 가 설치 된 virtualenv 환경을 만들 것인데, 이것은 :ref:`virtualenv` 와 동등한 대체가 된다. 하지만, :ref:`virtualenv` 를 사용하는 것은 여전히 교차-버전 지속도가 필요한 유저들에게 권장된다.

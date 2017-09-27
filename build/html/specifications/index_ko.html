@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>PyPA Specifications &#8212; Python Packaging User Guide</title>
-    
+    <title>PyPA 설명서 &#8212; Python Packaging User Guide</title>
     <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -27,6 +24,8 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="프로젝트 요약" href="../key_projects_ko.html" />
+    <link rel="prev" title="Wheel vs Egg" href="../discussions/wheel-vs-egg_ko.html" />
     <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
     
     <script type="text/javascript" src="../_static/copybutton.js"></script>
@@ -34,13 +33,19 @@
      
 
   </head>
-  <body role="document">  
+  <body>  
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../key_projects_ko.html" title="프로젝트 요약"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../discussions/wheel-vs-egg_ko.html" title="Wheel vs Egg"
+             accesskey="P">previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -71,12 +76,12 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="pypa-specifications">
-<span id="specifications"></span><h1>PyPA Specifications<a class="headerlink" href="#pypa-specifications" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pypa">
+<span id="specifications"></span><h1>PyPA 설명서<a class="headerlink" href="#pypa" title="Permalink to this headline">¶</a></h1>
 <p>이 문서는 현재 Python Packaging Authority에 의해 관리돠고 있는
 interoperability specification 목록이다.</p>
-<div class="section" id="package-distribution-metadata">
-<h2>Package distribution metadata<a class="headerlink" href="#package-distribution-metadata" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h2>패키지 배포 메타데이터<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="core-metadata">
 <h3>Core metadata<a class="headerlink" href="#core-metadata" title="Permalink to this headline">¶</a></h3>
 <p>현재의 core metadata file format version 1.2는 <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0345"><strong>PEP 345</strong></a> 에 명시되어 있다.</p>
@@ -99,12 +104,11 @@ distribution의 requirement 모음에 추가된다.</p>
 <span class="n">Requires</span><span class="o">-</span><span class="n">Dist</span><span class="p">:</span> <span class="n">libexample</span><span class="p">[</span><span class="n">test</span><span class="p">,</span> <span class="n">doc</span><span class="p">]</span>
 </pre></div>
 </div>
-<p><a href="#id1"><span class="problematic" id="id2">`</span></a>test`와 <a href="#id3"><span class="problematic" id="id4">`</span></a>doc`이라는 두 가지 feature name은 자동 테스트를 실행하고 문서를 생성하는 데 필요한
+<p><cite>test</cite> 와 <cite>doc</cite> 이라는 두 가지 feature name은 자동 테스트를 실행하고 문서를 생성하는 데 필요한
 dependency를 표시하기 위해 예약되어 있다.</p>
 <p><code class="docutils literal"><span class="pre">Requires-Dist:</span></code> 에서 참조하지 않더라도 <code class="docutils literal"><span class="pre">Provides-Extra:</span></code> 에서 지정하는 것도 허용된다.</p>
-</div>
-<div class="section" id="description-content-type">
-<h4>Description-Content-Type<a class="headerlink" href="#description-content-type" title="Permalink to this headline">¶</a></h4>
+<p>Description-Content-Type
+~~~~~~~~~~~~~~~~~~~~~~~~ㅓ</p>
 <p>Distribution description에 사용 된 markup syntax가 있는 경우, 도구가 description을
 렌더링 할 수 있도록 이를 나타내는 string이다.</p>
 <p>역사적으로, PyPI에서는 plain text와 <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html">reStructuredText
@@ -156,7 +160,7 @@ distribution 저자가 그들의 description format을 지정함으로써 PyPI�
 </div>
 <p>만약 <code class="docutils literal"><span class="pre">Description-Content-Type</span></code> 이 지정되지 않으면, 응용 프로그램은 그것을
 <code class="docutils literal"><span class="pre">text/x-rst;</span> <span class="pre">charset=UTF-8</span></code> 로 렌더링 하는 것을 시도하고, 만약 유효한 rst가 아니라면
-<a href="#id5"><span class="problematic" id="id6">``</span></a>text/plain``로 되돌려야 한다.</p>
+<code class="docutils literal"><span class="pre">text/plain</span></code> 로 되돌려야 한다.</p>
 <p>만약 <code class="docutils literal"><span class="pre">Description-Content-Type</span></code> 이 인식되지 않는 value인 경우, 가정되는 type은
 <code class="docutils literal"><span class="pre">text/plain</span></code> 이다. 하지만 PyPI는 아마도 인식 할 수 없는 value가 있다면 reject할 것이다.</p>
 <p>만약 <code class="docutils literal"><span class="pre">Description-Content-Type</span></code> 이 <code class="docutils literal"><span class="pre">text/markdown</span></code> 이고 <code class="docutils literal"><span class="pre">variant</span></code> 가
@@ -207,8 +211,8 @@ dependency를 선언하기 위해 제공 될 수 있다.</p>
 toolchain에 구현되어 있다.</p>
 </div>
 </div>
-<div class="section" id="package-index-interfaces">
-<h2>Package index interfaces<a class="headerlink" href="#package-index-interfaces" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2>패키지 색인 인터페이스<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="simple-repository-api">
 <h3>Simple repository API<a class="headerlink" href="#simple-repository-api" title="Permalink to this headline">¶</a></h3>
 <p>사용 가능한 package 버전을 쿼리하고 index 서버에서 package를 가져오기 위한 현재 인터페이스는
@@ -229,18 +233,28 @@ toolchain에 구현되어 있다.</p>
   
 
 
-  <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/index.html">Guides</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../discussions/index.html">Discussions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">PyPA Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/index_ko.html">가이드</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PyPA 설명서</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">패키지 배포 메타데이터</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">패키지 색인 인터페이스</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">프로젝트 요약</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">지원 받는 방법</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
 </ul>
 
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../discussions/wheel-vs-egg_ko.html"
+                        title="previous chapter">Wheel vs Egg</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../key_projects_ko.html"
+                        title="next chapter">프로젝트 요약</a></p>
         </div>
       </div>
       <div class="clearer"></div>
@@ -251,6 +265,12 @@ toolchain에 구현되어 있다.</p>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="../key_projects_ko.html" title="프로젝트 요약"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../discussions/wheel-vs-egg_ko.html" title="Wheel vs Egg"
+             >previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -288,7 +308,7 @@ toolchain에 구현되어 있다.</p>
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
     </div>
 
   </body>

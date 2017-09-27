@@ -1,4 +1,4 @@
-.. _`Wheel vs Egg`:
+#.. _`Wheel vs Egg`:
 
 ============
 Wheel vs Egg

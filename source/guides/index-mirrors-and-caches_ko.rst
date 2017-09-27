@@ -1,7 +1,7 @@
 .. _`PyPI mirrors and caches`:
 
 ================================
-Package index mirrors and caches
+패키지 색인 미러 및 캐시
 ================================
 
 :Page Status: Incomplete

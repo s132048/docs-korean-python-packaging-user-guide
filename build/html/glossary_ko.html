@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Glossary &#8212; Python Packaging User Guide</title>
-    
     <link rel="stylesheet" href="_static/pypa.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
@@ -27,6 +24,8 @@
     <script type="text/javascript" src="_static/sidebar.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="How to Get Support" href="support.html" />
+    <link rel="prev" title="Project Summaries" href="key_projects.html" />
     <link rel="shortcut icon" type="image/png" href="_static/py.png" />
     
     <script type="text/javascript" src="_static/copybutton.js"></script>
@@ -34,13 +33,19 @@
      
 
   </head>
-  <body role="document">  
+  <body>  
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="support.html" title="How to Get Support"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="key_projects.html" title="Project Summaries"
+             accesskey="P">previous</a> |</li>
     <li><img src="_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -87,9 +92,9 @@
 그리고 다른 <a class="reference internal" href="#term-release"><span class="xref std std-term">Release</span></a> 를 배포하기 위한 리소스 파일들을 포함하는 버전관리
 되는 아카이브. 아카이브 파일은 최종 사용자가 인터넷에서 다운로드 하고 설치하는데
 쓰인다.</p>
-<p class="last">Distribution package라는 용어 대신에 단순하게 주로 &#8220;package&#8221; 또는
-&#8220;distribution&#8221;으로 불린다. 다만 여기에서는 마찬가지로 자주 &#8220;package&#8221;로 쓰이는
-<a class="reference internal" href="#term-import-package"><span class="xref std std-term">Import Package</span></a>, &#8220;distribution&#8221;으로 쓰이는 다른 distribution
+<p class="last">Distribution package라는 용어 대신에 단순하게 주로 “package” 또는
+“distribution”으로 불린다. 다만 여기에서는 마찬가지로 자주 “package”로 쓰이는
+<a class="reference internal" href="#term-import-package"><span class="xref std std-term">Import Package</span></a>, “distribution”으로 쓰이는 다른 distribution
 (Linux distribution이나 Python language distribution)과의 혼동을
 방지하기 위해서 필요시 확장된 용어를 쓰기도 한다.</p>
 </dd>
@@ -111,7 +116,7 @@ Jython을 위한 Java. 주로 동적으로 로드 가능한 pre-compile된 하�
 <dt id="term-import-package">Import Package</dt>
 <dd><p class="first">다른 module을 포함하거나 재귀적으로 다른 package를 포함 할 수 있는 Python
 module.</p>
-<p class="last">Import package는 일반적으로 &#8220;package&#8221;라고도 불리나, 이 가이드는 혼동을 방지하기
+<p class="last">Import package는 일반적으로 “package”라고도 불리나, 이 가이드는 혼동을 방지하기
 위해 필요시 확장된 용어를 사용한다.</p>
 </dd>
 <dt id="term-module">Module</dt>
@@ -130,7 +135,7 @@ resource의 모음.</p>
 <p>대부분의 project는 <a class="reference internal" href="key_projects_ko.html#distutils"><span class="std std-ref">distutils</span></a> 또는 <a class="reference internal" href="key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> 를 사용하여
 <a class="reference internal" href="#term-distribution-package"><span class="xref std std-term">distribution</span></a> 을 생성하므로, project를
 정의하기 위한 또 다른 실용적인 방법은 <a class="reference internal" href="#term-setup-py"><span class="xref std std-term">setup.py</span></a> 를 project의 src
-디렉토리의 root에 포함하는 무언가를 지칭하는 것이다. 여기에서 &#8220;setup.py&#8221; 는
+디렉토리의 root에 포함하는 무언가를 지칭하는 것이다. 여기에서 “setup.py” 는
 <a class="reference internal" href="key_projects_ko.html#distutils"><span class="std std-ref">distutils</span></a> 와 <a class="reference internal" href="key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> 에 의해 쓰이는 project의
 specification의 파일 이름이다.</p>
 <p>Python project는 <a class="reference internal" href="#term-python-package-index-pypi"><span class="xref std std-term">PyPI</span></a> 에
@@ -138,8 +143,8 @@ specification의 파일 이름이다.</p>
 <a class="reference internal" href="#term-release"><span class="xref std std-term">Release</span></a> 를 포함하고, 각 <a class="reference internal" href="#term-release"><span class="xref std std-term">Release</span></a>
 는 하나 이상의 <a class="reference internal" href="#term-distribution-package"><span class="xref std std-term">distribution</span></a> 을 포함한다.</p>
 <p class="last">Project를 실행하기 위해 import되는 package의 이름을 project의 이름으로 사용하는
-강한 규약이 있다. 하지만 이는 꼭 지켜져야 하는 것은 아니다. 즉, &#8216;foo&#8217;라는
-project에서 distribution을 인스톨 하고 &#8216;bar&#8217;라는 import가능한 package를
+강한 규약이 있다. 하지만 이는 꼭 지켜져야 하는 것은 아니다. 즉, ‘foo’라는
+project에서 distribution을 인스톨 하고 ‘bar’라는 import가능한 package를
 제공 할 수도 있다.</p>
 </dd>
 <dt id="term-pure-module">Pure Module</dt>
@@ -163,13 +168,13 @@ distribution을 모두 가질 수 있다.</p>
 <dt id="term-requirement">Requirement</dt>
 <dd><a class="reference internal" href="#term-distribution-package"><span class="xref std std-term">Package</span></a> 을 설치하기 위한 specification.
 <a class="reference internal" href="#term-python-packaging-authority-pypa"><span class="xref std std-term">PYPA</span></a> 에 의해 권장되는
-installer인 <span class="xref std std-ref">pip`은 &#8220;requirement&#8221;로 간주 될 수 있는 여러가지 형태의
-specification을 허용한다. :ref:`pip:pip install</span> 를 참조.</dd>
+installer인 <a class="reference internal" href="key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>은 “requirement”로 간주 될 수 있는 여러가지 형태의
+specification을 허용한다. <a class="reference external" href="https://pip.pypa.io/en/latest/reference/pip_install/#pip-install" title="(in pip v10.0)"><span>pip install</span></a> 를 참조.</dd>
 <dt id="term-requirement-specifier">Requirement Specifier</dt>
 <dd><a class="reference internal" href="#term-package-index"><span class="xref std std-term">Package Index</span></a> 에서 package를 설치하기 위해 <a class="reference internal" href="key_projects_ko.html#pip"><span class="std std-ref">pip</span></a> 에서 사용되는
 형식. <a class="reference internal" href="key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> docs에서 <a class="reference external" href="https://setuptools.readthedocs.io/en/latest/pkg_resources.html#requirement-objects">pkg_resources.Requirement</a>
-부분을 참조. 예를 들면, &#8220;foo&gt;=1.3&#8221; 가 requirement specifier이다. 여기에서
-&#8220;foo&#8221; 는 project 이름이고 &#8220;&gt;=1.3&#8221; 부분은 <a class="reference internal" href="#term-version-specifier"><span class="xref std std-term">Version Specifier</span></a> 이다.</dd>
+부분을 참조. 예를 들면, “foo&gt;=1.3” 가 requirement specifier이다. 여기에서
+“foo” 는 project 이름이고 “&gt;=1.3” 부분은 <a class="reference internal" href="#term-version-specifier"><span class="xref std std-term">Version Specifier</span></a> 이다.</dd>
 <dt id="term-requirements-file">Requirements File</dt>
 <dd><a class="reference internal" href="key_projects_ko.html#pip"><span class="std std-ref">pip</span></a> 을 사용하여 설치 가능한 <a class="reference internal" href="#term-requirement"><span class="xref std std-term">Requirement</span></a> 들을
 포함하는 파일로 된 목록. 더 자세한 사항은 <a class="reference internal" href="key_projects_ko.html#pip"><span class="std std-ref">pip</span></a> docs의
@@ -181,20 +186,20 @@ specification 파일.</dd>
 <dd><a class="reference internal" href="#term-source-distribution-or-sdist"><span class="xref std std-term">Source Distribution</span></a> 또는
 <a class="reference internal" href="#term-built-distribution"><span class="xref std std-term">Built Distribution</span></a> 을 생성 하기 전, <a class="reference internal" href="#term-release"><span class="xref std std-term">Release</span></a> 의
 raw source code를 포함하는 아카이브.</dd>
-<dt id="term-source-distribution-or-sdist">Source Distribution (or &#8220;sdist&#8221;)</dt>
+<dt id="term-source-distribution-or-sdist">Source Distribution (or “sdist”)</dt>
 <dd><a class="reference internal" href="key_projects_ko.html#pip"><span class="std std-ref">pip</span></a> 으로 설치하거나 <a class="reference internal" href="#term-built-distribution"><span class="xref std std-term">Built Distribution</span></a> 을 생성하기 위한
 metadata와 필수 소스 파일을 제공하는 일반적으로 <code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">sdist</span></code>
 으로 생성된 <a class="reference internal" href="#term-distribution-package"><span class="xref std std-term">distribution</span></a> 포맷.</dd>
 <dt id="term-system-package">System Package</dt>
 <dd>운영 체제에 native한 format으로 제공되는 package. 예: rpm 또는 dpkg 파일.</dd>
 <dt id="term-version-specifier">Version Specifier</dt>
-<dd><a class="reference internal" href="#term-requirement-specifier"><span class="xref std std-term">Requirement Specifier</span></a> 의 version 부분. 예를 들어, &#8220;foo&gt;=1.3&#8221;의
-&#8220;&gt;=1.3&#8221; 부분을 얘기한다. <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440"><strong>PEP 440</strong></a> 에는 Python packaging이 현재 지원하는
+<dd><a class="reference internal" href="#term-requirement-specifier"><span class="xref std std-term">Requirement Specifier</span></a> 의 version 부분. 예를 들어, “foo&gt;=1.3”의
+“&gt;=1.3” 부분을 얘기한다. <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440"><strong>PEP 440</strong></a> 에는 Python packaging이 현재 지원하는
 <span class="target" id="index-1"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440#version-specifiers"><strong>full specification</strong></a> 가 포함되어 있다.
 PEP440에 대한 지원은 <a class="reference internal" href="key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> v8.0과 <a class="reference internal" href="key_projects_ko.html#pip"><span class="std std-ref">pip</span></a> v6.0에서 구현되었다.</dd>
 <dt id="term-virtual-environment">Virtual Environment</dt>
 <dd>Package가 시스템 전체에 설치되기보다는 특정 응용 프로그램에 의해 사용되도록 설치되는
-격리 된 Python 환경. 자세한 정보는 <a class="reference internal" href="tutorials/installing-packages_ko.html#creating-and-using-virtual-environments"><span class="std std-ref">가상 환경 생성하기</span></a>
+격리 된 Python 환경. 자세한 정보는 <span class="xref std std-ref">Creating and using Virtual Environments</span>
 참조.</dd>
 <dt id="term-wheel">Wheel</dt>
 <dd><span class="target" id="index-2"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0427"><strong>PEP 427</strong></a> 에 의해 <a class="reference internal" href="#term-egg"><span class="xref std std-term">Egg</span></a> format을 대체하기 위해 도입된 <a class="reference internal" href="#term-built-distribution"><span class="xref std std-term">Built
@@ -219,18 +224,24 @@ project를 위한 <a class="reference internal" href="#term-distribution-package
   
 
 
-  <ul>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Tutorials</a></li>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorials/index_ko.html">튜토리얼</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guides/index.html">Guides</a></li>
-<li class="toctree-l1"><a class="reference internal" href="discussions/index.html">Discussions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="discussions/index_ko.html">토론</a></li>
 <li class="toctree-l1"><a class="reference internal" href="specifications/index.html">PyPA Specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="key_projects.html">Project Summaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">How to Get Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">Contribute to this guide</a></li>
 </ul>
 
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="key_projects.html"
+                        title="previous chapter">Project Summaries</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="support.html"
+                        title="next chapter">How to Get Support</a></p>
         </div>
       </div>
       <div class="clearer"></div>
@@ -241,6 +252,12 @@ project를 위한 <a class="reference internal" href="#term-distribution-package
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="support.html" title="How to Get Support"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="key_projects.html" title="Project Summaries"
+             >previous</a> |</li>
     <li><img src="_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -278,7 +295,7 @@ project를 위한 <a class="reference internal" href="#term-distribution-package
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
     </div>
 
   </body>

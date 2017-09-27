@@ -1,4 +1,4 @@
-.. _`install_requires vs Requirements files`:
+#.. _`install_requires vs Requirements files`:
 
 ======================================
 install_requires vs Requirements files

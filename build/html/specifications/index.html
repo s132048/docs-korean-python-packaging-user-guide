@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>PyPA Specifications &#8212; Python Packaging User Guide</title>
-    
     <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -27,8 +24,6 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Project Summaries" href="../key_projects.html" />
-    <link rel="prev" title="Wheel vs Egg" href="../discussions/wheel-vs-egg.html" />
     <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
     
     <script type="text/javascript" src="../_static/copybutton.js"></script>
@@ -36,19 +31,13 @@
      
 
   </head>
-  <body role="document">  
+  <body>  
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../key_projects.html" title="Project Summaries"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="../discussions/wheel-vs-egg.html" title="Wheel vs Egg"
-             accesskey="P">previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -79,8 +68,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="pypa-specifications">
-<span id="specifications"></span><h1>PyPA Specifications<a class="headerlink" href="#pypa-specifications" title="Permalink to this headline">¶</a></h1>
+  <p>#.. _specifications:</p>
+<div class="section" id="pypa-specifications">
+<h1>PyPA Specifications<a class="headerlink" href="#pypa-specifications" title="Permalink to this headline">¶</a></h1>
 <p>This is a list of currently active interoperability specifications maintained
 by the Python Packaging Authority.</p>
 <div class="section" id="package-distribution-metadata">
@@ -118,14 +108,14 @@ respectively.</p>
 </div>
 <div class="section" id="description-content-type">
 <h4>Description-Content-Type<a class="headerlink" href="#description-content-type" title="Permalink to this headline">¶</a></h4>
-<p>A string stating the markup syntax (if any) used in the distribution&#8217;s
+<p>A string stating the markup syntax (if any) used in the distribution’s
 description, so that tools can intelligently render the description.</p>
 <p>Historically, PyPI supported descriptions in plain text and <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html">reStructuredText
 (reST)</a>,
 and could render reST into HTML. However, it is common for distribution
 authors to write the description in <a class="reference external" href="https://daringfireball.net/projects/markdown/">Markdown</a> (<a class="reference external" href="https://tools.ietf.org/html/rfc7763">RFC 7763</a>) as many code hosting sites render
 Markdown READMEs, and authors would reuse the file for the description. PyPI
-didn&#8217;t recognize the format and so could not render the description correctly.
+didn’t recognize the format and so could not render the description correctly.
 This resulted in many packages on PyPI with poorly-rendered descriptions when
 Markdown is left as plain text, or worse, was attempted to be rendered as reST.
 This field allows the distribution author to specify the format of their
@@ -204,13 +194,13 @@ section in <span class="target" id="index-4"></span><a class="pep reference exte
 <h3>Declaring Build System Dependencies<a class="headerlink" href="#declaring-build-system-dependencies" title="Permalink to this headline">¶</a></h3>
 <p><cite>pyproject.toml</cite> is a build system independent file format defined in <span class="target" id="index-5"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0518"><strong>PEP 518</strong></a>
 that projects may provide in order to declare any Python level dependencies that
-must be installed in order to run the project&#8217;s build system successfully.</p>
+must be installed in order to run the project’s build system successfully.</p>
 </div>
 <div class="section" id="source-distribution-format">
 <h3>Source Distribution Format<a class="headerlink" href="#source-distribution-format" title="Permalink to this headline">¶</a></h3>
 <p>The source distribution format (<code class="docutils literal"><span class="pre">sdist</span></code>) is not currently formally defined.
 Instead, its format is implicitly defined by the behaviour of the
-standard library&#8217;s <code class="docutils literal"><span class="pre">distutils</span></code> module when executing the <code class="docutils literal"><span class="pre">setup.py</span> <span class="pre">sdist</span></code>
+standard library’s <code class="docutils literal"><span class="pre">distutils</span></code> module when executing the <code class="docutils literal"><span class="pre">setup.py</span> <span class="pre">sdist</span></code>
 command.</p>
 </div>
 <div class="section" id="binary-distribution-format">
@@ -255,28 +245,18 @@ from an index server is defined in <span class="target" id="index-10"></span><a 
   
 
 
-  <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/index.html">Guides</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../discussions/index.html">Discussions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">PyPA Specifications</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#package-distribution-metadata">Package distribution metadata</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#package-index-interfaces">Package index interfaces</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/index_ko.html">가이드</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_ko.html">PyPA 설명서</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">프로젝트 요약</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">지원 받는 방법</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
 </ul>
 
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="../discussions/wheel-vs-egg.html"
-                        title="previous chapter">Wheel vs Egg</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="../key_projects.html"
-                        title="next chapter">Project Summaries</a></p>
         </div>
       </div>
       <div class="clearer"></div>
@@ -287,12 +267,6 @@ from an index server is defined in <span class="target" id="index-10"></span><a 
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="right" >
-          <a href="../key_projects.html" title="Project Summaries"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="../discussions/wheel-vs-egg.html" title="Wheel vs Egg"
-             >previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -330,7 +304,7 @@ from an index server is defined in <span class="target" id="index-10"></span><a 
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
     </div>
 
   </body>

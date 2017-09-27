@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Hosting your own simple repository &#8212; Python Packaging User Guide</title>
-    
     <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -36,7 +33,7 @@
      
 
   </head>
-  <body role="document">  
+  <body>  
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -86,22 +83,22 @@
 software package like <a class="reference external" href="http://doc.devpi.net/latest/">devpi</a> or you can use simply create the proper
 directory structure and use any web server that can serve static files and
 generate an autoindex.</p>
-<p>In either case, since you&#8217;ll be hosting a repository that is likely not in
-your user&#8217;s default repositories, you should instruct them in your project&#8217;s
+<p>In either case, since you’ll be hosting a repository that is likely not in
+your user’s default repositories, you should instruct them in your project’s
 description to configure their installer appropriately. For example with pip:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="n">index</span><span class="o">-</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">python</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span> <span class="n">foobar</span>
 </pre></div>
 </div>
 <p>In addition, it is <strong>highly</strong> recommended that you serve your repository with
-valid HTTPS. At this time, the security of your user&#8217;s installations depends on
+valid HTTPS. At this time, the security of your user’s installations depends on
 all repositories using a valid HTTPS setup.</p>
 <div class="section" id="manual-repository">
-<h2>&#8220;Manual&#8221; Repository<a class="headerlink" href="#manual-repository" title="Permalink to this headline">¶</a></h2>
+<h2>“Manual” Repository<a class="headerlink" href="#manual-repository" title="Permalink to this headline">¶</a></h2>
 <p>The directory layout is fairly simple, within a root directory you need to
 create a directory for each project. This directory should be the normalized
 name (as defined by PEP 503) of the project. Within each of these directories
-simply place each of the downloadable files. If you have the projects &#8220;Foo&#8221;
-(with the versions 1.0 and 2.0) and &#8220;bar&#8221; (with the version 0.1) You should
+simply place each of the downloadable files. If you have the projects “Foo”
+(with the versions 1.0 and 2.0) and “bar” (with the version 0.1) You should
 end up with a structure that looks like:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>.
 ├── bar
@@ -114,7 +111,7 @@ end up with a structure that looks like:</p>
 <p>Once you have this layout, simply configure your webserver to serve the root
 directory with autoindex enabled. For an example using the built in Web server
 in <a class="reference external" href="https://twistedmatrix.com/">Twisted</a>, you would simply run <code class="docutils literal"><span class="pre">twistd</span> <span class="pre">-n</span> <span class="pre">web</span> <span class="pre">--path</span> <span class="pre">.</span></code> and then
-instruct users to add the URL to their installer&#8217;s configuration.</p>
+instruct users to add the URL to their installer’s configuration.</p>
 <hr class="docutils" />
 <table class="docutils footnote" frame="void" id="id3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -139,9 +136,9 @@ PEP 503.</td></tr>
 
 
   <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index.html">Guides</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../discussions/index.html">Discussions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -210,7 +207,7 @@ PEP 503.</td></tr>
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
     </div>
 
   </body>

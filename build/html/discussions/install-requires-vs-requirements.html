@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>install_requires vs Requirements files &#8212; Python Packaging User Guide</title>
-    
     <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -27,8 +24,6 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Wheel vs Egg" href="wheel-vs-egg.html" />
-    <link rel="prev" title="pip vs easy_install" href="pip-vs-easy-install.html" />
     <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
     
     <script type="text/javascript" src="../_static/copybutton.js"></script>
@@ -36,19 +31,13 @@
      
 
   </head>
-  <body role="document">  
+  <body>  
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="wheel-vs-egg.html" title="Wheel vs Egg"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="pip-vs-easy-install.html" title="pip vs easy_install"
-             accesskey="P">previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -56,7 +45,6 @@
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Discussions</a> &#187;</li>
     <li class="right">
         
 
@@ -80,8 +68,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="install-requires-vs-requirements-files">
-<span id="id1"></span><h1>install_requires vs Requirements files<a class="headerlink" href="#install-requires-vs-requirements-files" title="Permalink to this headline">¶</a></h1>
+  <p>#.. <span class="target" id="install-requires-vs-requirements-files">install_requires vs Requirements files</span>:</p>
+<div class="section" id="id1">
+<h1>install_requires vs Requirements files<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="contents local topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
@@ -103,9 +92,9 @@ like so:</p>
 <span class="p">]</span>
 </pre></div>
 </div>
-<p>Additionally, it&#8217;s best practice to indicate any known lower or upper bounds.</p>
-<p>For example, it may be known, that your project requires at least v1 of &#8216;A&#8217;, and
-v2 of &#8216;B&#8217;, so it would be like so:</p>
+<p>Additionally, it’s best practice to indicate any known lower or upper bounds.</p>
+<p>For example, it may be known, that your project requires at least v1 of ‘A’, and
+v2 of ‘B’, so it would be like so:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">install_requires</span><span class="o">=</span><span class="p">[</span>
    <span class="s1">&#39;A&gt;=1&#39;</span><span class="p">,</span>
    <span class="s1">&#39;B&gt;=2&#39;</span>
@@ -113,7 +102,7 @@ v2 of &#8216;B&#8217;, so it would be like so:</p>
 </pre></div>
 </div>
 <p>It may also be known that project A follows semantic versioning, and that v2 of
-&#8216;A&#8217; will indicate a break in compatibility, so it makes sense to not allow v2:</p>
+‘A’ will indicate a break in compatibility, so it makes sense to not allow v2:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">install_requires</span><span class="o">=</span><span class="p">[</span>
    <span class="s1">&#39;A&gt;=1,&lt;2&#39;</span><span class="p">,</span>
    <span class="s1">&#39;B&gt;=2&#39;</span>
@@ -124,10 +113,10 @@ v2 of &#8216;B&#8217;, so it would be like so:</p>
 dependencies to specific versions, or to specify sub-dependencies
 (i.e. dependencies of your dependencies).  This is overly-restrictive, and
 prevents the user from gaining the benefit of dependency upgrades.</p>
-<p>Lastly, it&#8217;s important to understand that <code class="docutils literal"><span class="pre">install_requires</span></code> is a listing of
-&#8220;Abstract&#8221; requirements, i.e just names and version restrictions that don&#8217;t
+<p>Lastly, it’s important to understand that <code class="docutils literal"><span class="pre">install_requires</span></code> is a listing of
+“Abstract” requirements, i.e just names and version restrictions that don’t
 determine where the dependencies will be fulfilled from (i.e. from what
-index or source).  The where (i.e. how they are to be made &#8220;Concrete&#8221;) is to
+index or source).  The where (i.e. how they are to be made “Concrete”) is to
 be determined at install time using <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a> options. <a class="footnote-reference" href="#id4" id="id2">[1]</a></p>
 </div>
 <div class="section" id="requirements-files">
@@ -141,10 +130,10 @@ the requirements for a complete python environment.</p>
 often contain an exhaustive listing of pinned versions for the purpose of
 achieving <a class="reference external" href="https://pip.pypa.io/en/latest/user_guide/#repeatability" title="(in pip v10.0)"><span class="xref std std-ref">repeatable installations</span></a> of a complete
 environment.</p>
-<p>Whereas <code class="docutils literal"><span class="pre">install_requires</span></code> requirements are &#8220;Abstract&#8221;, i.e. not associated
+<p>Whereas <code class="docutils literal"><span class="pre">install_requires</span></code> requirements are “Abstract”, i.e. not associated
 with any particular index, requirements files often contain pip
 options like <code class="docutils literal"><span class="pre">--index-url</span></code> or <code class="docutils literal"><span class="pre">--find-links</span></code> to make requirements
-&#8220;Concrete&#8221;, i.e. associated with a particular index or directory of
+“Concrete”, i.e. associated with a particular index or directory of
 packages. <a class="footnote-reference" href="#id4" id="id3">[1]</a></p>
 <p>Whereas <code class="docutils literal"><span class="pre">install_requires</span></code> metadata is automatically analyzed by pip during an
 install, requirements files are not, and only are used when a user specifically
@@ -153,7 +142,7 @@ installs them using <code class="docutils literal"><span class="pre">pip</span> 
 <table class="docutils footnote" frame="void" id="id4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> For more on &#8220;Abstract&#8221; vs &#8220;Concrete&#8221; requirements, see
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> For more on “Abstract” vs “Concrete” requirements, see
 <a class="reference external" href="https://caremad.io/2013/07/setup-vs-requirement/">https://caremad.io/2013/07/setup-vs-requirement/</a>.</td></tr>
 </tbody>
 </table>
@@ -172,30 +161,18 @@ installs them using <code class="docutils literal"><span class="pre">pip</span> 
   
 
 
-  <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/index.html">Guides</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Discussions</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="deploying-python-applications.html">Deploying Python applications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pip-vs-easy-install.html">pip vs easy_install</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">install_requires vs Requirements files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wheel-vs-egg.html">Wheel vs Egg</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/index_ko.html">Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_ko.html">토론</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">How to Get Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
 </ul>
 
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="pip-vs-easy-install.html"
-                        title="previous chapter">pip vs easy_install</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="wheel-vs-egg.html"
-                        title="next chapter">Wheel vs Egg</a></p>
         </div>
       </div>
       <div class="clearer"></div>
@@ -206,12 +183,6 @@ installs them using <code class="docutils literal"><span class="pre">pip</span> 
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="right" >
-          <a href="wheel-vs-egg.html" title="Wheel vs Egg"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="pip-vs-easy-install.html" title="pip vs easy_install"
-             >previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -219,7 +190,6 @@ installs them using <code class="docutils literal"><span class="pre">pip</span> 
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" >Discussions</a> &#187;</li>
     <li class="right">
         
 
@@ -250,7 +220,7 @@ installs them using <code class="docutils literal"><span class="pre">pip</span> 
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
     </div>
 
   </body>

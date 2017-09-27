@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Installing Packages &#8212; Python Packaging User Guide</title>
-    
     <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -27,8 +24,6 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Packaging and Distributing Projects" href="distributing-packages.html" />
-    <link rel="prev" title="Tutorials" href="index.html" />
     <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
     
     <script type="text/javascript" src="../_static/copybutton.js"></script>
@@ -36,19 +31,13 @@
      
 
   </head>
-  <body role="document">  
+  <body>  
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="distributing-packages.html" title="Packaging and Distributing Projects"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="index.html" title="Tutorials"
-             accesskey="P">previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -56,7 +45,6 @@
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Tutorials</a> &#187;</li>
     <li class="right">
         
 
@@ -83,10 +71,10 @@
   <div class="section" id="installing-packages">
 <h1>Installing Packages<a class="headerlink" href="#installing-packages" title="Permalink to this headline">¶</a></h1>
 <p>This section covers the basics of how to install Python <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">packages</span></a>.</p>
-<p>It&#8217;s important to note that the term &#8220;package&#8221; in this context is being used as
+<p>It’s important to note that the term “package” in this context is being used as
 a synonym for a <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">distribution</span></a> (i.e. a bundle of
 software to be installed), not to refer to the kind of <a class="reference internal" href="../glossary_ko.html#term-import-package"><span class="xref std std-term">package</span></a> that you import in your Python source code (i.e. a container of
-modules). It is common in the Python community to refer to a <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">distribution</span></a> using the term &#8220;package&#8221;.  Using the term &#8220;distribution&#8221;
+modules). It is common in the Python community to refer to a <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">distribution</span></a> using the term “package”.  Using the term “distribution”
 is often not preferred, because it can easily be confused with a Linux
 distribution, or another larger software distribution like Python itself.</p>
 <div class="contents local topic" id="contents">
@@ -110,11 +98,12 @@ distribution, or another larger software distribution like Python itself.</p>
 <li><a class="reference internal" href="#installing-from-local-archives" id="id22">Installing from local archives</a></li>
 <li><a class="reference internal" href="#installing-from-other-sources" id="id23">Installing from other sources</a></li>
 <li><a class="reference internal" href="#installing-prereleases" id="id24">Installing Prereleases</a></li>
-<li><a class="reference internal" href="#installing-setuptools-extras" id="id25">Installing Setuptools &#8220;Extras&#8221;</a></li>
+<li><a class="reference internal" href="#installing-setuptools-extras" id="id25">Installing Setuptools “Extras”</a></li>
 </ul>
 </div>
+<p>#.. _installing_requirements:</p>
 <div class="section" id="requirements-for-installing-packages">
-<span id="installing-requirements"></span><h2><a class="toc-backref" href="#id9">Requirements for Installing Packages</a><a class="headerlink" href="#requirements-for-installing-packages" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id9">Requirements for Installing Packages</a><a class="headerlink" href="#requirements-for-installing-packages" title="Permalink to this headline">¶</a></h2>
 <p>This section describes the steps to follow before installing other Python
 packages.</p>
 <div class="section" id="install-pip-setuptools-and-wheel">
@@ -131,8 +120,8 @@ packages.</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first">If you&#8217;re using a Python install on Linux that&#8217;s managed by the system package
-manager (e.g &#8220;yum&#8221;, &#8220;apt-get&#8221; etc...), and you want to use the system package
+<li><p class="first">If you’re using a Python install on Linux that’s managed by the system package
+manager (e.g “yum”, “apt-get” etc…), and you want to use the system package
 manager to install or upgrade pip, then see <a class="reference internal" href="../guides/installing-using-linux-tools_ko.html#installing-pip-setuptools-wheel-with-linux-package-managers"><span class="std std-ref">Installing pip/setuptools/wheel with Linux Package Managers</span></a></p>
 </li>
 <li><p class="first">Otherwise:</p>
@@ -143,11 +132,11 @@ manager to install or upgrade pip, then see <a class="reference internal" href="
 <li><p class="first">Securely Download <a class="reference external" href="https://bootstrap.pypa.io/get-pip.py">get-pip.py</a> <a class="footnote-reference" href="#id5" id="id1">[1]</a></p>
 </li>
 <li><p class="first">Run <code class="docutils literal"><span class="pre">python</span> <span class="pre">get-pip.py</span></code>. <a class="footnote-reference" href="#id6" id="id2">[2]</a>  This will install or upgrade pip.
-Additionally, it will install <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> and <a class="reference internal" href="../key_projects_ko.html#wheel"><span class="std std-ref">wheel</span></a> if they&#8217;re
+Additionally, it will install <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> and <a class="reference internal" href="../key_projects_ko.html#wheel"><span class="std std-ref">wheel</span></a> if they’re
 not installed already.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">Be cautious if you&#8217;re using a Python install that&#8217;s managed by your
+<p class="last">Be cautious if you’re using a Python install that’s managed by your
 operating system or another package manager. get-pip.py does not
 coordinate with those tools, and may leave your system in an
 inconsistent state. You can use <code class="docutils literal"><span class="pre">python</span> <span class="pre">get-pip.py</span> <span class="pre">--prefix=/usr/local/</span></code>
@@ -160,8 +149,8 @@ software.</p>
 </div>
 <div class="section" id="optionally-create-a-virtual-environment">
 <h3><a class="toc-backref" href="#id11">Optionally, Create a virtual environment</a><a class="headerlink" href="#optionally-create-a-virtual-environment" title="Permalink to this headline">¶</a></h3>
-<p>See <a class="reference internal" href="installing-packages_ko.html#creating-and-using-virtual-environments"><span class="std std-ref">section below</span></a> for details,
-but here&#8217;s the basic commands:</p>
+<p>See <a class="reference internal" href="#creating-and-using-virtual-environments"><span class="std std-ref">section below</span></a> for details,
+but here’s the basic commands:</p>
 <blockquote>
 <div><p>Using <a class="reference internal" href="../key_projects_ko.html#virtualenv"><span class="std std-ref">virtualenv</span></a>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">virtualenv</span>
@@ -175,11 +164,12 @@ but here&#8217;s the basic commands:</p>
 </pre></div>
 </div>
 </div></blockquote>
+<p>#.. <span class="target" id="creating-and-using-virtual-environments">Creating and using Virtual Environments</span>:</p>
 </div>
 </div>
 <div class="section" id="creating-virtual-environments">
-<span id="creating-and-using-virtual-environments"></span><h2><a class="toc-backref" href="#id12">Creating Virtual Environments</a><a class="headerlink" href="#creating-virtual-environments" title="Permalink to this headline">¶</a></h2>
-<p>Python &#8220;Virtual Environments&#8221; allow Python <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">packages</span></a> to be installed in an isolated location for a particular application,
+<h2><a class="toc-backref" href="#id12">Creating Virtual Environments</a><a class="headerlink" href="#creating-virtual-environments" title="Permalink to this headline">¶</a></h2>
+<p>Python “Virtual Environments” allow Python <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">packages</span></a> to be installed in an isolated location for a particular application,
 rather than being installed globally.</p>
 <p>Imagine you have an application that needs version 1 of LibFoo, but another
 application requires version 2. How can you use both these applications? If you
@@ -220,7 +210,7 @@ the <a class="reference external" href="https://docs.python.org/3/library/venv.h
 </div>
 <div class="section" id="use-pip-for-installing">
 <h2><a class="toc-backref" href="#id13">Use pip for Installing</a><a class="headerlink" href="#use-pip-for-installing" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a> is the recommended installer.  Below, we&#8217;ll cover the most common
+<p><a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a> is the recommended installer.  Below, we’ll cover the most common
 usage scenarios. For more detail, see the <a class="reference external" href="https://pip.pypa.io">pip docs</a>,
 which includes a complete <a class="reference external" href="https://pip.pypa.io/en/latest/reference/index.html">Reference Guide</a>.</p>
 <p>There are a few cases where you might want to use <a class="reference external" href="https://pip.pypa.io/en/latest/reference/index.html">easy_install</a> instead of pip.  For
@@ -233,7 +223,7 @@ Index</span></a> using a <a class="reference internal" href="../glossary_ko.html
 composed of a project name followed by an optional <a class="reference internal" href="../glossary_ko.html#term-version-specifier"><span class="xref std std-term">version specifier</span></a>.  <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440"><strong>PEP 440</strong></a> contains a <span class="target" id="index-1"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440#version-specifiers"><strong>full
 specification</strong></a>
 of the currently supported specifiers. Below are some examples.</p>
-<p>To install the latest version of &#8220;SomeProject&#8221;:</p>
+<p>To install the latest version of “SomeProject”:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="s1">&#39;SomeProject&#39;</span>
 </pre></div>
 </div>
@@ -245,13 +235,13 @@ of the currently supported specifiers. Below are some examples.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="s1">&#39;SomeProject&gt;=1,&lt;2&#39;</span>
 </pre></div>
 </div>
-<p>To install a version that&#8217;s <span class="target" id="index-2"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440#compatible-release"><strong>&#8220;compatible&#8221;</strong></a>
+<p>To install a version that’s <span class="target" id="index-2"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440#compatible-release"><strong>“compatible”</strong></a>
 with a certain version: <a class="footnote-reference" href="#id8" id="id4">[4]</a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="s1">&#39;SomeProject~=1.4.2&#39;</span>
 </pre></div>
 </div>
-<p>In this case, this means to install any version &#8220;==1.4.*&#8221; version that&#8217;s also
-&#8220;&gt;=1.4.2&#8221;.</p>
+<p>In this case, this means to install any version “==1.4.*” version that’s also
+“&gt;=1.4.2”.</p>
 </div>
 <div class="section" id="source-distributions-vs-wheels">
 <h2><a class="toc-backref" href="#id15">Source Distributions vs Wheels</a><a class="headerlink" href="#source-distributions-vs-wheels" title="Permalink to this headline">¶</a></h2>
@@ -290,8 +280,8 @@ from the pip docs.</p>
 </div>
 <div class="section" id="installing-from-vcs">
 <h2><a class="toc-backref" href="#id19">Installing from VCS</a><a class="headerlink" href="#installing-from-vcs" title="Permalink to this headline">¶</a></h2>
-<p>Install a project from VCS in &#8220;editable&#8221; mode.  For a full breakdown of the
-syntax, see pip&#8217;s section on <a class="reference external" href="https://pip.pypa.io/en/latest/reference/pip_install/#vcs-support" title="(in pip v10.0)"><span class="xref std std-ref">VCS Support</span></a>.</p>
+<p>Install a project from VCS in “editable” mode.  For a full breakdown of the
+syntax, see pip’s section on <a class="reference external" href="https://pip.pypa.io/en/latest/reference/pip_install/#vcs-support" title="(in pip v10.0)"><span class="xref std std-ref">VCS Support</span></a>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="o">.</span><span class="n">repo</span><span class="o">/</span><span class="n">some_pkg</span><span class="o">.</span><span class="n">git</span><span class="c1">#egg=SomeProject          # from git</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="n">hg</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">hg</span><span class="o">.</span><span class="n">repo</span><span class="o">/</span><span class="n">some_pkg</span><span class="o">.</span><span class="n">git</span><span class="c1">#egg=SomeProject            # from mercurial</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="n">svn</span><span class="o">+</span><span class="n">svn</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="o">.</span><span class="n">repo</span><span class="o">/</span><span class="n">some_pkg</span><span class="o">/</span><span class="n">trunk</span><span class="o">/</span><span class="c1">#egg=SomeProject         # from svn</span>
@@ -329,7 +319,7 @@ still editable from the src tree.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">./</span><span class="n">downloads</span><span class="o">/</span><span class="n">SomeProject</span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span><span class="mf">4.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
-<p>Install from a local directory containing archives (and don&#8217;t check <a class="reference internal" href="../glossary_ko.html#term-python-package-index-pypi"><span class="xref std std-term">PyPI</span></a>)</p>
+<p>Install from a local directory containing archives (and don’t check <a class="reference internal" href="../glossary_ko.html#term-python-package-index-pypi"><span class="xref std std-term">PyPI</span></a>)</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">index</span> <span class="o">--</span><span class="n">find</span><span class="o">-</span><span class="n">links</span><span class="o">=</span><span class="n">file</span><span class="p">:</span><span class="o">///</span><span class="n">local</span><span class="o">/</span><span class="nb">dir</span><span class="o">/</span> <span class="n">SomeProject</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">index</span> <span class="o">--</span><span class="n">find</span><span class="o">-</span><span class="n">links</span><span class="o">=/</span><span class="n">local</span><span class="o">/</span><span class="nb">dir</span><span class="o">/</span> <span class="n">SomeProject</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">index</span> <span class="o">--</span><span class="n">find</span><span class="o">-</span><span class="n">links</span><span class="o">=</span><span class="n">relative</span><span class="o">/</span><span class="nb">dir</span><span class="o">/</span> <span class="n">SomeProject</span>
@@ -356,7 +346,7 @@ default, pip only finds stable versions.</p>
 </div>
 </div>
 <div class="section" id="installing-setuptools-extras">
-<h2><a class="toc-backref" href="#id25">Installing Setuptools &#8220;Extras&#8221;</a><a class="headerlink" href="#installing-setuptools-extras" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id25">Installing Setuptools “Extras”</a><a class="headerlink" href="#installing-setuptools-extras" title="Permalink to this headline">¶</a></h2>
 <p>Install <a class="reference external" href="https://setuptools.readthedocs.io/en/latest/setuptools.html#declaring-extras-optional-features-with-their-own-dependencies">setuptools extras</a>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ pip install SomePackage[PDF]
 $ pip install SomePackage[PDF]==3.0
@@ -367,7 +357,7 @@ $ pip install -e .[PDF]==3.0  # editable project in current directory
 <table class="docutils footnote" frame="void" id="id5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>&#8220;Secure&#8221; in this context means using a modern browser or a
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>“Secure” in this context means using a modern browser or a
 tool like <cite>curl</cite> that verifies SSL certificates when downloading from
 https URLs.</td></tr>
 </tbody>
@@ -413,23 +403,17 @@ and support was released in <a class="reference internal" href="../key_projects_
 
 
   <ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/index.html">Guides</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../discussions/index.html">Discussions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/index_ko.html">Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">How to Get Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
 </ul>
 
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Tutorials</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="distributing-packages.html"
-                        title="next chapter">Packaging and Distributing Projects</a></p>
         </div>
       </div>
       <div class="clearer"></div>
@@ -440,12 +424,6 @@ and support was released in <a class="reference internal" href="../key_projects_
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="right" >
-          <a href="distributing-packages.html" title="Packaging and Distributing Projects"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="index.html" title="Tutorials"
-             >previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -453,7 +431,6 @@ and support was released in <a class="reference internal" href="../key_projects_
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" >Tutorials</a> &#187;</li>
     <li class="right">
         
 
@@ -484,7 +461,7 @@ and support was released in <a class="reference internal" href="../key_projects_
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
     </div>
 
   </body>

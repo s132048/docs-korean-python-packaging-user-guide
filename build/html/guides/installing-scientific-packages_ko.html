@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Installing Scientific Packages &#8212; Python Packaging User Guide</title>
-    
+    <title>과학 패키지 설치 &#8212; Python Packaging User Guide</title>
     <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -27,6 +24,8 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="멀티 버전 설치" href="multi-version-installs_ko.html" />
+    <link rel="prev" title="리눅스 패키지 매니저로 pip/setuptools/wheel 설치하기" href="installing-using-linux-tools_ko.html" />
     <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
     
     <script type="text/javascript" src="../_static/copybutton.js"></script>
@@ -34,13 +33,19 @@
      
 
   </head>
-  <body role="document">  
+  <body>  
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="multi-version-installs_ko.html" title="멀티 버전 설치"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="installing-using-linux-tools_ko.html" title="리눅스 패키지 매니저로 pip/setuptools/wheel 설치하기"
+             accesskey="P">previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -48,6 +53,7 @@
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
+          <li class="nav-item nav-item-1"><a href="index_ko.html" accesskey="U">가이드</a> &#187;</li>
     <li class="right">
         
 
@@ -71,8 +77,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="installing-scientific-packages">
-<span id="numpy-and-the-science-stack"></span><h1>Installing Scientific Packages<a class="headerlink" href="#installing-scientific-packages" title="Permalink to this headline">¶</a></h1>
+  <p>#.. <span class="target" id="numpy-and-the-science-stack">NumPy and the Science Stack</span>:</p>
+<div class="section" id="id1">
+<h1>과학 패키지 설치<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -86,13 +93,13 @@
 <div class="contents local topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#building-from-source" id="id2">Building from source</a></li>
-<li><a class="reference internal" href="#linux-distribution-packages" id="id3">Linux distribution packages</a></li>
-<li><a class="reference internal" href="#windows-installers" id="id4">Windows installers</a></li>
-<li><a class="reference internal" href="#macos-installers-and-package-managers" id="id5">macOS installers and package managers</a></li>
-<li><a class="reference internal" href="#scipy-distributions" id="id6">SciPy distributions</a></li>
-<li><a class="reference internal" href="#spack" id="id7">Spack</a></li>
-<li><a class="reference internal" href="#the-conda-cross-platform-package-manager" id="id8">The conda cross-platform package manager</a></li>
+<li><a class="reference internal" href="#building-from-source" id="id3">Building from source</a></li>
+<li><a class="reference internal" href="#linux-distribution-packages" id="id4">Linux distribution packages</a></li>
+<li><a class="reference internal" href="#windows-installers" id="id5">Windows installers</a></li>
+<li><a class="reference internal" href="#macos-installers-and-package-managers" id="id6">macOS installers and package managers</a></li>
+<li><a class="reference internal" href="#scipy-distributions" id="id7">SciPy distributions</a></li>
+<li><a class="reference internal" href="#spack" id="id8">Spack</a></li>
+<li><a class="reference internal" href="#the-conda-cross-platform-package-manager" id="id9">The conda cross-platform package manager</a></li>
 </ul>
 </div>
 <p>과학 관련 소프트웨어는 대부분의 경우보다 복잡한 dependency를 갖는 경향이 있으며, 여러 종류의 하드웨어를
@@ -105,26 +112,26 @@
 사용하여 미리 빌드 된 NumPy 바이너리를 배포하는 작업과 호환되지 않는다. 또한 <code class="docutils literal"><span class="pre">wheel</span></code> 은 현재
 설치프로그램이 Numpy 설치시에 사용자를 대신하여 결정을 내리는 것을 허용하지 않는다.</p>
 <p>이 상황은 NumPy의 현재 빌드 및 배포 프로세스의 복잡성을 완전히 지원하도록 표준 도구의 개선 또는
-NumPy 개발자가 하나의 빌드를 &#8220;가장 낮은 수용 가능한 공통 분모&#8221;로 선택하여 이를 PyPI에 wheel
+NumPy 개발자가 하나의 빌드를 “가장 낮은 수용 가능한 공통 분모”로 선택하여 이를 PyPI에 wheel
 파일로 publish하는 것을 통해 향후에 해결 될 것으로 예상된다.</p>
 <p>그러나, 위의 방식대로 해결되기 전까지는 과학 관련 Python 라이브러리(또는 소스에서
 설치하기 위한 환경이 필요하고 PyPI에 사전 빌드 된 wheel 파일을 제공하지 않는 다른
 Python 라이브러리)를 설치하기 위한 여러 가지 대체 옵션이 있다.</p>
 <div class="section" id="building-from-source">
-<h2><a class="toc-backref" href="#id2">Building from source</a><a class="headerlink" href="#building-from-source" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">Building from source</a><a class="headerlink" href="#building-from-source" title="Permalink to this headline">¶</a></h2>
 <p>NumPy(및 그것에 의존하는 많은 프로젝트)를 wheel 파일로 배포하는 것이 어려운 것과 같은 이유로 소스에서
 직접 빌드하기는 어렵다. 그러나 C와 FORTRAN 모두에 대해 컴파일러와 링커를 다룰 용의가 있는 용감한
 사람들에게는 소스에서 빌드하는 것도 옵션이다.</p>
 </div>
 <div class="section" id="linux-distribution-packages">
-<h2><a class="toc-backref" href="#id3">Linux distribution packages</a><a class="headerlink" href="#linux-distribution-packages" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">Linux distribution packages</a><a class="headerlink" href="#linux-distribution-packages" title="Permalink to this headline">¶</a></h2>
 <p>Linux 사용자의 경우, 종종 시스템 패키지 관리자는 미리 컴파일 된 NumPy 및 과학 관련 Python 스택의
 여러 부분을 이미 가지고 있다.</p>
 <p>몇 개월이 지난 version을 사용하는 것이 허용된다면 이는 좋은 옵션이 될 수도 있다. 단, virtual
 environment를 사용할 때에는 시스템 Python에 설치된 배포판에 대한 액세스를 허용해야 한다.</p>
 </div>
 <div class="section" id="windows-installers">
-<h2><a class="toc-backref" href="#id4">Windows installers</a><a class="headerlink" href="#windows-installers" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">Windows installers</a><a class="headerlink" href="#windows-installers" title="Permalink to this headline">¶</a></h2>
 <p>현재 wheel 파일을 publish하지 않는 (또는 못하는) 많은 Python 프로젝트는 PyPI 또는 프로젝트
 다운로드 페이지에 Windows installer를 publish한다. 이러한 installer를 사용하면 사용자가
 로컬에서 extension을 빌드하기 위한 적합한 environment을 구축할 필요가 없다.</p>
@@ -140,22 +147,22 @@ Christoph Gohlke는 <a class="reference external" href="http://www.lfd.uci.edu/~
 <cite>wheel convert</cite> subcommand 또한 제공한다.</p>
 </div>
 <div class="section" id="macos-installers-and-package-managers">
-<span id="mac-os-x-installers-and-package-managers"></span><h2><a class="toc-backref" href="#id5">macOS installers and package managers</a><a class="headerlink" href="#macos-installers-and-package-managers" title="Permalink to this headline">¶</a></h2>
+<span id="mac-os-x-installers-and-package-managers"></span><h2><a class="toc-backref" href="#id6">macOS installers and package managers</a><a class="headerlink" href="#macos-installers-and-package-managers" title="Permalink to this headline">¶</a></h2>
 <p>Windows와 마찬가지로 NumPy를 포함한 많은 프로젝트는 python.org에 publish된
 macOS CPython 바이너리와 호환되는 macOS installer을 publish한다.</p>
-<p>macOS 사용자는 &#8220;MacPorts&#8221;와 같은 Linux 배포 스타일 패키지 관리자에 액세스 할 수도 있다.
+<p>macOS 사용자는 “MacPorts”와 같은 Linux 배포 스타일 패키지 관리자에 액세스 할 수도 있다.
 SciPy 사이트에는 MacPorts를 사용하여 <a class="reference external" href="http://www.scipy.org/install.html#mac-packages">과학 관련 Python 스택</a> 을 설치하는 것에 대해 더 자세한
 정보가 있다.</p>
 </div>
 <div class="section" id="scipy-distributions">
-<h2><a class="toc-backref" href="#id6">SciPy distributions</a><a class="headerlink" href="#scipy-distributions" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">SciPy distributions</a><a class="headerlink" href="#scipy-distributions" title="Permalink to this headline">¶</a></h2>
 <p>SciPy 사이트에는 <a class="reference external" href="http://www.scipy.org/install.html">여러 배포판</a> 을 통해
 최종 사용자가 사용하기 쉽고 업데이트 하기 쉬운 형식으로 full SciPy stack을 제공한다.</p>
 <p>이러한 배포판 중 일부는 표준 <code class="docutils literal"><span class="pre">pip</span></code> 이나 <code class="docutils literal"><span class="pre">virtualenv</span></code> 기반 toolchain과 호환되지 않을 수도
 있다.</p>
 </div>
 <div class="section" id="spack">
-<h2><a class="toc-backref" href="#id7">Spack</a><a class="headerlink" href="#spack" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id8">Spack</a><a class="headerlink" href="#spack" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/LLNL/spack/">Spack</a> 은 여러 버전, 설정, 플랫폼, 컴파일러를
 지원 할 수 있도록 만들어진 유연한 패키지 관리자이다. 이는 소프트웨어를 여러가지
 방법으로 빌드를 해야하는 대규모 슈퍼컴퓨팅 센터나 과학 어플리케이션 팀을 지원하기 만들어졌다.
@@ -169,12 +176,12 @@ MPI와 같은 종속성 구현, 버전, 빌드 옵션을 쉽게 swap 할 수 있
 언로드 할 수 있다.</p>
 </div>
 <div class="section" id="the-conda-cross-platform-package-manager">
-<h2><a class="toc-backref" href="#id8">The conda cross-platform package manager</a><a class="headerlink" href="#the-conda-cross-platform-package-manager" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id9">The conda cross-platform package manager</a><a class="headerlink" href="#the-conda-cross-platform-package-manager" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://store.continuum.io/cshop/anaconda/">Anaconda</a> 는 Continuum Analytics가
 publish한 Python 배포판이다. 빅데이터와 과학적 사용을 위한 안정적인 오픈소스
 패키지 모음이다. Anaconda 2.2와 함께 약 100개의 패키지가 설치되며 총
 279개가 설치 및 업데이트가 Anaconda repository를 통해 가능하다.</p>
-<p>Anaconda에 포함 된 오픈 소스 패키지 관리 시스템 및 환경 관리 시스템인 &#8220;conda&#8221;는
+<p>Anaconda에 포함 된 오픈 소스 패키지 관리 시스템 및 환경 관리 시스템인 “conda”는
 사용자가 여러 버전의 바이너리 소프트웨어 패키지 및 dependency를 설치하고 이들 사이를
 쉽게 전환 할 수 있게 해준다. 이는 Windows, macOS 및 Linux에서 작동하는 cross-platform 도구이다.
 Conda는 모든 종류의 패키지를 패키지화하고 배포하는 데 사용할 수 있으며, 이는 Python 패키지에만
@@ -198,18 +205,39 @@ conda만 포함)에서 사용할 수 있다.</p>
   
 
 
-  <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Guides</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../discussions/index.html">Discussions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index_ko.html">가이드</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tool-recommendations_ko.html">도구 추천</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-using-linux-tools_ko.html">리눅스 패키지 매니저로 pip/setuptools/wheel 설치하기</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">과학 패키지 설치</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-version-installs_ko.html">멀티 버전 설치</a></li>
+<li class="toctree-l2"><a class="reference internal" href="single-sourcing-package-version_ko.html">패키지 버전 단일 소싱</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supporting-multiple-python-versions_ko.html">다중 파이썬 버전 지원</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packaging-binary-extensions_ko.html">바이너리 확장 패키징</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supporting-windows-using-appveyor_ko.html">Appveyor를 사용한 윈도우 지원</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packaging-namespace-packages_ko.html">네임스페이스 패키지 패키징</a></li>
+<li class="toctree-l2"><a class="reference internal" href="creating-and-discovering-plugins_ko.html">플러그인 생성 및 검색</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index-mirrors-and-caches_ko.html">패키지 색인 미러 및 캐시</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hosting-your-own-index_ko.html">자신의 simple repository 호스팅하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating-to-pypi-org_ko.html">PyPI.org로 마이그레이션하기</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA 설명서</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">프로젝트 요약</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">지원 받는 방법</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
 </ul>
 
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="installing-using-linux-tools_ko.html"
+                        title="previous chapter">리눅스 패키지 매니저로 pip/setuptools/wheel 설치하기</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="multi-version-installs_ko.html"
+                        title="next chapter">멀티 버전 설치</a></p>
         </div>
       </div>
       <div class="clearer"></div>
@@ -220,6 +248,12 @@ conda만 포함)에서 사용할 수 있다.</p>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="multi-version-installs_ko.html" title="멀티 버전 설치"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="installing-using-linux-tools_ko.html" title="리눅스 패키지 매니저로 pip/setuptools/wheel 설치하기"
+             >previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -227,6 +261,7 @@ conda만 포함)에서 사용할 수 있다.</p>
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
+          <li class="nav-item nav-item-1"><a href="index_ko.html" >가이드</a> &#187;</li>
     <li class="right">
         
 
@@ -257,7 +292,7 @@ conda만 포함)에서 사용할 수 있다.</p>
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
     </div>
 
   </body>

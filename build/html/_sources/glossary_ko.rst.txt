@@ -143,7 +143,7 @@ Glossary
 
        :term:`Package <Distribution Package>` 을 설치하기 위한 specification.
        :term:`PYPA <Python Packaging Authority (PyPA)>` 에 의해 권장되는
-       installer인 :ref:`pip`은 "requirement"로 간주 될 수 있는 여러가지 형태의
+       installer인 :ref:`pip`\ 은 "requirement"로 간주 될 수 있는 여러가지 형태의
        specification을 허용한다. :ref:`pip:pip install` 를 참조.
 
 

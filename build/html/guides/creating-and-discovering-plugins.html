@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Creating and discovering plugins &#8212; Python Packaging User Guide</title>
-    
     <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -36,7 +33,7 @@
      
 
   </head>
-  <body role="document">  
+  <body>  
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -82,7 +79,7 @@
             
   <div class="section" id="creating-and-discovering-plugins">
 <h1>Creating and discovering plugins<a class="headerlink" href="#creating-and-discovering-plugins" title="Permalink to this headline">¶</a></h1>
-<p>Often when creating a Python application or library you&#8217;ll want the ability to
+<p>Often when creating a Python application or library you’ll want the ability to
 provide customizations or extra features via <strong>plugins</strong>. Because Python
 packages can be separately distributed, your application or library may want to
 automatically <strong>discover</strong> all of the plugins available.</p>
@@ -119,7 +116,7 @@ then <code class="docutils literal"><span class="pre">flask_plugins</span></code
 </pre></div>
 </div>
 <p>Using naming convention for plugins also allows you to query the
-Python Package Index&#8217;s <a class="reference external" href="https://www.python.org/dev/peps/pep-0503/#specification">simple API</a> for all packages that conform to your
+Python Package Index’s <a class="reference external" href="https://www.python.org/dev/peps/pep-0503/#specification">simple API</a> for all packages that conform to your
 naming convention.</p>
 </div>
 <div class="section" id="using-namespace-packages">
@@ -161,22 +158,22 @@ and <code class="docutils literal"><span class="pre">myapp.plugin.b</span></code
 </pre></div>
 </div>
 <p>This sample uses a sub-package as the namespace package (<code class="docutils literal"><span class="pre">myapp.plugin</span></code>), but
-it&#8217;s also possible to use a top-level package for this purpose (such as
+it’s also possible to use a top-level package for this purpose (such as
 <code class="docutils literal"><span class="pre">myapp_plugins</span></code>). How to pick the namespace to use is a matter of preference,
-but it&#8217;s not recommended to make your project&#8217;s main top-level package (
+but it’s not recommended to make your project’s main top-level package (
 <code class="docutils literal"><span class="pre">myapp</span></code> in this case) a namespace package for the purpose of plugins, as one
 bad plugin could cause the entire namespace to break which would in turn make
-your project unimportable. For the &#8220;namespace sub-package&#8221; approach to work,
+your project unimportable. For the “namespace sub-package” approach to work,
 the plugin packages must omit the <code class="docutils literal"><span class="pre">__init__.py</span></code> for your top-level package
 directory (<code class="docutils literal"><span class="pre">myapp</span></code> in this case) and include the namespace-package style
 <code class="docutils literal"><span class="pre">__init__.py</span></code> in the namespace sub-package directory (<code class="docutils literal"><span class="pre">myapp/plugins</span></code>).
 This also means that plugins will need to explicitly pass a list of packages
-to <code class="xref py py-func docutils literal"><span class="pre">setup()</span></code>&#8216;s <code class="docutils literal"><span class="pre">packages</span></code> argument instead of using
+to <code class="xref py py-func docutils literal"><span class="pre">setup()</span></code>’s <code class="docutils literal"><span class="pre">packages</span></code> argument instead of using
 <code class="xref py py-func docutils literal"><span class="pre">setuptools.find_packages()</span></code>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">Namespace packages are a complex feature and there are several
-different ways to create them. It&#8217;s highly recommended to read the
+different ways to create them. It’s highly recommended to read the
 <a class="reference internal" href="packaging-namespace-packages.html"><span class="doc">Packaging namespace packages</span></a> documentation and clearly document
 which approach is preferred for plugins to your project.</p>
 </div>
@@ -215,7 +212,7 @@ in its <code class="docutils literal"><span class="pre">setup.py</span></code>:<
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The <code class="docutils literal"><span class="pre">entry_point</span></code> specification in <code class="docutils literal"><span class="pre">setup.py</span></code> is fairly flexible
-and has a lot of options. It&#8217;s recommended to read over the entire section
+and has a lot of options. It’s recommended to read over the entire section
 on <a class="reference external" href="http://setuptools.readthedocs.io/en/latest/setuptools.html#dynamic-discovery-of-services-and-plugins">entry points</a>.</p>
 </div>
 </div>
@@ -234,9 +231,9 @@ on <a class="reference external" href="http://setuptools.readthedocs.io/en/lates
 
 
   <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index.html">Guides</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../discussions/index.html">Discussions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -305,7 +302,7 @@ on <a class="reference external" href="http://setuptools.readthedocs.io/en/lates
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
     </div>
 
   </body>

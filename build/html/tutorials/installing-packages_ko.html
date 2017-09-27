@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>패키지 설치하기 &#8212; Python Packaging User Guide</title>
-    
     <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -27,6 +24,8 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="프로젝트 패키징과 배포" href="distributing-packages_ko.html" />
+    <link rel="prev" title="튜토리얼" href="index_ko.html" />
     <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
     
     <script type="text/javascript" src="../_static/copybutton.js"></script>
@@ -34,13 +33,19 @@
      
 
   </head>
-  <body role="document">  
+  <body>  
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="distributing-packages_ko.html" title="프로젝트 패키징과 배포"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index_ko.html" title="튜토리얼"
+             accesskey="P">previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -48,6 +53,7 @@
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
+          <li class="nav-item nav-item-1"><a href="index_ko.html" accesskey="U">튜토리얼</a> &#187;</li>
     <li class="right">
         
 
@@ -74,42 +80,42 @@
   <div class="section" id="id1">
 <h1>패키지 설치하기<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>이 섹션은 파이썬 <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">packages</span></a> 설치 방법의 기본을 다룬다.</p>
-<p>이 맥락에서 용어 &#8220;패키지&#8221;는 <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">distribution</span></a>
+<p>이 맥락에서 용어 “패키지”는 <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">distribution</span></a>
 (설치되는 소프트웨어 번들(bundle))의 동의어로서 사용되고 있다는 사실을 유의하라.
 파이썬 소스 코드에서 임포트 하는 <a class="reference internal" href="../glossary_ko.html#term-import-package"><span class="xref std std-term">package</span></a> (모듈 컨테이너)
-같은 것을 의미하는 것이 아니다. 파이썬 커뮤니티에서는 <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">distribution</span></a>를 &#8220;패키지&#8221;라고 언급하는 일이 일반적이다.
-&#8220;distribution&#8221;이라는 용어를 사용하는 것은 권장되지 않는다. 왜냐하면,
+같은 것을 의미하는 것이 아니다. 파이썬 커뮤니티에서는 <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">distribution</span></a>를 “패키지”라고 언급하는 일이 일반적이다.
+“distribution”이라는 용어를 사용하는 것은 권장되지 않는다. 왜냐하면,
 리눅스 distribution이나 파이썬 같은 다른 큰 소프트웨어 distribution과 쉽게 혼동을
 일으킬 수 있기 때문이다.</p>
 <div class="contents local topic" id="id2">
 <p class="topic-title first">목차</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id3" id="id30">패키치 설치를 위한 요구조건</a><ul>
-<li><a class="reference internal" href="#pip-setuptools-wheel" id="id31">pip, setuptools, wheel 설치하기</a></li>
-<li><a class="reference internal" href="#id7" id="id32">선택적으로, 가상 환경을 생성하기</a></li>
+<li><a class="reference internal" href="#installing-requirements" id="id25">패키치 설치를 위한 요구조건</a><ul>
+<li><a class="reference internal" href="#pip-setuptools-wheel" id="id26">pip, setuptools, wheel 설치하기</a></li>
+<li><a class="reference internal" href="#id6" id="id27">선택적으로, 가상 환경을 생성하기</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#creating-and-using-virtual-environments" id="id33">가상 환경 생성하기</a></li>
-<li><a class="reference internal" href="#pip" id="id34">설치를 위해 pip 사용하기</a></li>
-<li><a class="reference internal" href="#pypi" id="id35">PyPI에서 설치하기</a></li>
-<li><a class="reference internal" href="#vs-wheels" id="id36">소스 배포판 vs wheels</a></li>
-<li><a class="reference internal" href="#id13" id="id37">패키지 업그레이드 하기</a></li>
-<li><a class="reference internal" href="#id14" id="id38">사용자 사이트에 설치하기</a></li>
-<li><a class="reference internal" href="#id15" id="id39">요구조건 파일</a></li>
-<li><a class="reference internal" href="#vcs" id="id40">VCS에서 설치하기</a></li>
-<li><a class="reference internal" href="#id20" id="id41">다른 색인에서 설치하기</a></li>
-<li><a class="reference internal" href="#id21" id="id42">로컬 소스 트리에서 설치하기</a></li>
-<li><a class="reference internal" href="#id22" id="id43">로컬 아카이브에서 설치하기</a></li>
-<li><a class="reference internal" href="#id23" id="id44">다른 소스에서 설치하기</a></li>
-<li><a class="reference internal" href="#id24" id="id45">프리 릴리즈</a></li>
-<li><a class="reference internal" href="#setuptools-extras" id="id46">Setuptools &#8220;Extras&#8221; 설치하기</a></li>
+<li><a class="reference internal" href="#id8" id="id28">가상 환경 생성하기</a></li>
+<li><a class="reference internal" href="#pip" id="id29">설치를 위해 pip 사용하기</a></li>
+<li><a class="reference internal" href="#pypi" id="id30">PyPI에서 설치하기</a></li>
+<li><a class="reference internal" href="#vs-wheels" id="id31">소스 배포판 vs wheels</a></li>
+<li><a class="reference internal" href="#id12" id="id32">패키지 업그레이드 하기</a></li>
+<li><a class="reference internal" href="#id13" id="id33">사용자 사이트에 설치하기</a></li>
+<li><a class="reference internal" href="#id14" id="id34">요구조건 파일</a></li>
+<li><a class="reference internal" href="#vcs" id="id35">VCS에서 설치하기</a></li>
+<li><a class="reference internal" href="#id15" id="id36">다른 색인에서 설치하기</a></li>
+<li><a class="reference internal" href="#id16" id="id37">로컬 소스 트리에서 설치하기</a></li>
+<li><a class="reference internal" href="#id17" id="id38">로컬 아카이브에서 설치하기</a></li>
+<li><a class="reference internal" href="#id18" id="id39">다른 소스에서 설치하기</a></li>
+<li><a class="reference internal" href="#id19" id="id40">프리 릴리즈</a></li>
+<li><a class="reference internal" href="#setuptools-extras" id="id41">Setuptools “Extras” 설치하기</a></li>
 </ul>
 </div>
-<div class="section" id="id3">
-<span id="id4"></span><h2><a class="toc-backref" href="#id30">패키치 설치를 위한 요구조건</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installing-requirements">
+<span id="id3"></span><h2><a class="toc-backref" href="#id25">패키치 설치를 위한 요구조건</a><a class="headerlink" href="#installing-requirements" title="Permalink to this headline">¶</a></h2>
 <p>이 섹션은 다른 파이썬 패키지를 설치하기 전에 따라야 할 단계에 대해 설명하고 있다.</p>
 <div class="section" id="pip-setuptools-wheel">
-<h3><a class="toc-backref" href="#id31">pip, setuptools, wheel 설치하기</a><a class="headerlink" href="#pip-setuptools-wheel" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id26">pip, setuptools, wheel 설치하기</a><a class="headerlink" href="#pip-setuptools-wheel" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">만약 <a class="reference external" href="https://www.python.org">python.org</a>에서 파이썬 3 &gt;=3.4 또는 파이썬
 2 &gt;= 2.7.9 를 설치했다면 당신은 이미 <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>와 <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a>가 있을
@@ -123,7 +129,7 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">만약 시스템 패키지 매니저(예, &#8220;yum&#8221;, &#8220;apt-get&#8221; 등)에 의해 관리되는 리눅스에 설치된
+<li><p class="first">만약 시스템 패키지 매니저(예, “yum”, “apt-get” 등)에 의해 관리되는 리눅스에 설치된
 파이썬을 사용하고 있고 시스템 패키지 매니저를 이용해 pip를 설치하고 업그레이드하고
 싶다면 <a class="reference internal" href="../guides/installing-using-linux-tools_ko.html#installing-pip-setuptools-wheel-with-linux-package-managers"><span class="std std-ref">Installing pip/setuptools/wheel with Linux Package Managers</span></a>를
 참고하라.</p>
@@ -133,10 +139,10 @@
 </ul>
 <blockquote>
 <div><ul>
-<li><p class="first">안전하게 <a class="reference external" href="https://bootstrap.pypa.io/get-pip.py">get-pip.py</a> <a class="footnote-reference" href="#id25" id="id5">[1]</a>를
+<li><p class="first">안전하게 <a class="reference external" href="https://bootstrap.pypa.io/get-pip.py">get-pip.py</a> <a class="footnote-reference" href="#id20" id="id4">[1]</a>를
 다운로드 하라.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">python</span> <span class="pre">get-pip.py</span></code> <a class="footnote-reference" href="#id26" id="id6">[2]</a>를 실행하면 pip를 설치하거나 업그레이드해 줄 것이다.
+<li><p class="first"><code class="docutils literal"><span class="pre">python</span> <span class="pre">get-pip.py</span></code> <a class="footnote-reference" href="#id21" id="id5">[2]</a>를 실행하면 pip를 설치하거나 업그레이드해 줄 것이다.
 아직 설치되어있지 않으면 추가적으로 <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a>와 <a class="reference internal" href="../key_projects_ko.html#wheel"><span class="std std-ref">wheel</span></a>도 설치할
 것이다.</p>
 <div class="admonition warning">
@@ -151,8 +157,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id7">
-<h3><a class="toc-backref" href="#id32">선택적으로, 가상 환경을 생성하기</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id27">선택적으로, 가상 환경을 생성하기</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>자세한 사항은 <a class="reference internal" href="#creating-and-using-virtual-environments"><span class="std std-ref">아래에 있는 섹션</span></a>을
 참고해야 하지만 기본적인 커맨드는 여기에 있다:</p>
 <blockquote>
@@ -162,17 +168,18 @@
 <span class="n">source</span> <span class="o">&lt;</span><span class="n">DIR</span><span class="o">&gt;/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="https://docs.python.org/3/library/venv.html">venv</a> 사용하기: <a class="footnote-reference" href="#id27" id="id8">[3]</a></p>
+<p><a class="reference external" href="https://docs.python.org/3/library/venv.html">venv</a> 사용하기: <a class="footnote-reference" href="#id22" id="id7">[3]</a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="o">&lt;</span><span class="n">DIR</span><span class="o">&gt;</span>
 <span class="n">source</span> <span class="o">&lt;</span><span class="n">DIR</span><span class="o">&gt;/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
 </pre></div>
 </div>
 </div></blockquote>
+<p>#.. <span class="target" id="creating-and-using-virtual-environments">Creating and using Virtual Environments</span>:</p>
 </div>
 </div>
-<div class="section" id="creating-and-using-virtual-environments">
-<span id="id9"></span><h2><a class="toc-backref" href="#id33">가상 환경 생성하기</a><a class="headerlink" href="#creating-and-using-virtual-environments" title="Permalink to this headline">¶</a></h2>
-<p>파이썬 &#8220;가상 환경&#8221;은 파이썬 <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">packages</span></a>가 글로벌하게
+<div class="section" id="id8">
+<h2><a class="toc-backref" href="#id28">가상 환경 생성하기</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>파이썬 “가상 환경”은 파이썬 <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">packages</span></a>가 글로벌하게
 (globally) 설치되지 않고 특정한 어플리케이션을 위한 독립된 위치에 설치되게 할 수 있다.</p>
 <p>당신이 LibFoo 버전 1을 필요로 하는 어플리케이션을 가지고 있다고 상상해보자, 그런데
 다른 어플리케이션은 버전 2를 요구한다. 어떻게 두 가지 어플리케이션을 다 쓸 수 있을까?
@@ -209,22 +216,22 @@
 참고하라.</p>
 </div>
 <div class="section" id="pip">
-<h2><a class="toc-backref" href="#id34">설치를 위해 pip 사용하기</a><a class="headerlink" href="#pip" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id29">설치를 위해 pip 사용하기</a><a class="headerlink" href="#pip" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>는 권장되는 인스톨러(installer). 아래에, 우리는 가장 일반적인 사용
 시나리오를 다룰 것이다. 더 자세한 정보는 완전한 <a class="reference external" href="https://pip.pypa.io/en/latest/reference/index.html">레퍼런스 가이드</a>를 포함하는
 <a class="reference external" href="https://pip.pypa.io">pip 문서</a>를 참고하라.</p>
-<p>pip 대신에 <a href="#id47"><span class="problematic" id="id48">`easy_install https://pip.pypa.io/en/latest/reference/index.html&gt;`_</span></a>
-을 사용하기를 원하는 경우가 있다. 자세한 정보는 <a class="reference internal" href="../discussions/pip-vs-easy-install_ko.html#pip-vs-easy-install"><span class="std std-ref">pip vs easy_install</span></a>를
+<p>pip 대신에 <a class="reference external" href="https://pip.pypa.io/en/latest/reference/index.html">easy_install</a>
+을 사용하기를 원하는 경우가 있다. 자세한 정보는 <span class="xref std std-ref">pip vs easy_install</span>를
 참고하라.</p>
 </div>
 <div class="section" id="pypi">
-<h2><a class="toc-backref" href="#id35">PyPI에서 설치하기</a><a class="headerlink" href="#pypi" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id30">PyPI에서 설치하기</a><a class="headerlink" href="#pypi" title="Permalink to this headline">¶</a></h2>
 <p>가장 일반적인 <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>사용법은 <a class="reference internal" href="../glossary_ko.html#term-requirement-specifier"><span class="xref std std-term">requirement specifier</span></a>를 사용하는 <a class="reference internal" href="../glossary_ko.html#term-python-package-index-pypi"><span class="xref std std-term">Python Package
 Index</span></a>로부터 설치하는 것이다. 일반적으로 요구사항
 지정자(requirement specifier)는 프로젝트 이름과 선택적인 <a class="reference internal" href="../glossary_ko.html#term-version-specifier"><span class="xref std std-term">version specifier</span></a>로 구성되어 있다. <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440"><strong>PEP 440</strong></a>는 현재 지원되는 지정자의
 <span class="target" id="index-1"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440#version-specifiers"><strong>전체 목록</strong></a>를 포함하고 있다. 아래는 몇 가지
 예시들이다.</p>
-<p>&#8220;SomeProject&#8221;의 최신 버전 설치:</p>
+<p>“SomeProject”의 최신 버전 설치:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="s1">&#39;SomeProject&#39;</span>
 </pre></div>
 </div>
@@ -236,31 +243,32 @@ Index</span></a>로부터 설치하는 것이다. 일반적으로 요구사항
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="s1">&#39;SomeProject&gt;=1,&lt;2&#39;</span>
 </pre></div>
 </div>
-<p>특정한 버전과 <span class="target" id="index-2"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440#compatible-release"><strong>&#8220;호환 되는&#8221;</strong></a> 버전 설치 : <a class="footnote-reference" href="#id28" id="id12">[4]</a></p>
+<p>특정한 버전과 <span class="target" id="index-2"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440#compatible-release"><strong>“호환 되는”</strong></a> 버전 설치 : <a class="footnote-reference" href="#id23" id="id11">[4]</a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="s1">&#39;SomeProject~=1.4.2&#39;</span>
 </pre></div>
 </div>
-<p>이 경우, 이는 &#8220;&gt;=1.4.2&#8221;인 아무 &#8220;==1.4.*&#8221; 버전을 설치하는 것을 의미한다.
+<p>이 경우, 이는 “&gt;=1.4.2”인 아무 “==1.4.*” 버전을 설치하는 것을 의미한다.
 .</p>
 </div>
 <div class="section" id="vs-wheels">
-<h2><a class="toc-backref" href="#id36">소스 배포판 vs wheels</a><a class="headerlink" href="#vs-wheels" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id31">소스 배포판 vs wheels</a><a class="headerlink" href="#vs-wheels" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>는 <a class="reference internal" href="../glossary_ko.html#term-source-distribution-or-sdist"><span class="xref std std-term">Source Distributions (sdist)</span></a> 또는 <a class="reference internal" href="../glossary_ko.html#term-wheel"><span class="xref std std-term">Wheels</span></a>로부터 설치할 수 있지만,
 둘 다 PyPI에 있다면 pip는 호환 되는 <a class="reference internal" href="../glossary_ko.html#term-wheel"><span class="xref std std-term">wheel</span></a>을 선호한다.</p>
-<p><a class="reference internal" href="../glossary_ko.html#term-wheel"><span class="xref std std-term">Wheels</span></a>는 <span class="xref std std-term">Source Distributions (sdist)</span> 포맷이다.</p>
+<p><a class="reference internal" href="../glossary_ko.html#term-wheel"><span class="xref std std-term">Wheels</span></a>는 <a class="reference internal" href="../glossary_ko.html#term-source-distribution-or-sdist"><span class="xref std std-term">Source Distributions (sdist)</span></a>과 비교했을 때 (특히 컴파일된 확장자가 있을 떄)
+훨씬 더 빠르게 설치할 수 있는 프리 빌드된(pre-built) <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">distribution</span></a> 포맷이다.</p>
 <p>만약 <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>가 설치할 wheel을 찾지 못하면, pip는 나중에 source distribution
 을 리빌딩 하는 대신 로컬에서 미래에 설치할 wheel을 빌드하고 저장(cache)해둔다.
 in the future.</p>
 </div>
-<div class="section" id="id13">
-<h2><a class="toc-backref" href="#id37">패키지 업그레이드 하기</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<h2><a class="toc-backref" href="#id32">패키지 업그레이드 하기</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <p>PyPI로부터 설치된 <cite>SomeProject</cite>를 최신 버전으로 업그레이드하기.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">SomeProject</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id14">
-<h2><a class="toc-backref" href="#id38">사용자 사이트에 설치하기</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id13">
+<h2><a class="toc-backref" href="#id33">사용자 사이트에 설치하기</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
 <p>현재 사용자와 분리된 <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">packages</span></a>설치하려면
 <code class="docutils literal"><span class="pre">--user</span></code> 플래그(flag)를 사용하라:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">SomeProject</span>
@@ -269,18 +277,18 @@ in the future.</p>
 <p>더 자세한 정보는 pip 문서에 있는 <a class="reference external" href="https://pip.readthedocs.io/en/latest/user_guide.html#user-installs">User Installs</a>를
 참고하라.</p>
 </div>
-<div class="section" id="id15">
-<h2><a class="toc-backref" href="#id39">요구조건 파일</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
-<p>:ref:<a href="#id16"><span class="problematic" id="id17">`</span></a>Requirements File &lt;pip:Requirements Files&gt;`에서 지정된 요구 사항 목록
+<div class="section" id="id14">
+<h2><a class="toc-backref" href="#id34">요구조건 파일</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://pip.pypa.io/en/latest/user_guide/#requirements-files" title="(in pip v10.0)"><span class="xref std std-ref">Requirements File</span></a>에서 지정된 요구 사항 목록
 설치.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="vcs">
-<h2><a class="toc-backref" href="#id40">VCS에서 설치하기</a><a class="headerlink" href="#vcs" title="Permalink to this headline">¶</a></h2>
-<p>&#8220;편집&#8221; 모드에서 VCS에 있는 프로젝트 설치. 신택스에 대한 전제 내용은
-:ref:<a href="#id18"><span class="problematic" id="id19">`</span></a>VCS Support &lt;pip:VCS Support&gt;에 있는 pip 섹션을 참고하라.</p>
+<h2><a class="toc-backref" href="#id35">VCS에서 설치하기</a><a class="headerlink" href="#vcs" title="Permalink to this headline">¶</a></h2>
+<p>“편집” 모드에서 VCS에 있는 프로젝트 설치. 신택스에 대한 전제 내용은
+<a class="reference external" href="https://pip.pypa.io/en/latest/reference/pip_install/#vcs-support" title="(in pip v10.0)"><span class="xref std std-ref">VCS Support</span></a>에 있는 pip 섹션을 참고하라.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="o">.</span><span class="n">repo</span><span class="o">/</span><span class="n">some_pkg</span><span class="o">.</span><span class="n">git</span><span class="c1">#egg=SomeProject          # from git</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="n">hg</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">hg</span><span class="o">.</span><span class="n">repo</span><span class="o">/</span><span class="n">some_pkg</span><span class="o">.</span><span class="n">git</span><span class="c1">#egg=SomeProject            # from mercurial</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="n">svn</span><span class="o">+</span><span class="n">svn</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="o">.</span><span class="n">repo</span><span class="o">/</span><span class="n">some_pkg</span><span class="o">/</span><span class="n">trunk</span><span class="o">/</span><span class="c1">#egg=SomeProject         # from svn</span>
@@ -288,8 +296,8 @@ in the future.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id20">
-<h2><a class="toc-backref" href="#id41">다른 색인에서 설치하기</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id15">
+<h2><a class="toc-backref" href="#id36">다른 색인에서 설치하기</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
 <p>대체 색인으로부터 설치</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">index</span><span class="o">-</span><span class="n">url</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">my</span><span class="o">.</span><span class="n">package</span><span class="o">.</span><span class="n">repo</span><span class="o">/</span><span class="n">simple</span><span class="o">/</span> <span class="n">SomeProject</span>
 </pre></div>
@@ -300,8 +308,8 @@ in the future.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id21">
-<h2><a class="toc-backref" href="#id42">로컬 소스 트리에서 설치하기</a><a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id16">
+<h2><a class="toc-backref" href="#id37">로컬 소스 트리에서 설치하기</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://setuptools.readthedocs.io/en/latest/setuptools.html#development-mode">Development Mode</a>
 에 있는 로컬 소스로부터 설치, 즉 이러한 방식은 프로젝트가 설치된 것으로 나타나지만
 여전히 소스 트리에서 편집 가능하다.</p>
@@ -313,8 +321,8 @@ in the future.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id22">
-<h2><a class="toc-backref" href="#id43">로컬 아카이브에서 설치하기</a><a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id17">
+<h2><a class="toc-backref" href="#id38">로컬 아카이브에서 설치하기</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
 <p>특정한 소스 아카이브 파일 설치.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">./</span><span class="n">downloads</span><span class="o">/</span><span class="n">SomeProject</span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span><span class="mf">4.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
@@ -326,8 +334,8 @@ in the future.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id23">
-<h2><a class="toc-backref" href="#id44">다른 소스에서 설치하기</a><a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id18">
+<h2><a class="toc-backref" href="#id39">다른 소스에서 설치하기</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
 <p>다른 데이터 소스로부터 설치하기 위해서(예, 마아마존 S3 저장소) 당신은 색인 포맷을
 따르는 <span class="target" id="index-3"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0503"><strong>PEP 503</strong></a>에 있는 데이터를 제공하는 helper application을 생성할 수 있으며
 <code class="docutils literal"><span class="pre">--extra-index-url</span></code> 플래그를 사용해서 pip가 그 색인을 사용하도록 지시할 수 있다.</p>
@@ -336,8 +344,8 @@ in the future.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id24">
-<h2><a class="toc-backref" href="#id45">프리 릴리즈</a><a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id19">
+<h2><a class="toc-backref" href="#id40">프리 릴리즈</a><a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
 <p>안정된 버전을 포함해 프리 릴리즈, 개발자 버전을 찾아라. 기본적으로 pip는 안정된
 버전만 찾는다.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">pre</span> <span class="n">SomeProject</span>
@@ -345,7 +353,7 @@ in the future.</p>
 </div>
 </div>
 <div class="section" id="setuptools-extras">
-<h2><a class="toc-backref" href="#id46">Setuptools &#8220;Extras&#8221; 설치하기</a><a class="headerlink" href="#setuptools-extras" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id41">Setuptools “Extras” 설치하기</a><a class="headerlink" href="#setuptools-extras" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://setuptools.readthedocs.io/en/latest/setuptools.html#declaring-extras-optional-features-with-their-own-dependencies">setuptools extras</a> 설치.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ pip install SomePackage[PDF]
 $ pip install SomePackage[PDF]==3.0
@@ -353,33 +361,33 @@ $ pip install -e .[PDF]==3.0  # editable project in current directory
 </pre></div>
 </div>
 <hr class="docutils" />
-<table class="docutils footnote" frame="void" id="id25" rules="none">
+<table class="docutils footnote" frame="void" id="id20" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[1]</a></td><td>이 문맥에서 &#8220;안전하게&#8221;는 최신 브라우저나 https URL에서 다운로드 할 때
+<tr><td class="label"><a class="fn-backref" href="#id4">[1]</a></td><td>이 문맥에서 “안전하게”는 최신 브라우저나 https URL에서 다운로드 할 때
 SSL 인정스럴 확인하는 <cite>curl</cite>같은 툴을 사용하는 것을 말한다.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id26" rules="none">
+<table class="docutils footnote" frame="void" id="id21" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id6">[2]</a></td><td>플랫폼에 따라 루트나 관리자 권한이 필요할 수 있다.
+<tr><td class="label"><a class="fn-backref" href="#id5">[2]</a></td><td>플랫폼에 따라 루트나 관리자 권한이 필요할 수 있다.
 <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>는 <a class="reference external" href="https://github.com/pypa/pip/issues/1668">사용자 installs를 디폴트 작동으로 만들어서</a> 이것을 바꾸는 것을
 고려하고 있다.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id27" rules="none">
+<table class="docutils footnote" frame="void" id="id22" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id8">[3]</a></td><td>Python 3.4로 시작하면, <code class="docutils literal"><span class="pre">venv</span></code> (<a class="reference internal" href="../key_projects_ko.html#virtualenv"><span class="std std-ref">virtualenv</span></a>의 대체 표준 라이브러리)
+<tr><td class="label"><a class="fn-backref" href="#id7">[3]</a></td><td>Python 3.4로 시작하면, <code class="docutils literal"><span class="pre">venv</span></code> (<a class="reference internal" href="../key_projects_ko.html#virtualenv"><span class="std std-ref">virtualenv</span></a>의 대체 표준 라이브러리)
 가 설치된 <code class="docutils literal"><span class="pre">pip</span></code>로 가상 환경을 생성하고, 그렇게 함으로써
 <a class="reference internal" href="../key_projects_ko.html#virtualenv"><span class="std std-ref">virtualenv</span></a>와 동일한 대체재가 될 것이다. .</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id28" rules="none">
+<table class="docutils footnote" frame="void" id="id23" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id12">[4]</a></td><td>호환되는 릴리즈 지정자는 <span class="target" id="index-4"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440"><strong>PEP 440</strong></a>에서 승인되었고, 지원은
+<tr><td class="label"><a class="fn-backref" href="#id11">[4]</a></td><td>호환되는 릴리즈 지정자는 <span class="target" id="index-4"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440"><strong>PEP 440</strong></a>에서 승인되었고, 지원은
 <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> v8.0, <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a> v6.0에서 공개 되었다.</td></tr>
 </tbody>
 </table>
@@ -398,18 +406,28 @@ SSL 인정스럴 확인하는 <cite>curl</cite>같은 툴을 사용하는 것을
   
 
 
-  <ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/index.html">Guides</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../discussions/index.html">Discussions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+  <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index_ko.html">튜토리얼</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">패키지 설치하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distributing-packages_ko.html">프로젝트 패키징과 배포</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/index_ko.html">Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">How to Get Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
 </ul>
 
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index_ko.html"
+                        title="previous chapter">튜토리얼</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="distributing-packages_ko.html"
+                        title="next chapter">프로젝트 패키징과 배포</a></p>
         </div>
       </div>
       <div class="clearer"></div>
@@ -420,6 +438,12 @@ SSL 인정스럴 확인하는 <cite>curl</cite>같은 툴을 사용하는 것을
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="distributing-packages_ko.html" title="프로젝트 패키징과 배포"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index_ko.html" title="튜토리얼"
+             >previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -427,6 +451,7 @@ SSL 인정스럴 확인하는 <cite>curl</cite>같은 툴을 사용하는 것을
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
+          <li class="nav-item nav-item-1"><a href="index_ko.html" >튜토리얼</a> &#187;</li>
     <li class="right">
         
 
@@ -457,7 +482,7 @@ SSL 인정스럴 확인하는 <cite>curl</cite>같은 툴을 사용하는 것을
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
     </div>
 
   </body>

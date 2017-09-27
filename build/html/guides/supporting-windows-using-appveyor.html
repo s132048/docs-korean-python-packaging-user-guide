@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Supporting Windows using Appveyor &#8212; Python Packaging User Guide</title>
-    
     <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -36,7 +33,7 @@
      
 
   </head>
-  <body role="document">  
+  <body>  
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -270,7 +267,7 @@ project. It is in <code class="docutils literal"><span class="pre">YAML</span></
 which your wheels will be created. Appveyor comes with Python 2.6, 2.7, 3.3,
 3.4 and 3.5 installed, in both 32-bit and 64-bit builds. The example file
 builds for all of these environments except Python 2.6. Installing for Python
-2.6 is more complex, as it does not come with pip included. We don&#8217;t support
+2.6 is more complex, as it does not come with pip included. We don’t support
 2.6 in this document (as Windows users still using Python 2 are generally able
 to move to Python 2.7 without too much difficulty).</p>
 <p>The <code class="docutils literal"><span class="pre">install</span></code> section uses pip to install any additional software that the
@@ -282,7 +279,7 @@ tools such as <code class="docutils literal"><span class="pre">tox</span></code>
 for Python, unlike languages like <code class="docutils literal"><span class="pre">C#</span></code>.</p>
 <p>The main sections that will need to be tailored to your project are <code class="docutils literal"><span class="pre">test_script</span></code>
 and <code class="docutils literal"><span class="pre">after_test</span></code>.</p>
-<p>The <code class="docutils literal"><span class="pre">test_script</span></code> section is where you will run your project&#8217;s tests. The
+<p>The <code class="docutils literal"><span class="pre">test_script</span></code> section is where you will run your project’s tests. The
 supplied file runs your test suite using <code class="docutils literal"><span class="pre">setup.py</span> <span class="pre">test</span></code>. If you are only
 interested in building wheels, and not in running your tests on Windows, you
 can replace this section with a dummy command such as <code class="docutils literal"><span class="pre">echo</span> <span class="pre">Skipped</span> <span class="pre">Tests</span></code>.
@@ -301,14 +298,14 @@ tests to fail on Windows, you can skip them as described above.</p>
 <h3><a class="toc-backref" href="#id5">Support script</a><a class="headerlink" href="#support-script" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal"><span class="pre">appveyor.yml</span></code> file relies on a single support script, which sets up the
 environment to use the SDK compiler for 64-bit builds on Python 3.3 and 3.4.
-For projects which do not need a compiler, or which don&#8217;t support 3.3 or 3.4 on
+For projects which do not need a compiler, or which don’t support 3.3 or 3.4 on
 64-bit Windows, only the <code class="docutils literal"><span class="pre">appveyor.yml</span></code> file is needed.</p>
 <p><a class="reference external" href="https://raw.githubusercontent.com/pypa/python-packaging-user-guide/master/source/guides/appveyor-sample/build.cmd">build.cmd</a>
 is a Windows batch script that runs a single command in an environment with the
 appropriate compiler for the selected Python version. All you need to do is to
 set the single environment variable <code class="docutils literal"><span class="pre">DISTUTILS_USE_SDK</span></code> to a value of <code class="docutils literal"><span class="pre">1</span></code>
 and the script does the rest. It sets up the SDK needed for 64-bit builds of
-Python 3.3 or 3.4, so don&#8217;t set the environment variable for any other builds.</p>
+Python 3.3 or 3.4, so don’t set the environment variable for any other builds.</p>
 <p>You can simply download the batch file and include it in your project unchanged.</p>
 </div>
 <div class="section" id="access-to-the-built-wheels">
@@ -316,7 +313,7 @@ Python 3.3 or 3.4, so don&#8217;t set the environment variable for any other bui
 <p>When your build completes, the built wheels will be available from the Appveyor
 control panel for your project. They can be found by going to the build status
 page for each build in turn. At the top of the build output there is a series
-of links, one of which is &#8220;Artifacts&#8221;. That page will include a list of links
+of links, one of which is “Artifacts”. That page will include a list of links
 to the wheels for that Python version / architecture. You can download those
 wheels and upload them to PyPI as part of your release process.</p>
 </div>
@@ -334,7 +331,7 @@ other CI systems).</p>
 <ol class="arabic">
 <li><p class="first">By default, <code class="docutils literal"><span class="pre">tox</span></code> only passes a chosen subset of environment variables to the
 test processes. Because <code class="docutils literal"><span class="pre">distutils</span></code> uses environment variables to control the
-compiler, this &#8220;test isolation&#8221; feature will cause the tests to use the wrong
+compiler, this “test isolation” feature will cause the tests to use the wrong
 compiler by default.</p>
 <p>To force <code class="docutils literal"><span class="pre">tox</span></code> to pass the necessary environment variables to the subprocess,
 you need to set the <code class="docutils literal"><span class="pre">tox</span></code> configuration option <code class="docutils literal"><span class="pre">passenv</span></code> to list the additional
@@ -392,7 +389,7 @@ may wish to do this).</p>
 <p>The supplied scripts will successfully build any distribution that does not
 rely on 3rd party external libraries for the build.</p>
 <p>It is possible to add steps to the <code class="docutils literal"><span class="pre">appveyor.yml</span></code> configuration (typically
-in the &#8220;install&#8221; section) to download and/or build external libraries needed by
+in the “install” section) to download and/or build external libraries needed by
 the distribution. And if needed, it is possible to add extra configuration for
 the build to supply the location of these libraries to the compiler. However,
 this level of configuration is beyond the scope of this document.</p>
@@ -461,9 +458,9 @@ this level of configuration is beyond the scope of this document.</p>
 
 
   <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index.html">Guides</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../discussions/index.html">Discussions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -532,7 +529,7 @@ this level of configuration is beyond the scope of this document.</p>
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
     </div>
 
   </body>

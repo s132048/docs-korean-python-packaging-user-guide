@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>pip vs easy_install &#8212; Python Packaging User Guide</title>
-    
     <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -27,8 +24,6 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="install_requires vs Requirements files" href="install-requires-vs-requirements.html" />
-    <link rel="prev" title="Deploying Python applications" href="deploying-python-applications.html" />
     <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
     
     <script type="text/javascript" src="../_static/copybutton.js"></script>
@@ -36,19 +31,13 @@
      
 
   </head>
-  <body role="document">  
+  <body>  
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="install-requires-vs-requirements.html" title="install_requires vs Requirements files"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="deploying-python-applications.html" title="Deploying Python applications"
-             accesskey="P">previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -56,7 +45,6 @@
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Discussions</a> &#187;</li>
     <li class="right">
         
 
@@ -80,8 +68,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="pip-vs-easy-install">
-<span id="id1"></span><h1>pip vs easy_install<a class="headerlink" href="#pip-vs-easy-install" title="Permalink to this headline">¶</a></h1>
+  <p>#.. <span class="target" id="pip-vs-easy-install">pip vs easy_install</span>:</p>
+<div class="section" id="id1">
+<h1>pip vs easy_install<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p><cite>easy_install</cite> was released in 2004, as part of <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a>.  It was
 notable at the time for installing <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">packages</span></a> from
 <a class="reference internal" href="../glossary_ko.html#term-python-package-index-pypi"><span class="xref std std-term">PyPI</span></a> using requirement specifiers, and
@@ -89,9 +78,9 @@ automatically installing dependencies.</p>
 <p><a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a> came later in 2008, as alternative to <cite>easy_install</cite>, although still
 largely built on top of <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> components.  It was notable at the
 time for <em>not</em> installing packages as <a class="reference internal" href="../glossary_ko.html#term-egg"><span class="xref std std-term">Eggs</span></a> or from <a class="reference internal" href="../glossary_ko.html#term-egg"><span class="xref std std-term">Eggs</span></a> (but
-rather simply as &#8216;flat&#8217; packages from <a class="reference internal" href="../glossary_ko.html#term-source-distribution-or-sdist"><span class="xref std std-term">sdists</span></a>), and introducing the idea of <a class="reference external" href="https://pip.pypa.io/en/latest/user_guide/#requirements-files" title="(in pip v10.0)"><span class="xref std std-ref">Requirements Files</span></a>, which gave users the power to easily replicate
+rather simply as ‘flat’ packages from <a class="reference internal" href="../glossary_ko.html#term-source-distribution-or-sdist"><span class="xref std std-term">sdists</span></a>), and introducing the idea of <a class="reference external" href="https://pip.pypa.io/en/latest/user_guide/#requirements-files" title="(in pip v10.0)"><span class="xref std std-ref">Requirements Files</span></a>, which gave users the power to easily replicate
 environments.</p>
-<p>Here&#8217;s a breakdown of the important differences between pip and easy_install now:</p>
+<p>Here’s a breakdown of the important differences between pip and easy_install now:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="32%" />
@@ -126,7 +115,7 @@ Support</td>
 <td>No</td>
 </tr>
 <tr class="row-odd"><td>Installation format</td>
-<td>&#8216;Flat&#8217; packages with <cite>egg-info</cite>
+<td>‘Flat’ packages with <cite>egg-info</cite>
 metadata.</td>
 <td>Encapsulated Egg format</td>
 </tr>
@@ -177,30 +166,18 @@ metadata.</td>
   
 
 
-  <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/index.html">Guides</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Discussions</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="deploying-python-applications.html">Deploying Python applications</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">pip vs easy_install</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install-requires-vs-requirements.html">install_requires vs Requirements files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wheel-vs-egg.html">Wheel vs Egg</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/index_ko.html">Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_ko.html">토론</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">How to Get Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
 </ul>
 
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="deploying-python-applications.html"
-                        title="previous chapter">Deploying Python applications</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="install-requires-vs-requirements.html"
-                        title="next chapter">install_requires vs Requirements files</a></p>
         </div>
       </div>
       <div class="clearer"></div>
@@ -211,12 +188,6 @@ metadata.</td>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="right" >
-          <a href="install-requires-vs-requirements.html" title="install_requires vs Requirements files"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="deploying-python-applications.html" title="Deploying Python applications"
-             >previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -224,7 +195,6 @@ metadata.</td>
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" >Discussions</a> &#187;</li>
     <li class="right">
         
 
@@ -255,7 +225,7 @@ metadata.</td>
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
     </div>
 
   </body>

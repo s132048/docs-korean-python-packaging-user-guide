@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>멀티 버전 설치 &#8212; Python Packaging User Guide</title>
-    
     <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -27,6 +24,8 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="패키지 버전 단일 소싱" href="single-sourcing-package-version_ko.html" />
+    <link rel="prev" title="Installing Scientific Packages" href="installing-scientific-packages_ko.html" />
     <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
     
     <script type="text/javascript" src="../_static/copybutton.js"></script>
@@ -34,13 +33,19 @@
      
 
   </head>
-  <body role="document">  
+  <body>  
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="single-sourcing-package-version_ko.html" title="패키지 버전 단일 소싱"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="installing-scientific-packages_ko.html" title="Installing Scientific Packages"
+             accesskey="P">previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -48,6 +53,7 @@
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
+          <li class="nav-item nav-item-1"><a href="index_ko.html" accesskey="U">Guides</a> &#187;</li>
     <li class="right">
         
 
@@ -95,18 +101,39 @@ sys.path - 기본 애플리케이션을 위한 스크랩트 래퍼는 기본적�
   
 
 
-  <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Guides</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../discussions/index.html">Discussions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index_ko.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tool-recommendations_ko.html">도구 추천</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-using-linux-tools_ko.html">Installing pip/setuptools/wheel with Linux Package Managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-scientific-packages_ko.html">Installing Scientific Packages</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">멀티 버전 설치</a></li>
+<li class="toctree-l2"><a class="reference internal" href="single-sourcing-package-version_ko.html">패키지 버전 단일 소싱</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supporting-multiple-python-versions_ko.html">다중 파이썬 버전 지원</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packaging-binary-extensions_ko.html">바이너리 확장 패키징</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supporting-windows-using-appveyor_ko.html">Appveyor를 사용한 윈도우 지원</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packaging-namespace-packages_ko.html">네임스페이스 패키지 패키징</a></li>
+<li class="toctree-l2"><a class="reference internal" href="creating-and-discovering-plugins_ko.html">Creating and discovering plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index-mirrors-and-caches_ko.html">Package index mirrors and caches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hosting-your-own-index_ko.html">Hosting your own simple repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating-to-pypi-org_ko.html">PyPI.org로 마이그레이션하기</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">How to Get Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
 </ul>
 
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="installing-scientific-packages_ko.html"
+                        title="previous chapter">Installing Scientific Packages</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="single-sourcing-package-version_ko.html"
+                        title="next chapter">패키지 버전 단일 소싱</a></p>
         </div>
       </div>
       <div class="clearer"></div>
@@ -117,6 +144,12 @@ sys.path - 기본 애플리케이션을 위한 스크랩트 래퍼는 기본적�
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="single-sourcing-package-version_ko.html" title="패키지 버전 단일 소싱"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="installing-scientific-packages_ko.html" title="Installing Scientific Packages"
+             >previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -124,6 +157,7 @@ sys.path - 기본 애플리케이션을 위한 스크랩트 래퍼는 기본적�
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
+          <li class="nav-item nav-item-1"><a href="index_ko.html" >Guides</a> &#187;</li>
     <li class="right">
         
 
@@ -154,7 +188,7 @@ sys.path - 기본 애플리케이션을 위한 스크랩트 래퍼는 기본적�
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
     </div>
 
   </body>

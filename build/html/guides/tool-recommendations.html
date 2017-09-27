@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Tool recommendations &#8212; Python Packaging User Guide</title>
-    
     <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -27,8 +24,6 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Installing pip/setuptools/wheel with Linux Package Managers" href="installing-using-linux-tools.html" />
-    <link rel="prev" title="Guides" href="index.html" />
     <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
     
     <script type="text/javascript" src="../_static/copybutton.js"></script>
@@ -36,19 +31,13 @@
      
 
   </head>
-  <body role="document">  
+  <body>  
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="installing-using-linux-tools.html" title="Installing pip/setuptools/wheel with Linux Package Managers"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="index.html" title="Guides"
-             accesskey="P">previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -56,7 +45,6 @@
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Guides</a> &#187;</li>
     <li class="right">
         
 
@@ -80,9 +68,10 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="tool-recommendations">
-<span id="id1"></span><h1>Tool recommendations<a class="headerlink" href="#tool-recommendations" title="Permalink to this headline">¶</a></h1>
-<p>If you&#8217;re familiar with Python packaging and installation, and just want to know
+  <p>#.. <span class="target" id="tool-recommendations">Tool Recommendations</span>:</p>
+<div class="section" id="id1">
+<h1>Tool recommendations<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>If you’re familiar with Python packaging and installation, and just want to know
 what tools are currently recommended, then here it is.</p>
 <div class="section" id="installation-tool-recommendations">
 <h2>Installation Tool Recommendations<a class="headerlink" href="#installation-tool-recommendations" title="Permalink to this headline">¶</a></h2>
@@ -93,7 +82,7 @@ is installed, you may need to also install <a class="reference internal" href=".
 of wheel caching. <a class="footnote-reference" href="#id11" id="id4">[3]</a></li>
 <li>Use <a class="reference internal" href="../key_projects_ko.html#virtualenv"><span class="std std-ref">virtualenv</span></a>, or <a class="reference external" href="https://docs.python.org/3/library/venv.html">venv</a> to isolate application specific
 dependencies from a shared Python installation. <a class="footnote-reference" href="#id12" id="id5">[4]</a></li>
-<li>If you&#8217;re looking for management of fully integrated cross-platform software
+<li>If you’re looking for management of fully integrated cross-platform software
 stacks, consider:<ul>
 <li><a class="reference internal" href="../key_projects_ko.html#buildout"><span class="std std-ref">buildout</span></a>: primarily focused on the web development community</li>
 <li><a class="reference internal" href="../key_projects_ko.html#spack"><span class="std std-ref">Spack</span></a>, <a class="reference internal" href="../key_projects_ko.html#hashdist"><span class="std std-ref">Hashdist</span></a>, or <a class="reference internal" href="../key_projects_ko.html#conda"><span class="std std-ref">conda</span></a>: primarily focused
@@ -121,7 +110,7 @@ of an updated implementation hosted at <a class="reference external" href="https
 interfaces share a common database backend and file store, allowing the latter
 to assume more default responsibilities as it becomes more capable.</p>
 <p>Users consistently using the latest versions of the recommended tools above
-with their default settings don&#8217;t need to worry about this migration, but
+with their default settings don’t need to worry about this migration, but
 users running older versions, or not using the default settings, will need
 to update their configurations in line with the recommendations below.</p>
 <div class="section" id="publishing-releases">
@@ -153,7 +142,7 @@ attempts to access <code class="docutils literal"><span class="pre">pypi.python.
 <h3>Downloading packages<a class="headerlink" href="#downloading-packages" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal"><span class="pre">pypi.python.org</span></code> is currently still the default host for downloading packages.</p>
 <p><code class="docutils literal"><span class="pre">pypi.org</span></code> is fully functional for purposes of downloading packages, and some users
-may choose to opt in to using it, but its current hosting setup isn&#8217;t capable of
+may choose to opt in to using it, but its current hosting setup isn’t capable of
 handling the full bandwidth requirements of being the default download source (even
 after accounting for the Fastly CDN).</p>
 <p><code class="docutils literal"><span class="pre">pypi.org</span></code> is expected to become the default host for downloading packages once
@@ -174,7 +163,8 @@ milestone.</p>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>There are some cases where you might choose to use <code class="docutils literal"><span class="pre">easy_install</span></code> (from
 <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a>), e.g. if you need to install from <a class="reference internal" href="../glossary_ko.html#term-egg"><span class="xref std std-term">Eggs</span></a>
-(which pip doesn&#8217;t support).  For a detailed breakdown, see <a class="reference internal" href="../discussions/pip-vs-easy-install_ko.html#pip-vs-easy-install"><span class="std std-ref">pip vs easy_install</span></a>.</td></tr>
+(which pip doesn’t support).  For a detailed breakdown, see <span class="xref std std-ref">pip vs
+easy_install</span>.</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="id10" rules="none">
@@ -191,8 +181,8 @@ as for why pip was chosen.</td></tr>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id4">[3]</a></td><td><a class="reference external" href="https://pip.pypa.io/en/latest/installing/#get-pip" title="(in pip v10.0)"><span class="xref std std-ref">get-pip.py</span></a> and <a class="reference internal" href="../key_projects_ko.html#virtualenv"><span class="std std-ref">virtualenv</span></a> install
 <a class="reference internal" href="../key_projects_ko.html#wheel"><span class="std std-ref">wheel</span></a>, whereas <a class="reference internal" href="../key_projects_ko.html#ensurepip"><span class="std std-ref">ensurepip</span></a> and <a class="reference internal" href="../key_projects_ko.html#venv"><span class="std std-ref">venv</span></a> do not
-currently.  Also, the common &#8220;python-pip&#8221; package that&#8217;s found in various
-linux distros, does not depend on &#8220;python-wheel&#8221; currently.</td></tr>
+currently.  Also, the common “python-pip” package that’s found in various
+linux distros, does not depend on “python-wheel” currently.</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="id12" rules="none">
@@ -213,7 +203,7 @@ convenience utilities for automatically populating distribution metadata
 correctly that are provided by <code class="docutils literal"><span class="pre">setuptools</span></code>. Being outside the
 standard library, <code class="docutils literal"><span class="pre">setuptools</span></code> also offers a more consistent feature
 set across different versions of Python, and (unlike <code class="docutils literal"><span class="pre">distutils</span></code>),
-<code class="docutils literal"><span class="pre">setuptools</span></code> will be updated to produce the upcoming &#8220;Metadata 2.0&#8221;
+<code class="docutils literal"><span class="pre">setuptools</span></code> will be updated to produce the upcoming “Metadata 2.0”
 standard formats on all supported versions.</p>
 <p class="last">Even for projects that do choose to use <code class="docutils literal"><span class="pre">distutils</span></code>, when <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>
 installs such projects directly from source (rather than installing
@@ -256,23 +246,17 @@ will have to be made to the <span class="target" id="index-3"></span><a class="p
 
 
   <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Guides</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../discussions/index.html">Discussions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_ko.html">Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">How to Get Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
 </ul>
 
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Guides</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="installing-using-linux-tools.html"
-                        title="next chapter">Installing pip/setuptools/wheel with Linux Package Managers</a></p>
         </div>
       </div>
       <div class="clearer"></div>
@@ -283,12 +267,6 @@ will have to be made to the <span class="target" id="index-3"></span><a class="p
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="right" >
-          <a href="installing-using-linux-tools.html" title="Installing pip/setuptools/wheel with Linux Package Managers"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="index.html" title="Guides"
-             >previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -296,7 +274,6 @@ will have to be made to the <span class="target" id="index-3"></span><a class="p
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" >Guides</a> &#187;</li>
     <li class="right">
         
 
@@ -327,7 +304,7 @@ will have to be made to the <span class="target" id="index-3"></span><a class="p
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
     </div>
 
   </body>

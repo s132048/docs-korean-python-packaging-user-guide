@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Packaging and Distributing Projects &#8212; Python Packaging User Guide</title>
-    
     <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -27,8 +24,6 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Guides" href="../guides/index.html" />
-    <link rel="prev" title="Installing Packages" href="installing-packages.html" />
     <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
     
     <script type="text/javascript" src="../_static/copybutton.js"></script>
@@ -36,19 +31,13 @@
      
 
   </head>
-  <body role="document">  
+  <body>  
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../guides/index.html" title="Guides"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="installing-packages.html" title="Installing Packages"
-             accesskey="P">previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -56,7 +45,6 @@
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Tutorials</a> &#187;</li>
     <li class="right">
         
 
@@ -142,7 +130,7 @@ Packaging User Guide.</p>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#working-in-development-mode" id="id67">Working in &#8220;Development Mode&#8221;</a></li>
+<li><a class="reference internal" href="#working-in-development-mode" id="id67">Working in “Development Mode”</a></li>
 <li><a class="reference internal" href="#packaging-your-project" id="id68">Packaging your Project</a><ul>
 <li><a class="reference internal" href="#source-distributions" id="id69">Source Distributions</a></li>
 <li><a class="reference internal" href="#wheels" id="id70">Wheels</a><ul>
@@ -166,11 +154,11 @@ Packaging User Guide.</p>
 <li><p class="first">First, make sure you have already fulfilled the <a class="reference internal" href="installing-packages.html#installing-requirements"><span class="std std-ref">requirements for
 installing packages</span></a>.</p>
 </li>
-<li><p class="first">Install &#8220;twine&#8221; <a class="footnote-reference" href="#id30" id="id1">[1]</a>:</p>
+<li><p class="first">Install “twine” <a class="footnote-reference" href="#id30" id="id1">[1]</a>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">twine</span>
 </pre></div>
 </div>
-<p>You&#8217;ll need this to upload your project <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">distributions</span></a> to <a class="reference internal" href="../glossary_ko.html#term-python-package-index-pypi"><span class="xref std std-term">PyPI</span></a> (see <a class="reference internal" href="#uploading-your-project-to-pypi"><span class="std std-ref">below</span></a>).</p>
+<p>You’ll need this to upload your project <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">distributions</span></a> to <a class="reference internal" href="../glossary_ko.html#term-python-package-index-pypi"><span class="xref std std-term">PyPI</span></a> (see <a class="reference internal" href="#uploading-your-project-to-pypi"><span class="std std-ref">below</span></a>).</p>
 </li>
 </ol>
 </div>
@@ -180,31 +168,31 @@ installing packages</span></a>.</p>
 <h3><a class="toc-backref" href="#id34">Initial Files</a><a class="headerlink" href="#initial-files" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="setup-py">
 <h4><a class="toc-backref" href="#id35">setup.py</a><a class="headerlink" href="#setup-py" title="Permalink to this headline">¶</a></h4>
-<p>The most important file is &#8220;setup.py&#8221; which exists at the root of your project
+<p>The most important file is “setup.py” which exists at the root of your project
 directory. For an example, see the <a class="reference external" href="https://github.com/pypa/sampleproject/blob/master/setup.py">setup.py</a> in the <a class="reference external" href="https://github.com/pypa/sampleproject">PyPA
 sample project</a>.</p>
-<p>&#8220;setup.py&#8221; serves two primary functions:</p>
+<p>“setup.py” serves two primary functions:</p>
 <ol class="arabic simple">
-<li>It&#8217;s the file where various aspects of your project are configured. The
+<li>It’s the file where various aspects of your project are configured. The
 primary feature of <code class="docutils literal"><span class="pre">setup.py</span></code> is that it contains a global <code class="docutils literal"><span class="pre">setup()</span></code>
 function.  The keyword arguments to this function are how specific details of
 your project are defined.  The most relevant arguments are explained in
 <a class="reference internal" href="distributing-packages_ko.html#setup-args"><span class="std std-ref">the section below</span></a>.</li>
-<li>It&#8217;s the command line interface for running various commands that
+<li>It’s the command line interface for running various commands that
 relate to packaging tasks. To get a listing of available commands, run
 <code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">--help-commands</span></code>.</li>
 </ol>
 </div>
 <div class="section" id="setup-cfg">
 <h4><a class="toc-backref" href="#id36">setup.cfg</a><a class="headerlink" href="#setup-cfg" title="Permalink to this headline">¶</a></h4>
-<p>&#8220;setup.cfg&#8221; is an ini file that contains option defaults for <code class="docutils literal"><span class="pre">setup.py</span></code>
+<p>“setup.cfg” is an ini file that contains option defaults for <code class="docutils literal"><span class="pre">setup.py</span></code>
 commands.  For an example, see the <a class="reference external" href="https://github.com/pypa/sampleproject/blob/master/setup.cfg">setup.cfg</a> in the <a class="reference external" href="https://github.com/pypa/sampleproject">PyPA
 sample project</a>.</p>
 </div>
 <div class="section" id="readme-rst">
 <h4><a class="toc-backref" href="#id37">README.rst</a><a class="headerlink" href="#readme-rst" title="Permalink to this headline">¶</a></h4>
 <p>All projects should contain a readme file that covers the goal of the
-project. The most common format is <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> with an &#8220;rst&#8221; extension, although
+project. The most common format is <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> with an “rst” extension, although
 this is not a requirement.</p>
 <p>For an example, see <a class="reference external" href="https://github.com/pypa/sampleproject/blob/master/README.rst">README.rst</a> from the <a class="reference external" href="https://github.com/pypa/sampleproject">PyPA
 sample project</a></p>
@@ -213,7 +201,7 @@ sample project</a></p>
 <h4><a class="toc-backref" href="#id38">MANIFEST.in</a><a class="headerlink" href="#manifest-in" title="Permalink to this headline">¶</a></h4>
 <p>A <code class="file docutils literal"><span class="pre">MANIFEST.in</span></code> is needed in certain cases where you need to package
 additional files that are not automatically included in a source distribution.
-To see a list of what&#8217;s included by default, see the <a class="reference external" href="https://docs.python.org/3.4/distutils/sourcedist.html#specifying-the-files-to-distribute">Specifying the files to
+To see a list of what’s included by default, see the <a class="reference external" href="https://docs.python.org/3.4/distutils/sourcedist.html#specifying-the-files-to-distribute">Specifying the files to
 distribute</a>
 section from the <a class="reference internal" href="../key_projects_ko.html#distutils"><span class="std std-ref">distutils</span></a> documentation.</p>
 <p>For an example, see the <a class="reference external" href="https://github.com/pypa/sampleproject/blob/master/MANIFEST.in">MANIFEST.in</a> from the <a class="reference external" href="https://github.com/pypa/sampleproject">PyPA
@@ -230,17 +218,17 @@ section from the <a class="reference internal" href="../key_projects_ko.html#dis
 <p>Every package should include a license file detailing the terms of
 distribution. In many jurisdictions, packages without an explicit license can
 not be legally used or distributed by anyone other than the copyright holder.
-If you&#8217;re unsure which license to choose, you can use resources such as
-<a class="reference external" href="https://choosealicense.com/">GitHub&#8217;s Choose a License</a> or consult a lawyer.</p>
+If you’re unsure which license to choose, you can use resources such as
+<a class="reference external" href="https://choosealicense.com/">GitHub’s Choose a License</a> or consult a lawyer.</p>
 <p>For an example, see the <a class="reference external" href="https://github.com/pypa/sampleproject/blob/master/LICENSE.txt">LICENSE.txt</a> from the <a class="reference external" href="https://github.com/pypa/sampleproject">PyPA
 sample project</a></p>
 </div>
 <div class="section" id="your-package">
 <h4><a class="toc-backref" href="#id40">&lt;your package&gt;</a><a class="headerlink" href="#your-package" title="Permalink to this headline">¶</a></h4>
-<p>Although it&#8217;s not required, the most common practice is to include your
+<p>Although it’s not required, the most common practice is to include your
 python modules and packages under a single top-level package that has the same
 <a class="reference internal" href="distributing-packages_ko.html#setup-name"><span class="std std-ref">name</span></a> as your project, or something very close.</p>
-<p>For an example, see the <a class="reference external" href="https://github.com/pypa/sampleproject/tree/master/sample">sample</a> package that&#8217;s
+<p>For an example, see the <a class="reference external" href="https://github.com/pypa/sampleproject/tree/master/sample">sample</a> package that’s
 include in the <a class="reference external" href="https://github.com/pypa/sampleproject">PyPA sample project</a></p>
 </div>
 </div>
@@ -282,16 +270,16 @@ declare a dependency on it using any of the following spellings:</p>
 </pre></div>
 </div>
 <p>This is the current version of your project, allowing your users to determine whether or not
-they have the latest version, and to indicate which specific versions they&#8217;ve tested their own
+they have the latest version, and to indicate which specific versions they’ve tested their own
 software against.</p>
 <p>Versions are displayed on <a class="reference internal" href="../glossary_ko.html#term-python-package-index-pypi"><span class="xref std std-term">PyPI</span></a> for each release if you
 publish your project.</p>
 <p>See <a class="reference internal" href="distributing-packages_ko.html#choosing-a-versioning-scheme"><span class="std std-ref">Choosing a versioning scheme</span></a> for more information on ways to use versions to convey
 compatibility information to your users.</p>
 <p>If the project code itself needs run-time access to the version, the simplest
-way is to keep the version in both <code class="docutils literal"><span class="pre">setup.py</span></code> and your code. If you&#8217;d rather
+way is to keep the version in both <code class="docutils literal"><span class="pre">setup.py</span></code> and your code. If you’d rather
 not duplicate the value, there are a few ways to manage this. See the
-&#8220;<a class="reference internal" href="../guides/single-sourcing-package-version_ko.html#single-sourcing-the-version"><span class="std std-ref">패키지 버전 단일 소싱</span></a>&#8221; Advanced Topics section.</p>
+“<a class="reference internal" href="../guides/single-sourcing-package-version_ko.html#single-sourcing-the-version"><span class="std std-ref">패키지 버전 단일 소싱</span></a>” Advanced Topics section.</p>
 </div>
 <div class="section" id="description">
 <h4><a class="toc-backref" href="#id44">description</a><a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h4>
@@ -373,7 +361,7 @@ argument.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">packages</span><span class="o">=</span><span class="n">find_packages</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;contrib&#39;</span><span class="p">,</span> <span class="s1">&#39;docs&#39;</span><span class="p">,</span> <span class="s1">&#39;tests*&#39;</span><span class="p">]),</span>
 </pre></div>
 </div>
-<p>It&#8217;s required to list the <a class="reference internal" href="../glossary_ko.html#term-import-package"><span class="xref std std-term">packages</span></a> to be included
+<p>It’s required to list the <a class="reference internal" href="../glossary_ko.html#term-import-package"><span class="xref std std-term">packages</span></a> to be included
 in your project.  Although they can be listed manually,
 <code class="docutils literal"><span class="pre">setuptools.find_packages</span></code> finds them automatically.  Use the <code class="docutils literal"><span class="pre">exclude</span></code>
 keyword argument to omit packages that are not intended to be released and
@@ -384,10 +372,10 @@ installed.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">install_requires</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;peppercorn&#39;</span><span class="p">],</span>
 </pre></div>
 </div>
-<p>&#8220;install_requires&#8221; should be used to specify what dependencies a project
+<p>“install_requires” should be used to specify what dependencies a project
 minimally needs to run. When the project is installed by <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>, this is the
 specification that is used to install its dependencies.</p>
-<p>For more on using &#8220;install_requires&#8221; see <a class="reference internal" href="../discussions/install-requires-vs-requirements_ko.html#install-requires-vs-requirements-files"><span class="std std-ref">install_requires vs Requirements files</span></a>.</p>
+<p>For more on using “install_requires” see <a class="reference internal" href="../discussions/install-requires-vs-requirements_ko.html#install-requires-vs-requirements-files"><span class="std std-ref">install_requires vs Requirements files</span></a>.</p>
 </div>
 <div class="section" id="python-requires">
 <span id="id15"></span><h4><a class="toc-backref" href="#id52">python_requires</a><a class="headerlink" href="#python-requires" title="Permalink to this headline">¶</a></h4>
@@ -398,7 +386,7 @@ versions.  For example, if your package is for Python 3+ only, write:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python_requires</span><span class="o">=</span><span class="s1">&#39;&gt;=3&#39;</span><span class="p">,</span>
 </pre></div>
 </div>
-<p>If your package is for Python 3.3 and up but you&#8217;re not willing to commit to
+<p>If your package is for Python 3.3 and up but you’re not willing to commit to
 Python 4 support yet, write:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python_requires</span><span class="o">=</span><span class="s1">&#39;~=3.3&#39;</span><span class="p">,</span>
 </pre></div>
@@ -411,7 +399,7 @@ with 3.3, write:</p>
 <p>And so on.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Support for this feature is relatively recent.  Your project&#8217;s source
+<p>Support for this feature is relatively recent.  Your project’s source
 distributions and wheels (see <a class="reference internal" href="#packaging-your-project"><span class="std std-ref">Packaging your Project</span></a>) must be built
 using at least version 24.2.0 of <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> in order for the
 <code class="docutils literal"><span class="pre">python_requires</span></code> argument to be recognized and the appropriate metadata
@@ -419,7 +407,7 @@ generated.</p>
 <p class="last">In addition, only versions 9.0.0 and higher of <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a> recognize the
 <code class="docutils literal"><span class="pre">python_requires</span></code> metadata.  Users with earlier versions of pip will be
 able to download &amp; install projects on any Python version regardless of the
-projects&#8217; <code class="docutils literal"><span class="pre">python_requires</span></code> values.</p>
+projects’ <code class="docutils literal"><span class="pre">python_requires</span></code> values.</p>
 </div>
 </div>
 <div class="section" id="package-data">
@@ -431,7 +419,7 @@ projects&#8217; <code class="docutils literal"><span class="pre">python_requires
 </div>
 <p>Often, additional files need to be installed into a <a class="reference internal" href="../glossary_ko.html#term-import-package"><span class="xref std std-term">package</span></a>. These files are often data that’s closely related to the package’s
 implementation, or text files containing documentation that might be of interest
-to programmers using the package. These files are called &#8220;package data&#8221;.</p>
+to programmers using the package. These files are called “package data”.</p>
 <p>The value must be a mapping from package name to a list of relative path names
 that should be copied into the package. The paths are interpreted as relative to
 the directory containing the package.</p>
@@ -455,10 +443,10 @@ distribution.</p>
 <p>For more information see the distutils section on <a class="reference external" href="http://docs.python.org/3.4/distutils/setupscript.html#installing-additional-files">Installing Additional Files</a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last"><a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> allows absolute &#8220;data_files&#8221; paths, and pip honors them as
+<p class="last"><a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> allows absolute “data_files” paths, and pip honors them as
 absolute, when installing from <a class="reference internal" href="../glossary_ko.html#term-source-distribution-or-sdist"><span class="xref std std-term">sdist</span></a>.  This is not true when installing from <a class="reference internal" href="../glossary_ko.html#term-wheel"><span class="xref std std-term">wheel</span></a>
-distributions. Wheels don&#8217;t support absolute paths, and they end up being
-installed relative to &#8220;site-packages&#8221;.  For discussion see <a class="reference external" href="https://bitbucket.org/pypa/wheel/issue/92">wheel Issue #92</a>.</p>
+distributions. Wheels don’t support absolute paths, and they end up being
+installed relative to “site-packages”.  For discussion see <a class="reference external" href="https://bitbucket.org/pypa/wheel/issue/92">wheel Issue #92</a>.</p>
 </div>
 </div>
 <div class="section" id="scripts">
@@ -480,7 +468,7 @@ entry points that may be defined by your project or others that you depend on.</
 <p>For more information, see the section on <a class="reference external" href="https://setuptools.readthedocs.io/en/latest/setuptools.html#dynamic-discovery-of-services-and-plugins">Dynamic Discovery of Services and
 Plugins</a>
 from the <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> docs.</p>
-<p>The most commonly used entry point is &#8220;console_scripts&#8221; (see below).</p>
+<p>The most commonly used entry point is “console_scripts” (see below).</p>
 <div class="section" id="console-scripts">
 <span id="id19"></span><h5><a class="toc-backref" href="#id57">console_scripts</a><a class="headerlink" href="#console-scripts" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
@@ -490,7 +478,7 @@ from the <a class="reference internal" href="../key_projects_ko.html#setuptools"
 <span class="p">},</span>
 </pre></div>
 </div>
-<p>Use &#8220;console_script&#8221; <a class="reference external" href="https://setuptools.readthedocs.io/en/latest/setuptools.html#dynamic-discovery-of-services-and-plugins">entry points</a>
+<p>Use “console_script” <a class="reference external" href="https://setuptools.readthedocs.io/en/latest/setuptools.html#dynamic-discovery-of-services-and-plugins">entry points</a>
 to register your script interfaces. You can then let the toolchain handle the
 work of turning these interfaces into actual scripts <a class="footnote-reference" href="#id31" id="id21">[2]</a>.  The scripts will be
 generated during the install of your <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">distribution</span></a>.</p>
@@ -537,7 +525,7 @@ where the project author increments:</p>
 <li>MINOR version when they add functionality in a backwards-compatible manner, and</li>
 <li>MAINTENANCE version when they make backwards-compatible bug fixes.</li>
 </ol>
-<p>Adopting this approach as a project author allows users to make use of <span class="target" id="index-6"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440#compatible-release"><strong>&#8220;compatible release&#8221;</strong></a> specifiers, where
+<p>Adopting this approach as a project author allows users to make use of <span class="target" id="index-6"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440#compatible-release"><strong>“compatible release”</strong></a> specifiers, where
 <code class="docutils literal"><span class="pre">name</span> <span class="pre">~=</span> <span class="pre">X.Y</span></code> requires at least release X.Y, but also allows any later release with
 a matching MAJOR version.</p>
 <p>Python projects adopting semantic versioning should abide by clauses 1-8 of the
@@ -565,7 +553,7 @@ backwards compatibility.</p>
 <h5><a class="toc-backref" href="#id64">Hybrid schemes</a><a class="headerlink" href="#hybrid-schemes" title="Permalink to this headline">¶</a></h5>
 <p>Combinations of the above schemes are possible. For example, a project may combine date
 based versioning with serial versioning to create a YEAR.SERIAL numbering scheme that
-readily conveys the approximate age of a release, but doesn&#8217;t otherwise commit to a particular
+readily conveys the approximate age of a release, but doesn’t otherwise commit to a particular
 release cadence within the year.</p>
 </div>
 </div>
@@ -574,10 +562,10 @@ release cadence within the year.</p>
 <p>Regardless of the base versioning scheme, pre-releases for a given final release may be
 published as:</p>
 <ul class="simple">
-<li>zero or more dev releases (denoted with a &#8221;.devN&#8221; suffix)</li>
-<li>zero or more alpha releases (denoted with a &#8221;.aN&#8221; suffix)</li>
-<li>zero or more beta releases (denoted with a &#8221;.bN&#8221; suffix)</li>
-<li>zero or more release candidates (denoted with a &#8221;.rcN&#8221; suffix)</li>
+<li>zero or more dev releases (denoted with a “.devN” suffix)</li>
+<li>zero or more alpha releases (denoted with a “.aN” suffix)</li>
+<li>zero or more beta releases (denoted with a “.bN” suffix)</li>
+<li>zero or more release candidates (denoted with a “.rcN” suffix)</li>
 </ul>
 <p><code class="docutils literal"><span class="pre">pip</span></code> and other modern Python package installers ignore pre-releases by default when
 deciding which versions of dependencies to install.</p>
@@ -585,7 +573,7 @@ deciding which versions of dependencies to install.</p>
 <div class="section" id="local-version-identifiers">
 <h4><a class="toc-backref" href="#id66">Local version identifiers</a><a class="headerlink" href="#local-version-identifiers" title="Permalink to this headline">¶</a></h4>
 <p>Public version identifiers are designed to support distribution via
-<a class="reference internal" href="../glossary_ko.html#term-python-package-index-pypi"><span class="xref std std-term">PyPI</span></a>. Python&#8217;s software distribution tools also support
+<a class="reference internal" href="../glossary_ko.html#term-python-package-index-pypi"><span class="xref std std-term">PyPI</span></a>. Python’s software distribution tools also support
 the notion of a <span class="target" id="index-7"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440#local-version-identifiers"><strong>local version identifier</strong></a>, which can be used to
 identify local development builds not intended for publication, or modified variants of a release
 maintained by a redistributor.</p>
@@ -599,38 +587,38 @@ For example:</p>
 </div>
 </div>
 <div class="section" id="working-in-development-mode">
-<h2><a class="toc-backref" href="#id67">Working in &#8220;Development Mode&#8221;</a><a class="headerlink" href="#working-in-development-mode" title="Permalink to this headline">¶</a></h2>
-<p>Although not required, it&#8217;s common to locally install your project in &#8220;editable&#8221;
-or &#8220;develop&#8221; mode while you&#8217;re working on it.  This allows your project to be
+<h2><a class="toc-backref" href="#id67">Working in “Development Mode”</a><a class="headerlink" href="#working-in-development-mode" title="Permalink to this headline">¶</a></h2>
+<p>Although not required, it’s common to locally install your project in “editable”
+or “develop” mode while you’re working on it.  This allows your project to be
 both installed and editable in project form.</p>
-<p>Assuming you&#8217;re in the root of your project directory, then run:</p>
+<p>Assuming you’re in the root of your project directory, then run:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
 </pre></div>
 </div>
 <p>Although somewhat cryptic, <code class="docutils literal"><span class="pre">-e</span></code> is short for <code class="docutils literal"><span class="pre">--editable</span></code>, and <code class="docutils literal"><span class="pre">.</span></code> refers
 to the current working directory, so together, it means to install the current
 directory (i.e. your project) in editable mode.  This will also install any
-dependencies declared with &#8220;install_requires&#8221; and any scripts declared with
-&#8220;console_scripts&#8221;.  Dependencies will be installed in the usual, non-editable mode.</p>
-<p>It&#8217;s fairly common to also want to install some of your dependencies in editable
-mode as well. For example, supposing your project requires &#8220;foo&#8221; and &#8220;bar&#8221;, but
-you want &#8220;bar&#8221; installed from vcs in editable mode, then you could construct a
+dependencies declared with “install_requires” and any scripts declared with
+“console_scripts”.  Dependencies will be installed in the usual, non-editable mode.</p>
+<p>It’s fairly common to also want to install some of your dependencies in editable
+mode as well. For example, supposing your project requires “foo” and “bar”, but
+you want “bar” installed from vcs in editable mode, then you could construct a
 requirements file like so:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">e</span> <span class="o">.</span>
 <span class="o">-</span><span class="n">e</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">somerepo</span><span class="o">/</span><span class="n">bar</span><span class="o">.</span><span class="n">git</span><span class="c1">#egg=bar</span>
 </pre></div>
 </div>
 <p>The first line says to install your project and any dependencies. The second
-line overrides the &#8220;bar&#8221; dependency, such that it&#8217;s fulfilled from vcs, not
+line overrides the “bar” dependency, such that it’s fulfilled from vcs, not
 PyPI.</p>
-<p>If, however, you want &#8220;bar&#8221; installed from a local directory in editable mode, the requirements file should look like this, with the local paths at the top of the file:</p>
+<p>If, however, you want “bar” installed from a local directory in editable mode, the requirements file should look like this, with the local paths at the top of the file:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">e</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">bar</span>
 <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
 </pre></div>
 </div>
 <p>Otherwise, the dependency will be fulfilled from PyPI, due to the installation order of the requirements file.  For more on requirements files, see the <a class="reference external" href="https://pip.pypa.io/en/latest/user_guide/#requirements-files" title="(in pip v10.0)"><span class="xref std std-ref">Requirements File</span></a> section in the pip docs.  For more on vcs installs,
 see the <a class="reference external" href="https://pip.pypa.io/en/latest/reference/pip_install/#vcs-support" title="(in pip v10.0)"><span class="xref std std-ref">VCS Support</span></a> section of the pip docs.</p>
-<p>Lastly, if you don&#8217;t want to install any dependencies at all, you can run:</p>
+<p>Lastly, if you don’t want to install any dependencies at all, you can run:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">deps</span>
 </pre></div>
 </div>
@@ -639,7 +627,7 @@ of the <a class="reference external" href="https://setuptools.readthedocs.io">se
 </div>
 <div class="section" id="packaging-your-project">
 <span id="id25"></span><h2><a class="toc-backref" href="#id68">Packaging your Project</a><a class="headerlink" href="#packaging-your-project" title="Permalink to this headline">¶</a></h2>
-<p>To have your project installable from a <a class="reference internal" href="../glossary_ko.html#term-package-index"><span class="xref std std-term">Package Index</span></a> like <a class="reference internal" href="../glossary_ko.html#term-python-package-index-pypi"><span class="xref std std-term">PyPI</span></a>, you&#8217;ll need to create a <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">Distribution</span></a> (aka &#8220;<a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">Package</span></a>&#8221; ) for your
+<p>To have your project installable from a <a class="reference internal" href="../glossary_ko.html#term-package-index"><span class="xref std std-term">Package Index</span></a> like <a class="reference internal" href="../glossary_ko.html#term-python-package-index-pypi"><span class="xref std std-term">PyPI</span></a>, you’ll need to create a <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">Distribution</span></a> (aka “<a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">Package</span></a>” ) for your
 project.</p>
 <div class="section" id="source-distributions">
 <h3><a class="toc-backref" href="#id69">Source Distributions</a><a class="headerlink" href="#source-distributions" title="Permalink to this headline">¶</a></h3>
@@ -647,7 +635,7 @@ project.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">sdist</span>
 </pre></div>
 </div>
-<p>A &#8220;source distribution&#8221; is unbuilt (i.e, it&#8217;s not a <a class="reference internal" href="../glossary_ko.html#term-built-distribution"><span class="xref std std-term">Built Distribution</span></a>),
+<p>A “source distribution” is unbuilt (i.e, it’s not a <a class="reference internal" href="../glossary_ko.html#term-built-distribution"><span class="xref std std-term">Built Distribution</span></a>),
 and requires a build step when installed by pip.  Even if the distribution is
 pure python (i.e. contains no extensions), it still involves a build step to
 build out the installation metadata from <code class="docutils literal"><span class="pre">setup.py</span></code>.</p>
@@ -656,16 +644,16 @@ build out the installation metadata from <code class="docutils literal"><span cl
 <h3><a class="toc-backref" href="#id70">Wheels</a><a class="headerlink" href="#wheels" title="Permalink to this headline">¶</a></h3>
 <p>You should also create a wheel for your project. A wheel is a <a class="reference internal" href="../glossary_ko.html#term-built-distribution"><span class="xref std std-term">built
 package</span></a> that can be installed without needing to go
-through the &#8220;build&#8221; process. Installing wheels is substantially faster for the
+through the “build” process. Installing wheels is substantially faster for the
 end user than installing from a source distribution.</p>
 <p>If your project is pure python (i.e. contains no compiled extensions) and
-natively supports both Python 2 and 3, then you&#8217;ll be creating what&#8217;s called a
+natively supports both Python 2 and 3, then you’ll be creating what’s called a
 <a class="reference internal" href="#universal-wheels"><span class="std std-ref">*Universal Wheel* (see section below)</span></a>.</p>
 <p>If your project is pure python but does not natively support both Python 2 and
-3, then you&#8217;ll be creating a <a class="reference internal" href="#pure-python-wheels"><span class="std std-ref">&#8220;Pure Python Wheel&#8221; (see section below)</span></a>.</p>
-<p>If you project contains compiled extensions, then you&#8217;ll be creating what&#8217;s
+3, then you’ll be creating a <a class="reference internal" href="#pure-python-wheels"><span class="std std-ref">“Pure Python Wheel” (see section below)</span></a>.</p>
+<p>If you project contains compiled extensions, then you’ll be creating what’s
 called a <a class="reference internal" href="#platform-wheels"><span class="std std-ref">*Platform Wheel* (see section below)</span></a>.</p>
-<p>Before you can build wheels for your project, you&#8217;ll need to install the
+<p>Before you can build wheels for your project, you’ll need to install the
 <code class="docutils literal"><span class="pre">wheel</span></code> package:</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>pip install wheel
 </pre></div>
@@ -679,7 +667,7 @@ anywhere by <a class="reference internal" href="../key_projects_ko.html#pip"><sp
 <div class="highlight-text"><div class="highlight"><pre><span></span>python setup.py bdist_wheel --universal
 </pre></div>
 </div>
-<p>You can also permanently set the <code class="docutils literal"><span class="pre">--universal</span></code> flag in &#8220;setup.cfg&#8221; (e.g., see
+<p>You can also permanently set the <code class="docutils literal"><span class="pre">--universal</span></code> flag in “setup.cfg” (e.g., see
 <a class="reference external" href="https://github.com/pypa/sampleproject/blob/master/setup.cfg">sampleproject/setup.cfg</a>)</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>[bdist_wheel]
 universal=1
@@ -699,19 +687,19 @@ and prevent the possibility of building the extension.</p>
 </div>
 <div class="section" id="pure-python-wheels">
 <span id="id27"></span><h4><a class="toc-backref" href="#id72">Pure Python Wheels</a><a class="headerlink" href="#pure-python-wheels" title="Permalink to this headline">¶</a></h4>
-<p><em>Pure Python Wheels</em> that are not &#8220;universal&#8221; are wheels that are pure python
-(i.e. contains no compiled extensions), but don&#8217;t natively support both Python 2
+<p><em>Pure Python Wheels</em> that are not “universal” are wheels that are pure python
+(i.e. contains no compiled extensions), but don’t natively support both Python 2
 and 3.</p>
 <p>To build the wheel:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_wheel</span>
 </pre></div>
 </div>
-<p><cite>bdist_wheel</cite> will detect that the code is pure Python, and build a wheel that&#8217;s
-named such that it&#8217;s usable on any Python installation with the same major
+<p><cite>bdist_wheel</cite> will detect that the code is pure Python, and build a wheel that’s
+named such that it’s usable on any Python installation with the same major
 version (Python 2 or Python 3) as the version you used to build the wheel.  For
 details on the naming of wheel files, see <span class="target" id="index-8"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0425"><strong>PEP 425</strong></a></p>
 <p>If your code supports both Python 2 and 3, but with different code (e.g., you
-use <a class="reference external" href="https://docs.python.org/2/library/2to3.html">&#8220;2to3&#8221;</a>) you can run
+use <a class="reference external" href="https://docs.python.org/2/library/2to3.html">“2to3”</a>) you can run
 <code class="docutils literal"><span class="pre">setup.py</span> <span class="pre">bdist_wheel</span></code> twice, once with Python 2 and once with Python 3. This
 will produce wheels for each version.</p>
 </div>
@@ -724,7 +712,7 @@ macOS, or Windows, usually due to containing compiled extensions.</p>
 </pre></div>
 </div>
 <p><cite>bdist_wheel</cite> will detect that the code is not pure Python, and build a wheel
-that&#8217;s named such that it&#8217;s only usable on the platform that it was built
+that’s named such that it’s only usable on the platform that it was built
 on. For details on the naming of wheel files, see <span class="target" id="index-9"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0425"><strong>PEP 425</strong></a></p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -738,7 +726,7 @@ Details of the latter are defined in <span class="target" id="index-10"></span><
 <div class="section" id="uploading-your-project-to-pypi">
 <span id="id29"></span><h2><a class="toc-backref" href="#id74">Uploading your Project to PyPI</a><a class="headerlink" href="#uploading-your-project-to-pypi" title="Permalink to this headline">¶</a></h2>
 <p>When you ran the command to create your distribution, a new directory <code class="docutils literal"><span class="pre">dist/</span></code>
-was created under your project&#8217;s root directory. That&#8217;s where you&#8217;ll find your
+was created under your project’s root directory. That’s where you’ll find your
 distribution file(s) to upload.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -793,7 +781,7 @@ registering the project.</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>twine upload dist/package-1.0.1.tar.gz package-1.0.1.tar.gz.asc
 </pre></div>
 </div>
-<p class="last">This enables you to be assured that you&#8217;re only ever typing your gpg
+<p class="last">This enables you to be assured that you’re only ever typing your gpg
 passphrase into gpg itself and not anything else since <em>you</em> will be
 the one directly executing the <code class="docutils literal"><span class="pre">gpg</span></code> command.</p>
 </div>
@@ -809,7 +797,7 @@ installs the default behavior</a>.</td></tr>
 <table class="docutils footnote" frame="void" id="id31" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id21">[2]</a></td><td>Specifically, the &#8220;console_script&#8221; approach generates <code class="docutils literal"><span class="pre">.exe</span></code> files on
+<tr><td class="label"><a class="fn-backref" href="#id21">[2]</a></td><td>Specifically, the “console_script” approach generates <code class="docutils literal"><span class="pre">.exe</span></code> files on
 Windows, which are necessary because the OS special-cases <code class="docutils literal"><span class="pre">.exe</span></code> files.
 Script-execution features like <code class="docutils literal"><span class="pre">PATHEXT</span></code> and the <span class="target" id="index-11"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0397"><strong>Python Launcher for
 Windows</strong></a> allow scripts to
@@ -833,9 +821,9 @@ be used in many cases, but not all.</td></tr>
 
 
   <ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_ko.html">튜토리얼</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guides/index.html">Guides</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../discussions/index.html">Discussions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -844,12 +832,6 @@ be used in many cases, but not all.</td></tr>
 </ul>
 
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="installing-packages.html"
-                        title="previous chapter">Installing Packages</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="../guides/index.html"
-                        title="next chapter">Guides</a></p>
         </div>
       </div>
       <div class="clearer"></div>
@@ -860,12 +842,6 @@ be used in many cases, but not all.</td></tr>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="right" >
-          <a href="../guides/index.html" title="Guides"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="installing-packages.html" title="Installing Packages"
-             >previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -873,7 +849,6 @@ be used in many cases, but not all.</td></tr>
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" >Tutorials</a> &#187;</li>
     <li class="right">
         
 
@@ -904,7 +879,7 @@ be used in many cases, but not all.</td></tr>
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
     </div>
 
   </body>

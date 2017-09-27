@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Single-sourcing the package version &#8212; Python Packaging User Guide</title>
-    
     <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -27,8 +24,6 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Supporting multiple Python versions" href="supporting-multiple-python-versions.html" />
-    <link rel="prev" title="Multi-version Installs" href="multi-version-installs.html" />
     <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
     
     <script type="text/javascript" src="../_static/copybutton.js"></script>
@@ -36,19 +31,13 @@
      
 
   </head>
-  <body role="document">  
+  <body>  
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="supporting-multiple-python-versions.html" title="Supporting multiple Python versions"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="multi-version-installs.html" title="Multi-version Installs"
-             accesskey="P">previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -56,7 +45,6 @@
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Guides</a> &#187;</li>
     <li class="right">
         
 
@@ -80,8 +68,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="single-sourcing-the-package-version">
-<span id="single-sourcing-the-version"></span><h1>Single-sourcing the package version<a class="headerlink" href="#single-sourcing-the-package-version" title="Permalink to this headline">¶</a></h1>
+  <p>#.. <span class="target" id="single-sourcing-the-version">Single sourcing the version</span>:</p>
+<div class="section" id="single-sourcing-the-package-version">
+<h1>Single-sourcing the package version<a class="headerlink" href="#single-sourcing-the-package-version" title="Permalink to this headline">¶</a></h1>
 <p>There are many techniques to maintain a single source of truth for the version
 number of your project:</p>
 <ol class="arabic">
@@ -144,7 +133,7 @@ and the project code read it.</p>
     <span class="n">version</span> <span class="o">=</span> <span class="n">version_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>An advantage with this technique is that it&#8217;s not specific to Python.  Any
+<p>An advantage with this technique is that it’s not specific to Python.  Any
 tool can read the version.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -159,8 +148,8 @@ all your source and binary distributions (e.g. add <code class="docutils literal
 <span class="k">assert</span> <span class="n">pkg_resources</span><span class="o">.</span><span class="n">get_distribution</span><span class="p">(</span><span class="s1">&#39;pip&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">version</span> <span class="o">==</span> <span class="s1">&#39;1.2.0&#39;</span>
 </pre></div>
 </div>
-<p>Be aware that the <code class="docutils literal"><span class="pre">pkg_resources</span></code> API only knows about what&#8217;s in the
-installation metadata, which is not necessarily the code that&#8217;s currently
+<p>Be aware that the <code class="docutils literal"><span class="pre">pkg_resources</span></code> API only knows about what’s in the
+installation metadata, which is not necessarily the code that’s currently
 imported.</p>
 </li>
 <li><p class="first">Set the value to <code class="docutils literal"><span class="pre">__version__</span></code> in <code class="docutils literal"><span class="pre">sample/__init__.py</span></code> and import
@@ -198,23 +187,17 @@ instead of in the code, and automatically extract it from there using
 
 
   <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Guides</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../discussions/index.html">Discussions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_ko.html">Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">How to Get Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
 </ul>
 
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="multi-version-installs.html"
-                        title="previous chapter">Multi-version Installs</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="supporting-multiple-python-versions.html"
-                        title="next chapter">Supporting multiple Python versions</a></p>
         </div>
       </div>
       <div class="clearer"></div>
@@ -225,12 +208,6 @@ instead of in the code, and automatically extract it from there using
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="right" >
-          <a href="supporting-multiple-python-versions.html" title="Supporting multiple Python versions"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="multi-version-installs.html" title="Multi-version Installs"
-             >previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -238,7 +215,6 @@ instead of in the code, and automatically extract it from there using
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" >Guides</a> &#187;</li>
     <li class="right">
         
 
@@ -269,7 +245,7 @@ instead of in the code, and automatically extract it from there using
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
     </div>
 
   </body>

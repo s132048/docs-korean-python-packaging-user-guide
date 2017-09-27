@@ -2,7 +2,7 @@
 .. _projects:
 
 =================
-Project Summaries
+프로젝트 요약
 =================
 
 Python 설치 및 패키징에 있어서 가장 주요한 project들의 요약과 링크.

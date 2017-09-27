@@ -1,7 +1,7 @@
-.. _`NumPy and the Science Stack`:
+#.. _`NumPy and the Science Stack`:
 
 ==============================
-Installing Scientific Packages
+과학 패키지 설치
 ==============================
 
 :Page Status: Incomplete

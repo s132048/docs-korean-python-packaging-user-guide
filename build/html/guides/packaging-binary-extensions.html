@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Packaging binary extensions &#8212; Python Packaging User Guide</title>
-    
     <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -27,8 +24,6 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Supporting Windows using Appveyor" href="supporting-windows-using-appveyor.html" />
-    <link rel="prev" title="Supporting multiple Python versions" href="supporting-multiple-python-versions.html" />
     <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
     
     <script type="text/javascript" src="../_static/copybutton.js"></script>
@@ -36,19 +31,13 @@
      
 
   </head>
-  <body role="document">  
+  <body>  
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="supporting-windows-using-appveyor.html" title="Supporting Windows using Appveyor"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="supporting-multiple-python-versions.html" title="Supporting multiple Python versions"
-             accesskey="P">previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -56,7 +45,6 @@
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Guides</a> &#187;</li>
     <li class="right">
         
 
@@ -80,8 +68,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="packaging-binary-extensions">
-<span id="binary-extensions"></span><h1>Packaging binary extensions<a class="headerlink" href="#packaging-binary-extensions" title="Permalink to this headline">¶</a></h1>
+  <p>#.. <span class="target" id="binary-extensions">Binary Extensions</span>:</p>
+<div class="section" id="packaging-binary-extensions">
+<h1>Packaging binary extensions<a class="headerlink" href="#packaging-binary-extensions" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -95,7 +84,7 @@
 <p>One of the features of the CPython reference interpreter is that, in
 addition to allowing the execution of Python code, it also exposes a rich
 C API for use by other software. One of the most common uses of this C API
-is to create importable C extensions that allow things which aren&#8217;t
+is to create importable C extensions that allow things which aren’t
 always easy to achieve in pure Python code.</p>
 <div class="contents local topic" id="contents">
 <p class="topic-title first">Contents</p>
@@ -126,24 +115,24 @@ conventional categories:</p>
 <li><p class="first">accelerator modules: these modules are completely self-contained, and
 are created solely to run faster than the equivalent pure Python code
 runs in CPython. Ideally, accelerator modules will always have a pure
-Python equivalent to use as a fallback if the accelerated version isn&#8217;t
+Python equivalent to use as a fallback if the accelerated version isn’t
 available on a given system. The CPython standard library makes extensive
 use of accelerator modules.</p>
 </li>
 <li><p class="first">wrapper modules: these modules are created to expose existing C interfaces
 to Python code. They may either expose the underlying C interface directly,
-or else expose a more &#8220;Pythonic&#8221; API that makes use of Python language
+or else expose a more “Pythonic” API that makes use of Python language
 features to make the API easier to use. The CPython standard library makes
 extensive use of wrapper modules.</p>
 </li>
 <li><p class="first">low level system access: these modules are created to access lower level
 features of the CPython runtime, the operating system, or the underlying
 hardware. Through platform specific code, extension modules may achieve
-things that aren&#8217;t possible in pure Python code. A number of CPython
+things that aren’t possible in pure Python code. A number of CPython
 standard library modules are written in C in order to access interpreter
-internals that aren&#8217;t exposed at the language level.</p>
-<p>One particularly notable feature of C extensions is that, when they don&#8217;t
-need to call back into the interpreter runtime, they can release CPython&#8217;s
+internals that aren’t exposed at the language level.</p>
+<p>One particularly notable feature of C extensions is that, when they don’t
+need to call back into the interpreter runtime, they can release CPython’s
 global interpreter lock around long-running operations (regardless of
 whether those operations are CPU or IO bound).</p>
 </li>
@@ -183,7 +172,7 @@ versions are always executed.</li>
 </ul>
 <p>Another disadvantage of relying on binary extensions is that alternative
 import mechanisms (such as the ability to import modules directly from
-zipfiles) often won&#8217;t work for extension modules (as the dynamic loading
+zipfiles) often won’t work for extension modules (as the dynamic loading
 mechanisms on most platforms can only load libraries from disk).</p>
 </div>
 <div class="section" id="alternatives-to-handcoded-accelerator-modules">
@@ -205,12 +194,12 @@ on other binary extension modules - while PyPy does emulate the CPython
 C API, modules that rely on that cause problems for the PyPy JIT, and the
 emulation layer can often expose latent defects in extension modules that
 CPython currently tolerates (frequently around reference counting errors -
-an object having one live reference instead of two often won&#8217;t break
+an object having one live reference instead of two often won’t break
 anything, but no references instead of one is a major problem).</li>
 <li><a class="reference external" href="http://cython.org/">Cython</a> is a mature static compiler that can
 compile most Python code to C extension modules. The initial compilation
 provides some speed increases (by bypassing the CPython interpreter layer),
-and Cython&#8217;s optional static typing features can offer additional
+and Cython’s optional static typing features can offer additional
 opportunities for speed increases. Using Cython still has the disadvantage
 of increasing the complexity of distributing the resulting application,
 but has the benefit of having a reduced barrier to entry for Python
@@ -230,7 +219,7 @@ functionality between multiple applications. One of the strengths of the
 CPython C API (Application Programming Interface) is allowing Python users
 to tap into that functionality. However, wrapping modules by hand is quite
 tedious, so a number of other alternative approaches should be considered.</p>
-<p>The approaches described below don&#8217;t simplify the distribution case at all,
+<p>The approaches described below don’t simplify the distribution case at all,
 but they <em>can</em> significantly reduce the maintenance burden of keeping
 wrapper modules up to date.</p>
 <ul>
@@ -243,17 +232,17 @@ may not be a good choice for wrapping large APIs.</p>
 developers to make it straightforward for developers that already know
 both Python and C to expose their C modules to Python applications. It
 also makes it relatively straightforward to wrap a C module based on its
-header files, even if you don&#8217;t know C yourself.</p>
+header files, even if you don’t know C yourself.</p>
 <p>One of the key advantages of <code class="docutils literal"><span class="pre">cffi</span></code> is that it is compatible with the
-PyPy JIT, allowing CFFI wrapper modules to participate fully in PyPy&#8217;s
+PyPy JIT, allowing CFFI wrapper modules to participate fully in PyPy’s
 tracing JIT optimisations.</p>
 </li>
 <li><p class="first"><a class="reference external" href="http://www.swig.org/">SWIG</a> is a wrapper interface generator that
 allows a variety of programming languages, including Python, to interface
 with C <em>and C++</em> code.</p>
 </li>
-<li><p class="first">The standard library&#8217;s <code class="docutils literal"><span class="pre">ctypes</span></code> module, while useful for getting access
-to C level interfaces when header information isn&#8217;t available, suffers
+<li><p class="first">The standard library’s <code class="docutils literal"><span class="pre">ctypes</span></code> module, while useful for getting access
+to C level interfaces when header information isn’t available, suffers
 from the fact that it operates solely at the C ABI level, and thus has
 no automatic consistency checking between the interface actually being
 exported by the library and the one declared in the Python code. By
@@ -317,9 +306,9 @@ not already have a copy of the relevant version of Visual Studio.</p>
 <div><p>For Python 2.7</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Install &#8220;Visual C++ Compiler Package for Python 2.7&#8221;,
+<li>Install “Visual C++ Compiler Package for Python 2.7”,
 which is available from
-<a class="reference external" href="https://www.microsoft.com/en-gb/download/details.aspx?id=44266">Microsoft&#8217;s website</a>.</li>
+<a class="reference external" href="https://www.microsoft.com/en-gb/download/details.aspx?id=44266">Microsoft’s website</a>.</li>
 <li>Use (a recent version of) setuptools in your setup.py (pip will
 do this for you, in any case).</li>
 <li>Done.</li>
@@ -328,9 +317,9 @@ do this for you, in any case).</li>
 <p>For Python 3.4</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Install &#8220;Windows SDK for Windows 7 and .NET Framework 4&#8221; (v7.1),
+<li>Install “Windows SDK for Windows 7 and .NET Framework 4” (v7.1),
 which is available from
-<a class="reference external" href="https://www.microsoft.com/en-gb/download/details.aspx?id=8279">Microsoft&#8217;s website</a>.</li>
+<a class="reference external" href="https://www.microsoft.com/en-gb/download/details.aspx?id=8279">Microsoft’s website</a>.</li>
 <li>Work from an SDK command prompt (with the environment variables
 set, and the SDK on PATH).</li>
 <li>Set DISTUTILS_USE_SDK=1</li>
@@ -387,23 +376,17 @@ be able to build Python extensions for all Python versions from 3.5 onwards.</p>
 
 
   <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Guides</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../discussions/index.html">Discussions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_ko.html">Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">How to Get Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
 </ul>
 
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="supporting-multiple-python-versions.html"
-                        title="previous chapter">Supporting multiple Python versions</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="supporting-windows-using-appveyor.html"
-                        title="next chapter">Supporting Windows using Appveyor</a></p>
         </div>
       </div>
       <div class="clearer"></div>
@@ -414,12 +397,6 @@ be able to build Python extensions for all Python versions from 3.5 onwards.</p>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="right" >
-          <a href="supporting-windows-using-appveyor.html" title="Supporting Windows using Appveyor"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="supporting-multiple-python-versions.html" title="Supporting multiple Python versions"
-             >previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -427,7 +404,6 @@ be able to build Python extensions for all Python versions from 3.5 onwards.</p>
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" >Guides</a> &#187;</li>
     <li class="right">
         
 
@@ -458,7 +434,7 @@ be able to build Python extensions for all Python versions from 3.5 onwards.</p>
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
     </div>
 
   </body>

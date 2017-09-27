@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>install_requires vs Requirements files &#8212; Python Packaging User Guide</title>
-    
     <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -27,6 +24,8 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Wheel vs Egg" href="wheel-vs-egg_ko.html" />
+    <link rel="prev" title="pip vs easy_install" href="pip-vs-easy-install_ko.html" />
     <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
     
     <script type="text/javascript" src="../_static/copybutton.js"></script>
@@ -34,13 +33,19 @@
      
 
   </head>
-  <body role="document">  
+  <body>  
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="wheel-vs-egg_ko.html" title="Wheel vs Egg"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pip-vs-easy-install_ko.html" title="pip vs easy_install"
+             accesskey="P">previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -48,6 +53,7 @@
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
+          <li class="nav-item nav-item-1"><a href="index_ko.html" accesskey="U">토론</a> &#187;</li>
     <li class="right">
         
 
@@ -95,7 +101,7 @@
 </pre></div>
 </div>
 <p>추가적으로 버전의 상한이나 하한을 표시해주는 것이 좋다.</p>
-<p>예를 들어, 당신의 프로젝트가 최소한 v1 &#8216;A&#8217;와 v2 &#8216;B&#8217;를 요구 한다면 아래와 같이
+<p>예를 들어, 당신의 프로젝트가 최소한 v1 ‘A’와 v2 ‘B’를 요구 한다면 아래와 같이
 작성해야 한다:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">install_requires</span><span class="o">=</span><span class="p">[</span>
    <span class="s1">&#39;A&gt;=1&#39;</span><span class="p">,</span>
@@ -114,9 +120,9 @@
 <p><code class="docutils literal"><span class="pre">install_requires</span></code>을 사용해서 의존성을 특정한 버전이나 특정한 하위 버전
 (당신의 의존성의 의존성)에 고정시키는 것은 권장되지 않는다. 이것은 매우 제한적이어서
 사용자가 의존성 업그레이드의 이점을 얻는 데에 방해가 된다.</p>
-<p>마지막으로 <code class="docutils literal"><span class="pre">install_requires</span></code>는 &#8220;추상적인&#8221; 요구사항의 목록이라는 점을 이해하는
+<p>마지막으로 <code class="docutils literal"><span class="pre">install_requires</span></code>는 “추상적인” 요구사항의 목록이라는 점을 이해하는
 것은 중요하다. 즉 의존성이 해결되는 위치(색인 또는 소스)를 정해주지 않은 이름과 버전
-제한에 불과하다. &#8220;구체적으로&#8221; 지정되는 위치는 <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a> 옵션을 사용해 설치하는
+제한에 불과하다. “구체적으로” 지정되는 위치는 <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a> 옵션을 사용해 설치하는
 때에 결정된다. <a class="footnote-reference" href="#id4" id="id2">[1]</a></p>
 </div>
 <div class="section" id="requirements-files">
@@ -129,8 +135,8 @@
 <p><code class="docutils literal"><span class="pre">install_requires</span></code> 요구사항은 최소으로 적지만 requirements files는 완전한 환경의
 <a class="reference external" href="https://pip.pypa.io/en/latest/user_guide/#repeatability" title="(in pip v10.0)"><span class="xref std std-ref">repeatable installations</span></a>를 아카이빙할 목적으로
 특정한 버전들로 이루어진 방대한 리스트를 포함하고 있다.</p>
-<p><code class="docutils literal"><span class="pre">install_requires</span></code> 요구사항은 &#8220;추상적&#8221;이지만, 즉 특별한 색인과 연결되어 있지 않지만
-requirements files는 요구사항을 &#8220;구체적으로&#8221; 만들어주는 pip 옵션 <code class="docutils literal"><span class="pre">--index-url</span></code> 또는
+<p><code class="docutils literal"><span class="pre">install_requires</span></code> 요구사항은 “추상적”이지만, 즉 특별한 색인과 연결되어 있지 않지만
+requirements files는 요구사항을 “구체적으로” 만들어주는 pip 옵션 <code class="docutils literal"><span class="pre">--index-url</span></code> 또는
 <code class="docutils literal"><span class="pre">--find-links</span></code> 등을 포함한다, 즉 특정한 색인과 패키지 디렉토리와 연동되어 있다. <a class="footnote-reference" href="#id4" id="id3">[1]</a></p>
 <p><code class="docutils literal"><span class="pre">install_requires</span></code> 메타 데이터는 설치될 때 pip에 의해 자동적으로 분석되지만,
 requirements files는 그렇지 않고, 사용자가 <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span></code>을 사용해서
@@ -139,7 +145,7 @@ requirements files는 그렇지 않고, 사용자가 <code class="docutils liter
 <table class="docutils footnote" frame="void" id="id4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> &#8220;추상적&#8221; vs &#8220;구체적&#8221; 요구사항에 대한 추가적 정보는 아래를 참고하라,
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> “추상적” vs “구체적” 요구사항에 대한 추가적 정보는 아래를 참고하라,
 <a class="reference external" href="https://caremad.io/2013/07/setup-vs-requirement/">https://caremad.io/2013/07/setup-vs-requirement/</a>.</td></tr>
 </tbody>
 </table>
@@ -158,18 +164,30 @@ requirements files는 그렇지 않고, 사용자가 <code class="docutils liter
   
 
 
-  <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/index.html">Guides</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Discussions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/index_ko.html">Guides</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index_ko.html">토론</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="deploying-python-applications_ko.html">Deploying Python applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pip-vs-easy-install_ko.html">pip vs easy_install</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">install_requires vs Requirements files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wheel-vs-egg_ko.html">Wheel vs Egg</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">How to Get Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
 </ul>
 
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pip-vs-easy-install_ko.html"
+                        title="previous chapter">pip vs easy_install</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="wheel-vs-egg_ko.html"
+                        title="next chapter">Wheel vs Egg</a></p>
         </div>
       </div>
       <div class="clearer"></div>
@@ -180,6 +198,12 @@ requirements files는 그렇지 않고, 사용자가 <code class="docutils liter
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="wheel-vs-egg_ko.html" title="Wheel vs Egg"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pip-vs-easy-install_ko.html" title="pip vs easy_install"
+             >previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -187,6 +211,7 @@ requirements files는 그렇지 않고, 사용자가 <code class="docutils liter
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
+          <li class="nav-item nav-item-1"><a href="index_ko.html" >토론</a> &#187;</li>
     <li class="right">
         
 
@@ -217,7 +242,7 @@ requirements files는 그렇지 않고, 사용자가 <code class="docutils liter
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
     </div>
 
   </body>

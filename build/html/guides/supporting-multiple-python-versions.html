@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Supporting multiple Python versions &#8212; Python Packaging User Guide</title>
-    
     <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -27,8 +24,6 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Packaging binary extensions" href="packaging-binary-extensions.html" />
-    <link rel="prev" title="Single-sourcing the package version" href="single-sourcing-package-version.html" />
     <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
     
     <script type="text/javascript" src="../_static/copybutton.js"></script>
@@ -36,19 +31,13 @@
      
 
   </head>
-  <body role="document">  
+  <body>  
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="packaging-binary-extensions.html" title="Packaging binary extensions"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="single-sourcing-package-version.html" title="Single-sourcing the package version"
-             accesskey="P">previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -56,7 +45,6 @@
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Guides</a> &#187;</li>
     <li class="right">
         
 
@@ -80,8 +68,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="supporting-multiple-python-versions">
-<span id="id1"></span><h1>Supporting multiple Python versions<a class="headerlink" href="#supporting-multiple-python-versions" title="Permalink to this headline">¶</a></h1>
+  <p>#.. <span class="target" id="supporting-multiple-python-versions">Supporting multiple Python versions</span>:</p>
+<div class="section" id="id1">
+<h1>Supporting multiple Python versions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -97,7 +86,7 @@
 <ul class="simple">
 <li><a class="reference internal" href="#automated-testing-and-continuous-integration" id="id2">Automated Testing and Continuous Integration</a></li>
 <li><a class="reference internal" href="#tools-for-single-source-python-packages" id="id3">Tools for single-source Python packages</a></li>
-<li><a class="reference internal" href="#what-s-in-which-python" id="id4">What&#8217;s in Which Python?</a></li>
+<li><a class="reference internal" href="#what-s-in-which-python" id="id4">What’s in Which Python?</a></li>
 </ul>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FIXME</span>
@@ -136,8 +125,8 @@ this, and these will briefly be discussed here.</p>
 <p>Several hosted services for automated testing are available. These services
 will typically monitor your source code repository (e.g. at
 <a class="reference external" href="https://github.com">Github</a> or <a class="reference external" href="https://bitbucket.org">Bitbucket</a>)
-and run your project&#8217;s test suite every time a new commit is made.</p>
-<p>These services also offer facilities to run your project&#8217;s test suite on
+and run your project’s test suite every time a new commit is made.</p>
+<p>These services also offer facilities to run your project’s test suite on
 <em>multiple versions of Python</em>, giving rapid feedback about whether the code
 will work, without the developer having to perform such tests themselves.</p>
 <p>Wikipedia has an extensive <a class="reference external" href="http://en.wikipedia.org/wiki/Comparison_of_continuous_integration_software">comparison</a>
@@ -201,7 +190,7 @@ provides for forward-compatibility to Python 3. Any remaining compatibility
 problems would require manual changes.</p>
 </div>
 <div class="section" id="what-s-in-which-python">
-<h2><a class="toc-backref" href="#id4">What&#8217;s in Which Python?</a><a class="headerlink" href="#what-s-in-which-python" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">What’s in Which Python?</a><a class="headerlink" href="#what-s-in-which-python" title="Permalink to this headline">¶</a></h2>
 <p>Ned Batchelder provides a list of changes in each Python release for
 <a class="reference external" href="http://nedbatchelder.com/blog/201109/whats_in_which_python.html">Python 2</a>
 and separately
@@ -229,23 +218,17 @@ may affect your package.</p>
 
 
   <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Guides</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../discussions/index.html">Discussions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../specifications/index.html">PyPA Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../key_projects.html">Project Summaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support.html">How to Get Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_ko.html">Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">Project Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">How to Get Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
 </ul>
 
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="single-sourcing-package-version.html"
-                        title="previous chapter">Single-sourcing the package version</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="packaging-binary-extensions.html"
-                        title="next chapter">Packaging binary extensions</a></p>
         </div>
       </div>
       <div class="clearer"></div>
@@ -256,12 +239,6 @@ may affect your package.</p>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="right" >
-          <a href="packaging-binary-extensions.html" title="Packaging binary extensions"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="single-sourcing-package-version.html" title="Single-sourcing the package version"
-             >previous</a> |</li>
     <li><img src="../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://pypa.io">PyPA</a> &#187;</li>
@@ -269,7 +246,6 @@ may affect your package.</p>
     <a href="../index.html">Python Packaging User Guide</a> &#187;
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" >Guides</a> &#187;</li>
     <li class="right">
         
 
@@ -300,7 +276,7 @@ may affect your package.</p>
     <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
     <br />
 
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.6.3.
     </div>
 
   </body>
