@@ -24,7 +24,7 @@
 .. _GitHub: https://github.com/pypa/python-packaging-user-guide
 .. _Python Packaging Authority: https://pypa.io
 
-.. note:: legacy PyPI에서 pypi.org로 옮기는 것에 대한 가이드를 찾고 있다면 :doc:`guides/migrating-to-pypi-org`\ 를 참고하라.
+.. note:: legacy PyPI에서 pypi.org로 옮기는 것에 대한 가이드를 찾고 있다면 :doc:`guides/migrating-to-pypi-org_ko`\ 를 참고하라.
 
 시작하기
 ===========
