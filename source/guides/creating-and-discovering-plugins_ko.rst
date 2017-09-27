@@ -1,5 +1,5 @@
 ================================
-Creating and discovering plugins
+플러그인 생성 및 검색
 ================================
 
 종종 Python application이나 library를 만들 때 **plugin** 을 통해 사용자에게

@@ -18,7 +18,7 @@
    :local:
 
 
-.. _설치_요구조건:
+.. _installing_requirements:
 
 패키치 설치를 위한 요구조건
 ====================================
@@ -90,7 +90,7 @@ pip, setuptools, wheel 설치하기
     source <DIR>/bin/activate
 
 
-.. _`Creating and using Virtual Environments`:
+#.. _`Creating and using Virtual Environments`:
 
 가상 환경 생성하기
 =============================
@@ -145,14 +145,14 @@ pip, setuptools, wheel 설치하기
 
 
 설치를 위해 pip 사용하기
-======================
+=========================
 
 :ref:`pip`\ 는 권장되는 인스톨러(installer). 아래에, 우리는 가장 일반적인 사용
 시나리오를 다룰 것이다. 더 자세한 정보는 완전한 `레퍼런스 가이드
 <https://pip.pypa.io/en/latest/reference/index.html>`_\ 를 포함하는
 `pip 문서 <https://pip.pypa.io>`_\ 를 참고하라.
 
-pip 대신에 `easy_install https://pip.pypa.io/en/latest/reference/index.html>`_
+pip 대신에 `easy_install <https://pip.pypa.io/en/latest/reference/index.html>`_
 을 사용하기를 원하는 경우가 있다. 자세한 정보는 :ref:`pip vs easy_install`\ 를
 참고하라.
 
@@ -207,7 +207,7 @@ Distribution (or "sdist")>` 또는 :term:`Wheels <Wheel>`\ 로부터 설치할 �
 둘 다 PyPI에 있다면 pip는 호환 되는 :term:`wheel <Wheel>`\ 을 선호한다.
 
 :term:`Wheels <Wheel>`\ 는 :term:`Source Distributions (sdist) <Source
-Distribution (or "sdist")>`과 비교했을 때 (특히 컴파일된 확장자가 있을 떄)
+Distribution (or "sdist")>`\ 과 비교했을 때 (특히 컴파일된 확장자가 있을 떄)
 훨씬 더 빠르게 설치할 수 있는 프리 빌드된(pre-built) :term:`distribution
 <Distribution Package>` 포맷이다.
 
@@ -217,7 +217,7 @@ in the future.
 
 
 패키지 업그레이드 하기
-==================
+=========================
 
 PyPI로부터 설치된 `SomeProject`\ 를 최신 버전으로 업그레이드하기.
 
@@ -246,7 +246,7 @@ PyPI로부터 설치된 `SomeProject`\ 를 최신 버전으로 업그레이드�
 요구조건 파일
 ==================
 
-:ref:`Requirements File <pip:Requirements Files>`에서 지정된 요구 사항 목록
+:ref:`Requirements File <pip:Requirements Files>`\ 에서 지정된 요구 사항 목록
 설치.
 
 ::
@@ -258,7 +258,7 @@ VCS에서 설치하기
 ===================
 
 "편집" 모드에서 VCS에 있는 프로젝트 설치. 신택스에 대한 전제 내용은
-:ref:`VCS Support <pip:VCS Support>\ 에 있는 pip 섹션을 참고하라.
+:ref:`VCS Support <pip:VCS Support>`\ 에 있는 pip 섹션을 참고하라.
 
 ::
 
