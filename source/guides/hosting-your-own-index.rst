@@ -1,4 +1,4 @@
-.. _`Hosting your Own Simple Repository`:
+#.. _`Hosting your Own Simple Repository`:
 
 ==================================
 Hosting your own simple repository

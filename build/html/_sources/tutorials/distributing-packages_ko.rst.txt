@@ -10,7 +10,7 @@
 예를 들면, 이 문서는 테스트, 도큐먼테이션, 버전 관리를 위한 툴이나 가이드를 추천하지
 않는다.
 
-:ref:`setuptools`에 있는 `Building and Distributing Packages
+:ref:`setuptools`\ 에 있는 `Building and Distributing Packages
 <https://setuptools.readthedocs.io/en/latest/setuptools.html>`_\ 를 참고하면
 더 많은 레퍼런스 자료들을 볼 수있다. 하지만 자료에 있는 내용은 최신화 되지 않은
 경우가 있다. 내용이 상충하는 경우 Python Packaging User Guide를 따라라.
@@ -22,7 +22,7 @@
 패키징과 배포를 위한 요구 조건
 ===========================================
 
-1. 첫째, :ref:`패키지 설치를 위한 요구 조건 <설치_요구조건>`\ 을
+1. 첫째, :ref:`requirements for installing packages <installing_requirements>`\ 을
    축종하는지 확인하라.
 
 2. "twine" [1]_\ 을 설치하라:
