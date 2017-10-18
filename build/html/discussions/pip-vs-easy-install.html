@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pip vs easy_install &#8212; Python Packaging User Guide</title>
+    
+    <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
+    
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    
+     
+
+  </head>
+  <body role="document">  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>#.. <span class="target" id="pip-vs-easy-install">pip vs easy_install</span>:</p>
+<div class="section" id="id1">
+<h1>pip vs easy_install<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p><cite>easy_install</cite> was released in 2004, as part of <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a>.  It was
+notable at the time for installing <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">packages</span></a> from
+<a class="reference internal" href="../glossary_ko.html#term-python-package-index-pypi"><span class="xref std std-term">PyPI</span></a> using requirement specifiers, and
+automatically installing dependencies.</p>
+<p><a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a> came later in 2008, as alternative to <cite>easy_install</cite>, although still
+largely built on top of <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> components.  It was notable at the
+time for <em>not</em> installing packages as <a class="reference internal" href="../glossary_ko.html#term-egg"><span class="xref std std-term">Eggs</span></a> or from <a class="reference internal" href="../glossary_ko.html#term-egg"><span class="xref std std-term">Eggs</span></a> (but
+rather simply as &#8216;flat&#8217; packages from <a class="reference internal" href="../glossary_ko.html#term-source-distribution-or-sdist"><span class="xref std std-term">sdists</span></a>), and introducing the idea of <a class="reference external" href="https://pip.pypa.io/en/latest/user_guide/#requirements-files" title="(in pip v10.0)"><span class="xref std std-ref">Requirements Files</span></a>, which gave users the power to easily replicate
+environments.</p>
+<p>Here&#8217;s a breakdown of the important differences between pip and easy_install now:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="36%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>&#160;</td>
+<td><strong>pip</strong></td>
+<td><strong>easy_install</strong></td>
+</tr>
+<tr class="row-even"><td>Installs from <a class="reference internal" href="../glossary_ko.html#term-wheel"><span class="xref std std-term">Wheels</span></a></td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Uninstall Packages</td>
+<td>Yes (<code class="docutils literal"><span class="pre">pip</span> <span class="pre">uninstall</span></code>)</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Dependency Overrides</td>
+<td>Yes (<a class="reference external" href="https://pip.pypa.io/en/latest/user_guide/#requirements-files" title="(in pip v10.0)"><span class="xref std std-ref">Requirements Files</span></a>)</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>List Installed Packages</td>
+<td>Yes (<code class="docutils literal"><span class="pre">pip</span> <span class="pre">list</span></code> and <code class="docutils literal"><span class="pre">pip</span>
+<span class="pre">freeze</span></code>)</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td><span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0438"><strong>PEP 438</strong></a>
+Support</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Installation format</td>
+<td>&#8216;Flat&#8217; packages with <cite>egg-info</cite>
+metadata.</td>
+<td>Encapsulated Egg format</td>
+</tr>
+<tr class="row-even"><td>sys.path modification</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>Installs from <a class="reference internal" href="../glossary_ko.html#term-egg"><span class="xref std std-term">Eggs</span></a></td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://bitbucket.org/pypa/pylauncher">pylauncher support</a></td>
+<td>No</td>
+<td>Yes <a class="footnote-reference" href="#id3" id="id2">[1]</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../guides/multi-version-installs_ko.html#multi-version-installs"><span class="std std-ref">멀티 버전 설치</span></a></td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>Exclude scripts during install</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>per project index</td>
+<td>Only in virtualenv</td>
+<td>Yes, via setup.cfg</td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td><a class="reference external" href="https://setuptools.readthedocs.io/en/latest/easy_install.html#natural-script-launcher">https://setuptools.readthedocs.io/en/latest/easy_install.html#natural-script-launcher</a></td></tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index_ko.html">Table Of Contents</a></h3>
+
+
+  
+
+
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/index_ko.html">가이드</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_ko.html">토론</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA 설명서</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">프로젝트 요약</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">지원 받는 방법</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Copyright</a> 2013–2017, PyPA.
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Last updated on Oct 18, 2017.
+    <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
+    <br />
+
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    </div>
+
+  </body>
+</html>

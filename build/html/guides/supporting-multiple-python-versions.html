@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Supporting multiple Python versions &#8212; Python Packaging User Guide</title>
+    
+    <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
+    
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    
+     
+
+  </head>
+  <body role="document">  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>#.. <span class="target" id="supporting-multiple-python-versions">Supporting multiple Python versions</span>:</p>
+<div class="section" id="id1">
+<h1>Supporting multiple Python versions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Page Status:</th><td class="field-body">Incomplete</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Last Reviewed:</th><td class="field-body">2014-12-24</td>
+</tr>
+</tbody>
+</table>
+<div class="contents local topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#automated-testing-and-continuous-integration" id="id2">Automated Testing and Continuous Integration</a></li>
+<li><a class="reference internal" href="#tools-for-single-source-python-packages" id="id3">Tools for single-source Python packages</a></li>
+<li><a class="reference internal" href="#what-s-in-which-python" id="id4">What&#8217;s in Which Python?</a></li>
+</ul>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FIXME</span>
+
+<span class="n">Useful</span> <span class="n">projects</span><span class="o">/</span><span class="n">resources</span> <span class="n">to</span> <span class="n">reference</span><span class="p">:</span>
+
+<span class="o">-</span> <span class="n">DONE</span> <span class="n">six</span>
+<span class="o">-</span> <span class="n">DONE</span> <span class="n">python</span><span class="o">-</span><span class="n">future</span> <span class="p">(</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">python</span><span class="o">-</span><span class="n">future</span><span class="o">.</span><span class="n">org</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">tox</span>
+<span class="o">-</span> <span class="n">DONE</span> <span class="n">Travis</span> <span class="ow">and</span> <span class="n">Shining</span> <span class="n">Panda</span> <span class="n">CI</span> <span class="p">(</span><span class="n">Shining</span> <span class="n">Panda</span> <span class="n">no</span> <span class="n">longer</span> <span class="n">available</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">DONE</span> <span class="n">Appveyor</span>
+<span class="o">-</span> <span class="n">DONE</span> <span class="n">Ned</span> <span class="n">Batchelder</span><span class="s1">&#39;s &quot;What&#39;</span><span class="n">s</span> <span class="ow">in</span> <span class="n">Which</span> <span class="n">Python</span><span class="s2">&quot;</span>
+  <span class="o">-</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">nedbatchelder</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">blog</span><span class="o">/</span><span class="mi">201310</span><span class="o">/</span><span class="n">whats_in_which_python_3</span><span class="o">.</span><span class="n">html</span>
+    <span class="o">-</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">nedbatchelder</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">blog</span><span class="o">/</span><span class="mi">201109</span><span class="o">/</span><span class="n">whats_in_which_python</span><span class="o">.</span><span class="n">html</span>
+<span class="o">-</span> <span class="n">Lennart</span> <span class="n">Regebro</span><span class="s1">&#39;s &quot;Porting to Python 3&quot;</span>
+<span class="o">-</span> <span class="n">Greg</span> <span class="n">Hewgill</span><span class="s1">&#39;s script to identify the minimum version of Python</span>
+  <span class="n">required</span> <span class="n">to</span> <span class="n">run</span> <span class="n">a</span> <span class="n">particular</span> <span class="n">script</span><span class="p">:</span>
+  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ghewgill</span><span class="o">/</span><span class="n">pyqver</span>
+<span class="o">-</span> <span class="n">the</span> <span class="n">Python</span> <span class="mi">3</span> <span class="n">porting</span> <span class="n">how</span> <span class="n">to</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">main</span> <span class="n">docs</span>
+<span class="o">-</span> <span class="n">cross</span> <span class="n">reference</span> <span class="n">to</span> <span class="n">the</span> <span class="n">stable</span> <span class="n">ABI</span> <span class="n">discussion</span>
+  <span class="ow">in</span> <span class="n">the</span> <span class="n">binary</span> <span class="n">extensions</span> <span class="n">topic</span> <span class="p">(</span><span class="n">once</span> <span class="n">that</span> <span class="n">exists</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">mention</span> <span class="n">version</span> <span class="n">classifiers</span> <span class="k">for</span> <span class="n">distribution</span> <span class="n">metadata</span>
+</pre></div>
+</div>
+<p>In addition to the work required to create a Python package, it is often
+necessary that the package must be made available on different versions of
+Python.  Different Python versions may contain different (or renamed) standard
+library packages, and the changes between Python versions 2.x and 3.x include
+changes in the language syntax.</p>
+<p>Performed manually, all the testing required to ensure that the package works
+correctly on all the target Python versions (and OSs!) could be very
+time-consuming. Fortunately, several tools are available for dealing with
+this, and these will briefly be discussed here.</p>
+<div class="section" id="automated-testing-and-continuous-integration">
+<h2><a class="toc-backref" href="#id2">Automated Testing and Continuous Integration</a><a class="headerlink" href="#automated-testing-and-continuous-integration" title="Permalink to this headline">¶</a></h2>
+<p>Several hosted services for automated testing are available. These services
+will typically monitor your source code repository (e.g. at
+<a class="reference external" href="https://github.com">Github</a> or <a class="reference external" href="https://bitbucket.org">Bitbucket</a>)
+and run your project&#8217;s test suite every time a new commit is made.</p>
+<p>These services also offer facilities to run your project&#8217;s test suite on
+<em>multiple versions of Python</em>, giving rapid feedback about whether the code
+will work, without the developer having to perform such tests themselves.</p>
+<p>Wikipedia has an extensive <a class="reference external" href="http://en.wikipedia.org/wiki/Comparison_of_continuous_integration_software">comparison</a>
+of many continuous-integration systems. There are two hosted services which
+when used in conjunction provide automated testing across Linux, Mac and
+Windows:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://travis-ci.org">Travis CI</a> provides both a Linux and a macOS
+environment. The Linux environment is Ubuntu 12.04 LTS Server Edition 64 bit
+while the macOS is 10.9.2 at the time of writing.</li>
+<li><a class="reference external" href="http://www.appveyor.com">Appveyor</a> provides a Windows environment
+(Windows Server 2012).</li>
+</ul>
+</div></blockquote>
+<div class="highlight-default"><div class="highlight"><pre><span></span>TODO Either link to or provide example .yml files for these two
+services.
+
+TODO How do we keep the Travis Linux and macOS versions up-to-date in this
+document?
+</pre></div>
+</div>
+<p>Both <a class="reference external" href="https://travis-ci.org">Travis CI</a> and <a class="reference external" href="http://www.appveyor.com">Appveyor</a> require a <a class="reference external" href="http://www.yaml.org">YAML</a>-formatted file as specification for the instructions
+for testing. If any tests fail, the output log for that specific configuration
+can be inspected.</p>
+<p>For Python projects that are intended to be deployed on both Python 2 and 3
+with a single-source strategy, there are a number of options.</p>
+</div>
+<div class="section" id="tools-for-single-source-python-packages">
+<h2><a class="toc-backref" href="#id3">Tools for single-source Python packages</a><a class="headerlink" href="#tools-for-single-source-python-packages" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://pythonhosted.org/six/">six</a> is a tool developed by Benjamin Peterson
+for wrapping over the differences between Python 2 and Python 3. The <a class="reference external" href="http://pythonhosted.org/six/">six</a>
+package has enjoyed widespread use and may be regarded as a reliable way to
+write a single-source python module that can be use in both Python 2 and 3.
+The <a class="reference external" href="http://pythonhosted.org/six/">six</a> module can be used from as early as Python 2.5. A tool called
+<a class="reference external" href="https://pypi.python.org/pypi/modernize">modernize</a>, developed by Armin
+Ronacher, can be used to automatically apply the code modifications provided
+by <a class="reference external" href="http://pythonhosted.org/six/">six</a>.</p>
+<p>Similar to <a class="reference external" href="http://pythonhosted.org/six/">six</a>, <a class="reference external" href="http://python-future.org/overview.html">python-future</a> is
+a package that provides a compatibility layer between Python 2 and Python 3
+source code; however, unlike <a class="reference external" href="http://pythonhosted.org/six/">six</a>, this package aims to provide
+interoperability between Python 2 and Python 3 with a language syntax that
+matches one of the two Python versions: one may
+use</p>
+<blockquote>
+<div><ul class="simple">
+<li>a Python 2 (by syntax) module in a Python 3 project.</li>
+<li>a Python 3 (by syntax) module in a <em>Python 2</em> project.</li>
+</ul>
+</div></blockquote>
+<p>Because of the bi-directionality, <a class="reference external" href="http://python-future.org/overview.html">python-future</a> offers a pathway to
+converting a Python 2 package to Python 3 syntax module-by-module. However, in
+contrast to <a class="reference external" href="http://pythonhosted.org/six/">six</a>, <a class="reference external" href="http://python-future.org/overview.html">python-future</a> is supported only from Python 2.6. Similar to
+<a class="reference external" href="https://pypi.python.org/pypi/modernize">modernize</a> for <a class="reference external" href="http://pythonhosted.org/six/">six</a>, <a class="reference external" href="http://python-future.org/overview.html">python-future</a> comes with two scripts called <code class="docutils literal"><span class="pre">futurize</span></code>
+and <code class="docutils literal"><span class="pre">pasteurize</span></code> that can be applied to either a Python 2 module or a Python
+3 module respectively.</p>
+<p>Use of <a class="reference external" href="http://pythonhosted.org/six/">six</a> or <a class="reference external" href="http://python-future.org/overview.html">python-future</a> adds an additional runtime dependency to your
+package: with <a class="reference external" href="http://python-future.org/overview.html">python-future</a>, the <code class="docutils literal"><span class="pre">futurize</span></code> script can be called with the
+<code class="docutils literal"><span class="pre">--stage1</span></code> option to apply only the changes that Python 2.6+ already
+provides for forward-compatibility to Python 3. Any remaining compatibility
+problems would require manual changes.</p>
+</div>
+<div class="section" id="what-s-in-which-python">
+<h2><a class="toc-backref" href="#id4">What&#8217;s in Which Python?</a><a class="headerlink" href="#what-s-in-which-python" title="Permalink to this headline">¶</a></h2>
+<p>Ned Batchelder provides a list of changes in each Python release for
+<a class="reference external" href="http://nedbatchelder.com/blog/201109/whats_in_which_python.html">Python 2</a>
+and separately
+for <a class="reference external" href="http://nedbatchelder.com/blog/201310/whats_in_which_python_3.html">Python 3</a>.
+These lists may be used to check whether any changes between Python versions
+may affect your package.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TODO</span> <span class="n">These</span> <span class="n">lists</span> <span class="n">should</span> <span class="n">be</span> <span class="n">reproduced</span> <span class="n">here</span> <span class="p">(</span><span class="k">with</span> <span class="n">permission</span><span class="p">)</span><span class="o">.</span>
+
+<span class="n">TODO</span> <span class="n">The</span> <span class="n">py3</span> <span class="nb">list</span> <span class="n">should</span> <span class="n">be</span> <span class="n">updated</span> <span class="n">to</span> <span class="n">include</span> <span class="mf">3.4</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index_ko.html">Table Of Contents</a></h3>
+
+
+  
+
+
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_ko.html">가이드</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA 설명서</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">프로젝트 요약</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">지원 받는 방법</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Copyright</a> 2013–2017, PyPA.
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Last updated on Oct 18, 2017.
+    <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
+    <br />
+
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    </div>
+
+  </body>
+</html>

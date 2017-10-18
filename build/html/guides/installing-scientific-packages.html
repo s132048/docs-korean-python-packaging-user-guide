@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installing Scientific Packages &#8212; Python Packaging User Guide</title>
+    
+    <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
+    
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    
+     
+
+  </head>
+  <body role="document">  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="installing-scientific-packages">
+<span id="numpy-and-the-science-stack"></span><h1>Installing Scientific Packages<a class="headerlink" href="#installing-scientific-packages" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Page Status:</th><td class="field-body">Incomplete</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Last Reviewed:</th><td class="field-body">2014-07-24</td>
+</tr>
+</tbody>
+</table>
+<div class="contents local topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#building-from-source" id="id2">Building from source</a></li>
+<li><a class="reference internal" href="#linux-distribution-packages" id="id3">Linux distribution packages</a></li>
+<li><a class="reference internal" href="#windows-installers" id="id4">Windows installers</a></li>
+<li><a class="reference internal" href="#macos-installers-and-package-managers" id="id5">macOS installers and package managers</a></li>
+<li><a class="reference internal" href="#scipy-distributions" id="id6">SciPy distributions</a></li>
+<li><a class="reference internal" href="#spack" id="id7">Spack</a></li>
+<li><a class="reference internal" href="#the-conda-cross-platform-package-manager" id="id8">The conda cross-platform package manager</a></li>
+</ul>
+</div>
+<p>Scientific software tends to have more complex dependencies than most, and
+it will often have multiple build options to take advantage of different
+kinds of hardware, or to interoperate with different pieces of external
+software.</p>
+<p>In particular, <a class="reference external" href="http://www.numpy.org/">NumPy</a>, which provides the basis
+for most of the software in the <a class="reference external" href="http://www.scipy.org/stackspec.html#stackspec">scientific Python stack</a> can be configured
+to interoperate with different FORTRAN libraries, and can take advantage
+of different levels of vectorised instructions available in modern CPUs.</p>
+<p>Unfortunately, as of December 2013, given NumPy&#8217;s current build and
+distribution model, the standard tools currently aren&#8217;t quite up to the
+task of distributing pre-built NumPy binaries, as most users aren&#8217;t going
+to know which version they need, and the <code class="docutils literal"><span class="pre">wheel</span></code> format currently doesn&#8217;t
+allow the installer to make that decision on the user&#8217;s behalf at install
+time.</p>
+<p>It is expected that this situation will eventually be resolved either by
+future iterations of the standard tools providing full support for the
+intricacies of NumPy&#8217;s current build and distribution process, or by the
+NumPy developers choosing one build variant as the &#8220;lowest acceptable
+common denominator&#8221; and publishing that as a wheel file on PyPI.</p>
+<p>In the meantime, however, there are a number of alternative options for
+obtaining scientific Python libraries (or any other Python libraries that
+require a compilation environment to install from source and don&#8217;t provide
+pre-built wheel files on PyPI).</p>
+<div class="section" id="building-from-source">
+<h2><a class="toc-backref" href="#id2">Building from source</a><a class="headerlink" href="#building-from-source" title="Permalink to this headline">¶</a></h2>
+<p>The same complexity which makes it difficult to distribute NumPy (and many
+of the projects that depend on it) as wheel files also make them difficult
+to build from source yourself. However, for intrepid folks that are willing
+to spend the time wrangling compilers and linkers for both C and FORTRAN,
+building from source is always an option.</p>
+</div>
+<div class="section" id="linux-distribution-packages">
+<h2><a class="toc-backref" href="#id3">Linux distribution packages</a><a class="headerlink" href="#linux-distribution-packages" title="Permalink to this headline">¶</a></h2>
+<p>For Linux users, the system package manager will often have pre-compiled
+versions of various pieces of scientific software, including NumPy and
+other parts of the scientific Python stack.</p>
+<p>If using versions which may be several months old is acceptable, then this is
+likely to be a good option (just make sure to allow access to distributions
+installed into the system Python when using virtual environments).</p>
+</div>
+<div class="section" id="windows-installers">
+<h2><a class="toc-backref" href="#id4">Windows installers</a><a class="headerlink" href="#windows-installers" title="Permalink to this headline">¶</a></h2>
+<p>Many Python projects that don&#8217;t (or can&#8217;t) currently publish wheel files at
+least publish Windows installers, either on PyPI or on their project
+download page. Using these installers allows users to avoid the need to set
+up a suitable environment to build extensions locally.</p>
+<p>The extensions provided in these installers are typically compatible with
+the CPython Windows installers published on python.org.</p>
+<p>For projects which don&#8217;t provide their own Windows installers (and even
+some which do), Christoph Gohlke at the University of California provides
+a <a class="reference external" href="http://www.lfd.uci.edu/~gohlke/pythonlibs/">collection of Windows installers</a>. Many Python users on
+Windows have reported a positive experience with these prebuilt versions.</p>
+<p>As with Linux system packages, the Windows installers will only install into a
+system Python installation - they do not support installation in virtual
+environments. Allowing access to distributions installed into the system Python
+when using virtual environments is a common approach to working around this
+limitation.</p>
+<p>The <cite>wheel</cite> project also provides a <cite>wheel convert</cite> subcommand that can
+convert a Windows <cite>bdist_wininst</cite> installer to a wheel.</p>
+</div>
+<div class="section" id="macos-installers-and-package-managers">
+<span id="mac-os-x-installers-and-package-managers"></span><h2><a class="toc-backref" href="#id5">macOS installers and package managers</a><a class="headerlink" href="#macos-installers-and-package-managers" title="Permalink to this headline">¶</a></h2>
+<p>Similar to the situation on Windows, many projects (including NumPy) publish
+macOS installers that are compatible with the macOS CPython binaries
+published on python.org.</p>
+<p>macOS users also have access to Linux distribution style package managers
+such as <code class="docutils literal"><span class="pre">MacPorts</span></code>. The SciPy site has more details on using MacPorts to
+install the <a class="reference external" href="http://www.scipy.org/install.html#mac-packages">scientific Python stack</a></p>
+</div>
+<div class="section" id="scipy-distributions">
+<h2><a class="toc-backref" href="#id6">SciPy distributions</a><a class="headerlink" href="#scipy-distributions" title="Permalink to this headline">¶</a></h2>
+<p>The SciPy site lists <a class="reference external" href="http://www.scipy.org/install.html">several distributions</a> that provide the full SciPy stack to
+end users in an easy to use and update format.</p>
+<p>Some of these distributions may not be compatible with the standard <code class="docutils literal"><span class="pre">pip</span></code>
+and <code class="docutils literal"><span class="pre">virtualenv</span></code> based toolchain.</p>
+</div>
+<div class="section" id="spack">
+<h2><a class="toc-backref" href="#id7">Spack</a><a class="headerlink" href="#spack" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/LLNL/spack/">Spack</a> is a flexible package manager
+designed to support multiple versions, configurations, platforms, and compilers.
+It was built to support the needs of large supercomputing centers and scientific
+application teams, who must often build software many different ways.
+Spack is not limited to Python; it can install packages for <code class="docutils literal"><span class="pre">C</span></code>, <code class="docutils literal"><span class="pre">C++</span></code>,
+<code class="docutils literal"><span class="pre">Fortran</span></code>, <code class="docutils literal"><span class="pre">R</span></code>, and other languages.  It is non-destructive; installing
+a new version of one package does not break existing installations, so many
+configurations can coexist on the same system.</p>
+<p>Spack offers a simple but powerful syntax that allows users to specify
+versions and configuration options concisely. Package files are written in
+pure Python, and they are templated so that it is easy to swap compilers,
+dependency implementations (like MPI), versions, and build options with a single
+package file.  Spack also generates <em>module</em> files so that packages can
+be loaded and unloaded from the user&#8217;s environment.</p>
+</div>
+<div class="section" id="the-conda-cross-platform-package-manager">
+<h2><a class="toc-backref" href="#id8">The conda cross-platform package manager</a><a class="headerlink" href="#the-conda-cross-platform-package-manager" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://store.continuum.io/cshop/anaconda/">Anaconda</a> is a Python
+distribution published by Continuum Analytics. It is a stable collection of
+Open Source packages for big data and scientific use.  About 100 are
+installed with Anaconda 2.2, and a total of 279 can be installed and
+updated from the Anaconda repository.</p>
+<p><code class="docutils literal"><span class="pre">conda</span></code> an open source (BSD licensed) package management system and
+environment management system included in Anaconda that allows users to
+install multiple versions of binary software packages and their dependencies,
+and easily switch between them. It is a cross-platform tool working on Windows,
+macOS, and Linux. Conda can be used to package up and distribute all kinds of
+packages, it is not limited to just Python packages.   It has full support
+for native virtual environments. Conda makes environments first-class citizens,
+making it easy to create independent environments even for C libraries. It is
+written in Python, but is Python-agnostic. Conda manages python itself as a
+package, so that <cite>conda update python</cite> is possible, in contrast to pip, which only
+manages Python packages. Conda is available in Anaconda and Miniconda
+(an easy-to-install download with just Python and conda).</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index_ko.html">Table Of Contents</a></h3>
+
+
+  
+
+
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_ko.html">가이드</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discussions/index_ko.html">토론</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA 설명서</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">프로젝트 요약</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">지원 받는 방법</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Copyright</a> 2013–2017, PyPA.
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Last updated on Oct 18, 2017.
+    <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
+    <br />
+
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    </div>
+
+  </body>
+</html>

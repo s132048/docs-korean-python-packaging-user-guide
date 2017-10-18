@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>install_requires vs Requirements files &#8212; Python Packaging User Guide</title>
+    
+    <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
+    
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    
+     
+
+  </head>
+  <body role="document">  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>#.. <span class="target" id="install-requires-vs-requirements-files">install_requires vs Requirements files</span>:</p>
+<div class="section" id="id1">
+<h1>install_requires vs Requirements files<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#install-requires" id="id5">install_requires</a></li>
+<li><a class="reference internal" href="#requirements-files" id="id6">Requirements files</a></li>
+</ul>
+</div>
+<div class="section" id="install-requires">
+<h2><a class="toc-backref" href="#id5">install_requires</a><a class="headerlink" href="#install-requires" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">install_requires</span></code> is a <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> <code class="docutils literal"><span class="pre">setup.py</span></code> keyword that should be
+used to specify what a project <strong>minimally</strong> needs to run correctly.  When the
+project is installed by <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>, this is the specification that is used to
+install its dependencies.</p>
+<p>For example, if the project requires A and B, your <code class="docutils literal"><span class="pre">install_requires</span></code> would be
+like so:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">install_requires</span><span class="o">=</span><span class="p">[</span>
+   <span class="s1">&#39;A&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;B&#39;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Additionally, it&#8217;s best practice to indicate any known lower or upper bounds.</p>
+<p>For example, it may be known, that your project requires at least v1 of &#8216;A&#8217;, and
+v2 of &#8216;B&#8217;, so it would be like so:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">install_requires</span><span class="o">=</span><span class="p">[</span>
+   <span class="s1">&#39;A&gt;=1&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;B&gt;=2&#39;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>It may also be known that project A follows semantic versioning, and that v2 of
+&#8216;A&#8217; will indicate a break in compatibility, so it makes sense to not allow v2:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">install_requires</span><span class="o">=</span><span class="p">[</span>
+   <span class="s1">&#39;A&gt;=1,&lt;2&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;B&gt;=2&#39;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>It is not considered best practice to use <code class="docutils literal"><span class="pre">install_requires</span></code> to pin
+dependencies to specific versions, or to specify sub-dependencies
+(i.e. dependencies of your dependencies).  This is overly-restrictive, and
+prevents the user from gaining the benefit of dependency upgrades.</p>
+<p>Lastly, it&#8217;s important to understand that <code class="docutils literal"><span class="pre">install_requires</span></code> is a listing of
+&#8220;Abstract&#8221; requirements, i.e just names and version restrictions that don&#8217;t
+determine where the dependencies will be fulfilled from (i.e. from what
+index or source).  The where (i.e. how they are to be made &#8220;Concrete&#8221;) is to
+be determined at install time using <a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a> options. <a class="footnote-reference" href="#id4" id="id2">[1]</a></p>
+</div>
+<div class="section" id="requirements-files">
+<h2><a class="toc-backref" href="#id6">Requirements files</a><a class="headerlink" href="#requirements-files" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://pip.pypa.io/en/latest/user_guide/#requirements-files" title="(in pip v10.0)"><span class="xref std std-ref">Requirements Files</span></a> described most simply, are
+just a list of <a class="reference external" href="https://pip.pypa.io/en/latest/reference/pip_install/#pip-install" title="(in pip v10.0)"><span>pip install</span></a> arguments placed into a file.</p>
+<p>Whereas <code class="docutils literal"><span class="pre">install_requires</span></code> defines the dependencies for a single project,
+<a class="reference external" href="https://pip.pypa.io/en/latest/user_guide/#requirements-files" title="(in pip v10.0)"><span class="xref std std-ref">Requirements Files</span></a> are often used to define
+the requirements for a complete python environment.</p>
+<p>Whereas <code class="docutils literal"><span class="pre">install_requires</span></code> requirements are minimal, requirements files
+often contain an exhaustive listing of pinned versions for the purpose of
+achieving <a class="reference external" href="https://pip.pypa.io/en/latest/user_guide/#repeatability" title="(in pip v10.0)"><span class="xref std std-ref">repeatable installations</span></a> of a complete
+environment.</p>
+<p>Whereas <code class="docutils literal"><span class="pre">install_requires</span></code> requirements are &#8220;Abstract&#8221;, i.e. not associated
+with any particular index, requirements files often contain pip
+options like <code class="docutils literal"><span class="pre">--index-url</span></code> or <code class="docutils literal"><span class="pre">--find-links</span></code> to make requirements
+&#8220;Concrete&#8221;, i.e. associated with a particular index or directory of
+packages. <a class="footnote-reference" href="#id4" id="id3">[1]</a></p>
+<p>Whereas <code class="docutils literal"><span class="pre">install_requires</span></code> metadata is automatically analyzed by pip during an
+install, requirements files are not, and only are used when a user specifically
+installs them using <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span></code>.</p>
+<hr class="docutils" />
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> For more on &#8220;Abstract&#8221; vs &#8220;Concrete&#8221; requirements, see
+<a class="reference external" href="https://caremad.io/2013/07/setup-vs-requirement/">https://caremad.io/2013/07/setup-vs-requirement/</a>.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index_ko.html">Table Of Contents</a></h3>
+
+
+  
+
+
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/index_ko.html">가이드</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_ko.html">토론</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA 설명서</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">프로젝트 요약</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">지원 받는 방법</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Copyright</a> 2013–2017, PyPA.
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Last updated on Oct 18, 2017.
+    <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
+    <br />
+
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    </div>
+
+  </body>
+</html>

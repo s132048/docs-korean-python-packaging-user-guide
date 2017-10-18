@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Wheel vs Egg &#8212; Python Packaging User Guide</title>
+    
+    <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PyPA 설명서" href="../specifications/index_ko.html" />
+    <link rel="prev" title="install_requires vs Requirements files" href="install-requires-vs-requirements_ko.html" />
+    <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
+    
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    
+     
+
+  </head>
+  <body role="document">  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../specifications/index_ko.html" title="PyPA 설명서"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="install-requires-vs-requirements_ko.html" title="install_requires vs Requirements files"
+             accesskey="P">previous</a> |</li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+          <li class="nav-item nav-item-1"><a href="index_ko.html" accesskey="U">토론</a> &#187;</li>
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="wheel-vs-egg">
+<span id="id1"></span><h1>Wheel vs Egg<a class="headerlink" href="#wheel-vs-egg" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="../glossary_ko.html#term-wheel"><span class="xref std std-term">Wheel</span></a> 과 <a class="reference internal" href="../glossary_ko.html#term-egg"><span class="xref std std-term">Egg</span></a> 는 패키징 포맷으로, 테스트나 제작 워크플로우에서
+비용이 많이 드는(costly) 컴파일이나 빌드를 요구하지 않는 설치 아티팩트(artifact)를
+필요로 하는 사용 케이스(case) 지원을 목적으로 한다.</p>
+<p><a class="reference internal" href="../glossary_ko.html#term-egg"><span class="xref std std-term">Egg</span></a> 포맷은 2004년 <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a>에 의해 도입되었고,
+<a class="reference internal" href="../glossary_ko.html#term-wheel"><span class="xref std std-term">Wheel</span></a> 포맷은 <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0427"><strong>PEP 427</strong></a>에 의해 2012년에 도입되었다.</p>
+<p><a class="reference internal" href="../glossary_ko.html#term-wheel"><span class="xref std std-term">Wheel</span></a>은 현재 파이썬용 패키지 <a class="reference internal" href="../glossary_ko.html#term-built-distribution"><span class="xref std std-term">built</span></a>과
+<a class="reference internal" href="../glossary_ko.html#term-binary-distribution"><span class="xref std std-term">binary</span></a>의 표준으로 간주되고 있다.</p>
+<p>아래는 <a class="reference internal" href="../glossary_ko.html#term-wheel"><span class="xref std std-term">Wheel</span></a>과 <a class="reference internal" href="../glossary_ko.html#term-egg"><span class="xref std std-term">Egg</span></a>의 중요한 차이점을 설명한 것이다.</p>
+<ul class="simple">
+<li><a class="reference internal" href="../glossary_ko.html#term-wheel"><span class="xref std std-term">Wheel</span></a>는 <span class="target" id="index-1"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0427"><strong>official PEP</strong></a>를 따르고 <a class="reference internal" href="../glossary_ko.html#term-egg"><span class="xref std std-term">Egg</span></a>은
+따르지 않는다.</li>
+<li><a class="reference internal" href="../glossary_ko.html#term-wheel"><span class="xref std std-term">Wheel</span></a> 는 <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">distribution</span></a> 포맷이다, 즉
+패키징 포맷이다. <a class="footnote-reference" href="#id3" id="id2">[1]</a> <a class="reference internal" href="../glossary_ko.html#term-egg"><span class="xref std std-term">Egg</span></a>는 배포 포맷이며 동시에 런타임 설치 포맷이기도
+하다 (압축되어 있는 경우), 그리고 임포터블(importable) 하도록 디자인 되었다.</li>
+<li><a class="reference internal" href="../glossary_ko.html#term-wheel"><span class="xref std std-term">Wheel</span></a> 아카이브는 .pyc 파일을 포함하지 않는다. 따라서 배포판이 파이썬
+파일만 포함할 때 (즉, 컴파일된 확장판이 없을 때), 그리고 파이썬 2, 3과 호환 가능할
+때 wheel이 <a class="reference internal" href="../glossary_ko.html#term-source-distribution-or-sdist"><span class="xref std std-term">sdist</span></a>와 비슷하게
+&#8220;범용(universal)&#8221;이 될 수 있다.</li>
+<li><a class="reference internal" href="../glossary_ko.html#term-wheel"><span class="xref std std-term">Wheel</span></a>은 <span class="target" id="index-2"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0376"><strong>PEP376-compliant</strong></a> <code class="docutils literal"><span class="pre">.dist-info</span></code>
+디렉토리를 사용하고 Egg는 <code class="docutils literal"><span class="pre">.egg-info</span></code>를 사용했다.</li>
+<li><a class="reference internal" href="../glossary_ko.html#term-wheel"><span class="xref std std-term">Wheel</span></a>는 <span class="target" id="index-3"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0425"><strong>richer file naming convention</strong></a>를 따른다.
+단일 wheel 아카이브는 여러 파이썬 언어 버전에 대한 호환성과
+임플리멘테이션(implementaions), ABIs, 시스템 아키텍쳐를 표시한다.</li>
+<li><a class="reference internal" href="../glossary_ko.html#term-wheel"><span class="xref std std-term">Wheel</span></a>는 버전관리 된다. 모든 wheel 파일은 해당 wheel 버전의 내역과
+패키징한 임플리멘테이션을 포함하고 있다.</li>
+<li><a class="reference internal" href="../glossary_ko.html#term-wheel"><span class="xref std std-term">Wheel</span></a>는 <a class="reference external" href="http://docs.python.org/2/library/sysconfig.html#installation-paths">sysconfig path type</a>에
+의해 내부적으로 체계화되어 있어서 다른 포맷으로 변환하기 쉽다.</li>
+</ul>
+<hr class="docutils" />
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>경우에 따라서는 사정에 따라 wheel은 임포터블한 런타임 포맷으로 사용될 수 있다.
+하지만 <span class="target" id="index-4"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0427#is-it-possible-to-import-python-code-directly-from-a-wheel-file"><strong>현재 공식적으로 지원되는 것은 아니다</strong></a>.</td></tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index_ko.html">Table Of Contents</a></h3>
+
+
+  
+
+
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/index_ko.html">가이드</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index_ko.html">토론</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="deploying-python-applications_ko.html">Deploying Python applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pip-vs-easy-install_ko.html">pip vs easy_install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-requires-vs-requirements_ko.html">install_requires vs Requirements files</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Wheel vs Egg</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA 설명서</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">프로젝트 요약</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">지원 받는 방법</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="install-requires-vs-requirements_ko.html"
+                        title="previous chapter">install_requires vs Requirements files</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../specifications/index_ko.html"
+                        title="next chapter">PyPA 설명서</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../specifications/index_ko.html" title="PyPA 설명서"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="install-requires-vs-requirements_ko.html" title="install_requires vs Requirements files"
+             >previous</a> |</li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+          <li class="nav-item nav-item-1"><a href="index_ko.html" >토론</a> &#187;</li>
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Copyright</a> 2013–2017, PyPA.
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Last updated on Oct 18, 2017.
+    <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
+    <br />
+
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    </div>
+
+  </body>
+</html>

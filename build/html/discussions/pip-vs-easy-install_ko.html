@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pip vs easy_install &#8212; Python Packaging User Guide</title>
+    
+    <link rel="stylesheet" href="../_static/pypa.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="install_requires vs Requirements files" href="install-requires-vs-requirements_ko.html" />
+    <link rel="prev" title="Deploying Python applications" href="deploying-python-applications_ko.html" />
+    <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
+    
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    
+     
+
+  </head>
+  <body role="document">  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="install-requires-vs-requirements_ko.html" title="install_requires vs Requirements files"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="deploying-python-applications_ko.html" title="Deploying Python applications"
+             accesskey="P">previous</a> |</li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+          <li class="nav-item nav-item-1"><a href="index_ko.html" accesskey="U">토론</a> &#187;</li>
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pip-vs-easy-install">
+<span id="id1"></span><h1>pip vs easy_install<a class="headerlink" href="#pip-vs-easy-install" title="Permalink to this headline">¶</a></h1>
+<p><cite>easy_install</cite>은 <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a>의 일부로서 2004년에 공개되었다.
+이것은 당시에 요구사항 지정자(requirement specifiers)를 사용해서
+자동적으로 의존성(dependencies)을 설치하는 <a class="reference internal" href="../glossary_ko.html#term-python-package-index-pypi"><span class="xref std std-term">PyPI</span></a>의 <a class="reference internal" href="../glossary_ko.html#term-distribution-package"><span class="xref std std-term">packages</span></a>를 설치하는
+것으로 유명했다.</p>
+<p><a class="reference internal" href="../key_projects_ko.html#pip"><span class="std std-ref">pip</span></a>는 <a class="reference internal" href="../key_projects_ko.html#setuptools"><span class="std std-ref">setuptools</span></a> 구성요소의 최상단에 빌드되어 있지만
+<cite>easy_install</cite>의 대안으로 2008년에 나왔다. 이것은 당시에 <a class="reference internal" href="../glossary_ko.html#term-egg"><span class="xref std std-term">Eggs</span></a>처럼 (하지만 <a class="reference internal" href="../glossary_ko.html#term-source-distribution-or-sdist"><span class="xref std std-term">sdists</span></a>의 &#8216;flat&#8217; 패키지
+보다 단순한) <a class="reference internal" href="../glossary_ko.html#term-egg"><span class="xref std std-term">Eggs</span></a>의 패키지를 설치하지 <em>않는</em> 것과 사용자에게
+쉽게 환경을 복제할 수 있는 권한을 주는 <a class="reference external" href="https://pip.pypa.io/en/latest/user_guide/#requirements-files" title="(in pip v10.0)"><span class="xref std std-ref">Requirements Files</span></a> 개념을 도입하는 것으로 유명했다.</p>
+<p>아래 표는 현재 pip와 easy_install 사이의 중요한 차이점을 나타낸 것이다:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="36%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>&#160;</td>
+<td><strong>pip</strong></td>
+<td><strong>easy_install</strong></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../glossary_ko.html#term-wheel"><span class="xref std std-term">Wheels</span></a>에서
+설치</td>
+<td>예</td>
+<td>아니오</td>
+</tr>
+<tr class="row-odd"><td>패키지 제거</td>
+<td>예 (<code class="docutils literal"><span class="pre">pip</span> <span class="pre">uninstall</span></code>)</td>
+<td>아니오</td>
+</tr>
+<tr class="row-even"><td>의존성 무시</td>
+<td>예 (<a class="reference external" href="https://pip.pypa.io/en/latest/user_guide/#requirements-files" title="(in pip v10.0)"><span class="xref std std-ref">Requirements Files</span></a>)</td>
+<td>아니오</td>
+</tr>
+<tr class="row-odd"><td>설치된 패키지 목록</td>
+<td>예 (<code class="docutils literal"><span class="pre">pip</span> <span class="pre">list</span></code> and <code class="docutils literal"><span class="pre">pip</span>
+<span class="pre">freeze</span></code>)</td>
+<td>아니오</td>
+</tr>
+<tr class="row-even"><td><span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0438"><strong>PEP 438</strong></a>
+지원</td>
+<td>예</td>
+<td>아니오</td>
+</tr>
+<tr class="row-odd"><td>설치 포맷</td>
+<td><cite>Egg-info</cite> 메타데이터가 있는
+&#8216;flat&#8217; 패키지&#8217;.</td>
+<td>캡슐화된(encapsuled) Egg 포맷</td>
+</tr>
+<tr class="row-even"><td>sys.path 수정</td>
+<td>아니오</td>
+<td>예</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../glossary_ko.html#term-egg"><span class="xref std std-term">Eggs</span></a>에서 설치</td>
+<td>아니오</td>
+<td>예</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://bitbucket.org/pypa/pylauncher">pylauncher support</a></td>
+<td>아니오</td>
+<td>예 <a class="footnote-reference" href="#id3" id="id2">[1]</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../guides/multi-version-installs_ko.html#multi-version-installs"><span class="std std-ref">멀티 버전 설치</span></a></td>
+<td>아니오</td>
+<td>예</td>
+</tr>
+<tr class="row-even"><td>설치중 스크립트 차단(exclude)</td>
+<td>아니오</td>
+<td>예</td>
+</tr>
+<tr class="row-odd"><td>프로젝트 별 색인</td>
+<td>virtualenv에서만 가능</td>
+<td>예, setup.cfg 통해서</td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td><a class="reference external" href="https://setuptools.readthedocs.io/en/latest/easy_install.html#natural-script-launcher">https://setuptools.readthedocs.io/en/latest/easy_install.html#natural-script-launcher</a></td></tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index_ko.html">Table Of Contents</a></h3>
+
+
+  
+
+
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index_ko.html">튜토리얼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/index_ko.html">가이드</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index_ko.html">토론</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="deploying-python-applications_ko.html">Deploying Python applications</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">pip vs easy_install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-requires-vs-requirements_ko.html">install_requires vs Requirements files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wheel-vs-egg_ko.html">Wheel vs Egg</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/index_ko.html">PyPA 설명서</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../key_projects_ko.html">프로젝트 요약</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary_ko.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_ko.html">지원 받는 방법</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to this guide</a></li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="deploying-python-applications_ko.html"
+                        title="previous chapter">Deploying Python applications</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="install-requires-vs-requirements_ko.html"
+                        title="next chapter">install_requires vs Requirements files</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="install-requires-vs-requirements_ko.html" title="install_requires vs Requirements files"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="deploying-python-applications_ko.html" title="Deploying Python applications"
+             >previous</a> |</li>
+    <li><img src="../_static/py.png" alt=""
+             style="vertical-align: middle; margin-top: -1px"/></li>
+    <li><a href="https://pypa.io">PyPA</a> &#187;</li>
+    
+    <a href="../index.html">Python Packaging User Guide</a> &#187;
+    
+
+          <li class="nav-item nav-item-1"><a href="index_ko.html" >토론</a> &#187;</li>
+    <li class="right">
+        
+
+    <div class="inline-search" style="display: none" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" type="text" name="q" />
+          <input type="submit" value="Go" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('.inline-search').show(0);</script>
+         |
+    </li>
+
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Copyright</a> 2013–2017, PyPA.
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Last updated on Oct 18, 2017.
+    <a href="https://github.com/pypa/python-packaging-user-guide/issues">Found a bug</a>?
+    <br />
+
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.6.
+    </div>
+
+  </body>
+</html>
